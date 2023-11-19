@@ -1,0 +1,20 @@
+@import 'reset-css';
+
+:root
+{
+    --color-dark-100: #1C1931;
+    --color-dark-200: #080713;
+
+    --color-primary-500: #2F57E5;
+
+    --color-white: #FFFFFF;
+    --color-black: #080713;
+    --color-neutral: #584F88;
+    --color-neutral-transparrent: rgba(37, 72, 169, 0.30);
+}
+
+body
+{
+    background: var(--color-dark-200);
+    color: var(--color-white)
+}

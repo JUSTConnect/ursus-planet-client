@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "src"
+		},
+		{
+			"path": "src/components"
+		},
+		{
+			"path": "src/app"
+		},
+	],
+	"settings": {
+		"nuxt.isNuxtApp": false
+	}
+}
