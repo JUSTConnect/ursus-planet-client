@@ -1,0 +1,55 @@
+.buttonUpload
+{
+    background: #584F88;
+    text-transform: none;
+    padding: 4px 20px;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.buttonSave
+{
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
+.avatar
+{
+    height: 80px !important;
+
+    &Recommend
+    {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #584F88;
+        width: 70%;
+    }
+}
+
+.stackInputCheckbox
+{
+    align-items: center !important;
+}
+
+.formControlWalletName
+{
+    width: 100%;
+    &Label
+    {
+        display: block !important;
+        color: #584F88 !important;
+        margin-bottom: 10px;
+    }
+
+    &Button
+    {
+        padding: 2px 11px;
+        font-size: 12px;
+    }
+
+    &Stack
+    {
+        gap: 8px !important;
+    }
+}

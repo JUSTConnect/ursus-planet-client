@@ -1,0 +1,183 @@
+@use '@mixins' as *;
+
+.button {
+    position: relative;
+    overflow: hidden;
+
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 100px;
+
+    font-family: inherit;
+
+    transition: .2s;
+
+    &:not(&:disabled):hover {
+        opacity: .9;
+        cursor: pointer;
+    }
+}
+
+.icon
+{
+    svg, img
+    {
+        display: block;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+// colors
+
+.button--primary {
+    color: var(--color-white);
+    background: #2F57E5;
+}
+
+.button--success {
+    color: var(--color-white);
+    background: var(--color-success);
+}
+
+.button--warning {
+    color: var(--color-black);
+    background: var(--color-warning);
+}
+
+.button--error {
+    color: var(--color-white);
+    background: var(--color-error);
+}
+
+.button--dark {
+    color: var(--color-white);
+    background: #1C1931;
+}
+
+.button--gray
+{
+    color: var(--color-white);
+    background: var(--color-gray);
+}
+
+// // == [ variants ] ==
+
+.button--blank {
+    background: none;
+    color: var(--color-primary);
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+// sizes
+
+.button--sm
+{
+    padding: 0px 11px;
+    gap: 4px;
+
+    .text
+    {
+        font-size: 12px;
+        padding: 4px 0;
+    }
+
+    .icon
+    {
+        svg, img
+        {
+            height: 16px;
+            width: 16px;
+        }
+    }
+}
+
+.button--md
+{
+    padding: 0px 14px;
+    gap: 8px;
+
+    .text
+    {
+        font-size: 14px;
+        padding: 13px 0;
+    }
+
+    .icon
+    {
+        svg, img
+        {
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
+
+.button--lg
+{
+    padding: 0px 19px;
+    gap: 8px;
+
+    .text
+    {
+        font-size: 18px;
+        padding: 19px 0;
+    }
+
+    .icon
+    {
+        svg, img
+        {
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
+
+
+
+// modificators
+
+.fullWidth {
+    width: 100%;
+}
+
+.animated {
+    &:hover {
+        opacity: 1;
+    }
+
+    &:not(.button--blank) {
+        &::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            height: 300%;
+            width: 1.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            transform-origin: center;
+            transform: rotate(25deg);
+            transition: 1s linear;
+        }
+
+        &:hover::before {
+            left: 200%;
+        }
+    }
+}
+
+.button:disabled {
+    opacity: .5;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,42 @@
+@use '@mixins' as *;
+
+.card
+{
+    border-radius: 16px;
+    overflow: hidden;
+
+    @include dark
+    {
+        border: 1px solid #333;
+    }
+}
+
+.card--outlined
+{
+}
+
+.card--contained
+{
+    background: #1C1931;
+}
+
+.cardBody, .cardHead, .cardFooter
+{
+    padding: 24px;
+
+    @include mobile
+    {
+        padding: 12px;
+    }
+}
+
+.cardHead, .cardFooter
+{
+    color: #584F88;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.transparent
+{
+    border: none;
+}

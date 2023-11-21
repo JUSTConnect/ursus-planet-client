@@ -1,0 +1,17 @@
+.checkbox
+{
+    border: 1px solid #584F88;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+
+    &Inner
+    {
+        background: #584F88;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+}

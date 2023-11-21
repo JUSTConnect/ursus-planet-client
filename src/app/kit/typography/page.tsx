@@ -1,14 +1,9 @@
 'use client'
 import { useState } from 'react';
-import AppBlockingIcon from '@mui/icons-material/AppBlocking';
-import CircularProgress from '@mui/joy/CircularProgress';
 
-import css from './index.module.scss'
-import Button from '@/components/Button';
-import Typography from '@/components/Typography';
+import Typography from '@/components/core/Typography';
 
 export default function Kit() {
-    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <>

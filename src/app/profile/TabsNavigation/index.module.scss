@@ -1,0 +1,43 @@
+@use '@mixins' as *;
+
+.navigation {
+    padding-bottom: 0;
+    padding-top: 0;
+    display: flex;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 10px 60px 20px;
+    gap: 8px;
+    color: var(--color-neutral);
+    border-radius: 0 0 20px 20px;
+
+    @include mobile
+    {
+        padding: 8px 30px 10px;
+        border-radius: 0 0 18px 18px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & svg path {
+        fill: var(--color-neutral);
+    }
+
+    &Active {
+        color: var(--color-white);
+        background: #080713;
+
+        &:hover {
+            cursor: default;
+        }
+
+        & svg path {
+            fill: var(--color-primary);
+        }
+    }
+}

@@ -1,0 +1,103 @@
+// === [ variants ] ===
+
+.typography
+{
+    color: var(--color-text);
+
+    transition: color var(--theme-transition);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6
+{
+    font-family: var(--font-fkalakokz);
+    margin-bottom: 1rem;
+}
+
+.h1
+{
+    font-size: 3rem;
+}
+
+.h2
+{
+    font-size: 2.5rem;
+}
+
+.h3
+{
+    font-size: 2rem;
+}
+
+.h4
+{
+    font-size: 1.5rem;
+}
+
+.h5
+{
+    font-size: 1.2rem;
+}
+
+.h6
+{
+    font-size: 1rem;
+}
+
+.p
+{
+    margin-bottom: 1rem;
+}
+
+.span
+{
+    display: inline;
+}
+
+.div
+{
+    display: block;
+}
+
+// === [ colors ] ===
+
+.black
+{
+    color: var(--color-black);
+}
+
+.white
+{
+    color: var(--color-white);
+}
+
+.primary
+{
+    color: var(--color-primary);
+}
+
+.success
+{
+    color: var(--color-success);
+}
+
+.warning
+{
+    color: var(--color-warning);
+}
+
+.error
+{
+    color: var(--color-error);
+}
+
+.gray
+{
+    color: var(--color-gray)
+}
+
+// modificators
+
+.center
+{
+    text-align: center;
+}

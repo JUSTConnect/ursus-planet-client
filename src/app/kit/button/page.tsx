@@ -1,51 +1,155 @@
 'use client'
-import { useState } from 'react';
-import LayersIcon from '@mui/icons-material/Layers';
-import CircularProgress from '@mui/joy/CircularProgress';
 
-import Button, { ButtonSize, ButtonVariant } from '@/components/Button';
+import Image from 'next/image';
 
-const buttonSizes = [
+import iconPng from './icons/png.png'
+import IconSvg from './icons/Svg'
+
+import Box from '@/components/core/Box';
+import Button, { ButtonSize, ButtonColor, ButtonVariant } from '@/components/core/Button';
+import Container from '@/components/core/Container';
+import Scroller from '@/components/core/Scroller';
+import Stack from '@/components/core/Stack';
+import Typography from '@/components/core/Typography';
+
+
+const buttonSizes: ButtonSize[] = [
     'sm',
     'md',
     'lg'
 ]
 
-const buttonVariants = [
-    'primary',
+const buttonColors: ButtonColor[] = [
+    "primary",
+    "dark",
+    "gray",
+    "success",
+    "warning",
+    "error",
+]
+
+const buttonVariants: ButtonVariant[] = [
     'regular',
-    'white',
-    'base'
+    'blank'
 ]
 
 export default function Kit() {
-    const [isLoading, setIsLoading] = useState(false)
 
     return (
-        <>
-            {
-                buttonSizes.map(size => buttonVariants.map(variant=><>
-                    <Button
-                        variant={variant as ButtonVariant}
-                        size={size as ButtonSize}
-                        onClick={ () => setIsLoading(!isLoading) }
-                        iconStart={
-                            isLoading ? <CircularProgress size='sm' variant="plain"/> : <LayersIcon/>
-                        }
-                    >
-                        Hello world!
-                    </Button>   
-                </>))
-            }
-            <Button
-                onClick={ () => setIsLoading(!isLoading) }
-                iconStart={
-                    isLoading ? <CircularProgress size='sm' variant="plain"/> : <LayersIcon/>
-                }
-                fullWidth
-            >
-                Hello world!
-            </Button>
-        </>
+        <Container>
+            {buttonSizes.map(size =>
+                <Box key={size} mb={1} mt={1}>
+                    <Typography variant='h3'>{size.toUpperCase()}-sized buttons</Typography>
+                    <Scroller>
+                        <Stack maxContent>
+                            {buttonColors.map(color =>
+                                <Box key={color}>
+                                    <Typography variant='p'>{color}</Typography>
+                                    <Button size={size} color={color}>Hello world</Button>
+                                </Box>
+                            )}
+                            <Box>
+                                <Typography variant='p'>blank</Typography>
+                                <Button size={size} variant='blank'>Hello world</Button>
+                            </Box>
+                        </Stack>
+                    </Scroller>
+                </Box>
+            )}
+            <Box mb={2} mt={2}>
+                <Box mb={1} mt={1}>
+                    <Typography variant='h3'>With icon (img)</Typography>
+                    <Scroller>
+                        <Stack maxContent>
+                            {buttonSizes.map(size =>
+                                <Box key={size}>
+                                    <Typography variant='p'>{size}</Typography>
+                                    <Button
+                                        size={size}
+                                        iconStart={
+                                            <Image src={iconPng} alt='icon'/>
+                                        }
+                                    >
+                                        Hello world
+                                    </Button>
+                                </Box>
+                            )}
+                            <Box>
+                                <Typography variant='p'>blank</Typography>
+                                <Button
+                                    variant='blank'
+                                    iconStart={
+                                        <Image src={iconPng} alt='icon'/>
+                                    }
+                                >
+                                    Hello world
+                                </Button>
+                            </Box>
+                        </Stack>
+                    </Scroller>
+                </Box>
+                <Box mb={1} mt={1}>
+                    <Typography variant='h3'>With icon (svg)</Typography>
+                    <Scroller>
+                        <Stack maxContent>
+                            {buttonSizes.map(size =>
+                                <Box key={size}>
+                                    <Typography variant='p'>{size}</Typography>
+                                    <Button
+                                        size={size}
+                                        iconStart={<IconSvg/>}
+                                    >
+                                        Hello world
+                                    </Button>
+                                </Box>
+                            )}
+                            <Box>
+                                <Typography variant='p'>blank</Typography>
+                                <Button
+                                    variant='blank'
+                                    iconStart={<IconSvg/>}
+                                >
+                                    Hello world
+                                </Button>
+                            </Box>
+                        </Stack>
+                    </Scroller>
+                </Box>
+                <Box mb={1} mt={1}>
+                    <Typography variant='h3'>Animated</Typography>
+                    <Scroller>
+                        <Stack maxContent>
+                            {buttonSizes.map(size =>
+                                <Box key={size}>
+                                    <Typography variant='p'>{size}</Typography>
+                                    <Button animated size={size} >Hello world</Button>
+                                </Box>
+                            )}
+                            <Box>
+                                <Typography variant='p'>blank</Typography>
+                                <Button animated variant='blank'>Hello world</Button>
+                            </Box>
+                        </Stack>
+                    </Scroller>
+                </Box>
+                <Box mb={1} mt={1}>
+                    <Typography variant='h3'>Disabled</Typography>
+                    <Scroller>
+                        <Stack maxContent>
+                            {buttonSizes.map(size =>
+                                <Box key={size}>
+                                    <Typography variant='p'>{size}</Typography>
+                                    <Button disabled size={size} >Hello world</Button>
+                                </Box>
+                            )}
+                            <Box>
+                                <Typography variant='p'>blank</Typography>
+                                <Button disabled variant='blank'>Hello world</Button>
+                            </Box>
+                        </Stack>
+                    </Scroller>
+                </Box>
+            </Box>
+        </Container>
     )
 }

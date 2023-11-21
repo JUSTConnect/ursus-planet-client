@@ -1,0 +1,21 @@
+.blur
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    animation-name: blur;
+    animation-duration: .3s;
+}
+
+@keyframes blur {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100%;
+    }
+}

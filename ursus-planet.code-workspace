@@ -7,10 +7,19 @@
 			"path": "src"
 		},
 		{
+			"path": "src/app/kit"
+		},
+		{
+			"path": "src/components/core"
+		},
+		{
 			"path": "src/components"
 		},
 		{
 			"path": "src/app"
+		},
+		{
+			"path": "src/app/profile"
 		},
 	],
 	"settings": {

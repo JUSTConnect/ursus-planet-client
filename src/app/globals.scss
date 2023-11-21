@@ -1,0 +1,45 @@
+@use '@mixins' as *;
+
+@import 'reset-css';
+
+*
+{
+    box-sizing: border-box;
+}
+
+:root
+{
+    --color-dark-100: #1C1931;
+    --color-dark-200: #080713;
+
+    --color-gray: #584F88;
+    --color-primary: #007bff;
+    --color-success: #30ad4b;
+    --color-warning: #ffc107;
+    --color-error: #dc3545;
+
+    --color-white: #FFFFFF;
+    --color-black: #080713;
+    --color-neutral: #584F88;
+    --color-neutral-transparrent: rgba(37, 72, 169, 0.30);
+
+    font-size: 18px;
+    line-height: 120%;
+
+    @include mobile
+    {
+        font-size: 14px;
+    }
+}
+
+body
+{
+    background: var(--color-dark-200);
+    color: var(--color-white)
+}
+
+a
+{
+    text-decoration: none;
+    color: inherit;
+}

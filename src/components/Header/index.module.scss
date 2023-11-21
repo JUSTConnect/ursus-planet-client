@@ -1,0 +1,136 @@
+@use '@mixins' as *;
+
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 24px 1rem;
+
+    @include mobile
+    {
+        padding: 1rem;
+    }
+}
+
+.headerSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @include mobile
+    {
+        gap: 11px;
+    }
+}
+
+.logo
+{
+    width: 221px;
+
+    @include tablet
+    {
+        width: 176px;
+    }
+
+    @include mobile
+    {
+        width: 158px;
+    }
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+    color: var(--color-neutral);
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &Arrow {
+        transform: translateY(25%);
+    }
+}
+
+.iconNotifications {
+    height: 2rem;
+
+    @include tablet {
+        height: 36px;
+    }
+
+    @include mobile
+    {
+        height: 24px;
+    }
+}
+
+.buttonWallet {
+    color: #584F88 !important;
+    text-transform: none !important;
+    padding-left: 42px !important;
+    padding-right: 42px !important;
+
+    @include tablet {
+        padding: 12px !important;
+    }
+
+    @include mobile
+    {
+        padding: 10px !important;
+    }
+
+    &Text {
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &Icon {
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
+
+        @include mobile
+        {
+            height: 16px;
+            width: 16px;
+        }
+    }
+}
+
+
+.menuBottom {
+    display: none;
+    gap: 18px;
+    color: var(--color-neutral);
+    overflow: auto;
+
+    @include tablet
+    {
+        display: flex;
+        padding-top: 0;
+    }
+
+    &Item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &Arrow {
+            transform: translateY(25%);
+        }
+    }
+}

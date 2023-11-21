@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 
-import './globals.css'
+import './globals.scss'
 import { play, fkalakokz } from './fonts'
+
+import Layout from '@/components/Layout'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={[play.className, fkalakokz.variable].join(' ')}>{children}</body>
+      <body className={[play.className, fkalakokz.variable].join(' ')}>
+        <Layout>
+          {children}
+        </Layout>
+      </body>
     </html>
   )
 }

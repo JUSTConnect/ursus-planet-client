@@ -1,0 +1,42 @@
+.stack
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: fit-content;
+
+    &--horizontal
+    {
+        flex-direction: row;
+    }
+
+    &--vertical
+    {
+        flex-direction: column;
+    }
+
+    &--full-width
+    {
+        width: 100%;
+    }
+
+    &--max-content
+    {
+        width: max-content;
+    }
+
+    &--wrap
+    {
+        flex-wrap: wrap;
+    }
+}
+
+.justifyCenter
+{
+    justify-content: center;
+}
+
+.alignCenter
+{
+    align-items: center;
+}
