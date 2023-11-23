@@ -23,22 +23,22 @@ import Scroller from '@/components/core/Scroller'
 
 
 export default function TabProfile() {
-    type TabName = 'avatar' | 'profile'
+    type TabName = 'player'|'project'
     type Tab = {
         name: TabName,
         title: string,
         icon: StaticImageData
     }
 
-    const [activeTab, setActiveTab] = useState<TabName>('avatar')
+    const [activeTab, setActiveTab] = useState<TabName>('player')
     const tabs: Tab[] = [
         {
-            name: 'avatar',
+            name: 'player',
             title: 'Avatar',
             icon: iconAvatar
         },
         {
-            name: 'profile',
+            name: 'project',
             title: 'Profile',
             icon: iconProfile
         }
@@ -46,30 +46,32 @@ export default function TabProfile() {
 
     return <Container className={tabsCss.container}>
         <div className={tabsCss.innerNav}>
-            {
-                tabs.map(tab =>
-                    <CardHead
-                        key={tab.name}
-                        className={[tabsCss.innerNavTab, activeTab === tab.name && tabsCss.innerNavTabActive].join(' ')}
-                        onClick={() => setActiveTab(tab.name)}
-                    >
-                        <div className={tabsCss.innerNavText}>
-                            <Image
-                                className={tabsCss.innerNavIcon}
-                                src={tab.icon}
-                                alt='icon'
-                            />
-                            {tab.title}
-                        </div>
-                    </CardHead>
-                )
-            }
+            <Stack fullWidth>
+                {
+                    tabs.map(tab =>
+                        <CardHead
+                            key={tab.name}
+                            className={[tabsCss.innerNavTab, activeTab === tab.name && tabsCss.innerNavTabActive].join(' ')}
+                            onClick={ () => setActiveTab(tab.name) }
+                        >
+                            <div className={tabsCss.innerNavText}>
+                                <Image
+                                    className={tabsCss.innerNavIcon}
+                                    src={tab.icon}
+                                    alt='icon'
+                                />
+                                {tab.title}
+                            </div>
+                        </CardHead>
+                    )
+                }
+            </Stack>
         </div>
         <div className={tabsCss.cards}>
             <Card
                 className={[
                     tabsCss.card,
-                    activeTab === 'avatar' && tabsCss.cardActive
+                    activeTab === 'player' && tabsCss.cardActive
                 ].join(' ')}
             >
                 <div>
@@ -106,7 +108,7 @@ export default function TabProfile() {
             <Card
                 className={[
                     tabsCss.card,
-                    activeTab === 'profile' && tabsCss.cardActive
+                    activeTab === 'project' && tabsCss.cardActive
                 ].join(' ')}
             >
                 <div>
@@ -143,23 +145,23 @@ export default function TabProfile() {
                                     </Typography>
                                     <Scroller>
                                         <Stack maxContent className={css.formControlWalletNameStack}>
-                                            <Button
-                                                size='sm'
-                                                color='gray'
-                                                iconStart={<Image src={iconEmailOk} alt='icon' />}
-                                            >
-                                                Stiven38324
-                                            </Button>
-                                            <Button
-                                                size='sm'
-                                                color='gray'
-                                            >
-                                                Stiven38</Button>
-                                            <Button
-                                                size='sm'
-                                                color='gray'
-                                            >
-                                                Stiven334</Button>
+                                                <Button
+                                                    size='sm'
+                                                    color='gray'
+                                                    iconStart={<Image src={iconEmailOk} alt='icon' />}
+                                                >
+                                                    Stiven38324
+                                                </Button>
+                                                <Button
+                                                    size='sm'
+                                                    color='gray'
+                                                >
+                                                    Stiven38</Button>
+                                                <Button
+                                                    size='sm'
+                                                    color='gray'
+                                                >
+                                                    Stiven334</Button>
                                         </Stack>
                                     </Scroller>
                                 </Box>

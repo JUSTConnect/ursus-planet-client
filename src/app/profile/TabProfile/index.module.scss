@@ -1,3 +1,5 @@
+@use '@mixins' as *;
+
 .buttonUpload
 {
     background: #584F88;
@@ -24,12 +26,23 @@
         gap: 8px;
         color: #584F88;
         width: 70%;
+
+        @include tablet
+        {
+            width: 100%;
+        }
     }
 }
 
 .stackInputCheckbox
 {
     align-items: center !important;
+
+    @include mobile
+    {
+        gap: 8px !important;
+    }
+
 }
 
 .formControlWalletName

@@ -3,6 +3,12 @@
 .container
 {
     padding-top: 36px;
+
+    @include mobile
+    {
+        padding-top: 12px;
+        padding-bottom: 40px;
+    }
 }
 
 .cards
@@ -21,13 +27,24 @@
     @include tablet
     {
         display: none;
+
+        &Active
+        {
+            display: block;
+        }
     }
+
 
     &Head
     {
         display: flex;
         align-items: center;
         gap: 8px;
+
+        @include tablet
+        {
+            display: none;
+        }
     }
 
     &Body
@@ -43,8 +60,15 @@
 
 .innerNav
 {
+    display: none;
     border-radius: 16px 16px 0 0;
-    background: #1C1931;
+    background: var(--color-dark-200);
+    overflow: hidden;
+
+    @include tablet
+    {
+        display: flex;
+    }
 
     &Tab
     {
@@ -54,8 +78,14 @@
 
         &Active
         {
-            background: #1C1931 !important;
+            background: var(--color-dark-100) !important;
         }
+    }
+
+    &Icon
+    {
+        height: 1.5rem;
+        width: 1.5rem;
     }
 
     &Text
@@ -63,6 +93,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        gap: .5rem;
     }
 }

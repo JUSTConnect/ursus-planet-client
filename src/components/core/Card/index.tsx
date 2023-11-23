@@ -71,7 +71,7 @@ export function CardHead(props: CardHeadProps) {
         ].join(' ')
     }
 
-    return <div className={ getClassName() }>
+    return <div onClick={ props.onClick } className={ getClassName() }>
         { props.children }
     </div>
 }

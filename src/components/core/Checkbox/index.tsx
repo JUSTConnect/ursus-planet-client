@@ -12,7 +12,7 @@ export default function Checkbox() {
         <input
             type="checkbox"
             hidden
-            checked={active}
+            defaultChecked={active}
         />
         <div className={css.checkbox} onClick={ () => setActive(!active) }>
             {

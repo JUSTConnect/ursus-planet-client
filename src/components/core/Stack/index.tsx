@@ -4,10 +4,10 @@ import css from './index.module.scss'
 interface Props extends React.HTMLAttributes<HTMLDivElement>
 {
     gap?: number
-    direction?: 'horizontal' | 'vertical',
-    fullWidth?: boolean,
+    direction?: 'horizontal' | 'vertical'
+    fullWidth?: boolean
     maxContent?: boolean
-    wrap?: boolean,
+    wrap?: boolean
     alignCenter?: boolean
     justifyCenter?: boolean
 }

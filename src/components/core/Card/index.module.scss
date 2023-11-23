@@ -17,23 +17,20 @@
 
 .card--contained
 {
-    background: #1C1931;
+    background: #1C19314C;
 }
 
 .cardBody, .cardHead, .cardFooter
 {
-    padding: 24px;
-
-    @include mobile
-    {
-        padding: 12px;
-    }
+    padding: 1rem;
 }
 
 .cardHead, .cardFooter
 {
     color: #584F88;
-    background: rgba(255, 255, 255, 0.02);
+    background: #1C1931;
+    backdrop-filter: blur(10px);
+
 }
 
 .transparent
