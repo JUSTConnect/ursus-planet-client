@@ -12,7 +12,6 @@ export default function ButtonIcon(props: IButton) {
 
     return <Button
         {...props}
-        children={null}
         iconStart={props.children}
         className={className}
     />
