@@ -1,0 +1,24 @@
+@use '@mixins' as *;
+
+.wrapper
+{
+    position: relative;
+}
+
+.blur
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 1162px;
+    height: 863px;
+
+    opacity: 0.1;
+    background: linear-gradient(270deg, #2548A9 13.06%, #41B4D8 41.17%, #BA89C2 71.1%);
+    filter: blur(200px);
+
+    transform: translateY(-50%);
+
+    z-index: -1;
+}

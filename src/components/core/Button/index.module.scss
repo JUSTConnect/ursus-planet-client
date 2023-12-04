@@ -17,19 +17,25 @@
 
     transition: .2s;
 
-    &:not(&:disabled):hover {
-        opacity: .9;
-        cursor: pointer;
-    }
-}
+    cursor: pointer;
 
-.icon
-{
-    svg, img
+    & svg, & img
     {
         display: block;
         aspect-ratio: 1 / 1;
     }
+
+    & .text
+    {
+        width: max-content;
+    }
+
+}
+
+.buttonIcon
+{
+    gap: 0 !important;
+
 }
 
 // colors
@@ -70,10 +76,6 @@
 .button--blank {
     background: none;
     color: var(--color-primary);
-
-    &:hover {
-        background: rgba(0, 0, 0, 0.1);
-    }
 }
 
 
@@ -81,64 +83,70 @@
 
 .button--sm
 {
-    padding: 0px 11px;
+    padding: 0px .25rem;
     gap: 4px;
 
-    .text
+    &.buttonIcon
     {
-        font-size: .8rem;
-        padding: 4px 0;
+        padding: .25rem;
     }
 
-    .icon
+    & .text
     {
-        svg, img
-        {
-            height: 16px;
-            width: 16px;
-        }
+        font-size: .8rem;
+        padding: .25rem 0;
+    }
+
+    & svg, & img
+    {
+        height: 1rem;
+        width: 1rem;
     }
 }
 
 .button--md
 {
-    padding: 0px 14px;
+    padding: 0px .9rem;
     gap: 8px;
 
-    .text
+    &.buttonIcon
     {
-        font-size: 1rem;
-        padding: .8rem 0;
+        padding: .9rem;
     }
 
-    .icon
+    & .text
     {
-        svg, img
-        {
-            height: 24px;
-            width: 24px;
-        }
+        font-size: 1rem;
+        padding: .9rem 0;
+    }
+
+    & svg, & img
+    {
+        height: 1.2rem;
+        width: 1.2rem;
     }
 }
 
 .button--lg
 {
-    padding: 0px 19px;
+    padding: 0 1.2rem;
     gap: 8px;
 
-    .text
+    &.buttonIcon
     {
-        font-size: 1.2rem;
-        padding: 19px 0;
+        padding: 1.2rem;
     }
 
-    .icon
+    & .text
     {
-        svg, img
-        {
-            height: 24px;
-            width: 24px;
-        }
+        font-size: 1.2rem;
+        padding: 1.2rem 0;
+    }
+
+    & svg, & img
+    {
+        height: 1.2rem;
+        width: 1.2rem;
     }
 }
 

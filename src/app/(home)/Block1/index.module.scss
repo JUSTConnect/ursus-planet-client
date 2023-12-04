@@ -1,0 +1,26 @@
+.container
+{
+    position: relative;
+    margin-bottom: 120px;
+}
+
+.heading
+{
+    margin-bottom: 372px !important;
+    text-align: center;
+}
+
+.button
+{
+    padding: 0 59px;
+}
+
+.figureUrsa
+{
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    top: 25%;
+    position: absolute;
+    object-fit: cover;
+}

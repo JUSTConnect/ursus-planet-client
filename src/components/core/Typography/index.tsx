@@ -5,7 +5,7 @@ import { Color } from '../Colors'
 export type TypographyVariant =
     'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' |
     'p' | 'span' | 'div'
-export type TypographyColor = Color | 'black' | 'white'
+export type TypographyColor = Color | 'black' | 'white' | 'neutral'
 
 
 interface Props extends React.HTMLAttributes<HTMLDivElement>

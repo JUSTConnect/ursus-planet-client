@@ -1,0 +1,65 @@
+@use '@mixins' as *;
+
+
+.button
+{
+    justify-content: space-between !important;
+    white-space: nowrap;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.iconArrow
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    & > img
+    {
+        height: 24px;
+        width: 24px;
+        object-fit: contain;
+    }
+}
+
+.menu {
+    display: none;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    
+    transform: translateY(100%);
+
+    z-index: 1;
+    
+    div:hover > &
+    {
+        display: block;
+    }
+
+    &Card
+    {
+        border-radius: 8px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+}
+
+.item
+{
+    text-align: start;
+    padding: 16px;
+    background: #080713;
+    cursor: pointer;
+
+    &:hover
+    {
+        opacity: .9;
+    }
+}

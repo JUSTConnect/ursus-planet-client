@@ -1,0 +1,120 @@
+@use '@mixins' as *;
+
+.container {
+    margin-bottom: 120px !important;
+    position: relative;
+
+    @include tablet {
+        margin-bottom: 60px !important;
+    }
+
+    @include mobile {
+        margin-bottom: 36px !important;
+    }
+}
+
+.group {
+    position: relative;
+    padding-bottom: 120px;
+}
+
+.groupBg {
+
+    &Forest {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 50px;
+        left: 0;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    &Sky {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    &Blur {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: -350px;
+        left: 0;
+        object-fit: cover;
+        z-index: -1;
+    }
+}
+
+.headingIcon {
+    height: 60px;
+    width: 60px;
+
+    @include mobile {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+.buttonViewMore {
+    color: #584F88 !important;
+    display: flex;
+    align-items: center;
+    max-width: 208px;
+    width: 100%;
+    justify-content: space-between;
+    // gap: 69px;
+
+    &Icon {
+        height: 24px;
+        width: 24px;
+        object-fit: contain;
+    }
+
+    &Content {
+        display: flex;
+        align-items: center;
+        gap: 69px;
+    }
+
+    &Text {
+        @include tablet {
+            display: none;
+        }
+    }
+}
+
+
+// .heading {
+//     &Stack {
+//         @include mobile {
+//             flex-direction: column;
+//         }
+//     }
+
+//     &Buttons {
+//         @include mobile {
+//             width: 100%;
+//         }
+//     }
+
+//     &Dropdown {
+//         max-width: 208px;
+//         width: 100%;
+
+//         @include mobile {
+//             width: 100%;
+//         }
+
+//         &Icon {
+//             height: 16px;
+//             width: 16px;
+//             object-fit: contain;
+//         }
+//     }
+// }

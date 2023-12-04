@@ -1,0 +1,150 @@
+@use '@mixins' as *;
+
+.sections
+{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    @include tablet
+    {
+        display: block;
+        padding: 0 !important;
+    }
+}
+
+.sectionRight
+{
+
+    @include tablet
+    {
+        background: linear-gradient(180deg, #211E3D 0%, rgba(8, 7, 19, 0.00) 100%);
+    }
+
+    &Heading
+    {
+        gap: 4px !important;
+
+        @include mobile
+        {
+            font-size: 30px;
+        }
+
+        &Icon
+        {
+            display: block;
+            height: 60px;
+            width: 60px;
+    
+            @include mobile
+            {
+                height: 24px;
+                width: 24px;
+            }
+        }
+    }
+    
+    &Stack
+    {
+        padding: 1rem;
+        display: flex;
+        gap: 4rem;
+
+        @include tablet
+        {
+            gap: 24px;
+            & > div
+            {
+                width: 100%;
+            }
+        }
+
+        @include mobile
+        {
+            gap: 16px;
+        }
+    }
+}
+
+.heading
+{
+    padding: 1rem;
+    padding-left: 2rem;
+}
+
+.buttonSwitch
+{   
+    &Icon
+    {
+        height: 24px !important;
+
+        @include mobile
+        {
+            height: 16px !important;
+            width: 16px !important;
+        }
+    }
+
+    @media (max-width: 1435px) {
+        border-radius: 0 100px 100px 0;
+        transform: translateX(-1rem);
+    }
+}
+
+.buttons
+{
+    @include tablet
+    {
+        display: none;
+    }
+
+    &Mobile
+    {
+        display: none;
+        width: 100%;
+        margin-bottom: 36px;
+
+        @include tablet
+        {
+            display: flex;
+        }
+    }
+}
+
+.buttonCurrent
+{
+    
+    &Mobile
+    {
+        border-radius: 0 0 1rem 1rem !important;
+        background: #080713 !important;
+        width: 100%;
+
+        @include tablet
+        {
+            padding: 0 !important;
+            padding-top: 8px !important;
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+}
+
+.buttonPrevNext
+{
+    color: var(--color-neutral) !important;
+
+    &Mobile
+    {
+        color: var(--color-neutral) !important;
+        width: 100%;
+
+        @include tablet
+        {
+            padding: 0 !important;
+            padding-top: 8px !important;
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+}

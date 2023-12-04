@@ -7,6 +7,7 @@ import IconSvg from './icons/Svg'
 
 import Box from '@/components/core/Box';
 import Button, { ButtonSize, ButtonColor, ButtonVariant } from '@/components/core/Button';
+import ButtonIcon from '@/components/core/Button/ButtonIcon';
 import Container from '@/components/core/Container';
 import Scroller from '@/components/core/Scroller';
 import Stack from '@/components/core/Stack';
@@ -72,6 +73,9 @@ export default function Kit() {
                                     >
                                         Hello world
                                     </Button>
+                                    <ButtonIcon size={size}>
+                                        <Image src={iconPng} alt='icon'/>
+                                    </ButtonIcon>
                                 </Box>
                             )}
                             <Box>

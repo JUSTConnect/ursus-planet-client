@@ -11,16 +11,14 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
       <body className={[play.className, fkalakokz.variable].join(' ')}>
-        <Layout>
-          {children}
-        </Layout>
+        {children}
       </body>
     </html>
   )

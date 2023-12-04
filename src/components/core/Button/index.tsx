@@ -7,7 +7,7 @@ export type ButtonColor = Color
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement>
+export interface IButton extends React.HTMLAttributes<HTMLButtonElement>
 {
     variant?: ButtonVariant
     color?: ButtonColor
@@ -24,7 +24,7 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement>
 }
 
 
-export default function Button(props: Props) {
+export default function Button(props: IButton) {
     const {
         variant = 'regular',
         color = 'primary',
@@ -52,15 +52,13 @@ export default function Button(props: Props) {
         disabled={ props.disabled }
     >
         { props.iconStart &&
-            <div className={ css.icon }>
-                { props.iconStart }
-            </div>
+            props.iconStart
         } 
-        <div className={css.text}>{ props.children }</div>
+        { props.children &&
+            <div className={css.text}>{ props.children }</div>
+        }
         { props.iconEnd &&
-            <div className={ css.icon }>
-                { props.iconEnd }
-            </div>
+            props.iconEnd
         } 
     </button>
 }
