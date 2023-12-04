@@ -18,7 +18,7 @@ import Button from '@/components/core/Button'
 import ButtonIcon from '@/components/core/Button/ButtonIcon'
 
 
-export default function () {
+export default function Block4 () {
     const filters = [
         {
             name: 'All prizes',
