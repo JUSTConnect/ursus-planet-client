@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,7 +10,10 @@ import iconArrowDown from './img/arrow-down.svg'
 import iconWallet from './img/wallet.svg'
 
 import Button from '@/components/core/Button'
+import ButtonIcon from '@/components/core/Button/ButtonIcon'
 import Container from '@/components/core/Container'
+import Dropdown from '@/components/core/Dropdown'
+import DropdownMenu from '@/components/core/Dropdown/DropdownMenu'
 
 
 export default function Header() {
@@ -16,13 +21,41 @@ export default function Header() {
         <Container className={css.headerContainer}>
             <Image className={css.logo} src={logo} alt='logo' />
             <nav className={css.menu}>
-                <Link className={css.menuItem} href='#'>
-                    Discover
-                    <Image
-                        className={css.menuItemArrow}
-                        src={iconArrowDown}
-                        alt='arrow' />
-                </Link>
+                <Dropdown>
+                    <Link href='#' className={css.menuItem}>
+                        Discover
+                        <Image
+                            className={css.menuItemArrow}
+                            src={iconArrowDown}
+                            alt='arrow' />
+                    </Link>
+                    <DropdownMenu
+                        items={
+                            [
+                                {
+                                    name: 'Main',
+                                    value: 'main'
+                                },
+                                {
+                                    name: 'Free',
+                                    value: 'free'
+                                },
+                                {
+                                    name: 'Best',
+                                    value: 'best'
+                                },
+                                {
+                                    name: 'Upcoming',
+                                    value: 'upcoming'
+                                },
+                                {
+                                    name: 'Your Drops',
+                                    value: 'your-drops'
+                                }
+                            ]
+                        }
+                    />
+                </Dropdown>
                 <Link className={css.menuItem} href='#'>
                     Spaces
                 </Link>
@@ -49,18 +82,65 @@ export default function Header() {
                     className={css.buttonWallet}
                     animated
                     color='dark'
+                    iconStart={
+                        <Image
+                            className={css.buttonWalletIcon}
+                            src={iconWallet}
+                            alt='arrow' />
+
+                    }
                 >
                     <div className={css.buttonWalletText}>
                         Connect wallet
                     </div>
+                </Button>
+                <ButtonIcon
+                    className={css.buttonWalletMobile}
+                    color='dark'
+                >
                     <Image
                         className={css.buttonWalletIcon}
                         src={iconWallet}
                         alt='arrow' />
-                </Button>
+                </ButtonIcon>
             </div>
         </Container>
         <Container className={css.menuBottom}>
+            <Dropdown className={css.menuBottomItem}>
+                <Link href='#' className={css.menuItem}>
+                    Discover
+                    <Image
+                        className={css.menuItemArrow}
+                        src={iconArrowDown}
+                        alt='arrow' />
+                </Link>
+                <DropdownMenu
+                    items={
+                        [
+                            {
+                                name: 'Main',
+                                value: 'main'
+                            },
+                            {
+                                name: 'Free',
+                                value: 'free'
+                            },
+                            {
+                                name: 'Best',
+                                value: 'best'
+                            },
+                            {
+                                name: 'Upcoming',
+                                value: 'upcoming'
+                            },
+                            {
+                                name: 'Your Drops',
+                                value: 'your-drops'
+                            }
+                        ]
+                    }
+                />
+            </Dropdown>
             <Link className={css.menuBottomItem} href='#'>
                 Discover
                 <Image

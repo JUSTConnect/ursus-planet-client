@@ -1,3 +1,5 @@
+@use '@mixins' as *;
+
 .container
 {
     position: relative;
@@ -6,13 +8,24 @@
 
 .heading
 {
+    margin-top: 50px;
     margin-bottom: 372px !important;
     text-align: center;
+
+    @include tablet
+    {
+        margin-bottom: 300px !important;
+    }
 }
 
 .button
 {
-    padding: 0 59px;
+    padding: 0 59px !important;
+
+    @include mobile
+    {
+        padding: 0 23px !important;
+    }
 }
 
 .figureUrsa
@@ -22,5 +35,12 @@
     transform: translate(-50%);
     top: 25%;
     position: absolute;
-    object-fit: cover;
+    object-fit: contain;
+    height: 507px;
+    width: auto;
+
+    @include tablet
+    {
+        height: 350px;
+    }
 }

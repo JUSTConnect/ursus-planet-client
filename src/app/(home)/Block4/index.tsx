@@ -18,7 +18,7 @@ import Button from '@/components/core/Button'
 import ButtonIcon from '@/components/core/Button/ButtonIcon'
 
 
-export default function Block4 () {
+export default function Block4() {
     const filters = [
         {
             name: 'All prizes',
@@ -39,37 +39,38 @@ export default function Block4 () {
                 <Typography variant='h2' color='primary'>
                     Best games
                 </Typography>
-                <div>
-                    <Stack className={css.headingButtons}>
-                        <Dropdown
-                            className={css.headingDropdown}
+                <Stack className={css.headingButtons}>
+                    <Dropdown
+                        className={css.headingDropdown}
+                    >
+                        <DropdownButton
+                            iconStart={<Image src={iconPrize}
+                                alt="icon"
+                                className={css.headingDropdownIcon} />
+                            }
+                            color='dark'
                         >
-                            <DropdownButton
-                                iconStart={<Image src={iconPrize}
-                                    alt="icon"
-                                    className={css.headingDropdownIcon} />
-                                }
-                                color='dark'
-                            >
-                                {filter.name}
-                            </DropdownButton>
-                            <DropdownMenu items={filters} />
-                        </Dropdown>
-                        <Button
-                            className={css.buttonViewMore}
-                            color='gray'
-                            iconEnd={
-                                <Image src={iconViewMore} alt="icon" className={css.buttonViewMoreIcon}/>
-                            }>
-                            <div className={css.buttonViewMoreText}>
-                                View more
-                            </div>
-                        </Button>
-                        <ButtonIcon>
-                            <Image src={iconViewMore} alt="icon"/>
-                        </ButtonIcon>
-                    </Stack>
-                </div>
+                            {filter.name}
+                        </DropdownButton>
+                        <DropdownMenu items={filters} />
+                    </Dropdown>
+                    <Button
+                        className={css.buttonViewMore}
+                        color='gray'
+                        iconEnd={
+                            <Image src={iconViewMore} alt="icon" className={css.buttonViewMoreIcon} />
+                        }>
+                        <div className={css.buttonViewMoreText}>
+                            View more
+                        </div>
+                    </Button>
+                    <ButtonIcon
+                        color='gray'
+                        className={css.buttonViewMoreMobile}
+                    >
+                        <Image src={iconViewMore} alt="icon" />
+                    </ButtonIcon>
+                </Stack>
             </Stack>
         </Container>
     </div>

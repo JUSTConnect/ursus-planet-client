@@ -51,24 +51,26 @@
     }
 }
 
-.headingIcon {
-    height: 60px;
-    width: 60px;
-
-    @include mobile {
-        height: 30px;
-        width: 30px;
-    }
-}
-
 .buttonViewMore {
     color: #584F88 !important;
     display: flex;
     align-items: center;
-    max-width: 208px;
     width: 100%;
     justify-content: space-between;
-    // gap: 69px;
+    
+    @include tablet {
+        display: none;
+
+        &Mobile
+        {
+            display: block !important;
+        }
+    }
+
+    &Mobile
+    {
+        display: none;
+    }
 
     &Icon {
         height: 24px;
@@ -82,39 +84,53 @@
         gap: 69px;
     }
 
-    &Text {
-        @include tablet {
-            display: none;
-        }
-    }
+
 }
 
 
-// .heading {
-//     &Stack {
-//         @include mobile {
-//             flex-direction: column;
-//         }
-//     }
+.heading {
+    &Stack {
+        @include mobile {
+            flex-direction: column;
+        }
+    }
 
-//     &Buttons {
-//         @include mobile {
-//             width: 100%;
-//         }
-//     }
 
-//     &Dropdown {
-//         max-width: 208px;
-//         width: 100%;
+    &Icon {
+        height: 60px;
+        width: 60px;
 
-//         @include mobile {
-//             width: 100%;
-//         }
+        @include mobile {
+            height: 30px;
+            width: 30px;
+        }
+    }
 
-//         &Icon {
-//             height: 16px;
-//             width: 16px;
-//             object-fit: contain;
-//         }
-//     }
-// }
+    &Buttons {
+        max-width: 500px;
+        width: 100%;
+
+        @include tablet {
+            max-width: 268px;
+        }
+
+        @include mobile
+        {
+            max-width: initial;
+        }
+    }
+
+    &Dropdown {
+        width: 100%;
+
+        @include mobile {
+            width: 100%;
+        }
+
+        &Icon {
+            height: 16px;
+            width: 16px;
+            object-fit: contain;
+        }
+    }
+}

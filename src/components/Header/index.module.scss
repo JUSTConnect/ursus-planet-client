@@ -82,12 +82,17 @@
     padding-right: 42px !important;
 
     @include tablet {
-        padding: 0 12px !important;
+        display: none;
+
+        &Mobile
+        {
+            display: block !important;
+        }
     }
 
-    @include mobile
+    &Mobile
     {
-        // padding: 10px !important;
+        display: none;
     }
 
     &Text {
@@ -117,6 +122,7 @@
     gap: 18px;
     color: var(--color-neutral);
     overflow: auto;
+    overflow-y: visible;
 
     @include tablet
     {

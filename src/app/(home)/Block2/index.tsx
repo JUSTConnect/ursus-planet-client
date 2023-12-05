@@ -30,7 +30,7 @@ export default function Block2() {
                     }
                     variant='blank'
                     size='lg'
-                    iconStart={<Image className={indexCss.buttonSwitchIcon} src={iconNext} alt="icon" />}
+                    iconStart={<Image src={iconNext} alt="icon" />}
                 >
                     Upcoming season
                 </Button>
@@ -38,7 +38,7 @@ export default function Block2() {
                     className={[indexCss.buttonSwitch, indexCss.buttonCurrent].join(' ')}
                     color='dark'
                     size='lg'
-                    iconStart={<Image className={indexCss.buttonSwitchIcon} src={iconCurrent} alt="icon" />}
+                    iconStart={<Image src={iconCurrent} alt="icon" />}
                 >
                     Current season
                 </Button>
@@ -51,7 +51,7 @@ export default function Block2() {
                     }
                     variant="blank"
                     size='lg'
-                    iconStart={<Image className={indexCss.buttonSwitchIcon} src={iconPrev} alt="icon" />}
+                    iconStart={<Image src={iconPrev} alt="icon" />}
                 >
                     Last season
                 </Button>

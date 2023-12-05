@@ -3,7 +3,7 @@ import css from './index.module.scss'
 
 
 export type ButtonVariant = 'regular' | 'blank'
-export type ButtonColor = Color
+export type ButtonColor = Color | 'white'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 
