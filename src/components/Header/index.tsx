@@ -29,7 +29,7 @@ export default function Header() {
                             src={iconArrowDown}
                             alt='arrow' />
                     </Link>
-                    <DropdownMenu
+                    {/* <DropdownMenu
                         items={
                             [
                                 {
@@ -54,7 +54,7 @@ export default function Header() {
                                 }
                             ]
                         }
-                    />
+                    /> */}
                 </Dropdown>
                 <Link className={css.menuItem} href='#'>
                     Spaces
@@ -114,32 +114,6 @@ export default function Header() {
                         src={iconArrowDown}
                         alt='arrow' />
                 </Link>
-                <DropdownMenu
-                    items={
-                        [
-                            {
-                                name: 'Main',
-                                value: 'main'
-                            },
-                            {
-                                name: 'Free',
-                                value: 'free'
-                            },
-                            {
-                                name: 'Best',
-                                value: 'best'
-                            },
-                            {
-                                name: 'Upcoming',
-                                value: 'upcoming'
-                            },
-                            {
-                                name: 'Your Drops',
-                                value: 'your-drops'
-                            }
-                        ]
-                    }
-                />
             </Dropdown>
             <Link className={css.menuBottomItem} href='#'>
                 Discover
