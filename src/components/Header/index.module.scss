@@ -82,7 +82,7 @@
     padding-right: 42px !important;
 
     @include tablet {
-        display: none;
+        display: none !important;
 
         &Mobile
         {
@@ -92,7 +92,7 @@
 
     &Mobile
     {
-        display: none;
+        display: none !important;
     }
 
     &Text {

@@ -12,11 +12,12 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement>
     items: Item[]
     setValue?: (item: Item) => void
     value?: string
+    active: boolean
 }
 
 
 export default function DropdownMenu(props: Props) {
-    return <div className={css.menu}>
+    return <div className={[css.menu, props.active && css.menuActive].join(' ')}>
         <div className={css.menuCard}>
             {
                 props.items.map(item =>

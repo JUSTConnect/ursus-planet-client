@@ -32,6 +32,7 @@ export default function Block5() {
     ]
 
     const [filter, setFilter] = useState(filters[1])
+    const [dropdownActive, setDropdownActive] = useState(false)
 
     return <Container className={css.container}>
         <Stack fullWidth className={css.headingStack}>
@@ -43,6 +44,7 @@ export default function Block5() {
                         className={css.headingDropdown}
                     >
                         <DropdownButton
+                            onClick={ () => setDropdownActive(!dropdownActive) }
                             iconStart={<Image src={iconPrize}
                                 alt="icon"
                                 className={css.headingDropdownIcon} />
@@ -51,7 +53,7 @@ export default function Block5() {
                         >
                             {filter.name}
                         </DropdownButton>
-                        <DropdownMenu items={filters} setValue={setFilter}/>
+                        <DropdownMenu active={dropdownActive} items={filters} setValue={setFilter}/>
                     </Dropdown>
                     <Button
                         className={css.buttonViewMore}

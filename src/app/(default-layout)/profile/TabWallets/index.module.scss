@@ -1,0 +1,78 @@
+@use '@mixins' as *;
+@import '../index.module.scss';
+
+.cardBlockProject
+{
+    margin-top: 2rem;
+}
+
+.cardProject
+{
+    &Title, &Description
+    {
+        text-align: center;
+    }
+
+    &Title
+    {
+        font-size: 2rem;
+    }
+
+    &Description
+    {
+        color: #584F88;
+        margin: 0 auto;
+        max-width: 350px;
+    }
+
+    &Figure
+    {
+        display: block;
+        
+        max-width: 350px;
+        width: 100%;
+        height: auto;
+        
+        margin: 0 auto 3rem;
+    }
+
+    &Buttons
+    {
+        max-width: 400px;
+        margin: 0 auto !important;
+    }
+
+    &Button
+    {
+        width: 100%;
+    }
+}
+
+.networkButtons
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: .5rem;
+}
+
+.stackWalletList
+{
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    
+    &Hash
+    {
+        text-overflow: ellipsis;
+        color: #584F88;
+    }
+
+    &Icon
+    {
+        @include mobile
+        {
+            height: 16px;
+            width: 16px;
+        }
+    }
+}

@@ -10,9 +10,7 @@ import iconPrize from '../img/icon-prize.png'
 
 
 import Container from '@/components/core/Container'
-import Typography from '@/components/core/Typography'
 import Button from '@/components/core/Button'
-import ButtonIcon from '@/components/core/Button/ButtonIcon'
 import Stack from '@/components/core/Stack'
 import Dropdown from '@/components/core/Dropdown'
 import DropdownButton from '@/components/core/Dropdown/DropdownButton'
@@ -33,6 +31,7 @@ export default function Block6() {
     ]
 
     const [filter, setFilter] = useState(filters[1])
+    const [dropdownActive, setDropdownActive] = useState(false)
 
     return <Container className={css.container}>
         <Stack fullWidth className={[css.headingStack, indexCss.headingStack].join(' ')}>
@@ -42,6 +41,7 @@ export default function Block6() {
                     className={css.headingDropdown}
                 >
                     <DropdownButton
+                        onClick={ () => setDropdownActive(!dropdownActive) }
                         iconStart={<Image src={iconPrize}
                             alt="icon"
                             className={css.headingDropdownIcon} />
@@ -50,7 +50,7 @@ export default function Block6() {
                     >
                         {filter.name}
                     </DropdownButton>
-                    <DropdownMenu items={filters} setValue={setFilter} />
+                    <DropdownMenu active={dropdownActive} items={filters} setValue={setFilter} />
                 </Dropdown>
                 <Button
                     className={indexCss.buttonTrustedProjects}

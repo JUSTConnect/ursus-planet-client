@@ -1,0 +1,111 @@
+@use '@mixins' as *;
+@import '../index.module.scss';
+
+.cards
+{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    // display: flex;
+    // gap: 1rem;
+
+    @include tablet
+    {
+        flex-direction: column;
+    }
+}
+
+.cardSocial
+{
+    &Body
+    {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        z-index: 1;
+
+        @include tablet
+        {
+            // flex-direction: row;
+        }
+    }
+
+    &Title, &Description
+    {
+        text-align: center;
+
+        @include tablet
+        {
+            text-align: initial;
+        }
+    }
+
+    &Title
+    {
+        margin-top: .5rem;
+        font-size: 2rem;
+    }
+
+    &Description
+    {
+        color: #584F88;
+        margin-bottom: 1.5rem;
+    }
+
+    &Figure
+    {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        margin: 0 auto 1rem;
+
+        @include tablet
+        {
+            display: none;
+        }
+    }
+
+    &BgDrop
+    {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        
+        @include tablet
+        {
+            display: none;
+        }
+    }
+
+    &Button, &Form
+    {
+        margin-bottom: 1rem !important;
+
+        @include tablet
+        {
+            margin-bottom: 0 !important;
+            float: right;
+            width: auto;
+        }
+
+        @include mobile
+        {
+            width: 100%;
+        }
+    }
+
+    &Button
+    {
+        margin: 0 auto;
+
+        &Icon
+        {
+            padding: .6rem !important;
+        }
+    }
+}

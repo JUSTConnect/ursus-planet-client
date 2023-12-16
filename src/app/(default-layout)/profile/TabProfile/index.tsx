@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 import css from './index.module.scss'
-import tabsCss from '../tabs.module.scss'
 import iconAvatar from './icons/avatar.svg'
 import iconProfile from './icons/profile.svg'
 import iconInfo from './icons/info.svg'
@@ -44,18 +43,18 @@ export default function TabProfile() {
         }
     ]
 
-    return <Container className={tabsCss.container}>
-        <div className={tabsCss.innerNav}>
+    return <Container className={css.container}>
+        <div className={css.innerNav}>
             {
                 tabs.map(tab =>
                     <CardHead
                         key={tab.name}
-                        className={[tabsCss.innerNavTab, activeTab === tab.name && tabsCss.innerNavTabActive].join(' ')}
+                        className={[css.innerNavTab, activeTab === tab.name && css.innerNavTabActive].join(' ')}
                         onClick={() => setActiveTab(tab.name)}
                     >
-                        <div className={tabsCss.innerNavText}>
+                        <div className={css.innerNavText}>
                             <Image
-                                className={tabsCss.innerNavIcon}
+                                className={css.innerNavIcon}
                                 src={tab.icon}
                                 alt='icon'
                             />
@@ -65,19 +64,19 @@ export default function TabProfile() {
                 )
             }
         </div>
-        <div className={tabsCss.cards}>
+        <div className={css.cards}>
             <Card
                 className={[
-                    tabsCss.card,
-                    activeTab === 'avatar' && tabsCss.cardActive
+                    css.card,
+                    activeTab === 'avatar' && css.cardActive
                 ].join(' ')}
             >
                 <div>
-                    <CardHead className={tabsCss.cardHead}>
+                    <CardHead className={css.cardHead}>
                         <Image src={iconAvatar} alt='icon' />
                         Avatar
                     </CardHead>
-                    <CardBody className={tabsCss.cardBody}>
+                    <CardBody className={css.cardBody}>
                         <Typography variant='p'>
                             Profile Image
                         </Typography>
@@ -99,22 +98,22 @@ export default function TabProfile() {
                         </Stack>
                     </CardBody>
                 </div>
-                <CardFooter className={tabsCss.cardFooter}>
+                <CardFooter className={css.cardFooter}>
                     <Button color='gray' className={css.buttonSave}>Save</Button>
                 </CardFooter>
             </Card>
             <Card
                 className={[
-                    tabsCss.card,
-                    activeTab === 'profile' && tabsCss.cardActive
+                    css.card,
+                    activeTab === 'profile' && css.cardActive
                 ].join(' ')}
             >
                 <div>
-                    <CardHead className={tabsCss.cardHead}>
+                    <CardHead className={css.cardHead}>
                         <Image src={iconProfile} alt='icon' />
                         Profile
                     </CardHead>
-                    <CardBody className={tabsCss.cardBody}>
+                    <CardBody className={css.cardBody}>
                         <Box mb={1}>
                             <Typography variant='p'>
                                 Username
@@ -180,7 +179,7 @@ export default function TabProfile() {
                         </div>
                     </CardBody>
                 </div>
-                <CardFooter className={tabsCss.cardFooter}>
+                <CardFooter className={css.cardFooter}>
                     <Button color='gray' className={css.buttonSave}>Save</Button>
                 </CardFooter>
             </Card>

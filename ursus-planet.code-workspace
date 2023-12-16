@@ -22,7 +22,7 @@
 			"path": "src/app/(home)"
 		},
 		{
-			"path": "src/app/profile"
+			"path": "src/app/(default-layout)/profile"
 		},
 	],
 	"settings": {

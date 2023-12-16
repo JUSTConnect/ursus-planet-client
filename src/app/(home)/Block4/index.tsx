@@ -31,6 +31,7 @@ export default function Block4() {
     ]
 
     const [filter, setFilter] = useState(filters[1])
+    const [dropdownActive, setDropdownActive] = useState(false)
 
     return <div className={indexCss.wrapper}>
         <div className={indexCss.blur} />
@@ -44,6 +45,7 @@ export default function Block4() {
                         className={css.headingDropdown}
                     >
                         <DropdownButton
+                            onClick={ () => setDropdownActive(!dropdownActive) }
                             iconStart={<Image src={iconPrize}
                                 alt="icon"
                                 className={css.headingDropdownIcon} />
@@ -52,7 +54,7 @@ export default function Block4() {
                         >
                             {filter.name}
                         </DropdownButton>
-                        <DropdownMenu items={filters} />
+                        <DropdownMenu active={dropdownActive} setValue={setFilter} items={filters} />
                     </Dropdown>
                     <Button
                         className={css.buttonViewMore}

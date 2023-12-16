@@ -1,0 +1,186 @@
+'use client'
+
+import { useState } from 'react'
+import Image, { StaticImageData } from 'next/image'
+
+import css from './index.module.scss'
+import cardProjectFigure from './img/card-project-figure.png'
+import iconPlayer from './img/player.svg'
+import iconProject from './img/project.svg'
+import iconCopy from './img/icon-copy.svg'
+import iconAdd from './img/icon-add.svg'
+import iconDelete from './img/icon-delete.svg'
+import iconEth from './img/icon-eth.png'
+import iconSol from './img/icon-sol.png'
+import iconAptos from './img/icon-aptos.png'
+import iconAptos2 from './img/icon-aptos2.png'
+
+import Box from '@/components/core/Box'
+import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
+import Container from "@/components/core/Container"
+import Button from "@/components/core/Button"
+import Stack from '@/components/core/Stack'
+import Typography from '@/components/core/Typography'
+
+import ChainItem from './ChainItem'
+
+
+export default function TabProfile() {
+    type TabName = 'player' | 'project'
+    type Tab = {
+        name: TabName,
+        title: string,
+        icon: StaticImageData
+    }
+
+    const [activeTab, setActiveTab] = useState<TabName>('player')
+    const tabs: Tab[] = [
+        {
+            name: 'player',
+            title: 'Avatar',
+            icon: iconPlayer
+        },
+        {
+            name: 'project',
+            title: 'Profile',
+            icon: iconProject
+        }
+    ]
+
+    return <Container className={css.container}>
+        <div className={css.innerNav}>
+            <Stack fullWidth>
+                {
+                    tabs.map(tab =>
+                        <CardHead
+                            key={tab.name}
+                            className={[css.innerNavTab, activeTab === tab.name &&
+                                css.innerNavTabActive].join(' ')}
+                            onClick={() => setActiveTab(tab.name)}
+                        >
+                            <div className={
+                                css.innerNavText}>
+                                <Image
+                                    className={
+                                        css.innerNavIcon}
+                                    src={tab.icon}
+                                    alt='icon'
+                                />
+                                {tab.title}
+                            </div>
+                        </CardHead>
+                    )
+                }
+            </Stack>
+        </div>
+        <div className={
+            css.cards}>
+
+            <Card
+                className={[
+
+                    css.card,
+                    activeTab === 'player' &&
+                    css.cardActive
+                ].join(' ')}
+            >
+                <div>
+                    <CardHead className={
+                        css.cardHead}>
+                        <Image src={iconPlayer} alt='icon' />
+                        Player
+                    </CardHead>
+                    <CardBody className={css.cardBody}>
+
+                        <Box className={css.cardBlock}>
+
+                            <Typography variant='p'>Add network</Typography>
+                            <div className={css.networkButtons}>
+                                <Button
+                                    iconStart={<Image src={iconEth} alt='icon'/>}
+                                    color='gray'
+                                    fullWidth
+                                >
+                                    EVM
+                                </Button>
+                                <Button
+                                    iconStart={<Image src={iconSol} alt='icon'/>}
+                                    color='gray'
+                                    fullWidth
+                                >
+                                    Solana
+                                </Button>
+                                <Button
+                                    iconStart={<Image src={iconAptos} alt='icon'/>}
+                                    color='gray'
+                                    fullWidth
+                                >
+                                    Aptos
+                                </Button>
+                                <Button
+                                    iconStart={<Image src={iconAptos2} alt='icon'/>}
+                                    color='gray'
+                                    fullWidth
+                                >
+                                    Aptos
+                                </Button>
+                            </div>
+                        </Box>
+                        <Box className={css.cardBlock}>
+                            <Typography variant='p'>
+                                <Stack fullWidth className={css.stackWalletList} gap={2}>
+                                    Wallet list
+                                    <Stack gap={.5} alignCenter>
+                                        <Typography className={css.stackWalletListHash}>
+                                            56uy56u5...yhbg34gf4g
+                                        </Typography>
+                                        <Image className={css.stackWalletListIcon} src={iconCopy} alt='icon'/>
+                                        <Image className={css.stackWalletListIcon} src={iconAdd} alt='icon'/>
+                                        <Image className={css.stackWalletListIcon} src={iconDelete} alt='icon'/>
+                                    </Stack>
+                                </Stack>
+                            </Typography>
+                            <ChainItem/>
+                        </Box>
+
+                    </CardBody>
+                </div>
+                <CardFooter className={css.cardFooter}>
+                    <Button color='gray' className={css.buttonSave}>Save</Button>
+                </CardFooter>
+            </Card>
+
+            <Card
+                className={[
+
+                    css.card,
+                    activeTab === 'project' &&
+                    css.cardActive
+                ].join(' ')}
+            >
+                <div>
+                    <CardHead className={css.cardHead}>
+                        <Image src={iconProject} alt='icon' />
+                        Project
+                    </CardHead>
+                    <CardBody className={css.cardBody}>
+                        <Box className={[css.cardBlock, css.cardBlockProject].join(' ')}>
+                            <Typography variant='p' className={css.cardProjectTitle}>Add your project</Typography>
+                            <Typography variant='p' className={css.cardProjectDescription} color='gray'>We recommend an image of at least 300x300. Gift work too. Max 5 mb.</Typography>
+                            <Image
+                                className={css.cardProjectFigure}
+                                src={cardProjectFigure}
+                                alt='figure'
+                            />
+                            <Stack className={css.cardProjectButtons} gap={.5} fullWidth>
+                                <Button color='gray' className={css.cardProjectButton}>Add project</Button>
+                                <Button color='gray' className={css.cardProjectButton}>More info</Button>
+                            </Stack>
+                        </Box>
+                    </CardBody>
+                </div>
+            </Card>
+            
+        </div>
+    </Container>
+}
