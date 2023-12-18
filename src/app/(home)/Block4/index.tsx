@@ -3,22 +3,23 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-import indexCss from './index.module.scss'
 import css from '../index.module.scss'
 import iconViewMore from '../img/icon-view-more.png'
 import iconPrize from '../img/icon-prize.png'
 
+
 import Container from '@/components/core/Container'
-import Stack from '@/components/core/Stack'
 import Typography from '@/components/core/Typography'
+import Button from '@/components/core/Button'
+import ButtonIcon from '@/components/core/Button/ButtonIcon'
+import Stack from '@/components/core/Stack'
 import Dropdown from '@/components/core/Dropdown'
 import DropdownButton from '@/components/core/Dropdown/DropdownButton'
 import DropdownMenu from '@/components/core/Dropdown/DropdownMenu'
-import Button from '@/components/core/Button'
-import ButtonIcon from '@/components/core/Button/ButtonIcon'
 
 
-export default function Block4() {
+export default function Block5() {
+
     const filters = [
         {
             name: 'All prizes',
@@ -33,12 +34,10 @@ export default function Block4() {
     const [filter, setFilter] = useState(filters[1])
     const [dropdownActive, setDropdownActive] = useState(false)
 
-    return <div className={indexCss.wrapper}>
-        <div className={indexCss.blur} />
-        <Container className={css.container}>
-            <Stack fullWidth className={css.headingStack}>
-                <Typography variant='h2' color='primary'>
-                    Best games
+    return <Container className={css.container}>
+        <Stack fullWidth className={css.headingStack}>
+                <Typography variant='h2'>
+                    Upcoming games
                 </Typography>
                 <Stack className={css.headingButtons}>
                     <Dropdown
@@ -54,7 +53,7 @@ export default function Block4() {
                         >
                             {filter.name}
                         </DropdownButton>
-                        <DropdownMenu active={dropdownActive} setValue={setFilter} items={filters} />
+                        <DropdownMenu active={dropdownActive} items={filters} setValue={setFilter}/>
                     </Dropdown>
                     <Button
                         className={css.buttonViewMore}
@@ -74,6 +73,5 @@ export default function Block4() {
                     </ButtonIcon>
                 </Stack>
             </Stack>
-        </Container>
-    </div>
+    </Container>
 }
