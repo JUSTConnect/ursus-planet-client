@@ -6,38 +6,60 @@
     display: flex;
 }
 
-.item {
-    display: flex;
-    align-items: center;
-    padding: 10px 60px 20px;
-    gap: 8px;
-    color: var(--color-neutral);
-    border-radius: 0 0 20px 20px;
+.button
+{
+    position: relative;
+    overflow: visible !important;
 
-    @include mobile
+    transition: none;
+
+    padding: 0 2rem;
+
+    &::before, &::after
     {
-        padding: 8px 30px 10px;
-        border-radius: 0 0 18px 18px;
+        content: "";
+        position: absolute;
+        top: 0;
+
+        height: 1rem;
+        width: 2rem;
     }
 
-    &:hover {
-        cursor: pointer;
+    &:not(&Active)
+    {
+        color: #584F88;
+
+        & svg, & path
+        {
+            fill: #584F88;
+        }
     }
+    
+    &Active
+    {
+        background: #080713 !important;
+        border-radius: 0 0 1rem 1rem !important;    
 
-    & svg path {
-        fill: var(--color-neutral);
-    }
+        pointer-events: none;
 
-    &Active {
-        color: var(--color-white);
-        background: #080713;
-
-        &:hover {
-            cursor: default;
+        &::before {
+            left: 0;
+            transform: translateX(-100%);
+            box-shadow: 1rem 0 0 #080713;
+            border-top-right-radius: 1rem;
+        }
+    
+        &::after
+        {
+            right: 0;
+            transform: translateX(100%);
+            box-shadow: -1rem 0 0 #080713;
+            border-top-left-radius: 1rem;
         }
 
-        & svg path {
-            fill: var(--color-primary);
+        & svg, & path
+        {
+            fill: #2F57E5;
         }
     }
 }

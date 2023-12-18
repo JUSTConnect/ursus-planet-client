@@ -2,11 +2,13 @@
 
 
 .headerContainer {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding: 24px 1rem;
+
+    padding: 2rem;
 
     @include mobile
     {
@@ -18,11 +20,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-
-    @include mobile
-    {
-        gap: 11px;
-    }
 }
 
 .logo
@@ -41,9 +38,11 @@
 }
 
 .menu {
+
     display: flex;
     align-items: center;
     gap: 24px;
+
     list-style: none;
     color: var(--color-neutral);
 
@@ -52,10 +51,42 @@
     }
 }
 
+
+.menuBottom {
+    display: none;
+    gap: 18px;
+    color: var(--color-neutral);
+    overflow: auto;
+    overflow-y: visible;
+
+    @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
+        &::-webkit-scrollbar
+        {
+            display: none;
+        }
+    }
+
+    @include tablet
+    {
+        display: flex;
+        padding-top: 0;
+    }
+
+    &Item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &Arrow {
+            transform: translateY(25%);
+        }
+    }
+}
+
 .menuItem {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: .25rem;
 
     &Arrow {
         transform: translateY(25%);
@@ -66,12 +97,7 @@
     height: 2rem;
 
     @include tablet {
-        height: 36px;
-    }
-
-    @include mobile
-    {
-        height: 24px;
+        height: 1.5rem;
     }
 }
 
@@ -83,16 +109,16 @@
 
     @include tablet {
         display: none !important;
-
-        &Mobile
-        {
-            display: block !important;
-        }
     }
 
     &Mobile
     {
         display: none !important;
+
+        @include tablet
+        {
+            display: block !important;
+        }
     }
 
     &Text {
@@ -112,31 +138,6 @@
         {
             height: 16px;
             width: 16px;
-        }
-    }
-}
-
-
-.menuBottom {
-    display: none;
-    gap: 18px;
-    color: var(--color-neutral);
-    overflow: auto;
-    overflow-y: visible;
-
-    @include tablet
-    {
-        display: flex;
-        padding-top: 0;
-    }
-
-    &Item {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-
-        &Arrow {
-            transform: translateY(25%);
         }
     }
 }

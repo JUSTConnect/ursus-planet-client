@@ -126,4 +126,9 @@
 {
     padding-left: 64px;
     padding-right: 64px;
+
+    @include mobile
+    {
+        width: 100%;
+    }
 }

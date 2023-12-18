@@ -5,7 +5,9 @@
 *
 {
     box-sizing: border-box;
+    // outline: 1px dashed gray;
 }
+
 
 :root
 {
@@ -34,8 +36,10 @@
 
 body
 {
+    position: relative;
     background: var(--color-dark-200);
-    color: var(--color-white)
+    color: var(--color-white);
+    z-index: 1;
 }
 
 a

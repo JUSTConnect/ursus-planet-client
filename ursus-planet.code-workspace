@@ -7,7 +7,7 @@
 			"path": "src"
 		},
 		{
-			"path": "src/app/kit"
+			"path": "src/app/(default-layout)/kit"
 		},
 		{
 			"path": "src/components/core"
