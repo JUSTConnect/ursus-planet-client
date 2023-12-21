@@ -5,18 +5,24 @@ import { useState } from "react";
 import css from './index.module.scss'
 
 
-export default function Checkbox() {
-    const [active, setActive] = useState(false)
+interface Props
+{
+    active: boolean
+    setActive: CallableFunction
+}
+
+
+export default function Checkbox(props: Props) {
 
     return <>
         <input
             type="checkbox"
             hidden
-            defaultChecked={active}
+            defaultChecked={props.active}
         />
-        <div className={css.checkbox} onClick={ () => setActive(!active) }>
+        <div className={css.checkbox} onClick={ () => props.setActive() }>
             {
-                active &&
+                props.active &&
                     <div className={css.checkboxInner}></div>
             }
         </div>

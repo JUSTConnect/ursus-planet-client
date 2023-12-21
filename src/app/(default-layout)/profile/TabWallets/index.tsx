@@ -122,7 +122,7 @@ export default function TabProfile() {
                                     color='gray'
                                     fullWidth
                                 >
-                                    Aptos
+                                    Sui
                                 </Button>
                             </div>
                         </Box>

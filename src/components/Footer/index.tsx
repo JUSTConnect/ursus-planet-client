@@ -17,7 +17,7 @@ export default function Footer() {
                 <div className={css.brief}>
                     <Image className={css.logo} src={logo} alt='logo' />
                     <div className={css.briefText}>
-                        Noname is the first gamefi raffle platform for building Web3 community. Noname has propelled the growth of Polygon,Arbitrum, BSC, zkSync, Solana, Aptos and other more popular networks. Noname changed game and get oppatunity for building earn all member of market.
+                        Ursas Planet is the first gamefi raffle platform for building Web3 community. Noname has propelled the growth of Polygon,Arbitrum, BSC, zkSync, Solana, Aptos and other more popular networks. Noname changed game and get oppatunity for building earn all member of market.
                     </div>
                 </div>
                 <nav className={css.links}>
@@ -65,7 +65,7 @@ export default function Footer() {
                         Privacy Policy
                     </Link>
                 </div>
-                Made by ju7tconnect © 2023 Nonane
+                Made by ju7tconnect © 2023
             </div>
         </Container>
         <Image className={css.lust} src={lust} alt='lust' />

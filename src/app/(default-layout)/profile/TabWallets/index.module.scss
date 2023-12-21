@@ -69,10 +69,18 @@
 
     &Icon
     {
+        cursor: pointer;
+        
+        &:hover
+        {
+            opacity: .8;
+        }
+
         @include mobile
         {
             height: 16px;
             width: 16px;
         }
+        
     }
 }

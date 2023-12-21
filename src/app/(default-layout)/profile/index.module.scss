@@ -2,7 +2,7 @@
 
 .tabs
 {
-    background: linear-gradient(180deg, #211E3D 0%, rgba(8, 7, 19, 0.00) 50%);
+    background: linear-gradient(180deg, #211E3D 0%, rgba(8, 7, 19, 0.00) 25%);
     margin-bottom: 120px;
 
     @include tablet
@@ -63,6 +63,12 @@
         @include tablet
         {
             display: none;
+        }
+
+        &Icon
+        {
+            height: 1.2rem;
+            width: 1.2rem;
         }
     }
 

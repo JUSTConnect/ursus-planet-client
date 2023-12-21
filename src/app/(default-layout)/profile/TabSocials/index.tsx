@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 import css from './index.module.scss'
 import figureDiscord from './img/figure-discord.svg'
@@ -6,6 +6,10 @@ import figureX from './img/figure-x.svg'
 import figureTelegram from './img/figure-telegram.svg'
 import figureGithub from './img/figure-github.svg'
 import iconButton from './img/icon-button.svg'
+import iconButtonDiscord from './img/icon-button-discord.png'
+import iconButtonX from './img/icon-button-x.png'
+import iconButtonTelegram from './img/icon-button-telegram.png'
+import iconButtonGithub from './img/icon-button-github.png'
 import iconOk from './img/icon-ok.svg'
 import iconReload from './img/icon-reload.svg'
 import iconDelete from './img/icon-delete.svg'
@@ -25,6 +29,7 @@ interface Section
 {
     title: string
     figure: string
+    icon: StaticImageData
     connected: boolean
 }
 
@@ -33,22 +38,26 @@ const sections: Section[] = [
     {
         title: 'Discord',
         figure: figureDiscord,
-        connected: false
+        connected: false,
+        icon: iconButtonDiscord
     },
     {
-        title: 'X account',
+        title: 'X',
         figure: figureX,
-        connected: false
+        connected: false,
+        icon: iconButtonX
     },
     {
         title: 'Telegram',
         figure: figureTelegram,
-        connected: false
+        connected: false,
+        icon: iconButtonTelegram
     },
     {
         title: 'Github',
         figure: figureGithub,
-        connected: true
+        connected: true,
+        icon: iconButtonGithub
     }
 ]
 
@@ -66,13 +75,13 @@ export default function TabSocials() {
                                     className={css.cardSocialTitle}
                                     variant='p'
                                 >
-                                    {section.title}
+                                    { section.title === 'X' ? 'X account' : section.title }
                                 </Typography>
                                 <Typography
                                     className={css.cardSocialDescription}
                                     variant='p'
                                 >
-                                    We recommend an image of at least 300x300. Gift work too. Max 5 mb.
+                                    Connect your {section.title} account to the application to be able to quickly complete tasks.
                                 </Typography>
                             </div>
                             <div>
@@ -98,7 +107,7 @@ export default function TabSocials() {
                                 :
                                     <Button
                                     className={css.cardSocialButton}
-                                    iconStart={<Image src={iconButton} alt='icon'/>}
+                                    iconStart={<Image src={section.icon} alt='icon'/>}
                                     color='dark'
                                     animated
                                     >

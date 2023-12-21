@@ -20,6 +20,8 @@ import Checkbox from '@/components/core/Checkbox'
 import Box from '@/components/core/Box'
 import Scroller from '@/components/core/Scroller'
 
+import ModalEmail from '@/components/ModalEmail'
+
 
 export default function TabProfile() {
     type TabName = 'avatar' | 'profile'
@@ -30,6 +32,9 @@ export default function TabProfile() {
     }
 
     const [activeTab, setActiveTab] = useState<TabName>('avatar')
+    const [modalEmail, setModalEmail] = useState(false)
+    const [username, setUsername] = useState<'custom'|'wallet'>('custom')
+
     const tabs: Tab[] = [
         {
             name: 'avatar',
@@ -90,9 +95,9 @@ export default function TabProfile() {
                                     recommend an image of at least 300x300. Gift work too. Max 5 mb.
                                 </div>
                                 <br />
-                                <Stack>
+                                <Stack className={css.buttonsUpload} gap={.5}>
                                     <Button size='sm' color='gray'>upload from gallery</Button>
-                                    <Button size='sm' color='gray'>NFT wallet</Button>
+                                    <Button size='sm' color='gray'>NFT from wallet</Button>
                                 </Stack>
                             </div>
                         </Stack>
@@ -121,7 +126,7 @@ export default function TabProfile() {
                             <Box mb={1}>
                                 <Stack fullWidth className={css.stackInputCheckbox}>
                                     <div>
-                                        <Checkbox />
+                                        <Checkbox active={username==='custom'} setActive={ () => setUsername('custom') }/>
                                     </div>
                                     <Input
                                         fullWidth
@@ -131,7 +136,7 @@ export default function TabProfile() {
                             </Box>
                             <Stack fullWidth className={css.stackInputCheckbox}>
                                 <div>
-                                    <Checkbox />
+                                    <Checkbox active={username==='wallet'} setActive={ () => setUsername('wallet') }/>
                                 </div>
                                 <Box className={css.formControlWalletName}>
                                     <Typography
@@ -169,6 +174,7 @@ export default function TabProfile() {
                         </Typography>
                         <div className={css.inputEmailContainer}>
                             <Input
+                                onClick={() => setModalEmail(true)}
                                 fullWidth
                                 defaultValue={'Stiven38324234@gmail.com'}
                                 className={css.inputEmail}
@@ -184,5 +190,6 @@ export default function TabProfile() {
                 </CardFooter>
             </Card>
         </div>
+        <ModalEmail active={modalEmail} setActive={setModalEmail}/>
     </Container>
 }

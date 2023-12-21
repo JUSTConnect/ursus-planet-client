@@ -1,27 +1,25 @@
 import css from './index.module.scss'
 
 
-interface Item
+interface IItem
 {
     name: string
     value: string
 }
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement>
+interface IDropdownMenu extends React.HTMLAttributes<HTMLButtonElement>
 {
-    items: Item[]
-    setValue?: (item: Item) => void
-    value?: string
+    items: IItem[]
     active: boolean
 }
 
 
-export default function DropdownMenu(props: Props) {
+export default function DropdownMenu(props: IDropdownMenu) {
     return <div className={[css.menu, props.active && css.menuActive].join(' ')}>
         <div className={css.menuCard}>
             {
-                props.items.map(item =>
-                    <div key={item.value} className={css.item} onClick={() => { props.setValue && props.setValue(item) }}>
+                props.items?.map(item =>
+                    <div key={item.value} className={css.item}>
                         {item.name}
                     </div>
                 )

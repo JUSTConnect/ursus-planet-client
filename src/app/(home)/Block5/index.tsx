@@ -39,6 +39,7 @@ export default function Block6() {
             <Stack className={[css.headingButtons, indexCss.headingButtonsSpace].join(' ')}>
                 <Dropdown
                     className={css.headingDropdown}
+                    items={filters}
                 >
                     <DropdownButton
                         onClick={ () => setDropdownActive(!dropdownActive) }
@@ -50,7 +51,6 @@ export default function Block6() {
                     >
                         {filter.name}
                     </DropdownButton>
-                    <DropdownMenu active={dropdownActive} items={filters} setValue={setFilter} />
                 </Dropdown>
                 <Button
                     className={indexCss.buttonTrustedProjects}

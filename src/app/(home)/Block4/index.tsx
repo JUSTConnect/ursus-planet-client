@@ -42,6 +42,7 @@ export default function Block5() {
                 <Stack className={css.headingButtons}>
                     <Dropdown
                         className={css.headingDropdown}
+                        items={filters}
                     >
                         <DropdownButton
                             onClick={ () => setDropdownActive(!dropdownActive) }
@@ -53,7 +54,6 @@ export default function Block5() {
                         >
                             {filter.name}
                         </DropdownButton>
-                        <DropdownMenu active={dropdownActive} items={filters} setValue={setFilter}/>
                     </Dropdown>
                     <Button
                         className={css.buttonViewMore}

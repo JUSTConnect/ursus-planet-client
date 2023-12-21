@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 
 import css from './index.module.scss'
@@ -15,11 +17,19 @@ import Typography from '@/components/core/Typography'
 import Stack from '@/components/core/Stack'
 
 import Header from '@/components/Header'
+import ModalWalletConnect from '@/components/ModalWalletConnect'
 
 import BottomSection from './BottomSection'
 
 
-export default function Block1() {
+interface Props
+{
+    setModalWallet: CallableFunction
+}
+
+
+export default function Block1(props: Props) {
+
     return <Box className={css.wrapper}>
         <div className={css.bgRForest}>
             <Image src={bgRForest} alt='bg relief'/>
@@ -28,7 +38,7 @@ export default function Block1() {
             <Image src={bgLForest} alt='bg relief'/>
         </div>
         <Image className={css.bgRelief} src={bgRelief} alt='bg relief'/>
-        <Header/>
+        <Header setModalWallet={props.setModalWallet}/>
         <Container className={css.intro}>
             <div>
                 <Image

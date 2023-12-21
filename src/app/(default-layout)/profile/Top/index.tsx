@@ -8,12 +8,21 @@ import wallet1 from './img/wallet-1.png'
 import wallet2 from './img/wallet-2.png'
 import iconSettings from './img/settings.png'
 
+
 import Container from '@/components/core/Container'
 import Avatar from '@/components/Avatar'
 import Button from '@/components/core/Button'
 
+import { TabValue } from '../page'
 
-export default function Top()
+
+interface Props
+{
+    tab: TabValue
+}
+
+
+export default function Top(props: Props)
 {
     return <Container className={css.top}>
         <Avatar className={css.avatar}/>
@@ -44,12 +53,17 @@ export default function Top()
                     <Image className={css.wallet} src={wallet1} alt='wallet'/>
                     <Image className={css.wallet} src={wallet2} alt='wallet'/>
                 </div>
-                <Link href='#'>
-                    <Button className={css.buttonSettings}>Setting</Button>
-                </Link>
-                <Link className={css.iconSettings} href='#'>
-                    <Image src={iconSettings} alt='icon-settings'/>
-                </Link>
+                {
+                    props.tab != 'profile' &&
+                        <>
+                            <Link href='#'>
+                                <Button className={css.buttonSettings}>Setting</Button>
+                            </Link>
+                            <Link className={css.iconSettings} href='#'>
+                                <Image src={iconSettings} alt='icon-settings'/>
+                            </Link>
+                        </>
+                }
             </div>
             
         </div>

@@ -53,11 +53,14 @@
 
 
 .menuBottom {
+    position: relative;
+
     display: none;
     gap: 18px;
     color: var(--color-neutral);
-    overflow: auto;
-    overflow-y: visible;
+    overflow-x: auto;
+
+    height: 100px;
 
     @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
         &::-webkit-scrollbar

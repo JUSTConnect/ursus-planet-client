@@ -15,6 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+      </head>
       <body className={[play.className, fkalakokz.variable].join(' ')}>
         {children}
       </body>
