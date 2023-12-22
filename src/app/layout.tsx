@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import './globals.scss'
 import { play, fkalakokz } from '../fonts'
+import Providers from '@/providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,9 +19,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </head>
-      <body className={[play.className, fkalakokz.variable].join(' ')}>
-        {children}
-      </body>
+      <Providers>
+        <body className={[play.className, fkalakokz.variable].join(' ')}>
+          {children}
+        </body>
+      </Providers>
     </html>
   )
 }
