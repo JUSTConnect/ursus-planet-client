@@ -14,7 +14,6 @@ import Button from '@/components/core/Button'
 import Stack from '@/components/core/Stack'
 import Dropdown from '@/components/core/Dropdown'
 import DropdownButton from '@/components/core/Dropdown/DropdownButton'
-import DropdownMenu from '@/components/core/Dropdown/DropdownMenu'
 
 
 export default function Block6() {
