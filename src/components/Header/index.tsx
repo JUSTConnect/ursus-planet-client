@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,21 +10,17 @@ import iconNotifications from './img/notifications.svg'
 import iconArrowDown from './img/arrow-down.svg'
 import iconWallet from './img/wallet.svg'
 
+import { setModalWalletConnect } from '@/features/modal/modalSlice'
 import Button from '@/components/core/Button'
 import ButtonIcon from '@/components/core/Button/ButtonIcon'
 import Container from '@/components/core/Container'
 import Dropdown from '@/components/core/Dropdown'
 
-import ModalWalletConnect from '@/components/ModalWalletConnect'
 
 
-interface Props
-{
-    setModalWallet: CallableFunction
-}
 
-
-export default function Header(props: Props) {
+export default function Header() {
+    const dispatch = useDispatch()
 
     return <>
         <header className={css.header}>
@@ -91,7 +87,7 @@ export default function Header(props: Props) {
                     </Link>
                     <Button
                         className={css.buttonWallet}
-                        onClick={() => props.setModalWallet(true)}
+                        onClick={() => dispatch(setModalWalletConnect(true))}
                         animated
                         color='dark'
                         iconStart={
@@ -108,7 +104,7 @@ export default function Header(props: Props) {
                     </Button>
                     <ButtonIcon
                         className={css.buttonWalletMobile}
-                        onClick={() => props.setModalWallet(true)}
+                        onClick={() => dispatch(setModalWalletConnect(true))}
                         color='dark'
                     >
                         <Image

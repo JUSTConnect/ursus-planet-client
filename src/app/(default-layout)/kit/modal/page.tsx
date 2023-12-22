@@ -1,8 +1,9 @@
 'use client'
+
 import { useState } from "react";
 
 import Container from "@/components/core/Container";
-import Card, {CardBody, CardHead, CardFooter} from "@/components/core/Card";
+import Card, {CardBody} from "@/components/core/Card";
 import Modal from "@/components/core/Modal";
 import Button from "@/components/core/Button";
 import Box from "@/components/core/Box";

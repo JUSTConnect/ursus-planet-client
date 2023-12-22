@@ -1,3 +1,5 @@
+'use client'
+
 import Container from "@/components/core/Container";
 import Avatar from "@/components/Avatar";
 import Stack from "@/components/core/Stack";

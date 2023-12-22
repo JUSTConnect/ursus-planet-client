@@ -17,18 +17,12 @@ import Typography from '@/components/core/Typography'
 import Stack from '@/components/core/Stack'
 
 import Header from '@/components/Header'
-import ModalWalletConnect from '@/components/ModalWalletConnect'
 
 import BottomSection from './BottomSection'
 
 
-interface Props
-{
-    setModalWallet: CallableFunction
-}
 
-
-export default function Block1(props: Props) {
+export default function Block1() {
 
     return <Box className={css.wrapper}>
         <div className={css.bgRForest}>
@@ -38,7 +32,7 @@ export default function Block1(props: Props) {
             <Image src={bgLForest} alt='bg relief'/>
         </div>
         <Image className={css.bgRelief} src={bgRelief} alt='bg relief'/>
-        <Header setModalWallet={props.setModalWallet}/>
+        <Header/>
         <Container className={css.intro}>
             <div>
                 <Image

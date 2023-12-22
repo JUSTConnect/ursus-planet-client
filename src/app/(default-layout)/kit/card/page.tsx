@@ -1,3 +1,5 @@
+'use client'
+
 import Button from "@/components/core/Button"
 import Container from "@/components/core/Container"
 import Card, {CardHead, CardFooter, CardBody} from "@/components/core/Card"

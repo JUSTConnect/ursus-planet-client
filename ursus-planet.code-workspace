@@ -10,10 +10,10 @@
 			"path": "src/app/(default-layout)/kit"
 		},
 		{
-			"path": "src/components/core"
+			"path": "./src/features"
 		},
 		{
-			"path": "./src/features"
+			"path": "src/components/core"
 		},
 		{
 			"path": "src/components"

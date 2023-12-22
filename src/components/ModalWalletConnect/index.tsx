@@ -1,3 +1,5 @@
+'use client'
+
 import Image, { StaticImageData } from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -12,18 +14,13 @@ import icon2 from './img/icon-2.png'
 
 import { RootState } from '@/store'
 import { connect } from '@/features/tmp/tmpSlice'
+import { setModalWalletConnect } from '@/features/modal/modalSlice'
 import Box from '@/components/core/Box'
 import Card, {CardBody} from '@/components/core/Card'
 import Modal from '@/components/core/Modal'
 import Typography from '@/components/core/Typography'
 import Button from '@/components/core/Button'
 
-
-interface Props
-{
-    active: boolean
-    setActive: CallableFunction
-}
 
 interface Item
 {
@@ -53,11 +50,12 @@ const items: Item[] = [
 ]
 
 
-export default function ModalWalletConnect(props: Props) {
+export default function ModalWalletConnect() {
     const dispatch = useDispatch()
-    const connected = useSelector((state: RootState) => state.tmp.connected)
+    const active = useSelector((state: RootState) => state.modal.modalWalletConnect)
 
-    return <Modal active={props.active} setActive={props.setActive} style={{ maxWidth: '480px' }}>
+
+    return <Modal active={active} setActive={ (value: boolean) => dispatch(setModalWalletConnect(value)) } style={{ maxWidth: '480px' }}>
         <Card className={css.card}>
             <CardBody>
                 <Box mb={2}>

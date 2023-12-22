@@ -29,7 +29,6 @@ export default function Block6() {
         }
     ]
 
-    const [filter, setFilter] = useState(filters[1])
     const [dropdownActive, setDropdownActive] = useState(false)
 
     return <Container className={css.container}>
@@ -48,7 +47,7 @@ export default function Block6() {
                         }
                         color='dark'
                     >
-                        {filter.name}
+                        Some value
                     </DropdownButton>
                 </Dropdown>
                 <Button

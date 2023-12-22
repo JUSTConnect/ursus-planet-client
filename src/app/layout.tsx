@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import './globals.scss'
 import { play, fkalakokz } from '../fonts'
 import Providers from '@/providers'
+import ModalWalletConnect from '@/components/ModalWalletConnect'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,6 +23,7 @@ export default function RootLayout({
       <Providers>
         <body className={[play.className, fkalakokz.variable].join(' ')}>
           {children}
+          <ModalWalletConnect/>
         </body>
       </Providers>
     </html>

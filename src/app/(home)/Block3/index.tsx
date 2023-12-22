@@ -30,7 +30,6 @@ export default function Block4() {
         }
     ]
 
-    const [filter, setFilter] = useState(filters[1])
     const [dropdownActive, setDropdownActive] = useState(false)
 
     return <div className={indexCss.wrapper}>
@@ -53,7 +52,7 @@ export default function Block4() {
                             }
                             color='dark'
                         >
-                            {filter.name}
+                            Some value
                         </DropdownButton>
                     </Dropdown>
                     <Button
