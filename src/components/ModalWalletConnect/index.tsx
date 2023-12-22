@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from 'next/image'
+import { useSelector, useDispatch } from 'react-redux'
 
 import css from './index.module.scss'
 
@@ -9,6 +10,8 @@ import figureWalletConnect from './img/figure-wallet-connect.png'
 import icon1 from './img/icon-1.png'
 import icon2 from './img/icon-2.png'
 
+import { RootState } from '@/store'
+import { connect } from '@/features/tmp/tmpSlice'
 import Box from '@/components/core/Box'
 import Card, {CardBody} from '@/components/core/Card'
 import Modal from '@/components/core/Modal'
@@ -51,6 +54,9 @@ const items: Item[] = [
 
 
 export default function ModalWalletConnect(props: Props) {
+    const dispatch = useDispatch()
+    const connected = useSelector((state: RootState) => state.tmp.connected)
+
     return <Modal active={props.active} setActive={props.setActive} style={{ maxWidth: '480px' }}>
         <Card className={css.card}>
             <CardBody>
@@ -63,7 +69,11 @@ export default function ModalWalletConnect(props: Props) {
                 <Box mb={1}>
                     {
                         items.map(item=>
-                            <div key={item.name} className={css.item}>
+                            <div
+                                className={css.item}
+                                onClick={ () => dispatch(connect()) }
+                                key={item.name}
+                            >
                                 <Image className={css.itemFigure} src={item.figure} alt='figure'/>
                                 <div className={css.itemContent}>
                                     <div>
