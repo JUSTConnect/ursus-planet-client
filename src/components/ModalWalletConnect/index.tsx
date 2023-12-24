@@ -91,7 +91,15 @@ export default function ModalWalletConnect() {
                     }
                 </Box>
                 <Box>
-                    <Button size="lg" color="gray" fullWidth animated>Submit</Button>
+                    <Button
+                        onClick={ () => dispatch(setModalWalletConnect(false)) }
+                        size="lg"
+                        color="gray"
+                        fullWidth
+                        animated
+                    >
+                        Cancel
+                    </Button>
                 </Box>
             </CardBody>
         </Card>

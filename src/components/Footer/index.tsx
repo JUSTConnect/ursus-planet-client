@@ -15,7 +15,9 @@ export default function Footer() {
         <Container>
             <div className={css.footerTop}>
                 <div className={css.brief}>
-                    <Image className={css.logo} src={logo} alt='logo' />
+                    <Link href="/">
+                        <Image className={css.logo} src={logo} alt='logo' />
+                    </Link>
                     <div className={css.briefText}>
                         Ursas Planet is the first gamefi raffle platform for building Web3 community. Noname has propelled the growth of Polygon,Arbitrum, BSC, zkSync, Solana, Aptos and other more popular networks. Noname changed game and get oppatunity for building earn all member of market.
                     </div>
