@@ -31,6 +31,7 @@
 .cards
 {
     display: flex;
+    // align-items: flex-start;
     gap: 24px;
 }
 
@@ -41,16 +42,21 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 0 0 inherit inherit;
-
+    
     @include tablet
     {
         display: none;
         border-radius: 0 0 1rem 1rem;
-
+        
         &Active
         {
             display: block;
         }
+    }
+
+    &Empty
+    {
+        height: min-content;
     }
 
 
@@ -125,7 +131,7 @@
 
 .cardBlock
 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .buttonSave

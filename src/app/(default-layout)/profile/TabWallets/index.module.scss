@@ -3,7 +3,8 @@
 
 .cardBlockProject
 {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .cardProject
@@ -88,5 +89,20 @@
             width: 16px;
         }
         
+    }
+}
+
+.chainItems
+{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-height: 300px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+
+    &Title
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }

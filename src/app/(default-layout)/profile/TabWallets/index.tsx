@@ -73,9 +73,7 @@ export default function TabProfile() {
                 }
             </Stack>
         </div>
-        <div className={
-            css.cards}>
-
+        <div className={css.cards}>
             <Card
                 className={[
 
@@ -90,7 +88,7 @@ export default function TabProfile() {
                         <Image src={iconPlayer} alt='icon' />
                         Player
                     </CardHead>
-                    <CardBody className={css.cardBody}>
+                    <CardBody>
 
                         <Box className={css.cardBlock}>
 
@@ -126,24 +124,19 @@ export default function TabProfile() {
                                 </Button>
                             </div>
                         </Box>
-                        <Box className={css.cardBlock}>
-                            <Typography variant='p'>
-                                <Stack fullWidth className={css.stackWalletList} gap={2}>
-                                    Wallet list
-                                    <Stack gap={.5} alignCenter>
-                                        <Typography className={css.stackWalletListHash}>
-                                            56uy56u5...yhbg34gf4g
-                                        </Typography>
-                                        <Image className={css.stackWalletListIcon} src={iconCopy} alt='icon'/>
-                                        <Image className={css.stackWalletListIcon} src={iconAdd} alt='icon'/>
-                                        <Image className={css.stackWalletListIcon} src={iconDelete} alt='icon'/>
-                                    </Stack>
-                                </Stack>
-                            </Typography>
-                            <ChainItem/>
-                        </Box>
-
                     </CardBody>
+                    <div className={css.chainItemsTitle}>
+                        <Typography variant='p'>
+                            Wallet list
+                        </Typography>
+                    </div>
+                    <div className={css.chainItems}>
+                        {
+                            [...Array(10)].map((_, index) =>
+                                <ChainItem key={index} active/>
+                            )
+                        }
+                    </div>
                 </div>
                 <CardFooter className={css.cardFooter}>
                     <Button color='gray' className={css.buttonSave}>Save</Button>
@@ -152,8 +145,8 @@ export default function TabProfile() {
 
             <Card
                 className={[
-
                     css.card,
+                    css.cardEmpty,
                     activeTab === 'project' &&
                     css.cardActive
                 ].join(' ')}

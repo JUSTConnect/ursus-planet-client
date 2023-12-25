@@ -17,7 +17,7 @@ export type TabValue = 'profile' | 'socials' | 'wallets' | 'notifications'
 
 
 export default function Profile() {
-    const [tab, setTab] = useState<TabValue>('profile')
+    const [tab, setTab] = useState<TabValue>('wallets')
 
     return <>
         <Container>
