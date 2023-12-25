@@ -44,7 +44,7 @@
     gap: 24px;
 
     list-style: none;
-    color: var(--color-neutral);
+
 
     @include tablet {
         display: none;
@@ -58,10 +58,24 @@
         &:hover
         {
             color: #2F57E5;
+            
+        }
+
+        &:hover &Arrow
+        {
+            transform: rotate(-180deg) translateY(-10%);
+
+            & svg, & path, & defs
+            {
+                stroke: var(--color-primary);
+            }
         }
 
         &Arrow {
-            transform: translateY(25%);
+            & svg
+            {
+                transform: translateY(-25%);
+            }
         }
     }
 }
@@ -74,8 +88,6 @@
     gap: 18px;
     color: var(--color-neutral);
     overflow-x: auto;
-
-    height: 100px;
 
     @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
         &::-webkit-scrollbar
@@ -176,4 +188,43 @@
             width: 16px;
         }
     }
+
+    &Arrow
+    {
+
+        [class*=dropdownActive] & {
+            transform: rotate(180deg) !important;
+        }
+
+        & svg
+        {
+            height: .8rem;
+
+            & path
+            {
+                stroke: var(--color-neutral);
+            }
+        }
+    }
+
+    &Dropdown
+    {
+        @include tablet
+        {
+            position: static;
+        }
+
+        &Menu
+        {
+            @include tablet
+            {
+                bottom: initial;
+                left: 0;
+                transform: none;
+                padding: 1rem;
+                padding-top: 0;
+            }
+        }
+    }
 }
+

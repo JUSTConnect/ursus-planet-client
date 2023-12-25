@@ -69,7 +69,7 @@ export default function ModalWalletConnect() {
                         items.map(item=>
                             <div
                                 className={css.item}
-                                onClick={ () => dispatch(connect()) }
+                                onClick={ () => {dispatch(connect()); dispatch(setModalWalletConnect(false))} }
                                 key={item.name}
                             >
                                 <Image className={css.itemFigure} src={item.figure} alt='figure'/>

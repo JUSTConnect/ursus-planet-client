@@ -7,16 +7,20 @@ import css from './index.module.scss'
 import DropdownMenu from './DropdownMenu'
 
 
-interface IItem
+export interface IItem
 {
     name: string
-    value: string
+    value?: string
+    icon?: React.ReactNode
 }
 
 
 interface IDropdown extends React.HTMLAttributes<HTMLDivElement>
 {
     items: IItem[]
+    hover?: boolean
+    classNameMenu?: string
+    disabled?: boolean
 }
 
 
@@ -25,11 +29,15 @@ export default function Dropdown(props: IDropdown) {
 
     const className = [
         css.dropdown,
+        active && css.dropdownActive,
+        props.hover && css.dropdownHover,
         props.className
     ].join(' ')
 
-    return <div className={className} onClick={ () => setActive(true) }>
+    return <div className={className} onClick={ () => !props.hover && !props.disabled && setActive(!active) }>
         { props.children }
-        <DropdownMenu items={props.items} active={active}/>
+        { !props.disabled &&
+            <DropdownMenu className={props.classNameMenu} items={props.items} active={active}/>
+        }
     </div> 
 }

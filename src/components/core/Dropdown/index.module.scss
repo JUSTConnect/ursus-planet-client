@@ -9,6 +9,15 @@
 
 .dropdown {
     position: relative;
+
+    &Hover:hover .menu
+    {
+        display: block;
+    }
+
+    &Active {
+        display: initial;
+    }
 }
 
 .iconArrow
@@ -57,10 +66,23 @@
     text-align: start;
     padding: .7rem 1rem;
     background: #1C1931;
+    color: var(--color-white);
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 
     &:hover
     {
-        opacity: .9;
+        color: var(--color-primary)
+    }
+
+    &Icon
+    {
+        & svg, & path
+        {
+            height: 1rem;
+        }
     }
 }
