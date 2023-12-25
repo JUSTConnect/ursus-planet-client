@@ -44,6 +44,11 @@
     {
         max-width: 212px;
         width: 100%;
+
+        &:hover
+        {
+            background: #2F57E5;
+        }
     }
 }
 

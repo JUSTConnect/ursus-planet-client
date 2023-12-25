@@ -3,8 +3,8 @@
 import Image from 'next/image'
 
 import css from './index.module.scss'
-import iconPlayer from '../img/block-1-player.png'
-import iconProject from '../img/block-1-project.png'
+import iconPlayer from './img/icon-player.png'
+import iconProject from './img/icon-project.png'
 import figureUrsa from './img/figure.svg'
 import bgRelief from './img/relief.svg'
 import bgLForest from './img/forest-left.svg'

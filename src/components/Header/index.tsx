@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 import css from './index.module.scss'
 import logo from './img/logo.svg'
-import iconNotifications from './img/notifications.svg'
 import iconArrowDown from './img/arrow-down.svg'
 import iconWallet from './img/wallet.svg'
 
@@ -16,6 +15,7 @@ import ButtonIcon from '@/components/core/Button/ButtonIcon'
 import Container from '@/components/core/Container'
 import Dropdown from '@/components/core/Dropdown'
 
+import IconNotifications from './img/notifications'
 
 
 
@@ -79,11 +79,9 @@ export default function Header() {
                 </nav>
                 <div className={css.headerSection}>
                     <Link href='#'>
-                        <Image
-                            className={css.iconNotifications}
-                            src={iconNotifications}
-                            alt='notifications'
-                        />
+                        <div className={css.iconNotifications}>
+                            <IconNotifications/>
+                        </div>
                     </Link>
                     <Button
                         className={css.buttonWallet}

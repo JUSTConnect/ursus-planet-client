@@ -45,6 +45,12 @@
     &Button
     {
         width: 100%;
+
+        &:hover
+        {
+            background: white;
+            color: var(--color-black)
+        }
     }
 }
 

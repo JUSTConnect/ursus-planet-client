@@ -49,6 +49,21 @@
     @include tablet {
         display: none;
     }
+
+    &Item {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+
+        &:hover
+        {
+            color: #2F57E5;
+        }
+
+        &Arrow {
+            transform: translateY(25%);
+        }
+    }
 }
 
 
@@ -86,22 +101,40 @@
     }
 }
 
-.menuItem {
-    display: flex;
-    align-items: center;
-    gap: .25rem;
-
-    &Arrow {
-        transform: translateY(25%);
-    }
-}
-
 .iconNotifications {
-    height: 2rem;
+    position: relative;
+    opacity: .6;
 
-    @include tablet {
-        height: 1.5rem;
+    &::before
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        height: .5rem;
+        width: .5rem;
+
+        background: #2F57E5;
+
+        border-radius: 50%;
     }
+
+
+    &:hover
+    {
+        opacity: 1;
+    }
+
+    & svg, & path
+    {
+        height: 2rem;
+
+        @include tablet {
+            height: 1.5rem;
+        }
+    }
+
 }
 
 .buttonWallet {
