@@ -12,6 +12,7 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement>
     variant?: ButtonVariant
     color?: ButtonColor
     size?: ButtonSize
+    type?: 'submit'
 
     // icon
     iconStart?: React.ReactNode
@@ -50,6 +51,7 @@ export default function Button(props: IButton) {
         style={props.style}
         onClick={ props.onClick }
         disabled={ props.disabled }
+        type={ props.type }
     >
         { props.iconStart &&
             props.iconStart
