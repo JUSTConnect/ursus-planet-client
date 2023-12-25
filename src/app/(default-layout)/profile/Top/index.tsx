@@ -54,7 +54,7 @@ export default function Top(props: Props)
                     <Image className={css.wallet} src={wallet2} alt='wallet'/>
                 </div>
                 {
-                    props.tab != 'profile' &&
+                    false &&
                         <>
                             <Link href='#'>
                                 <Button className={css.buttonSettings}>Setting</Button>

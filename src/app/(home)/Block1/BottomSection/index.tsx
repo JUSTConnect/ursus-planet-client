@@ -84,7 +84,7 @@ export default function Block2() {
                                 src={iconSeason}
                                 alt='icon'
                             />
-                            Season 22
+                            Season 1
                         </Stack>
                     </Typography>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis soluta, quod accusantium harum neque error explicabo fugit facere magni quo, quae distinctio quas? Ducimus doloribus voluptas, laudantium rem aliquam fugiat!</p>

@@ -85,7 +85,7 @@ export default function TabProfile() {
                         <Typography variant='p'>
                             Profile Image
                         </Typography>
-                        <Stack>
+                        <Stack gap={1.5}>
                             <div>
                                 <Avatar className={css.avatar} />
                             </div>
