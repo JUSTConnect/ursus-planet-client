@@ -7,13 +7,10 @@ import css from './index.module.scss'
 import cardProjectFigure from './img/card-project-figure.png'
 import iconPlayer from './img/player.svg'
 import iconProject from './img/project.svg'
-import iconCopy from './img/icon-copy.svg'
-import iconAdd from './img/icon-add.svg'
-import iconDelete from './img/icon-delete.svg'
 import iconEth from './img/icon-eth.png'
 import iconSol from './img/icon-sol.png'
 import iconAptos from './img/icon-aptos.png'
-import iconAptos2 from './img/icon-aptos2.png'
+import iconSui from './img/icon-sui.png'
 
 import Box from '@/components/core/Box'
 import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
@@ -116,7 +113,7 @@ export default function TabProfile() {
                                     Aptos
                                 </Button>
                                 <Button
-                                    iconStart={<Image src={iconAptos2} alt='icon'/>}
+                                    iconStart={<Image src={iconSui} alt='icon'/>}
                                     color='gray'
                                     fullWidth
                                 >

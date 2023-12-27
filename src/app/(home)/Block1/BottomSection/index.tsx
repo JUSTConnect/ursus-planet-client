@@ -6,7 +6,7 @@ import css from './index.module.scss'
 import iconCurrent from './img/block-2-current.png'
 import iconNext from './img/block-2-next.png'
 import iconPrev from './img/block-2-prev.png'
-import iconSeason from '../../img/block-2-season.png'
+import iconSeason from './img/icon-season.svg'
 import iconGamePrize from '../../img/block-2-game-prize.png'
 
 
