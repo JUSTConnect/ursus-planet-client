@@ -157,7 +157,8 @@ export default function Header() {
                         },
                         {
                             name: 'Player',
-                            icon: <IconPlayers/>
+                            icon: <IconPlayers/>,
+                            link: '/profile/account'
                         },
                         {
                             name: 'Project',

@@ -13,12 +13,10 @@ import Container from '@/components/core/Container'
 import Avatar from '@/components/Avatar'
 import Button from '@/components/core/Button'
 
-import { TabValue } from '../page'
-
 
 interface Props
 {
-    tab: TabValue
+    tab: string
 }
 
 
