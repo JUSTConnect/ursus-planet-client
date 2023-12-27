@@ -9,8 +9,8 @@ export default function IconBrandKit() {
         </g>
         <defs>
             <linearGradient id="paint0_linear_3812_33266" x1="4.14874" y1="-0.659821" x2="12.1209" y2="21.3413" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#584F88" />
-                <stop offset="1" stop-color="#584F88" stop-opacity="0" />
+                <stop stopColor="#584F88" />
+                <stop offset="1" stopColor="#584F88" stopOpacity="0" />
             </linearGradient>
         </defs>
     </svg>

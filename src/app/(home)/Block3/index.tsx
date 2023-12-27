@@ -21,16 +21,17 @@ import ButtonIcon from '@/components/core/Button/ButtonIcon'
 export default function Block4() {
     const filters = [
         {
-            name: 'All prizes',
-            value: 'value'
+            name: 'All prize',
+            value: 'all_prize'
         },
         {
             name: 'Some value',
-            value: 'value'
+            value: 'some_value'
         }
     ]
 
     const [dropdownActive, setDropdownActive] = useState(false)
+    const [filter, setFilter] = useState<string|undefined>(filters[0].value)
 
     return <div className={indexCss.wrapper}>
         <div className={indexCss.blur} />
@@ -43,6 +44,7 @@ export default function Block4() {
                     <Dropdown
                         className={css.headingDropdown}
                         items={filters}
+                        onChoose={ value => setFilter(value) }
                     >
                         <DropdownButton
                             onClick={ () => setDropdownActive(!dropdownActive) }
@@ -52,7 +54,7 @@ export default function Block4() {
                             }
                             color='dark'
                         >
-                            Some value
+                            { filters.filter(item => item.value === filter)[0]?.name }
                         </DropdownButton>
                     </Dropdown>
                     <Button

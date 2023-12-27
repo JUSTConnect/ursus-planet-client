@@ -22,16 +22,18 @@ export default function Block5() {
 
     const filters = [
         {
-            name: 'All prizes',
-            value: 'value'
+            name: 'All prize',
+            value: 'all_prize'
         },
         {
             name: 'Some value',
-            value: 'value'
+            value: 'some_value'
         }
     ]
 
+
     const [dropdownActive, setDropdownActive] = useState(false)
+    const [filter, setFilter] = useState<string|undefined>(filters[0].value)
 
     return <Container className={css.container}>
         <Stack fullWidth className={css.headingStack}>
@@ -42,6 +44,7 @@ export default function Block5() {
                     <Dropdown
                         className={css.headingDropdown}
                         items={filters}
+                        onChoose={ value => setFilter(value) }
                     >
                         <DropdownButton
                             onClick={ () => setDropdownActive(!dropdownActive) }
@@ -51,7 +54,7 @@ export default function Block5() {
                             }
                             color='dark'
                         >
-                            Some value
+                            { filters.filter(item => item.value === filter)[0]?.name }
                         </DropdownButton>
                     </Dropdown>
                     <Button

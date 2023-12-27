@@ -10,9 +10,17 @@
 .dropdown {
     position: relative;
 
-    &Hover:hover .menu
+    &Hover
     {
-        display: block;
+        & .menu
+        {
+            display: none;
+        }
+    
+        &:hover .menu
+        {
+            display: block;
+        }
     }
 
     &Active {

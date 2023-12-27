@@ -5,8 +5,8 @@ export default function IconLogout() {
         </g>
         <defs>
             <linearGradient id="paint0_linear_3812_33356" x1="12.3749" y1="-0.203232" x2="13.1762" y2="17.9198" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#584F88" />
-                <stop offset="1" stop-color="#584F88" stop-opacity="0" />
+                <stop stopColor="#584F88" />
+                <stop offset="1" stopColor="#584F88" stopOpacity="0" />
             </linearGradient>
         </defs>
     </svg>

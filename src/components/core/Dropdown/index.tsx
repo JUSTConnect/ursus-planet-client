@@ -1,31 +1,39 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import css from './index.module.scss'
 
 import DropdownMenu from './DropdownMenu'
 
 
-export interface IItem
-{
+export interface IItem {
     name: string
     value?: string
     icon?: React.ReactNode
 }
 
 
-interface IDropdown extends React.HTMLAttributes<HTMLDivElement>
-{
+interface IDropdown extends React.HTMLAttributes<HTMLDivElement> {
     items: IItem[]
     hover?: boolean
     classNameMenu?: string
     disabled?: boolean
+    onChoose?: (value?: string) => void
 }
 
 
 export default function Dropdown(props: IDropdown) {
     const [active, setActive] = useState(false)
+    const self = useRef<HTMLDivElement>(null)
+
+    useEffect(
+        () => document.addEventListener('mousedown', e => {
+            self.current &&
+                !self.current.contains(e.target as Node) &&
+                setActive(false)
+        }), []
+    )
 
     const className = [
         css.dropdown,
@@ -34,10 +42,24 @@ export default function Dropdown(props: IDropdown) {
         props.className
     ].join(' ')
 
-    return <div className={className} onClick={ () => !props.hover && !props.disabled && setActive(!active) }>
-        { props.children }
-        { !props.disabled &&
-            <DropdownMenu className={props.classNameMenu} items={props.items} active={active}/>
+    const handleClick = () => {
+        setActive(!active)
+    }
+
+    return <div
+        className={className}
+        onClick={handleClick}
+        ref={self}
+    >
+        {props.children}
+        {!props.disabled &&
+            <DropdownMenu
+                onChoose={props.onChoose}
+                className={props.classNameMenu}
+                items={props.items}
+                active={active}
+                setActive={setActive}
+            />
         }
-    </div> 
+    </div>
 }

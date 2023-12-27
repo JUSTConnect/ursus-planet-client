@@ -7,8 +7,8 @@ export default function IconProjects() {
         </g>
         <defs>
             <linearGradient id="paint0_linear_3812_33468" x1="4" y1="-1" x2="5.30342" y2="21.1586" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#584F88" />
-                <stop offset="1" stop-color="#584F88" stop-opacity="0" />
+                <stop stopColor="#584F88" />
+                <stop offset="1" stopColor="#584F88" stopOpacity="0" />
             </linearGradient>
         </defs>
     </svg>
