@@ -140,7 +140,6 @@ export default function TabProfile() {
                                 </div>
                                 <Box className={css.formControlWalletName}>
                                     <Typography
-                                        color='gray'
                                         variant='p'
                                     >
                                         Wallet name

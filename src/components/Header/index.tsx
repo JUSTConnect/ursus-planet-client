@@ -165,7 +165,8 @@ export default function Header() {
                         },
                         {
                             name: 'Settings',
-                            icon: <IconSettings/>
+                            icon: <IconSettings/>,
+                            link: '/profile'
                         },
                     ]}
                 >

@@ -1,4 +1,4 @@
-import { RefObject, useRef } from 'react'
+import Link from 'next/link'
 
 import css from './index.module.scss'
 import {IItem} from '.'
@@ -20,8 +20,9 @@ export default function DropdownMenu(props: IDropdownMenu) {
         <div className={css.menuCard}>
             {
                 props.items?.map(item =>
-                    <div
+                    <Link
                         key={css.item + item.name}
+                        href={item.link || '#'}
                         className={css.item}
                         onClick={ () => {props.onChoose && props.onChoose(item.value)} }
                     >
@@ -29,7 +30,7 @@ export default function DropdownMenu(props: IDropdownMenu) {
                             {item.icon}
                         </div>
                         {item.name}
-                    </div>
+                    </Link>
                 )
             }
         </div>

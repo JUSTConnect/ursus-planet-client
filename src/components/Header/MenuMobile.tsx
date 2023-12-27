@@ -25,7 +25,7 @@ export default function MenuMobile(props: IMenuMobile) {
     useEffect(
         () => document.addEventListener('mousedown', e => {
             !wrapper.current?.contains(e.target as Node) && activeDropdown && setActiveDropdown(undefined)
-        }), []
+        }), [activeDropdown]
     )
 
 

@@ -11,6 +11,7 @@ export interface IItem {
     name: string
     value?: string
     icon?: React.ReactNode
+    link?: string
 }
 
 

@@ -12,6 +12,7 @@ import Container from "@/components/core/Container"
 import Button from "@/components/core/Button"
 
 import ModalEmail from '@/components/ModalEmail'
+import Typography from '@/components/core/Typography'
 
 
 export default function TabProfile() {
@@ -72,6 +73,7 @@ export default function TabProfile() {
                         Notifications
                     </CardHead>
                     <CardBody className={css.cardBody}>
+                        <Typography className={css.emptyDescription} variant='p' color='neutral'>It&apos;s empty here...</Typography>
                     </CardBody>
                 </div>
             </Card>

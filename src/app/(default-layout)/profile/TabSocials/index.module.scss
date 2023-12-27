@@ -71,10 +71,13 @@
     &BgDrop
     {
         position: absolute;
-        // // height: 100%;
-        // background: red;
-        width: 200%;
-        top: 60%;
+        height: 40%;
+        width: 40%;
+        background: linear-gradient(270deg, #2548A9 13.06%, #41B4D8 41.17%, #BA89C2 71.1%);
+        filter: blur(60px);
+        opacity: .15;
+        // width: 200%;
+        top: 35%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: -1;
