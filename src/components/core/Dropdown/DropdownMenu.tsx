@@ -26,9 +26,12 @@ export default function DropdownMenu(props: IDropdownMenu) {
                         className={css.item}
                         onClick={ () => {props.onChoose && props.onChoose(item.value)} }
                     >
-                        <div className={css.itemIcon}>
-                            {item.icon}
-                        </div>
+                        {
+                            item.icon &&
+                            <div className={css.itemIcon}>
+                                {item.icon}
+                            </div>
+                        }
                         {item.name}
                     </Link>
                 )
