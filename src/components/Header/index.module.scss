@@ -176,6 +176,12 @@
         display: none !important;
     }
 
+    &:hover
+    {
+        background: var(--color-white);
+        color: var(--color-black) !important;
+    }
+
     &Mobile
     {
         display: none !important;

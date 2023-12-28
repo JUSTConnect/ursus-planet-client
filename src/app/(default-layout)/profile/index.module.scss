@@ -139,6 +139,12 @@
     padding-left: 64px;
     padding-right: 64px;
 
+    &:hover
+    {
+        background: var(--color-white);
+        color: var(--color-black);
+    }
+
     @include mobile
     {
         width: 100%;
