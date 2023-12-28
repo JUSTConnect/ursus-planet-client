@@ -6,6 +6,7 @@ import css from './index.module.scss'
 import iconPlayer from './img/icon-player.png'
 import iconProject from './img/icon-project.png'
 import figureUrsa from './img/figure.svg'
+import bgSpace from './img/bg-space.jpg'
 import bgRelief from './img/relief.svg'
 import bgLForest from './img/forest-left.svg'
 import bgRForest from './img/forest-right.svg'
@@ -25,6 +26,7 @@ import BottomSection from './BottomSection'
 export default function Block1() {
 
     return <Box className={css.wrapper}>
+        <Image className={css.bgSpace} src={bgSpace} alt='bg'/>
         <div className={css.bgRForest}>
             <Image src={bgRForest} alt='bg relief'/>
         </div>
