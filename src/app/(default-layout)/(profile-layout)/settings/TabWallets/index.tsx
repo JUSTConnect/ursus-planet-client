@@ -18,58 +18,37 @@ import Container from "@/components/core/Container"
 import Button from "@/components/core/Button"
 import Stack from '@/components/core/Stack'
 import Typography from '@/components/core/Typography'
+import CardTabs, {ICardTab} from '@/components/CardTabs'
 
 import ChainItem from './ChainItem'
 
 
+type TabName = 'player' | 'project'
+
+
 export default function TabProfile() {
-    type TabName = 'player' | 'project'
-    type Tab = {
-        name: TabName,
-        title: string,
-        icon: StaticImageData
-    }
 
     const [activeTab, setActiveTab] = useState<TabName>('player')
-    const tabs: Tab[] = [
+    const tabs: ICardTab[] = [
         {
-            name: 'player',
+            value: 'player',
             title: 'Avatar',
             icon: iconPlayer
         },
         {
-            name: 'project',
+            value: 'project',
             title: 'Profile',
             icon: iconProject
         }
     ]
 
     return <Container className={css.container}>
-        <div className={css.innerNav}>
-            <Stack fullWidth>
-                {
-                    tabs.map(tab =>
-                        <CardHead
-                            key={tab.name}
-                            className={[css.innerNavTab, activeTab === tab.name &&
-                                css.innerNavTabActive].join(' ')}
-                            onClick={() => setActiveTab(tab.name)}
-                        >
-                            <div className={
-                                css.innerNavText}>
-                                <Image
-                                    className={
-                                        css.innerNavIcon}
-                                    src={tab.icon}
-                                    alt='icon'
-                                />
-                                {tab.title}
-                            </div>
-                        </CardHead>
-                    )
-                }
-            </Stack>
-        </div>
+        <CardTabs
+            className={css.mobileTabs}
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+        />
         <div className={css.cards}>
             <Card
                 className={[

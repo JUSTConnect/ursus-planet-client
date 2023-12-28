@@ -43,27 +43,9 @@
 .formControlWalletName
 {
     width: 100%;
-    &Label
-    {
-        display: block !important;
-        color: #584F88 !important;
-        margin-bottom: 10px;
-    }
-
-    &Button
-    {
-        padding: 2px 11px;
-        font-size: 12px;
-    }
 
     &Stack
     {
         gap: 8px !important;
     }
-}
-
-.emptyDescription
-{
-    text-align: center;
-    margin-top: 2rem;
 }

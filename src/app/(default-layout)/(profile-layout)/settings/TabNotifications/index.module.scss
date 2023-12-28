@@ -1,0 +1,9 @@
+@use '@mixins' as *;
+@import '../index.module.scss';
+
+
+.emptyDescription
+{
+    text-align: center;
+    margin-top: 2rem;
+}

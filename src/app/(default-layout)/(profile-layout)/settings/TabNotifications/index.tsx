@@ -1,70 +1,53 @@
 'use client'
 
 import { useState } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import css from './index.module.scss'
 import iconNotification from './icons/icon-notification.png'
 import iconSubscription from './icons/icon-subscription.png'
 
 import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
+import CardTabs, {ICardTab} from '@/components/CardTabs'
 import Container from "@/components/core/Container"
-import Button from "@/components/core/Button"
-
 import ModalEmail from '@/components/ModalEmail'
 import Typography from '@/components/core/Typography'
 
 
-export default function TabProfile() {
-    type TabName = 'avatar' | 'profile'
-    type Tab = {
-        name: TabName,
-        title: string,
-        icon: StaticImageData
-    }
+type TabName = 'notifications' | 'subscriptions'
 
-    const [activeTab, setActiveTab] = useState<TabName>('avatar')
+const tabs: ICardTab[] = [
+    {
+        value: 'notifications',
+        title: 'Notifications',
+        icon: iconNotification
+    },
+    {
+        value: 'subscriptions',
+        title: 'Subscriptions',
+        icon: iconSubscription
+    }
+]
+
+
+export default function TabProfile() {
+
+    const [activeTab, setActiveTab] = useState<TabName>('notifications')
     const [modalEmail, setModalEmail] = useState(false)
 
-    const tabs: Tab[] = [
-        {
-            name: 'avatar',
-            title: 'Notifications',
-            icon: iconNotification
-        },
-        {
-            name: 'profile',
-            title: 'Subscriptions',
-            icon: iconSubscription
-        }
-    ]
 
     return <Container className={css.container}>
-        <div className={css.innerNav}>
-            {
-                tabs.map(tab =>
-                    <CardHead
-                        key={tab.name}
-                        className={[css.innerNavTab, activeTab === tab.name && css.innerNavTabActive].join(' ')}
-                        onClick={() => setActiveTab(tab.name)}
-                    >
-                        <div className={css.innerNavText}>
-                            <Image
-                                className={css.innerNavIcon}
-                                src={tab.icon}
-                                alt='icon'
-                            />
-                            {tab.title}
-                        </div>
-                    </CardHead>
-                )
-            }
-        </div>
+        <CardTabs
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            className={css.mobileTabs}
+        />
         <div className={css.cards}>
             <Card
                 className={[
                     css.card,
-                    activeTab === 'avatar' && css.cardActive
+                    activeTab === 'notifications' && css.cardActive
                 ].join(' ')}
             >
                 <div>
@@ -80,7 +63,7 @@ export default function TabProfile() {
             <Card
                 className={[
                     css.card,
-                    activeTab === 'profile' && css.cardActive
+                    activeTab === 'subscriptions' && css.cardActive
                 ].join(' ')}
             >
                 <div>

@@ -4,32 +4,33 @@ import Scroller from '@/components/core/Scroller'
 import Button from '@/components/core/Button'
 
 
-interface Props {
-    tab: string
-    setTab: (tab: string) => void
-    tabs: Tab[]
+interface IPanelPlayerTabs {
+    activeTab: string
+    setActiveTab: (tab: string) => void
+    tabs: IPanelPlayerTab[]
 }
 
-export type Tab = {
+export type IPanelPlayerTab = {
     icon: React.ReactNode
     name: string
     value: string
 }
 
-export default function TabsNavigation(props: Props) {
+export default function PanelPlayerTabs(props: IPanelPlayerTabs) {
     return <Scroller>
+        <div className={css.bgDrop}></div>
         <Container className={css.navigation}>
             {
                 props.tabs.map(tab =>
                     <div key={tab.value}>
                         <Button
-                            variant={ props.tab !== tab.value ? 'blank' : 'regular' }
-                            color={ props.tab === tab.value ? 'gray' : 'primary' }
+                            variant={ props.activeTab !== tab.value ? 'blank' : 'regular' }
+                            color={ props.activeTab === tab.value ? 'gray' : 'primary' }
                             className={[
                                 css.button,
-                                props.tab === tab.value && css.buttonActive
+                                props.activeTab === tab.value && css.buttonActive
                             ].join(' ')}
-                            onClick={ () => props.setTab(tab.value) }
+                            onClick={ () => props.setActiveTab(tab.value) }
                             iconStart={ tab.icon }
                         >
                             { tab.name }
