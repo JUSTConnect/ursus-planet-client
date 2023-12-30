@@ -23,6 +23,11 @@
 
     padding: 0 2rem;
 
+    &:hover
+    {
+        opacity: 1 !important;
+    }
+
     &::before, &::after
     {
         content: "";
@@ -36,6 +41,7 @@
     &:not(&Active)
     {
         color: #584F88;
+        opacity: .7;
 
         & svg, & path
         {

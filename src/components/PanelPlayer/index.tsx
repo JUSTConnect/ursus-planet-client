@@ -56,7 +56,6 @@ export default function Top(props: Props)
                 <div className={css.button}>
                     <div className={ css.wallets }>
                         <Image className={css.wallet} src={wallet1} alt='wallet'/>
-                        <Image className={css.wallet} src={wallet2} alt='wallet'/>
                     </div>
                     {
                         !(pathname === '/settings') &&

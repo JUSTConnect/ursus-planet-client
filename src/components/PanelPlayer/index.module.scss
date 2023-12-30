@@ -35,6 +35,11 @@
         height: 94px !important;
         width: 94px !important;
     }
+
+    &:hover
+    {
+        opacity: .8;
+    }
 }
 
 .points
