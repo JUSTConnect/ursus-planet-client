@@ -8,6 +8,7 @@ import iconArrowDown from './icons/icon-arrow-down.svg'
 import iconNotification from './icons/icon-notification.png'
 import iconSubscription from './icons/icon-subscription.png'
 
+import Button from '@/components/core/Button'
 import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
 import CardTabs, {ICardTab} from '@/components/CardTabs'
 import Container from "@/components/core/Container"
@@ -100,6 +101,7 @@ export default function TabProfile() {
                             Every day
                             <Image src={iconArrowDown} alt="icon"/>
                         </div>
+                        <Button color='gray' className={css.buttonSave}>Save</Button>
                     </CardBody>
                 </div>
             </Card>

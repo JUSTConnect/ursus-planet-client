@@ -47,7 +47,7 @@ export default function SectionRight() {
                 {
                     name: 'Player',
                     icon: <IconPlayers />,
-                    link: '/profile/account'
+                    link: '/account'
                 },
                 {
                     name: 'Project',
