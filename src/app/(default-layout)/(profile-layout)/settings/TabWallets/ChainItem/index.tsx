@@ -51,7 +51,7 @@ export default function ChainItem(props: IChainItem) {
             </div>
             <div className={css.bottomRight}>
                 <div className={css.hash}>
-                    56uy56u5...yhbg34gf4g
+                    <div className={css.hashStart}>56uy56u5</div>gf4g
                 </div>
                 <div className={css.bottomButton}>
                     <IconCopy/>

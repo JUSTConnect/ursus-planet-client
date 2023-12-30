@@ -88,14 +88,15 @@
         {
             opacity: 1;
         }
-
+        
+        
     }
-
+    
     & .icon
     {
         @include mobile
         {
-            width: .3rIem;
+            width: .3rem;
         }
     }
 
@@ -118,7 +119,13 @@
 
 .hash
 {
-    width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: flex;
+    
+    &Start
+    {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 50%;
+        width: 3.5rem;
+    }
 }
