@@ -8,6 +8,9 @@ import iconNext from './img/block-2-next.png'
 import iconPrev from './img/block-2-prev.png'
 import iconSeason from './img/icon-season.svg'
 import iconGamePrize from '../../img/block-2-game-prize.png'
+import IconLast from './img/IconLast'
+import IconCurrent from './img/IconCurrent'
+import IconUpcoming from './img/IconUpcoming'
 
 
 import { RootState } from '@/store'
@@ -29,32 +32,30 @@ export default function Block2() {
                 <Typography className={css.heading} variant="h2">Main games</Typography>
                 <div className={css.buttons}>
                     <Button
-                        className={css.buttonNext}
-                        onClick={ () => dispatch(setSeasonActive(seasonActive+1)) }
+                        className={[css.buttonSwitch, seasonCurrent + 1 === seasonActive && css.buttonSwitchActive].join(' ')}
+                        onClick={ () => dispatch(setSeasonActive(seasonCurrent+1)) }
                         variant='blank'
                         size='lg'
-                        iconStart={<Image src={iconNext} alt="icon" />}
-                        disabled={seasonActive === seasonAvailable}
+                        iconStart={<IconUpcoming />}
                     >
                         Upcoming season
                     </Button>
                     <Button
-                        className={css.buttonCurrent}
+                        className={[css.buttonSwitch, seasonCurrent === seasonActive && css.buttonSwitchActive].join(' ')}
                         onClick={ () => dispatch(setSeasonActive(seasonCurrent)) }
-                        color='dark'
+                        variant='blank'
                         size='lg'
-                        iconStart={<Image src={iconCurrent} alt="icon" />}
+                        iconStart={<IconCurrent />}
                         animated
                     >
                         Current season
                     </Button>
                     <Button
-                        className={css.buttonPrev}
-                        onClick={ () => dispatch(setSeasonActive(seasonActive-1)) }
+                        className={[css.buttonSwitch, seasonCurrent - 1 === seasonActive && css.buttonSwitchActive].join(' ')}
+                        onClick={ () => dispatch(setSeasonActive(seasonCurrent-1)) }
                         variant="blank"
                         size='lg'
-                        iconStart={<Image src={iconPrev} alt="icon" />}
-                        disabled={seasonActive===1}
+                        iconStart={<IconLast />}
                     >
                         Last season
                     </Button>
@@ -65,23 +66,26 @@ export default function Block2() {
                 <div className={css.buttonsMobileBgDropTop}></div>
                 <div className={css.buttonsMobileBgDrop}></div>
                 <Button 
-                    className={css.buttonMobilePrev}
-                    iconStart={<Image src={iconPrev} alt="icon" />}
+                    className={[css.buttonMobileSwitch, seasonCurrent+1 === seasonActive && css.buttonMobileSwitchActive].join(' ')}
+                    iconStart={<IconLast />}
+                    onClick={ () => dispatch(setSeasonActive(seasonCurrent+1)) }
                     variant='blank'
                 >
                     Last season
                 </Button>
                 <Button 
-                    className={css.buttonMobileCurrent}
-                    iconStart={<Image src={iconCurrent} alt="icon" />}
+                    className={[css.buttonMobileSwitch, seasonCurrent === seasonActive && css.buttonMobileSwitchActive].join(' ')}
+                    onClick={ () => dispatch(setSeasonActive(seasonCurrent)) }
+                    iconStart={<IconCurrent />}
                     color='dark'
                 >
                     Current season
                 </Button>
                 <Button 
                     variant='blank'
-                    iconEnd={<Image src={iconNext} alt="icon" />}
-                    className={css.buttonMobileNext}
+                    onClick={ () => dispatch(setSeasonActive(seasonCurrent-1)) }
+                    iconEnd={<IconUpcoming />}
+                    className={[css.buttonMobileSwitch, seasonCurrent-1 === seasonActive && css.buttonMobileSwitchActive].join(' ')}
                 >
                     Next season
                 </Button> 

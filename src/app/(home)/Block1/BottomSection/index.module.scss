@@ -51,14 +51,33 @@
 
 .sectionLeft {
 
-    & .buttonNext,
-    & .buttonPrev {
+    & .buttonSwitch {
         color: #584F88;
         border-radius: 0;
+
+        & svg
+        {
+            height: 1.2rem;
+        }
+
+        & path, & defs
+        {
+            fill: var(--color-neutral);
+        }
     }
 
-    & .buttonCurrent {
+
+
+    & .buttonSwitchActive
+    {
         background: #080713;
+        color: var(--color-white);
+        border-radius: 100px;
+
+        & path, & defs
+        {
+            fill: var(--color-primary);
+        }
 
         @media (max-width: 1440px) {
             border-radius: 0 100px 100px 0;
@@ -149,9 +168,7 @@
     }
 }
 
-.buttonMobileCurrent,
-.buttonMobileNext,
-.buttonMobilePrev
+.buttonMobileSwitch
 {
     @include mobile
     {
@@ -165,25 +182,36 @@
             padding-bottom: .25rem !important;
         }
 
-        & img
+        & svg
         {
             order: -1;
+
+            & path
+            {
+                fill: var(--color-neutral);
+            }
         }
     }
 
 }
 
-.buttonMobilePrev,
-.buttonMobileNext {
+.buttonMobileSwitch
+{
     color: #584F88 !important;
 }
 
-.buttonMobileCurrent {
+.buttonMobileSwitchActive {
     position: relative;
     background: #080713 !important;
     border-radius: 0 0 1rem 1rem !important;
+    color: var(--color-white) !important;
 
     overflow: visible !important;
+
+    & path
+    {
+        fill: var(--color-primary) !important;
+    }
 
     &::before, &::after
     {
