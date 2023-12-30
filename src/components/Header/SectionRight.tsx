@@ -56,7 +56,7 @@ export default function SectionRight() {
                 {
                     name: 'Settings',
                     icon: <IconSettings />,
-                    link: '/profile'
+                    link: '/settings'
                 },
             ]}
         >
@@ -66,19 +66,20 @@ export default function SectionRight() {
                 animated
                 color='dark'
                 iconStart={
-                    connected ?
-                        <div className={css.buttonWalletArrow}>
-                            <IconArrowDown />
-                        </div>
-                        :
+                    !connected &&
                         <Image
                             className={css.buttonWalletIcon}
                             src={iconWallet}
                             alt='arrow' />
 
                 }
+                iconEnd={
+                    connected && <div className={css.buttonWalletArrow}>
+                        <IconArrowDown />
+                    </div>
+                }
             >
-                <div className={css.buttonWalletText}>
+                <div className={[css.buttonWalletText, connected && css.buttonWalletTextActive].join(' ')}>
                     {connected ? 'Connected' : 'Connect wallet'}
                 </div>
             </Button>

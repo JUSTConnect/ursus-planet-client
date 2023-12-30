@@ -17,7 +17,7 @@ export type TabValue = 'profile' | 'socials' | 'wallets' | 'notifications'
 
 const tabs: IPanelPlayerTab[] = [
     {
-        name: 'Game',
+        name: 'Games',
         value: 'games',
         icon: <IconGames/>
     },

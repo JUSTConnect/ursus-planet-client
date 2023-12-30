@@ -1,3 +1,6 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -21,9 +24,13 @@ interface Props
 
 export default function Top(props: Props)
 {
+    const pathname = usePathname()
+
     return <Container className={css.wrapper}>
         <Container className={css.top}>
-            <Avatar className={css.avatar}/>
+            <Link href='/account'>
+                <Avatar className={css.avatar}/>
+            </Link>
             <div className={css.info}>
                 <div className={css.points}>
                     <div className={css.point}>
@@ -52,12 +59,12 @@ export default function Top(props: Props)
                         <Image className={css.wallet} src={wallet2} alt='wallet'/>
                     </div>
                     {
-                        props.showButtonSettings &&
+                        !(pathname === '/settings') &&
                             <>
-                                <Link href='#'>
-                                    <Button className={css.buttonSettings}>Setting</Button>
+                                <Link href='/settings'>
+                                    <Button className={css.buttonSettings}>Settings</Button>
                                 </Link>
-                                <Link className={css.iconSettings} href='#'>
+                                <Link className={css.iconSettings} href='/settings'>
                                     <Image src={iconSettings} alt='icon-settings'/>
                                 </Link>
                             </>

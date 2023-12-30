@@ -193,8 +193,10 @@
     }
 
     &Text {
-        @include tablet {
-            display: none;
+        
+        &Active
+        {
+            color: var(--color-success) !important;
         }
     }
 
@@ -214,14 +216,16 @@
 
     &Arrow
     {
-
+        position: relative;
+        
         [class*=dropdownActive] & {
+            top: .1rem;
             transform: rotate(180deg) !important;
         }
 
         & svg
         {
-            height: .8rem;
+            height: .8rem !important;
 
             & path
             {
