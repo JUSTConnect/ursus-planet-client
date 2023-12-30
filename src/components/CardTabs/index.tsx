@@ -36,7 +36,7 @@ export default function CardTabs(props: ICardTabs) {
                     onClick={() => props.setActiveTab(tab.value)}
                 >
                     <Image
-                        className={css.innerNavIcon}
+                        className={css.cardTabIcon}
                         src={tab.icon}
                         alt='icon'
                     />

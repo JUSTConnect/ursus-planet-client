@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 import css from './index.module.scss'
+import iconArrowDown from './icons/icon-arrow-down.svg'
 import iconNotification from './icons/icon-notification.png'
 import iconSubscription from './icons/icon-subscription.png'
 
@@ -12,6 +13,7 @@ import CardTabs, {ICardTab} from '@/components/CardTabs'
 import Container from "@/components/core/Container"
 import ModalEmail from '@/components/ModalEmail'
 import Typography from '@/components/core/Typography'
+import Switch from '@/components/core/Switch'
 
 
 type TabName = 'notifications' | 'subscriptions'
@@ -72,6 +74,32 @@ export default function TabProfile() {
                         Subscription management
                     </CardHead>
                     <CardBody className={css.cardBody}>
+                        <Typography variant='p'>Cabinet notification</Typography>
+                        <div className={css.blockSubscription}>
+                            Email notification
+                            <Switch/>
+                        </div>
+                        <div className={css.blockSubscription}>
+                            Account notification
+                            <Switch/>
+                        </div>
+                        <div className={[css.blockSubscription, css.blockEveryDay].join(' ')}>
+                            Every day
+                            <Image src={iconArrowDown} alt="icon"/>
+                        </div>
+                        <Typography variant='p'>Project notification</Typography>
+                        <div className={css.blockSubscription}>
+                            Email notification
+                            <Switch/>
+                        </div>
+                        <div className={css.blockSubscription}>
+                            Account notification
+                            <Switch/>
+                        </div>
+                        <div className={[css.blockSubscription, css.blockEveryDay].join(' ')}>
+                            Every day
+                            <Image src={iconArrowDown} alt="icon"/>
+                        </div>
                     </CardBody>
                 </div>
             </Card>
