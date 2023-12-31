@@ -20,20 +20,29 @@ export default function DropdownMenu(props: IDropdownMenu) {
         <div className={css.menuCard}>
             {
                 props.items?.map(item =>
-                    <Link
-                        key={css.item + item.name}
-                        href={item.link || '#'}
-                        className={css.item}
-                        onClick={ () => {props.onChoose && props.onChoose(item.value)} }
-                    >
-                        {
-                            item.icon &&
-                            <div className={css.itemIcon}>
-                                {item.icon}
-                            </div>
-                        }
-                        {item.name}
-                    </Link>
+                    item.link ?
+                        <Link
+                            key={css.item + item.name}
+                            href={item.link || '#'}
+                            className={css.item}
+                            onClick={ () => {props.onChoose && props.onChoose(item.value)} }
+                        >
+                            {
+                                item.icon &&
+                                <div className={css.itemIcon}>
+                                    {item.icon}
+                                </div>
+                            }
+                            {item.name}
+                        </Link>
+                    :
+                        <div
+                            key={css.item + item.name}
+                            className={css.item}
+                            onClick={ () => {props.onChoose && props.onChoose(item.value)} }
+                        >
+                            {item.name}
+                        </div>
                 )
             }
         </div>

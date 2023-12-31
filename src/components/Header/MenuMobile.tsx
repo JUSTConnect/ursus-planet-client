@@ -32,20 +32,29 @@ export default function MenuMobile(props: IMenuMobile) {
     return <div ref={wrapper} className={css.menuBottomWrapper}>
         <Container className={css.menuBottom}>
             {props.items.map(item =>
-                <Link
-                    key={item.name + 'mobile'}
-                    className={css.menuBottomItem} href={item.link || '#'}
-                    onClick={() => setActiveDropdown(item.name!==activeDropdown?item.name:undefined)}
-                >
-                    {item.name}
-                    {item.children &&
-                        <Image
-                            className={css.menuBottomItemArrow}
-                            src={iconArrowDown}
-                            alt='arrow'
-                        />
-                    }
-                </Link>
+                item.link ?
+                    <Link
+                        key={item.name + 'mobile'}
+                        className={css.menuBottomItem}
+                        href={item.link || '#'}
+                    >
+                        {item.name}
+                    </Link>
+                :
+                    <div
+                        key={item.name + 'mobile'}
+                        className={[css.menuBottomItem, activeDropdown === item.name && css.menuBottomItemActive].join(' ')}
+                        onClick={() => setActiveDropdown(item.name!==activeDropdown?item.name:undefined)}
+                    >
+                        {item.name}
+                        {item.children &&
+                            <Image
+                                className={css.menuBottomItemArrow}
+                                src={iconArrowDown}
+                                alt='arrow'
+                            />
+                        }
+                    </div>
             )}
         </Container>
         <div className={css.menuBottomDropdownWrapper}>

@@ -38,7 +38,7 @@ export interface IMenuItem
 
 const menu: IMenuItem[] = [
     {
-        name: "Disvover",
+        name: "Discover",
         children: [
                 {
                     name: 'Main',

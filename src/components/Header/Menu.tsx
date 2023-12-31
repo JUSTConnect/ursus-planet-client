@@ -24,15 +24,14 @@ export default function Menu(props: IMenu) {
                         items={item.children}
                         hover
                     >
-                        <Link
+                        <div
                             className={css.menuItem}
-                            href={ item.link || '#' }
                         >
                             {item.name}
                             <div className={css.menuItemArrow}>
                                 <IconArrowDown />
                             </div>
-                        </Link>
+                        </div>
                     </Dropdown>
                 :
                 <Link
