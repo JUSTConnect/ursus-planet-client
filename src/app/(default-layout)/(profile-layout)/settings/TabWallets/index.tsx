@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 import css from './index.module.scss'
+import IconAptos from './img/IconAptos'
 import cardProjectFigure from './img/card-project-figure.png'
 import iconPlayer from './img/player.svg'
 import iconProject from './img/project.svg'
@@ -85,7 +86,7 @@ export default function TabProfile() {
                                     Solana
                                 </Button>
                                 <Button
-                                    iconStart={<Image src={iconAptos} alt='icon'/>}
+                                    iconStart={<IconAptos/>}
                                     color='gray'
                                     fullWidth
                                 >
