@@ -25,6 +25,11 @@
 
     margin-bottom: .5rem;
 
+    &:hover
+    {
+        opacity: .8;
+    }
+
     &Figure
     {
         height: 3rem;

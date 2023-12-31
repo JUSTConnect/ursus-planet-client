@@ -69,6 +69,12 @@
 {
     color: var(--color-white);
     background: var(--color-gray);
+
+    &:hover
+    {
+        color: var(--color-black);
+        background: var(--color-white);
+    }
 }
 
 // // == [ variants ] ==
