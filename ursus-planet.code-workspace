@@ -27,6 +27,12 @@
 		{
 			"path": "src/app/(default-layout)/(profile-layout)"
 		},
+		{
+			"path": "src/app/(default-layout)/(profile-layout)/settings"
+		},
+		{
+			"path": "src/app/(default-layout)/(profile-layout)/account"
+		},
 	],
 	"settings": {
 		"nuxt.isNuxtApp": false

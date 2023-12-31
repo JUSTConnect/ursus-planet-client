@@ -135,7 +135,7 @@ export default function TabProfile() {
                     <CardBody className={css.cardBody}>
                         <Box className={[css.cardBlock, css.cardBlockProject].join(' ')}>
                             <Typography variant='p' className={css.cardProjectTitle}>Add your project</Typography>
-                            <Typography variant='p' className={css.cardProjectDescription} color='gray'>We recommend an image of at least 300x300. Gift work too. Max 5 mb.</Typography>
+                            <Typography variant='p' className={css.cardProjectDescription}>To display project settings, add your project</Typography>
                             <Image
                                 className={css.cardProjectFigure}
                                 src={cardProjectFigure}
