@@ -35,7 +35,16 @@
 .buttonIcon
 {
     gap: 0 !important;
+    height: auto;
+    width: auto;
+    aspect-ratio: 1 / 1;
 
+    & img, & svg
+    {
+        height: 1.5rem;
+        width: auto;
+        aspect-ratio: 1 / 1;
+    }
 }
 
 // colors

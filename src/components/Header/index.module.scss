@@ -20,6 +20,11 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    @include mobile
+    {
+        gap: .5rem;
+    }
 }
 
 .logo
@@ -177,15 +182,34 @@
 
 }
 
+.buttonAddPlanet, .buttonWallet
+{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+
+    @include tablet
+    {
+        display: none !important;
+    }
+}
+
+.buttonAddPlanet
+{
+    &Mobile
+    {
+        display: none !important;
+
+        @include tablet
+        {
+            display: block !important;
+        }
+    }
+}
+
 .buttonWallet {
     color: #584F88 !important;
     text-transform: none !important;
-    padding-left: 42px !important;
-    padding-right: 42px !important;
 
-    @include tablet {
-        display: none !important;
-    }
 
     &:hover
     {

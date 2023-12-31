@@ -10,6 +10,7 @@ import Dropdown from '@/components/core/Dropdown';
 
 import css from './index.module.scss';
 import iconWallet from './img/wallet.svg'
+import iconAddPlaet from './img/icon-add-planet.svg'
 import IconArrowDown from './img/IconArrowDown'
 import IconNotifications from './img/IconNotifications'
 import IconWallet from './img/IconWallet'
@@ -24,6 +25,18 @@ export default function SectionRight() {
     const connected = useSelector((state: RootState) => state.tmp.connected)
 
     return <div className={css.headerSection}>
+        {
+            connected &&
+                <>
+                    <Button className={css.buttonAddPlanet}>Add your planet</Button>
+                    <ButtonIcon className={css.buttonAddPlanetMobile}>
+                        <Image
+                            src={iconAddPlaet}
+                            alt='icon'
+                        />
+                    </ButtonIcon>
+                </>
+        }
         {connected &&
             <Link href='#'>
                 <div className={css.iconNotifications}>
