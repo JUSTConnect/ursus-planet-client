@@ -1,0 +1,74 @@
+@use '@mixins' as *;
+
+.dropdown
+{
+    position: relative;
+    cursor: pointer;
+}
+
+.button
+{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+
+    @include mobile
+    {
+        background: var(--color-gray);
+        border-radius: 50%;
+    }
+}
+
+.menu
+{
+    display: none;
+    z-index: 2;
+
+    & .icon
+    {
+        opacity: .8;
+
+        &:hover
+        {
+            opacity: 1;
+        }
+    }
+}
+
+.dropdownActive .menu
+{
+    display: flex;
+    gap: .2rem;
+    flex-direction: column;
+
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    transform: translateY(100%);
+}
+
+.icon
+{
+    height: 2rem;
+    width: auto;
+
+    @include mobile
+    {
+        margin: .5rem;
+    }
+}
+
+.arrow
+{
+    height: .5rem;
+
+    @include mobile
+    {
+        display: none;
+    }
+
+    .dropdownActive &
+    {
+        transform: rotate(180deg);
+    }
+}

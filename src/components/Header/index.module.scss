@@ -184,22 +184,25 @@
 
 .buttonAddPlanet, .buttonWallet
 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    width: 208px !important;
 
-    @include tablet
-    {
-        display: none !important;
+    @media (max-width: 1300px) {
+        width: auto !important;
     }
 }
 
 .buttonAddPlanet
 {
+
+    @media (max-width: 1200px) {
+        display: none;
+    }
+
     &Mobile
     {
         display: none !important;
 
-        @include tablet
+        @media (max-width: 1200px)
         {
             display: block !important;
         }
@@ -210,6 +213,10 @@
     color: #584F88 !important;
     text-transform: none !important;
 
+    @include tablet
+    {
+        display: none !important;
+    }
 
     &:hover
     {

@@ -19,12 +19,18 @@ import IconPlayers from './img/IconPlayers'
 import IconProjects from './img/IconProjects'
 import IconSettings from './img/IconSettings'
 
+import DropdownNetwork from './DropdownNetwork'
+
 
 export default function SectionRight() {
     const dispatch = useDispatch()
     const connected = useSelector((state: RootState) => state.tmp.connected)
 
     return <div className={css.headerSection}>
+        {
+            true &&
+                <DropdownNetwork/>
+        }
         {
             connected &&
                 <>
