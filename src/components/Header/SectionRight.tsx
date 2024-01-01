@@ -29,10 +29,6 @@ export default function SectionRight() {
     return <div className={css.headerSection}>
         {
             connected &&
-                <DropdownNetwork/>
-        }
-        {
-            connected &&
                 <>
                     <Button className={css.buttonAddPlanet}>Add your planet</Button>
                     <ButtonIcon className={css.buttonAddPlanetMobile}>
@@ -49,6 +45,10 @@ export default function SectionRight() {
                     <IconNotifications />
                 </div>
             </Link>
+        }
+        {
+            connected &&
+                <DropdownNetwork/>
         }
         <Dropdown
             className={css.buttonWalletDropdown}
