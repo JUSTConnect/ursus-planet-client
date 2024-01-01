@@ -1,3 +1,5 @@
+@use '@mixins' as *;
+
 .wrapper
 {
     position: relative;
@@ -53,10 +55,20 @@
 .bgSpace
 {
     position: absolute;
-    height: 100vh;
+    height: 70vh;
     width: 100%;
     z-index: -2;
     object-fit: cover;
+
+    @include tablet
+    {
+        height: 80vh;
+    }
+
+    @include mobile
+    {
+        height: 100vh;
+    }
 }
 
 .bgRelief, .bgRForest, .bgLForest
