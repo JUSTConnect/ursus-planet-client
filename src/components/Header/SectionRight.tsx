@@ -28,7 +28,7 @@ export default function SectionRight() {
 
     return <div className={css.headerSection}>
         {
-            true &&
+            connected &&
                 <DropdownNetwork/>
         }
         {
