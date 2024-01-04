@@ -1,0 +1,9 @@
+@use '@mixins' as *;
+
+.button
+{
+    border-radius: 100px;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}

@@ -1,0 +1,139 @@
+@use '@mixins' as *;
+
+.wrapper
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+
+    min-height: 100vh;
+
+    z-index: -1;
+    overflow: hidden;
+}
+
+.intro
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    & &Heading
+    {
+        margin-bottom: 372px;
+    }
+
+    & &Figure
+    {
+        user-select: none;
+
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        transform-origin: 50% 50%;
+        
+        z-index: -1;
+    }
+
+    & &Button
+    {
+        max-width: 212px;
+        width: 100%;
+
+        &:hover
+        {
+            background: #2F57E5;
+        }
+    }
+}
+
+.bgSpace
+{
+    position: absolute;
+    height: 70vh;
+    width: 100%;
+    z-index: -2;
+    object-fit: cover;
+
+    @include tablet
+    {
+        height: 80vh;
+    }
+
+    @include mobile
+    {
+        height: 100vh;
+    }
+}
+
+.bgRelief, .bgRForest, .bgLForest
+{
+    position: absolute;
+    width: 100%;
+
+    user-select: none;
+    z-index: -2;
+
+}
+
+
+.bgRelief
+{
+    top: 60%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+
+    width: 101%;
+    min-width: 2000px;
+    height: auto;
+
+}
+
+.bgRForest, .bgLForest
+{
+    display: flex;
+
+    & img
+    {
+        display: block;
+    }
+}
+
+.bgRForest
+{
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    justify-content: right;
+
+    min-width: 2000px;
+    
+    & img
+    {
+        width: 70%;
+        height: auto;
+    }
+}
+
+.bgLForest
+{
+    top: 40%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    
+    justify-content: left;
+    
+    min-width: 2000px;
+    
+    & img
+    {
+        width: 50%;
+        height: auto;
+    }
+}

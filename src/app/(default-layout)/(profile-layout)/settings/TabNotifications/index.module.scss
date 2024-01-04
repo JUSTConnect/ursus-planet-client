@@ -1,0 +1,27 @@
+@use '@mixins' as *;
+@import '../index.module.scss';
+
+
+.emptyDescription
+{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.blockSubscription
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #1C1931;
+    padding: 1rem;
+
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+
+    &.blockEveryDay
+    {
+        background: #080713 !important;
+    }
+}

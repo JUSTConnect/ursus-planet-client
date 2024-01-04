@@ -1,0 +1,106 @@
+@use '@mixins' as *;
+
+// === [ base ] ===
+
+.input
+{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+
+
+    .containerInput:has(&)
+    {
+        display: flex;
+        align-items: center;
+        resize: vertical;
+        border-radius: 100px;
+        overflow: hidden;
+        resize: none;
+    }
+
+    &::placeholder
+    {
+        color: #584F88;
+    }
+
+    &:focus
+    {
+        outline: none;
+    }
+}
+
+.iconStart, .iconEnd
+{
+    & img, & svg
+    {
+        display: block;
+    }
+}
+
+.iconStart
+{
+    .containerInput:has(&)
+    {
+        padding-left: 1rem;
+    }
+}
+
+// === [ sizes ] ===
+
+.input--sm
+{
+    padding: .8rem;
+}
+
+.input--md
+{
+    padding: 1rem;
+}
+
+.input--lg
+{
+    padding: 1.2rem;
+}
+
+// === [ variants ] ===
+
+.input--outlined
+{
+    color: var(--color-white);
+    
+    .containerInput:has(&)
+    {
+        background: transparent;
+        border: 1px solid rgba(88, 79, 136, 0.30);
+    }
+}
+
+// === [ states ] ===
+
+.input:disabled
+{
+    opacity: .5;
+}
+
+// === [ components ] ===
+
+.label
+{
+    margin-bottom: .5rem;
+}
+
+.error
+{
+    margin-top: .4rem;
+}
+
+// === [ modificators ] ===
+
+.fullWidth
+{
+    width: 100%;
+}

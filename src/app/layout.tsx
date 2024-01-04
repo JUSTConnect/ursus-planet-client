@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 
-import './globals.css'
-import { play, fkalakokz } from './fonts'
+import './globals.scss'
+import { play, fkalakokz } from '../fonts'
+import Providers from '@/providers'
+import ModalWalletConnect from '@/components/ModalWalletConnect'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -9,13 +11,21 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={[play.className, fkalakokz.variable].join(' ')}>{children}</body>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+      </head>
+      <Providers>
+        <body className={[play.className, fkalakokz.variable].join(' ')}>
+          {children}
+          <ModalWalletConnect/>
+        </body>
+      </Providers>
     </html>
   )
 }

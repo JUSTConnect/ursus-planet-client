@@ -1,0 +1,107 @@
+@use '@mixins' as *;
+@import '../index.module.scss';
+
+.cardBlockProject
+{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cardProject
+{
+    &Title, &Description
+    {
+        text-align: center;
+    }
+
+    &Title
+    {
+        font-size: 2rem;
+    }
+
+    &Description
+    {
+        margin: 0 auto;
+        max-width: 350px;
+    }
+
+    &Figure
+    {
+        display: block;
+        
+        max-width: 350px;
+        width: 100%;
+        height: auto;
+        
+        margin: 0 auto 3rem;
+    }
+
+    &Buttons
+    {
+        max-width: 400px;
+        margin: 0 auto !important;
+    }
+
+    &Button
+    {
+        width: 100%;
+
+        &:hover
+        {
+            background: white;
+            color: var(--color-black)
+        }
+    }
+}
+
+.networkButtons
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: .5rem;
+}
+
+.stackWalletList
+{
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    
+    &Hash
+    {
+        text-overflow: ellipsis;
+        color: #584F88;
+    }
+
+    &Icon
+    {
+        cursor: pointer;
+        
+        &:hover
+        {
+            opacity: .8;
+        }
+
+        @include mobile
+        {
+            height: 16px;
+            width: 16px;
+        }
+        
+    }
+}
+
+.chainItems
+{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-height: 300px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+
+    &Title
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

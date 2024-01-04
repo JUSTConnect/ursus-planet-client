@@ -7,10 +7,31 @@
 			"path": "src"
 		},
 		{
+			"path": "src/app/(default-layout)/kit"
+		},
+		{
+			"path": "./src/features"
+		},
+		{
+			"path": "src/components/core"
+		},
+		{
 			"path": "src/components"
 		},
 		{
 			"path": "src/app"
+		},
+		{
+			"path": "src/app/(home)"
+		},
+		{
+			"path": "src/app/(default-layout)/(profile-layout)"
+		},
+		{
+			"path": "src/app/(default-layout)/(profile-layout)/settings"
+		},
+		{
+			"path": "src/app/(default-layout)/(profile-layout)/account"
 		},
 	],
 	"settings": {

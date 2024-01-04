@@ -1,0 +1,99 @@
+@use '@mixins' as *;
+
+.container {
+    padding-bottom: 3rem !important;
+    padding-top: 3rem !important;
+    position: relative;
+
+    @include tablet {
+        margin-bottom: 60px !important;
+    }
+
+    @include mobile {
+        margin-bottom: 36px !important;
+    }
+}
+
+.buttonViewMore {
+    color: #584F88 !important;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    
+    @include tablet {
+        display: none;
+
+        &Mobile
+        {
+            display: block !important;
+        }
+    }
+
+    &Mobile
+    {
+        display: none;
+    }
+
+    &Icon {
+        height: 24px;
+        width: 24px;
+        object-fit: contain;
+    }
+
+    &Content {
+        display: flex;
+        align-items: center;
+        gap: 69px;
+    }
+
+
+}
+
+
+.heading {
+    &Stack {
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+
+
+    &Icon {
+        height: 60px;
+        width: 60px;
+
+        @include mobile {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    &Buttons {
+        max-width: 550px;
+        width: 100%;
+
+        @include tablet {
+            max-width: 268px;
+        }
+
+        @include mobile
+        {
+            max-width: initial;
+        }
+    }
+
+    &Dropdown {
+        width: 100%;
+
+        @include mobile {
+            width: 100%;
+        }
+
+        &Icon {
+            height: 16px;
+            width: 16px;
+            object-fit: contain;
+        }
+    }
+}

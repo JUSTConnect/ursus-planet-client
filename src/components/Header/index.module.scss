@@ -1,0 +1,299 @@
+@use '@mixins' as *;
+
+
+.headerContainer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 2rem;
+
+    @include mobile
+    {
+        padding: 1rem;
+    }
+}
+
+.headerSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @include mobile
+    {
+        gap: .5rem;
+    }
+}
+
+.logo
+{
+    width: 221px;
+
+    @include tablet
+    {
+        width: 176px;
+    }
+
+    @include mobile
+    {
+        width: 158px;
+    }
+}
+
+.menu {
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    list-style: none;
+
+
+    @include tablet {
+        display: none;
+    }
+
+    &Item {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        cursor: pointer;
+
+        &:hover
+        {
+            color: #2F57E5;
+            
+        }
+
+        &:hover &Arrow
+        {
+            transform: rotate(-180deg) translateY(-10%);
+
+            & svg, & path, & defs
+            {
+                stroke: var(--color-primary);
+            }
+        }
+
+        &Arrow {
+            & svg
+            {
+                transform: translateY(-25%);
+            }
+        }
+    }
+}
+
+
+.menuBottom {
+    position: relative;
+
+    display: none;
+    gap: 18px;
+    color: var(--color-neutral);
+    overflow-x: auto;
+
+    @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
+        &::-webkit-scrollbar
+        {
+            display: none;
+        }
+    }
+
+    @include tablet
+    {
+        display: flex;
+        padding-top: 0;
+    }
+
+    &Item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &Active
+        {
+            color: var(--color-primary);
+        }
+
+        &Arrow {
+            transform: translateY(20%);
+        }
+
+        &Active &Arrow
+        {
+            transform: rotate(180deg);
+        }
+    }
+
+    &Wrapper
+    {
+        position: relative;
+    }
+
+    &DropdownWrapper
+    {
+        position: relative;
+        margin: 1rem;
+        margin-top: 0;
+    }
+
+    &Dropdown div
+    {
+        margin-top: 0;
+    }
+}
+
+.iconNotifications {
+    position: relative;
+    opacity: .6;
+
+    &::before
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        height: .5rem;
+        width: .5rem;
+
+        background: #2F57E5;
+
+        border-radius: 50%;
+    }
+
+
+    &:hover
+    {
+        opacity: 1;
+    }
+
+    & svg, & path
+    {
+        height: 2rem;
+
+        @include tablet {
+            height: 1.5rem;
+        }
+    }
+
+}
+
+.buttonAddPlanet, .buttonWallet
+{
+    width: 208px !important;
+
+    @media (max-width: 1300px) {
+        width: auto !important;
+    }
+}
+
+.buttonAddPlanet
+{
+
+    @media (max-width: 1200px) {
+        display: none;
+    }
+
+    &Mobile
+    {
+        display: none !important;
+
+        @media (max-width: 1200px)
+        {
+            display: block !important;
+        }
+    }
+}
+
+.buttonWallet {
+    color: #584F88 !important;
+    text-transform: none !important;
+
+    @include tablet
+    {
+        display: none !important;
+    }
+
+    &:hover
+    {
+        background: var(--color-white);
+        color: var(--color-black) !important;
+    }
+
+    &Mobile
+    {
+        display: none !important;
+
+        @include tablet
+        {
+            display: block !important;
+        }
+    }
+
+    &Text {
+        
+        &Active
+        {
+            color: var(--color-success) !important;
+        }
+    }
+
+    &Icon {
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
+
+        @include mobile
+        {
+            height: 16px;
+            width: 16px;
+        }
+    }
+
+    &Arrow
+    {
+        position: relative;
+        
+        [class*=dropdownActive] & {
+            top: .1rem;
+            transform: rotate(180deg) !important;
+        }
+
+        & svg
+        {
+            height: .8rem !important;
+
+            & path
+            {
+                stroke: var(--color-neutral);
+            }
+        }
+    }
+
+    &Dropdown
+    {
+        @include tablet
+        {
+            position: static;
+        }
+
+        &Menu
+        {
+            @include tablet
+            {
+                bottom: initial;
+                left: 0;
+                transform: none;
+                padding: 1rem;
+                padding-top: 0;
+            }
+        }
+    }
+}
+

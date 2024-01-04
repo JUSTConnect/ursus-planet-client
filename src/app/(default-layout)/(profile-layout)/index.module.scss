@@ -1,0 +1,77 @@
+@use '@mixins' as *;
+
+.tabsContent
+{
+    margin-bottom: 3rem;
+}
+
+.mobileTabs
+{
+    display: none;
+
+    @include tablet
+    {
+        display: flex;
+    }
+}
+
+.cards
+{
+    display: flex;
+    gap: 1rem;
+    min-height: 500px;
+}
+
+.card
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet
+    {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+
+        &:not(&Active)
+        {
+            display: none;
+        }
+
+        & &Head
+        {
+            display: none;
+        }
+    }
+
+    &Head
+    {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        & img, & svg
+        {
+            height: 1.5rem;
+            width: auto;
+        }
+    }
+
+    &Footer
+    {
+        background: transparent;
+    }
+
+}
+
+.buttonSave
+{
+    max-width: 200px;
+    width: 100%;
+
+    @include mobile
+    {
+        max-width: none;
+    }
+}

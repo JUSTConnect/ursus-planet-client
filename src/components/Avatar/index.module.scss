@@ -1,0 +1,18 @@
+.avatar
+{
+    background: #080713;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 172px;
+    overflow: hidden;
+}
+
+.figure
+{
+    height: 50%;
+    width: 50%;
+}

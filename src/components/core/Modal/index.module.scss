@@ -1,0 +1,45 @@
+.container
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+
+.modal
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%, -50%);
+    animation-name: modal;
+    animation-duration: .2s;
+    width: 100%;
+}
+
+// === [ components ] ===
+
+.buttonClose
+{
+    padding: .3remr;
+    border-radius: .5rem;
+
+    & svg
+    {
+        font-size: 1rem;
+    }
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 2rem));
+    }
+    to {
+        opacity: 100%;
+        transform: translate(-50%, -50%);
+    }
+}
