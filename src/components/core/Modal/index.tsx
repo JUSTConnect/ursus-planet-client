@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect } from 'react';
+
 import CloseIcon from '@mui/icons-material/Close';
 
 import css from './index.module.scss'
@@ -18,6 +22,14 @@ export default function Modal({
     style,
     className
 }: Props) {
+
+    useEffect(() => {
+        addEventListener('keyup', (event) => {
+            if (setActive && event.code === 'Escape') {
+                setActive(false)
+            }
+        })
+    }, [])
 
     const getClassName = () => {
         return [

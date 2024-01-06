@@ -66,6 +66,7 @@ export default function ModalWalletConnect() {
                                 name={item.name}
                                 detected={item.detected}
                                 figure={item.figure}
+                                setModalActive={ (value: boolean) => dispatch(setModalWalletConnect(value)) }
                             />
                         )
                     }

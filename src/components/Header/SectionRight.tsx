@@ -24,11 +24,11 @@ import DropdownNetwork from './DropdownNetwork'
 
 export default function SectionRight() {
     const dispatch = useDispatch()
-    const connected = useSelector((state: RootState) => state.tmp.connected)
+    const accounts = useSelector((state: RootState) => state.web3.accounts)
 
     return <div className={css.headerSection}>
         {
-            connected &&
+            !!accounts.length &&
                 <>
                     <Button className={css.buttonAddPlanet}>Add your planet</Button>
                     <ButtonIcon className={css.buttonAddPlanetMobile}>
@@ -39,7 +39,7 @@ export default function SectionRight() {
                     </ButtonIcon>
                 </>
         }
-        {connected &&
+        {!!accounts.length &&
             <Link href='#'>
                 <div className={css.iconNotifications}>
                     <IconNotifications />
@@ -47,13 +47,13 @@ export default function SectionRight() {
             </Link>
         }
         {
-            connected &&
+            !!accounts.length &&
                 <DropdownNetwork/>
         }
         <Dropdown
             className={css.buttonWalletDropdown}
             classNameMenu={css.buttonWalletDropdownMenu}
-            disabled={!connected}
+            disabled={!accounts.length}
             items={[
                 {
                     name: 'Wallet address',
@@ -81,11 +81,11 @@ export default function SectionRight() {
         >
             <Button
                 className={css.buttonWallet}
-                onClick={() => !connected && dispatch(setModalWalletConnect(true))}
+                onClick={() => !accounts.length && dispatch(setModalWalletConnect(true))}
                 animated
                 color='dark'
                 iconStart={
-                    !connected &&
+                    !!accounts.length &&
                         <Image
                             className={css.buttonWalletIcon}
                             src={iconWallet}
@@ -93,18 +93,18 @@ export default function SectionRight() {
 
                 }
                 iconEnd={
-                    connected && <div className={css.buttonWalletArrow}>
+                    !!accounts.length && <div className={css.buttonWalletArrow}>
                         <IconArrowDown />
                     </div>
                 }
             >
-                <div className={[css.buttonWalletText, connected && css.buttonWalletTextActive].join(' ')}>
-                    {connected ? 'Connected' : 'Connect wallet'}
+                <div className={[css.buttonWalletText, !!accounts.length && css.buttonWalletTextActive].join(' ')}>
+                    {!!accounts.length ? 'Connected' : 'Connect wallet'}
                 </div>
             </Button>
             <ButtonIcon
                 className={css.buttonWalletMobile}
-                onClick={() => !connected && dispatch(setModalWalletConnect(true))}
+                onClick={() => !accounts.length && dispatch(setModalWalletConnect(true))}
                 color='dark'
             >
                 <Image

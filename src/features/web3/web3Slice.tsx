@@ -1,7 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+
+export interface IAccount
+{
+  address: string,
+  chainId: string
+}
+
+
 export interface Web3State {
-  accounts: string[]
+  accounts: IAccount[]
 }
 
 const initialState: Web3State = {
@@ -12,13 +20,13 @@ export const web3Slice = createSlice({
   name: 'tmp',
   initialState,
   reducers: {
-    setAccounts: (state, action: PayloadAction<string[]>) => {
+    setAccounts: (state, action: PayloadAction<IAccount[]>) => {
       state.accounts = action.payload
     },
     clearAccounts: (state) => {
         state.accounts = []
     },
-    addAccount: (state, action: PayloadAction<string>) => {
+    addAccount: (state, action: PayloadAction<IAccount>) => {
       state.accounts = [...state.accounts, action.payload]
     }
   }
