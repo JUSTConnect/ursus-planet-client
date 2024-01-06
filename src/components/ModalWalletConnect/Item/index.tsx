@@ -28,8 +28,19 @@ export default function Item(props: IItem) {
         try {
             const accounts = await sdk?.connect() as string[]
 
-            dispatch(setAccounts(accounts.map(account => Object({address: account, chainId: chainId}))))
+            dispatch(setAccounts(accounts.map(account => Object({ address: account, chainId: chainId }))))
             props.setModalActive && props.setModalActive(false)
+
+            const res = await fetch(`https://api.ursasplanet.com/api/web3auth/?address=${accounts[0]}&chain_id=${chainId}`, {mode: 'no-cors'})
+
+            console.log(JSON.stringify({
+                address: accounts[0],
+                chain_id: chainId
+            }))
+
+            const data = await res.json()
+
+            console.log(data)
         } catch (err) {
             console.warn(`failed to connect..`, err)
         }
@@ -38,7 +49,7 @@ export default function Item(props: IItem) {
 
     return <div
         className={css.item}
-        onClick={ props.detected && connect || undefined }
+        onClick={props.detected && connect || undefined}
     >
         <Image className={css.itemFigure} src={props.figure} alt='figure' />
         <div className={css.itemContent}>
