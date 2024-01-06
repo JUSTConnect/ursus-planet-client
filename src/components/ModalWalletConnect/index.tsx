@@ -9,8 +9,6 @@ import figureMetamask from './img/figure-metamask.png'
 import figureTrustWallet from './img/figure-trust-wallet.png'
 import figurePhantom from './img/figure-phantom.png'
 import figureWalletConnect from './img/figure-wallet-connect.png'
-import icon1 from './img/icon-1.png'
-import icon2 from './img/icon-2.png'
 
 import { RootState } from '@/store'
 import { connect } from '@/features/tmp/tmpSlice'
@@ -22,14 +20,10 @@ import Typography from '@/components/core/Typography'
 import Button from '@/components/core/Button'
 
 
-interface Item
-{
-    figure: StaticImageData
-    name: string
-    detected?: boolean
-}
+import Item, {IItem} from './Item'
 
-const items: Item[] = [
+
+const items: IItem[] = [
     {
         figure: figureMetamask,
         name: 'Metamask',
@@ -67,26 +61,12 @@ export default function ModalWalletConnect() {
                 <Box mb={1}>
                     {
                         items.map(item=>
-                            <div
-                                className={css.item}
-                                onClick={ () => {dispatch(connect()); dispatch(setModalWalletConnect(false))} }
+                            <Item
                                 key={item.name}
-                            >
-                                <Image className={css.itemFigure} src={item.figure} alt='figure'/>
-                                <div className={css.itemContent}>
-                                    <div>
-                                        <div className={css.itemTitle}>{item.name}</div>
-                                        <div className={css.itemIcons}>
-                                            <Image className={css.itemIcon} src={icon1} alt='icon'/>
-                                            <Image className={css.itemIcon} src={icon2} alt='icon'/>
-                                        </div>
-                                    </div>
-                                    {
-                                        item.detected &&
-                                            <div className={css.itemDetected}>Detected</div>
-                                    }
-                                </div>
-                            </div>
+                                name={item.name}
+                                detected={item.detected}
+                                figure={item.figure}
+                            />
                         )
                     }
                 </Box>
