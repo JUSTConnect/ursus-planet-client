@@ -12,6 +12,7 @@ export interface IItem {
     value?: string
     icon?: React.ReactNode
     link?: string
+    onClick?: React.MouseEventHandler
 }
 
 

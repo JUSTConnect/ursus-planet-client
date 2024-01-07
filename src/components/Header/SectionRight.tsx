@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from '@/store';
 import { setModalWalletConnect } from '@/features/modal/modalSlice';
+import { clearAccounts } from '@/features/web3/web3Slice';
 import Button from '@/components/core/Button';
 import ButtonIcon from '@/components/core/Button/ButtonIcon';
 import Dropdown from '@/components/core/Dropdown';
@@ -60,8 +61,9 @@ export default function SectionRight() {
                     icon: <IconWallet />
                 },
                 {
-                    name: 'Logout',
-                    icon: <IconLogout />
+                    name: 'Logout test',
+                    icon: <IconLogout />,
+                    onClick: () => dispatch(clearAccounts())
                 },
                 {
                     name: 'Player',
