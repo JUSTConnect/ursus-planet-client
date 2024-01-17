@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { RootState } from '@/store';
+import { useMetaMask } from '@/hooks/useMetamask';
 import { setModalWalletConnect } from '@/features/modal/modalSlice';
-import { clearAccounts } from '@/features/web3/web3Slice';
 import Button from '@/components/core/Button';
 import ButtonIcon from '@/components/core/Button/ButtonIcon';
 import Dropdown from '@/components/core/Dropdown';
@@ -25,11 +24,11 @@ import DropdownNetwork from './DropdownNetwork'
 
 export default function SectionRight() {
     const dispatch = useDispatch()
-    const accounts = useSelector((state: RootState) => state.web3.accounts)
+    const {isConnected, disconnectMetaMask} = useMetaMask()
 
     return <div className={css.headerSection}>
         {
-            !!accounts.length &&
+            !!isConnected() &&
                 <>
                     <Button className={css.buttonAddPlanet}>Add your planet</Button>
                     <ButtonIcon className={css.buttonAddPlanetMobile}>
@@ -40,7 +39,7 @@ export default function SectionRight() {
                     </ButtonIcon>
                 </>
         }
-        {!!accounts.length &&
+        {!!isConnected() &&
             <Link href='#'>
                 <div className={css.iconNotifications}>
                     <IconNotifications />
@@ -48,13 +47,13 @@ export default function SectionRight() {
             </Link>
         }
         {
-            !!accounts.length &&
+            !!isConnected() &&
                 <DropdownNetwork/>
         }
         <Dropdown
             className={css.buttonWalletDropdown}
             classNameMenu={css.buttonWalletDropdownMenu}
-            disabled={!accounts.length}
+            disabled={!isConnected()}
             items={[
                 {
                     name: 'Wallet address',
@@ -63,7 +62,7 @@ export default function SectionRight() {
                 {
                     name: 'Logout test',
                     icon: <IconLogout />,
-                    onClick: () => dispatch(clearAccounts())
+                    onClick: () => {disconnectMetaMask()}
                 },
                 {
                     name: 'Player',
@@ -83,11 +82,11 @@ export default function SectionRight() {
         >
             <Button
                 className={css.buttonWallet}
-                onClick={() => !accounts.length && dispatch(setModalWalletConnect(true))}
+                onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
                 animated
                 color='dark'
                 iconStart={
-                    !!accounts.length &&
+                    !!isConnected() &&
                         <Image
                             className={css.buttonWalletIcon}
                             src={iconWallet}
@@ -95,18 +94,18 @@ export default function SectionRight() {
 
                 }
                 iconEnd={
-                    !!accounts.length && <div className={css.buttonWalletArrow}>
+                    !!isConnected() && <div className={css.buttonWalletArrow}>
                         <IconArrowDown />
                     </div>
                 }
             >
-                <div className={[css.buttonWalletText, !!accounts.length && css.buttonWalletTextActive].join(' ')}>
-                    {!!accounts.length ? 'Connected' : 'Connect wallet'}
+                <div className={[css.buttonWalletText, !!isConnected() && css.buttonWalletTextActive].join(' ')}>
+                    {!!isConnected() ? 'Connected' : 'Connect wallet'}
                 </div>
             </Button>
             <ButtonIcon
                 className={css.buttonWalletMobile}
-                onClick={() => !accounts.length && dispatch(setModalWalletConnect(true))}
+                onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
                 color='dark'
             >
                 <Image

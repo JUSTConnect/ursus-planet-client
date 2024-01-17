@@ -1,12 +1,9 @@
 'use client'
 
 import Image, { StaticImageData } from 'next/image'
-import { useDispatch } from 'react-redux';
-import { useSDK } from '@metamask/sdk-react';
 
-import { RootState } from '@/store';
-import { setAccounts } from '@/features/web3/web3Slice';
-
+import { useMetaMask } from '@/hooks/useMetamask';
+import { useAuth } from '@/hooks/react-query/web3auth';
 import css from './index.module.scss'
 import icon1 from './img/icon-1.png'
 import icon2 from './img/icon-2.png'
@@ -21,35 +18,31 @@ export interface IItem {
 
 
 export default function Item(props: IItem) {
-    const dispatch = useDispatch()
-    const { sdk, connected, connecting, provider, chainId } = useSDK();
+    const { hasProvider, isConnecting, connectMetaMask } = useMetaMask()
+    const { mutateAsync } = useAuth()
 
     const connect = async () => {
-        try {
-            const accounts = await sdk?.connect() as string[]
+        const connected = await connectMetaMask()
 
-            dispatch(setAccounts(accounts.map(account => Object({ address: account, chainId: chainId }))))
-            props.setModalActive && props.setModalActive(false)
-
-            const res = await fetch(`https://api.ursasplanet.com/api/web3auth/?address=${accounts[0]}&chain_id=${chainId}`, {mode: 'no-cors'})
-
-            console.log(JSON.stringify({
-                address: accounts[0],
-                chain_id: chainId
-            }))
-
-            const data = await res.json()
-
-            console.log(data)
-        } catch (err) {
-            console.warn(`failed to connect..`, err)
-        }
-    };
+        connected && props.setModalActive && props.setModalActive(false)
+        await mutateAsync({
+            address: String(
+                await window.ethereum?.request(
+                    {"method": "eth_accounts"}
+                )
+            ),
+            chain_id: String(
+                await window.ethereum?.request(
+                    {"method": "eth_chainId", params: []}
+                )
+            )
+        })
+    }
 
 
     return <div
         className={css.item}
-        onClick={props.detected && connect || undefined}
+        onClick={props.detected && hasProvider && connect || undefined}
     >
         <Image className={css.itemFigure} src={props.figure} alt='figure' />
         <div className={css.itemContent}>
@@ -62,7 +55,9 @@ export default function Item(props: IItem) {
             </div>
             {
                 props.detected &&
-                <div className={css.itemDetected}>Detected</div>
+                <div className={css.itemDetected}>
+                    {hasProvider ? isConnecting ? 'Connecting...' : 'Detected' : 'Not detected'}
+                </div>
             }
         </div>
     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import Image, { StaticImageData } from 'next/image'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import css from './index.module.scss'

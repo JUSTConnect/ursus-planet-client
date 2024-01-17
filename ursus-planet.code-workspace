@@ -10,6 +10,9 @@
 			"path": "src/app/(default-layout)/kit"
 		},
 		{
+			"path": "./src/hooks/"
+		}
+		{
 			"path": "./src/features"
 		},
 		{
