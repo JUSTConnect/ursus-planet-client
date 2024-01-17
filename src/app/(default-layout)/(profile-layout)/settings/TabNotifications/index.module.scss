@@ -1,6 +1,10 @@
 @use '@mixins' as *;
 @import '../index.module.scss';
 
+.card
+{
+    overflow: visible;
+}
 
 .emptyDescription
 {

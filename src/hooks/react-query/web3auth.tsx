@@ -10,6 +10,6 @@ interface AuthData {
 export function useAuth() {
     return useBaseMutation<AuthData, unknown>(
         ['auth'],
-        'web3auth/login/'
+        'web3auth/login/',
     )
 }

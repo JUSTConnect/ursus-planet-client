@@ -22,7 +22,7 @@ export default function DropdownMenu(props: IDropdownMenu) {
                 props.items?.map(item =>
                     item.link ?
                         <Link
-                            key={css.item + item.name}
+                            key={props.id + css.item + item.name}
                             href={item.link || '#'}
                             className={css.item}
                             onClick={ item.onClick ? item.onClick : () => {props.onChoose && props.onChoose(item.value)} }
@@ -37,7 +37,7 @@ export default function DropdownMenu(props: IDropdownMenu) {
                         </Link>
                     :
                         <div
-                            key={css.item + item.name}
+                            key={props.id + css.item + item.name}
                             className={css.item}
                             onClick={ item.onClick ? item.onClick : () => {props.onChoose && props.onChoose(item.value)} }
                         >

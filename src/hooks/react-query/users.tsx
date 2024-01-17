@@ -1,11 +1,42 @@
 'use client'
 
-import { useBaseQuery } from "@/hooks/react-query"
+import { useBaseQuery, useBaseMutation } from "@/hooks/react-query"
+
+
+interface IUser {
+    id: number
+    last_login: string
+    is_superuser: boolean
+    is_staff: boolean
+    is_active: boolean
+    date_joined: string
+    username: string
+    email: string
+    password: string
+    avatar: string
+    cabinet_notifications_email: boolean
+    cabinet_notifications_account: boolean
+    cabinet_notifications_frequency: 'string'
+    project_notifications_email: boolean
+    project_notifications_account: boolean
+    project_notifications_frequency: 'string'
+    groups: any[]
+    user_permissions: any[]
+}
 
 
 export function useUsersSelf() {
-    return useBaseQuery(
+    return useBaseQuery<IUser>(
         ['users-self'],
         'users/me/'
+    )
+}
+
+
+export function useUsersSelfUpdate() {
+    return useBaseMutation(
+        ['users-self'],
+        'users/me/',
+        'put'
     )
 }

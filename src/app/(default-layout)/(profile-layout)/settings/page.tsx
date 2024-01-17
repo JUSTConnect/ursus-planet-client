@@ -3,6 +3,8 @@
 import { useState } from 'react'
 
 import PanelPlayerTabs, {IPanelPlayerTab} from '@/components/PanelPlayerTabs'
+import Dropdown from '@/components/core/Dropdown'
+import DropdownMenu from '@/components/core/Dropdown/DropdownMenu'
 
 import css from './index.module.scss'
 import IconProfile from './img/Profile'
@@ -41,7 +43,7 @@ const tabs: IPanelPlayerTab[] = [
 
 
 export default function PageSettings() {
-    const [activeTab, setActiveTab] = useState(tabs[0].value)
+    const [activeTab, setActiveTab] = useState(tabs[3].value)
 
     return <>
         <PanelPlayerTabs

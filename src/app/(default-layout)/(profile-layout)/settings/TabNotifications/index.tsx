@@ -1,13 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Image from 'next/image'
 
-import css from './index.module.scss'
-import iconArrowDown from './icons/icon-arrow-down.svg'
-import iconNotification from './icons/icon-notification.png'
-import iconSubscription from './icons/icon-subscription.png'
-
+import { FormEventHandler } from 'react'
+import { useUsersSelf, useUsersSelfUpdate } from '@/hooks/react-query/users'
 import Button from '@/components/core/Button'
 import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
 import CardTabs, {ICardTab} from '@/components/CardTabs'
@@ -15,6 +12,11 @@ import Container from "@/components/core/Container"
 import ModalEmail from '@/components/ModalEmail'
 import Typography from '@/components/core/Typography'
 import Switch from '@/components/core/Switch'
+import BlockFrequency from './BlockFrequency'
+
+import css from './index.module.scss'
+import iconNotification from './icons/icon-notification.png'
+import iconSubscription from './icons/icon-subscription.png'
 
 
 type TabName = 'notifications' | 'subscriptions'
@@ -35,9 +37,16 @@ const tabs: ICardTab[] = [
 
 export default function TabProfile() {
 
+    const {data, isLoading, refetch} = useUsersSelf()
+    const {mutate, isPending} = useUsersSelfUpdate()
     const [activeTab, setActiveTab] = useState<TabName>('notifications')
     const [modalEmail, setModalEmail] = useState(false)
 
+    const handleSubmitSettings: FormEventHandler<HTMLFormElement> = (e) => {
+        e.preventDefault()
+        mutate(new FormData(e.currentTarget))
+        refetch()
+    }
 
     return <Container className={css.container}>
         <CardTabs
@@ -75,33 +84,54 @@ export default function TabProfile() {
                         Subscription management
                     </CardHead>
                     <CardBody className={css.cardBody}>
-                        <Typography variant='p'>Cabinet notification</Typography>
-                        <div className={css.blockSubscription}>
-                            Email notification
-                            <Switch/>
-                        </div>
-                        <div className={css.blockSubscription}>
-                            Account notification
-                            <Switch/>
-                        </div>
-                        <div className={[css.blockSubscription, css.blockEveryDay].join(' ')}>
-                            Every day
-                            <Image src={iconArrowDown} alt="icon"/>
-                        </div>
-                        <Typography variant='p'>Project notification</Typography>
-                        <div className={css.blockSubscription}>
-                            Email notification
-                            <Switch/>
-                        </div>
-                        <div className={css.blockSubscription}>
-                            Account notification
-                            <Switch/>
-                        </div>
-                        <div className={[css.blockSubscription, css.blockEveryDay].join(' ')}>
-                            Every day
-                            <Image src={iconArrowDown} alt="icon"/>
-                        </div>
-                        <Button color='gray' className={css.buttonSave}>Save</Button>
+                        {
+                            isLoading ? 'Loading...' :
+                            <form onSubmit={handleSubmitSettings}>
+                                <Typography variant='p'>Cabinet notification</Typography>
+                                <div className={css.blockSubscription}>
+                                    Email notification
+                                    <Switch
+                                        defaultChecked={data?.cabinet_notifications_email}
+                                        name={'cabinet_notifications_email'}
+                                    />
+                                </div>
+                                <div className={css.blockSubscription}>
+                                    Account notification
+                                    <Switch
+                                        defaultChecked={data?.cabinet_notifications_account}
+                                        name={'cabinet_notifications_account'}
+                                    />
+                                </div>
+                                <BlockFrequency
+                                    name={'cabinet_notifications_frequency'}
+                                    defaultValue={data?.cabinet_notifications_frequency}
+                                />
+                                <Typography variant='p'>Project notification</Typography>
+                                <div className={css.blockSubscription}>
+                                    Email notification
+                                    <Switch
+                                        defaultChecked={data?.project_notifications_email}
+                                        name={'project_notifications_email'}
+                                    />
+                                </div>
+                                <div className={css.blockSubscription}>
+                                    Account notification
+                                    <Switch
+                                        defaultChecked={data?.project_notifications_account}
+                                        name={'project_notifications_account'}
+                                    />
+                                </div>
+                                <BlockFrequency
+                                    name={'project_notifications_frequency'}
+                                    defaultValue={data?.project_notifications_frequency}
+                                />
+                                <Button color='gray' className={css.buttonSave} disabled={isPending}>
+                                    {
+                                        isPending ? 'Saving...' : 'Save'
+                                    }
+                                </Button>
+                            </form>
+                        }
                     </CardBody>
                 </div>
             </Card>

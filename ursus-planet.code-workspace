@@ -1,6 +1,9 @@
 {
 	"folders": [
 		{
+			"path": "../ursus-planet-server/server/apps/web3auth/"
+		},
+		{
 			"path": "."
 		},
 		{
