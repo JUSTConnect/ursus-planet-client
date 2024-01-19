@@ -13,3 +13,10 @@ export function useAuth() {
         'web3auth/login/',
     )
 }
+
+export function useLogout() {
+    return useBaseMutation<null, {}>(
+        [],
+        'web3auth/logout/'
+    )
+}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
 import { useMetaMask } from '@/hooks/useMetamask';
+import { useLogout } from '@/hooks/react-query/web3auth';
 import { setModalWalletConnect } from '@/features/modal/modalSlice';
 import Button from '@/components/core/Button';
 import ButtonIcon from '@/components/core/Button/ButtonIcon';
@@ -25,6 +26,7 @@ import DropdownNetwork from './DropdownNetwork'
 export default function SectionRight() {
     const dispatch = useDispatch()
     const {isConnected, disconnectMetaMask} = useMetaMask()
+    const {mutate} = useLogout()
 
     return <div className={css.headerSection}>
         {
@@ -62,7 +64,7 @@ export default function SectionRight() {
                 {
                     name: 'Logout test',
                     icon: <IconLogout />,
-                    onClick: () => {disconnectMetaMask()}
+                    onClick: () => {disconnectMetaMask(); mutate(null)}
                 },
                 {
                     name: 'Player',
