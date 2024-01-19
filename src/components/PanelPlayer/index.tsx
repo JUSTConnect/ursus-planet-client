@@ -30,7 +30,7 @@ export default function Top(props: Props)
     return <Container className={css.wrapper}>
         <Container className={css.top}>
             <Link href='/account'>
-                <Avatar className={css.avatar}/>
+                <Avatar src={data?.avatar} className={css.avatar}/>
             </Link>
             <div className={css.info}>
                 <div className={css.points}>
@@ -52,7 +52,7 @@ export default function Top(props: Props)
                     </div>
                 </div>
                 <div className={css.username}>
-                    {data?.username}
+                    {data?.username || 'Loading...'}
                 </div>
                 <div className={css.button}>
                     <div className={ css.wallets }>

@@ -37,6 +37,11 @@ export function useUsersSelfUpdate() {
     return useBaseMutation(
         ['users-self'],
         'users/me/',
-        'put'
+        'patch',
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
     )
 }

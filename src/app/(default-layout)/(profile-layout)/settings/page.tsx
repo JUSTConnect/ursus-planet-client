@@ -43,7 +43,7 @@ const tabs: IPanelPlayerTab[] = [
 
 
 export default function PageSettings() {
-    const [activeTab, setActiveTab] = useState(tabs[3].value)
+    const [activeTab, setActiveTab] = useState(tabs[0].value)
 
     return <>
         <PanelPlayerTabs

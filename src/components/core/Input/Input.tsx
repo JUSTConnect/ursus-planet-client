@@ -9,6 +9,8 @@ interface Props extends InputProps, React.HTMLAttributes<HTMLInputElement>
     type?: string
     iconStart?: React.ReactNode
     iconEnd?: React.ReactNode
+
+    name?: string
 }
 
 
@@ -55,6 +57,8 @@ export default function Input(props: Props) {
                 onClick={ props.onClick }
                 onChange={ props.onChange }
                 onInput={ props.onInput }
+
+                name={props.name}
             />
             { props.iconEnd && <div className={css.iconEnd}>{props.iconEnd}</div> }
         </div>
