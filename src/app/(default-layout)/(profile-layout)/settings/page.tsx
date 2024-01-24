@@ -2,12 +2,9 @@
 
 import { useState } from 'react'
 
-import { redirect } from 'next/navigation'
-
 import PanelPlayerTabs, {IPanelPlayerTab} from '@/components/PanelPlayerTabs'
 
 import css from './index.module.scss'
-import useAuthRequired from '@/hooks/useAuthRequired'
 import IconProfile from './img/Profile'
 import IconSocials from './img/Socials'
 import IconWallets from './img/Wallets'
@@ -44,8 +41,7 @@ const tabs: IPanelPlayerTab[] = [
 
 
 export default function PageSettings() {
-    const [activeTab, setActiveTab] = useState(tabs[0].value)
-    useAuthRequired()
+    const [activeTab, setActiveTab] = useState(tabs[1].value)
 
     return <>
         <PanelPlayerTabs

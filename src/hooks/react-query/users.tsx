@@ -26,22 +26,22 @@ interface IUser {
 
 
 export function useUsersSelf() {
-    return useBaseQuery<IUser>(
-        ['users-self'],
-        'users/me/'
-    )
+    return useBaseQuery<IUser>({
+        keys: ['users-self'],
+        url: 'users/me/'
+    })
 }
 
 
 export function useUsersSelfUpdate() {
-    return useBaseMutation(
-        ['users-self'],
-        'users/me/',
-        'patch',
-        {
+    return useBaseMutation({
+        keys: ['users-self'],
+        url: 'users/me/',
+        method: 'patch',
+        extraConfig: {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }
-    )
+    })
 }

@@ -8,15 +8,14 @@ interface AuthData {
 
 
 export function useAuth() {
-    return useBaseMutation<AuthData, unknown>(
-        ['auth'],
-        'web3auth/login/',
-    )
+    return useBaseMutation<AuthData, unknown>({
+        keys: ['auth'],
+        url: 'web3auth/login/',
+    })
 }
 
 export function useLogout() {
-    return useBaseMutation<null, {}>(
-        [],
-        'web3auth/logout/'
-    )
+    return useBaseMutation<null, {}>({
+        url: 'web3auth/logout/'
+    })
 }

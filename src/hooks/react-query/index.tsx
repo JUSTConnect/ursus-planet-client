@@ -8,9 +8,20 @@ import { type MutationKey } from "@tanstack/react-query";
 const SERVER_URL = 'http://localhost:8000'
 
 
+interface BaseQueryParameters {
+    url: string
+    extraConfig?:AxiosRequestConfig
+    keys: (string|number|null)[]
+}
+
+interface BaseMutationParameters extends Omit<BaseQueryParameters, 'keys'> {
+    keys?: (string|number|null)[]
+    method?: 'post' | 'put' | 'patch' | 'delete',
+}
+
+
 export const apiInstance = axios.create({
     baseURL: SERVER_URL + '/api/',
-    timeout: 1000,
     withCredentials: true,
     headers: {
         "Content-Type": "application/json",
@@ -18,27 +29,28 @@ export const apiInstance = axios.create({
 })
 
 
-export function useBaseQuery<T>(keys: (string | number | null)[], url: string, extraConfig?: AxiosRequestConfig) {
+export function useBaseQuery<Response>(params: BaseQueryParameters) {
     return useQuery({
-        queryKey: keys,
+        queryKey: params.keys,
         queryFn: async () => {
-            const { data } = await apiInstance.get(url, extraConfig)
-            return data as T
+            const { data } = await apiInstance.get(params.url, params.extraConfig)
+            return data as Response
         }
     })
 }
 
 
-export function useBaseMutation<MutationData, MutationResponse>(
-    key: MutationKey | undefined,
-    url: string,
-    method?: 'post' | 'put' | 'patch',
-    extraConfig?: AxiosRequestConfig
-) {
+export function useBaseMutation<MutationData, MutationResponse>(params: BaseMutationParameters) {
     return useMutation({
-        mutationKey: key,
+        mutationKey: params.keys,
         mutationFn: async (mutationData: MutationData) => {
-            const { data } = await apiInstance[method || 'post'](url, mutationData, extraConfig)
+            const config: AxiosRequestConfig = {
+                method: params.method || 'post',
+                url: params.url,
+                data: mutationData,
+                ...params.extraConfig
+            }
+            const { data } = await apiInstance(config)
             return data as MutationResponse
         }
     })
