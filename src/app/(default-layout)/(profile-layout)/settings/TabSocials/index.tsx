@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
@@ -23,7 +23,7 @@ import iconReload from './img/icon-reload.svg'
 import iconDelete from './img/icon-delete.svg'
 import bgDrop from './img/bg-drop.svg'
 
-import { useSocials, useSocialsDelete, useAuth } from '@/hooks/react-query/socials'
+import { useSocials, useSocialConfig,  useSocialsDelete, useAuth } from '@/hooks/react-query/socials'
 import Box from '@/components/core/Box'
 import Button from '@/components/core/Button'
 import ButtonIcon from '@/components/core/Button/ButtonIcon'
@@ -32,6 +32,14 @@ import Card, {CardBody} from '@/components/core/Card'
 import Stack from '@/components/core/Stack'
 import Typography from '@/components/core/Typography'
 import { Input } from '@/components/core/Input'
+import Modal from '@/components/core/Modal'
+
+
+import {
+    getDiscordUrl,
+    getXUrl,
+    getGithubUrl
+} from './urls'
 
 
 interface Section
@@ -47,13 +55,14 @@ interface Section
 }
 
 
-
-
 export default function TabSocials() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const [modalTelegram, setModalTelegram] = useState(false)
+
     const {data, refetch} = useSocials()
+    const {data: configData} = useSocialConfig()
 
     const {mutateAsync} = useAuth()
 
@@ -75,6 +84,21 @@ export default function TabSocials() {
 
     const {mutate: mutateDelete} = useSocialsDelete()
 
+    const handleSubmitTelegram = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const data = new FormData(e.currentTarget)
+        data.append('social', 'telegram')
+        mutateAsync(data)
+            .catch((error) => {
+                alert((error as AxiosError<{detail: string}>).response?.data?.detail)
+            })
+            .finally(() => {
+                refetch()
+                router.replace(pathname)
+                setModalTelegram(false)
+            })
+    }
+
     const handleDelete = (social: string) => {
         const data = new FormData()
         data.append('social', social)
@@ -89,14 +113,15 @@ export default function TabSocials() {
             figure: figureDiscord,
             connected: false,
             icon: iconButtonDiscord,
-            link: 'https://discord.com/api/oauth2/authorize?client_id=1198777405234499704&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsettings%2F%3Fauth%3Ddiscord&scope=identify',
+            link: configData && getDiscordUrl(configData?.discord).toString(),
         },
         {
             title: 'X',
             name: 'x',
             figure: figureX,
             connected: false,
-            icon: iconButtonX
+            icon: iconButtonX,
+            link: configData && getXUrl(configData?.x).toString()
         },
         {
             title: 'Telegram',
@@ -104,7 +129,6 @@ export default function TabSocials() {
             figure: figureTelegram,
             connected: false,
             icon: iconButtonTelegram,
-            link: 'https://oauth.telegram.org/auth?bot_id=6505934697&origin=http%3A%2F%2Fleks.hooli.xyz&embed=1&request_access=write&lang=en&return_to=http%3A%2F%2Fleks.hooli.xyz%2Fsettings'
         },
         {
             title: 'Github',
@@ -112,7 +136,7 @@ export default function TabSocials() {
             figure: figureGithub,
             connected: false,
             icon: iconButtonGithub,
-            link: `https://github.com/login/oauth/authorize?scope=user:email&client_id=Iv1.ceba5cde6dfa0cb8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsettings%2F%3Fauth%3Dgithub`,
+            link: configData && getGithubUrl(configData?.github).toString(),
         }
     ]
 
@@ -151,7 +175,11 @@ export default function TabSocials() {
                                             iconStart={<Image src={iconOk} alt='icon'/>}
                                         />
                                         <Link href={section.link||'#'}>
-                                            <ButtonIcon className={css.cardSocialButtonIcon} color='gray'>
+                                            <ButtonIcon
+                                                onClick={() => {section.name === 'telegram' && setModalTelegram(true)}}
+                                                className={css.cardSocialButtonIcon}
+                                                color='gray'
+                                            >
                                                 <Image src={iconReload} alt='icon'/>
                                             </ButtonIcon>
                                         </Link>
@@ -168,6 +196,7 @@ export default function TabSocials() {
                                             iconStart={<Image src={section.icon} alt='icon'/>}
                                             color='dark'
                                             animated
+                                            onClick={ section.name === 'telegram' ? () => setModalTelegram(true) : undefined }
                                         >
                                             Connect account
                                         </Button>
@@ -179,5 +208,22 @@ export default function TabSocials() {
                 )
             }
         </Box>
+        <Modal active={modalTelegram} setActive={setModalTelegram}>
+            <Card className={css.modalTelegram}>
+                <CardBody>
+                    <form onSubmit={handleSubmitTelegram}>
+                        <Typography variant='p' style={{fontSize: '1.5rem'}}>Please enter code received by our telegram bot here.</Typography>
+                        <br />
+                        <Input placeholder='Enter code...' name='code'/>
+                        <br />
+                        <Link href='https://t.me/hoolitest_bot' target="_blank">
+                            <Button fullWidth color='white' type='button'>Go to bot</Button>
+                        </Link>
+                        <br />
+                        <Button type='submit' fullWidth>Submit</Button>
+                    </form>
+                </CardBody>
+            </Card>
+        </Modal>
     </Container>
 }

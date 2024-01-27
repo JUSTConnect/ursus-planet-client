@@ -9,6 +9,26 @@ interface ISocials {
 } 
 
 
+interface ISocialConfig {
+    client_id: string,
+    redirect_uri: string
+}
+
+interface ISocialsConfig {
+    github: ISocialConfig,
+    discord: ISocialConfig,
+    x: ISocialConfig
+}
+
+
+export function useSocialConfig() {
+    return useBaseQuery<ISocialsConfig>({
+        keys: ['socials-config'],
+        url: 'socials/config/'
+    })
+}
+
+
 export function useSocials(){
     return useBaseQuery<ISocials>({
         keys: ['socials'],
@@ -34,3 +54,4 @@ export function useAuth() {
         }
     })
 }
+

@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { type MutationKey } from "@tanstack/react-query";
 
 
-const SERVER_URL = 'http://localhost:8000'
+const SERVER_URL = 'http://leks.hooli.xyz:8000'
 
 
 interface BaseQueryParameters {
