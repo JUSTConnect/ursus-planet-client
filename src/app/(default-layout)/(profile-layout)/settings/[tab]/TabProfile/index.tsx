@@ -214,7 +214,8 @@ export default function TabProfile() {
                                         <Input
                                             onClick={() => setModalEmail(true)}
                                             fullWidth
-                                            defaultValue={'Stiven38324234@gmail.com'}
+                                            value={data?.email}
+                                            onChange={ () => {} }
                                             className={css.inputEmail}
                                             iconStart={
                                                 <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />

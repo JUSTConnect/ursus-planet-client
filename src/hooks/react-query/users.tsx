@@ -35,7 +35,7 @@ export function useUsersSelf() {
 
 export function useUsersSelfUpdate() {
     return useBaseMutation({
-        keys: ['users-self'],
+        keys: [],
         url: 'users/me/',
         method: 'patch',
         extraConfig: {
@@ -43,5 +43,19 @@ export function useUsersSelfUpdate() {
                 'Content-Type': 'multipart/form-data'
             }
         }
+    })
+}
+
+export function useEmailChange() {
+    return useBaseMutation({
+        keys: [],
+        url: 'users/email-change/',
+    })
+}
+
+export function useEmailVerify() {
+    return useBaseMutation({
+        keys: [],
+        url: 'users/email-verify/'
     })
 }

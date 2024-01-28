@@ -42,7 +42,6 @@ const tabs: IPanelPlayerTab[] = [
 
 
 export default function PageSettings({params}: {params: {tab: string}}) {
-    const [activeTab, setActiveTab] = useState(tabs[1].value)
     const router = useRouter()
 
     return <>

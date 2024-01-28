@@ -17,7 +17,7 @@
 		},
 		{
 			"path": "./src/hooks/"
-		}
+		},
 		{
 			"path": "./src/features"
 		},
@@ -43,7 +43,7 @@
 			"path": "src/app/(default-layout)/(profile-layout)/account"
 		},
 		{
-			"path": "src/app/(default-layout)/(profile-layout)/settings/TabSocials/"
+			"path": "src/app/(default-layout)/(profile-layout)/settings/[tab]/TabSocials/"
 		},
 	],
 	"settings": {

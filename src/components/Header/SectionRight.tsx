@@ -78,7 +78,7 @@ export default function SectionRight() {
                 {
                     name: 'Settings',
                     icon: <IconSettings />,
-                    link: '/settings'
+                    link: '/settings/profile/'
                 },
             ]}
         >
