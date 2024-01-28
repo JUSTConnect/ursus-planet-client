@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 
-import CloseIcon from '@mui/icons-material/Close';
-
 import css from './index.module.scss'
 import Blur from '../Blur';
 import Button from '../Button';
@@ -60,6 +58,5 @@ export function ButtonClose({
         onClick={ onClick }
         className={ css.buttonClose }
         color='gray'
-        iconStart={<CloseIcon/>}
     />
 }

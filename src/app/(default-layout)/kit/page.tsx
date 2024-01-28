@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react';
-import AppBlockingIcon from '@mui/icons-material/AppBlocking';
-import CircularProgress from '@mui/joy/CircularProgress';
 
 import css from './index.module.scss'
 import Button from '@/components/core/Button';
@@ -37,9 +35,6 @@ export default function Kit() {
                 </Typography>
                 <Button
                     onClick={ () => setIsLoading(!isLoading) }
-                    iconStart={
-                        isLoading ? <CircularProgress size='sm' variant="plain"/> : <AppBlockingIcon/>
-                    }
                 >
                     Hello world!
                 </Button>
