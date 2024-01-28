@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import PanelPlayerTabs, {IPanelPlayerTab} from '@/components/PanelPlayerTabs'
 
@@ -40,30 +41,30 @@ const tabs: IPanelPlayerTab[] = [
 ]
 
 
-export default function PageSettings() {
-    const [activeTab, setActiveTab] = useState(tabs[0].value)
+export default function PageSettings({params}: {params: {tab: string}}) {
+    const router = useRouter()
 
     return <>
         <PanelPlayerTabs
             tabs={tabs}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
+            activeTab={params.tab}
+            setActiveTab={(name) => router.push(name)}
         />
         <div className={css.tabsContent}>
             {
-                activeTab === 'profile' &&
+                params.tab === 'profile' &&
                 <TabProfile/>
             }
             {
-                activeTab === 'socials' &&
+                params.tab === 'socials' &&
                 <TabSocials/>
             }
             {
-                activeTab === 'wallets' &&
+                params.tab === 'wallets' &&
                 <TabWallets/>
             }
             {
-                activeTab === 'notifications' &&
+                params.tab === 'notifications' &&
                 <TabNotifications/>
             }
         </div>

@@ -1,4 +1,6 @@
-import CloseIcon from '@mui/icons-material/Close';
+'use client'
+
+import { useEffect } from 'react';
 
 import css from './index.module.scss'
 import Blur from '../Blur';
@@ -18,6 +20,14 @@ export default function Modal({
     style,
     className
 }: Props) {
+
+    useEffect(() => {
+        addEventListener('keyup', (event) => {
+            if (setActive && event.code === 'Escape') {
+                setActive(false)
+            }
+        })
+    }, [])
 
     const getClassName = () => {
         return [
@@ -48,6 +58,5 @@ export function ButtonClose({
         onClick={ onClick }
         className={ css.buttonClose }
         color='gray'
-        iconStart={<CloseIcon/>}
     />
 }

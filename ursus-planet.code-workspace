@@ -1,6 +1,12 @@
 {
 	"folders": [
 		{
+			"path": "../ursus-planet-bot/"
+		},
+		{
+			"path": "../ursus-planet-server/"
+		},
+		{
 			"path": "."
 		},
 		{
@@ -8,6 +14,9 @@
 		},
 		{
 			"path": "src/app/(default-layout)/kit"
+		},
+		{
+			"path": "./src/hooks/"
 		},
 		{
 			"path": "./src/features"
@@ -32,6 +41,9 @@
 		},
 		{
 			"path": "src/app/(default-layout)/(profile-layout)/account"
+		},
+		{
+			"path": "src/app/(default-layout)/(profile-layout)/settings/[tab]/TabSocials/"
 		},
 	],
 	"settings": {

@@ -6,7 +6,7 @@ import figure from './img/figure.svg'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement>
 {
-    src?: StaticImageData
+    src?: string
 }
 
 
@@ -20,7 +20,7 @@ export default function Avatar(props: Props) {
 
     return <div className={ getClassName() }>
         { props.src ?
-            <Image src={props.src} alt='figure'/>
+            <img src={props.src} alt='figure' className={css.image}/>
             :
             <Image className={css.figure} src={figure} alt='figure'/>
         }

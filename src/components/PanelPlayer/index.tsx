@@ -11,7 +11,7 @@ import wallet1 from './img/wallet-1.png'
 import wallet2 from './img/wallet-2.png'
 import iconSettings from './img/settings.png'
 
-
+import { useUsersSelf } from '@/hooks/react-query/users'
 import Container from '@/components/core/Container'
 import Avatar from '@/components/Avatar'
 import Button from '@/components/core/Button'
@@ -24,12 +24,13 @@ interface Props
 
 export default function Top(props: Props)
 {
+    const {data} = useUsersSelf()
     const pathname = usePathname()
 
     return <Container className={css.wrapper}>
         <Container className={css.top}>
             <Link href='/account'>
-                <Avatar className={css.avatar}/>
+                <Avatar src={data?.avatar} className={css.avatar}/>
             </Link>
             <div className={css.info}>
                 <div className={css.points}>
@@ -51,7 +52,7 @@ export default function Top(props: Props)
                     </div>
                 </div>
                 <div className={css.username}>
-                    Stiven
+                    {data?.username || 'Loading...'}
                 </div>
                 <div className={css.button}>
                     <div className={ css.wallets }>

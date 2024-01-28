@@ -12,7 +12,7 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement>
     variant?: ButtonVariant
     color?: ButtonColor
     size?: ButtonSize
-    type?: 'submit'
+    type?: 'submit' | 'button'
 
     // icon
     iconStart?: React.ReactNode

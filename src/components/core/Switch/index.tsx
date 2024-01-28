@@ -8,6 +8,7 @@ import css from './index.module.scss'
 interface ISwitch extends React.HTMLAttributes<HTMLInputElement>
 {
     onSwitch?: (e: boolean) => void
+    name?: string
 }
 
 
@@ -25,6 +26,8 @@ export default function Switch(props: ISwitch) {
             className={css.checkbox}
             type="checkbox"
             checked={active}
+            readOnly
+            name={props.name}
             hidden
         />
     </div>

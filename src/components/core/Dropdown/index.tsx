@@ -12,6 +12,7 @@ export interface IItem {
     value?: string
     icon?: React.ReactNode
     link?: string
+    onClick?: React.MouseEventHandler
 }
 
 
@@ -55,6 +56,7 @@ export default function Dropdown(props: IDropdown) {
         {props.children}
         {!props.disabled &&
             <DropdownMenu
+                id={'dropdown-menu'+props.id}
                 onChoose={props.onChoose}
                 className={props.classNameMenu}
                 items={props.items}

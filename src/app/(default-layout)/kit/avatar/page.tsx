@@ -12,8 +12,8 @@ export default function AvatarKit() {
     return <Container>
         <Scroller>
             <Stack maxContent>
-                <Avatar src={avatar}/>
-                <Avatar/>
+                {/* <Avatar src={avatar}/>
+                <Avatar/> */}
             </Stack>
         </Scroller>
     </Container>

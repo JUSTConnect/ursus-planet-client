@@ -4,6 +4,7 @@ import './globals.scss'
 import { play, fkalakokz } from '../fonts'
 import Providers from '@/providers'
 import ModalWalletConnect from '@/components/ModalWalletConnect'
+import ModalDebug from '@/components/ModalDebug'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,6 +25,7 @@ export default function RootLayout({
         <body className={[play.className, fkalakokz.variable].join(' ')}>
           {children}
           <ModalWalletConnect/>
+          <ModalDebug/>
         </body>
       </Providers>
     </html>
