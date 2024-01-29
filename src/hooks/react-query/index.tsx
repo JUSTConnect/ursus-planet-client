@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { type MutationKey } from "@tanstack/react-query";
 
 
-const SERVER_URL = 'https://api.ursas.planet'
+const SERVER_URL = 'https://api.ursasplanet.com'
 
 
 interface BaseQueryParameters {
