@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
 import { CgLogOut } from "react-icons/cg";
-import { FaCirclePlay } from "react-icons/fa6";
-import { FaLayerGroup } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { FaWallet } from "react-icons/fa";
+import { SiOpenlayers } from "react-icons/si";
+import { FaPlay } from "react-icons/fa6";
 
 import { useMetaMask } from '@/hooks/useMetamask';
 import { useLogout } from '@/hooks/react-query/web3auth';
@@ -74,12 +74,12 @@ export default function SectionRight() {
                 },
                 {
                     name: 'Player',
-                    icon: <FaCirclePlay />,
+                    icon: <FaPlay />,
                     link: '/account'
                 },
                 {
                     name: 'Project',
-                    icon: <FaLayerGroup />
+                    icon: <SiOpenlayers />
                 },
                 {
                     name: 'Settings',

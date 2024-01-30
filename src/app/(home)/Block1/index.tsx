@@ -2,6 +2,9 @@
 
 import Image from 'next/image'
 
+import { SiOpenlayers } from "react-icons/si";
+import { FaPlay } from "react-icons/fa6";
+
 import css from './index.module.scss'
 import iconPlayer from './img/icon-player.png'
 import iconProject from './img/icon-project.png'
@@ -52,8 +55,8 @@ export default function Block1() {
             <Stack fullWidth justifyCenter>
                 <Button
                     size='lg'
-                    color="dark"
-                    iconStart={<Image src={iconPlayer} alt="icon" />}
+                    color="primary"
+                    iconStart={<FaPlay />}
                     className={css.introButton}
                 >
                     PLAYER
@@ -61,7 +64,7 @@ export default function Block1() {
                 <Button
                     size='lg'
                     color="dark"
-                    iconStart={<Image src={iconProject} alt="icon" />}
+                    iconStart={<SiOpenlayers />}
                     className={css.introButton}
                 >
                     PROJECT
