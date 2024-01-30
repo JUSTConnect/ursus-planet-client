@@ -154,7 +154,7 @@ export default function TabProfile() {
                     <CardBody className={css.cardBody}>
                         {
                             !isLoading ?
-                                <form onSubmit={handleSubmitUsername} ref={usernameForm}>
+                                <form autoComplete='off' onSubmit={handleSubmitUsername} ref={usernameForm}>
                                     <Box mb={1}>
                                         <Typography variant='p'>
                                             Username
