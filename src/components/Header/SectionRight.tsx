@@ -2,6 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
+import { CgLogOut } from "react-icons/cg";
+import { FaCirclePlay } from "react-icons/fa6";
+import { FaLayerGroup } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { FaWallet } from "react-icons/fa";
+
 import { useMetaMask } from '@/hooks/useMetamask';
 import { useLogout } from '@/hooks/react-query/web3auth';
 import { setModalWalletConnect } from '@/features/modal/modalSlice';
@@ -59,25 +65,25 @@ export default function SectionRight() {
             items={[
                 {
                     name: 'Wallet address',
-                    icon: <IconWallet />
+                    icon: <FaWallet />
                 },
                 {
                     name: 'Logout test',
-                    icon: <IconLogout />,
+                    icon: <CgLogOut />,
                     onClick: () => {disconnectMetaMask(); mutate(null)}
                 },
                 {
                     name: 'Player',
-                    icon: <IconPlayers />,
+                    icon: <FaCirclePlay />,
                     link: '/account'
                 },
                 {
                     name: 'Project',
-                    icon: <IconProjects />
+                    icon: <FaLayerGroup />
                 },
                 {
                     name: 'Settings',
-                    icon: <IconSettings />,
+                    icon: <IoMdSettings />,
                     link: '/settings/profile/'
                 },
             ]}
