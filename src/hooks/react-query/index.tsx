@@ -4,7 +4,7 @@ import axios, {AxiosRequestConfig} from "axios";
 import { useQuery, useMutation } from "@tanstack/react-query";
 
 
-const SERVER_URL = 'http://localhost:8000'
+const SERVER_URL = 'https://api.ursasplanet.com'
 
 
 interface BaseQueryParameters {
