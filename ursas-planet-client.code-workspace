@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../ursus-planet-bot/"
+			"path": "../ursas-planet-bot/"
 		},
 		{
-			"path": "../ursus-planet-server/"
+			"path": "../ursas-planet-server/"
 		},
 		{
 			"path": "."

@@ -14,13 +14,13 @@ export default function ModalWalletConnect() {
     const [active, setActive] = useState(false)
     const accounts = useSelector((state: RootState) => state.web3.accounts)
 
-    useEffect(() => {
-        addEventListener("keyup", (event) => {
-            if (event.isComposing || event.code === 'KeyD') {
-                setActive(!active)
-            }
-        });
-    }, [])
+    // useEffect(() => {
+    //     addEventListener("keyup", (event) => {
+    //         if (event.isComposing || event.code === 'KeyD') {
+    //             setActive(!active)
+    //         }
+    //     });
+    // }, [])
 
     return <Modal className={css.modal} active={active} setActive={(value: boolean) => setActive(value)} style={{ maxWidth: '480px' }}>
         <Card>

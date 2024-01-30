@@ -59,9 +59,9 @@ export default function Top(props: Props)
                         <Image className={css.wallet} src={wallet1} alt='wallet'/>
                     </div>
                     {
-                        !(pathname === '/settings') &&
+                        !pathname.startsWith('/settings') &&
                             <>
-                                <Link href='/settings'>
+                                <Link href='/settings/profile'>
                                     <Button className={css.buttonSettings}>Settings</Button>
                                 </Link>
                                 <Link className={css.iconSettings} href='/settings'>
