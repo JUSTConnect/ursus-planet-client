@@ -37,6 +37,7 @@ export default function Block2() {
                         variant='blank'
                         size='lg'
                         iconStart={<IconUpcoming />}
+                        hovered={seasonCurrent + 1 !== seasonActive}
                     >
                         Upcoming season
                     </Button>
@@ -47,6 +48,7 @@ export default function Block2() {
                         size='lg'
                         iconStart={<IconCurrent />}
                         animated
+                        hovered={seasonCurrent !== seasonActive}
                     >
                         Current season
                     </Button>
@@ -56,6 +58,7 @@ export default function Block2() {
                         variant="blank"
                         size='lg'
                         iconStart={<IconLast />}
+                        hovered={seasonCurrent - 1 !== seasonActive}
                     >
                         Last season
                     </Button>

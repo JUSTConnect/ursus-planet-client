@@ -53,6 +53,7 @@ export default function Block4() {
                                 className={css.headingDropdownIcon} />
                             }
                             color='dark'
+                            hovered={true}
                         >
                             { filters.filter(item => item.value === filter)[0]?.name }
                         </DropdownButton>

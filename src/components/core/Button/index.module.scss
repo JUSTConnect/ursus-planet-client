@@ -29,7 +29,6 @@
     {
         width: max-content;
     }
-
 }
 
 .buttonIcon
@@ -204,6 +203,14 @@
         &:hover::before {
             left: 200%;
         }
+    }
+}
+
+.hovered
+{
+    &:hover
+    {
+        opacity: .8 !important;
     }
 }
 
