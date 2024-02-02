@@ -115,7 +115,7 @@ export default function TabProfile() {
                                         <div>
                                             <div className={css.avatarRecommend}>
                                                 <Image src={iconInfo} alt='icon' />
-                                                recommend an image of at least 300x300. Gift work too. Max 5 mb.
+                                                Recommend an image of at least 300x300. Max 5 mb.
                                             </div>
                                             <br />
                                             <Stack className={css.buttonsUpload} gap={.5}>
