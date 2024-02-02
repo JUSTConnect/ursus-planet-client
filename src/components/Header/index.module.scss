@@ -61,13 +61,12 @@
         gap: .25rem;
         cursor: pointer;
 
-        &:hover
+        &Wrapper:hover, &:hover
         {
-            color: #2F57E5;
-            
+                color: #2F57E5;
         }
 
-        &:hover &Arrow
+        &Wrapper:hover &Arrow
         {
             transform: rotate(-180deg) translateY(-10%);
 
@@ -76,6 +75,7 @@
                 stroke: var(--color-primary);
             }
         }
+
 
         &Arrow {
             & svg

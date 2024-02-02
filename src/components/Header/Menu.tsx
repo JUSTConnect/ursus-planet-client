@@ -20,6 +20,7 @@ export default function Menu(props: IMenu) {
             props.items.map(item =>
                 item.children ?
                     <Dropdown
+                        className={css.menuItemWrapper}
                         key={item.name}
                         items={item.children}
                         hover
