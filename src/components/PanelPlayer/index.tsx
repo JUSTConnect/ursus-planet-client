@@ -55,9 +55,9 @@ export default function Top(props: Props)
                     {data?.username || 'Loading...'}
                 </div>
                 <div className={css.button}>
-                    <div className={ css.wallets }>
+                    {/* <div className={ css.wallets }>
                         <Image className={css.wallet} src={wallet1} alt='wallet'/>
-                    </div>
+                    </div> */}
                     {
                         !pathname.startsWith('/settings') &&
                             <>
