@@ -222,6 +222,15 @@
     {
         background: var(--color-white);
         color: var(--color-black) !important;
+
+    }
+
+    &:hover &Arrow
+    {
+        & svg
+        {
+            fill: var(--color-black);
+        }
     }
 
     &Mobile
@@ -261,18 +270,14 @@
         position: relative;
         
         [class*=dropdownActive] & {
-            top: .1rem;
+            // top: .1rem;
             transform: rotate(180deg) !important;
         }
 
         & svg
         {
-            height: .8rem !important;
-
-            & path
-            {
-                stroke: var(--color-neutral);
-            }
+            height: 1rem !important;
+            fill: var(--color-white);
         }
     }
 

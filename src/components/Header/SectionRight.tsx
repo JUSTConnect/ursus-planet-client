@@ -7,6 +7,7 @@ import { IoMdSettings } from "react-icons/io";
 import { FaWallet } from "react-icons/fa";
 import { SiOpenlayers } from "react-icons/si";
 import { FaPlay } from "react-icons/fa6";
+import { IoIosArrowDown } from "react-icons/io";
 
 import { useMetaMask } from '@/hooks/useMetamask';
 import { useLogout } from '@/hooks/react-query/web3auth';
@@ -20,11 +21,6 @@ import iconWallet from './img/wallet.svg'
 import iconAddPlaet from './img/icon-add-planet.svg'
 import IconArrowDown from './img/IconArrowDown'
 import IconNotifications from './img/IconNotifications'
-import IconWallet from './img/IconWallet'
-import IconLogout from './img/IconLogout'
-import IconPlayers from './img/IconPlayers'
-import IconProjects from './img/IconProjects'
-import IconSettings from './img/IconSettings'
 
 import DropdownNetwork from './DropdownNetwork'
 
@@ -95,15 +91,11 @@ export default function SectionRight() {
                 color='dark'
                 iconStart={
                     !!isConnected() &&
-                        <Image
-                            className={css.buttonWalletIcon}
-                            src={iconWallet}
-                            alt='arrow' />
-
+                    <FaWallet />
                 }
                 iconEnd={
                     !!isConnected() && <div className={css.buttonWalletArrow}>
-                        <IconArrowDown />
+                        <IoIosArrowDown />
                     </div>
                 }
             >
