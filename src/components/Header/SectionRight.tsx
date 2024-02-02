@@ -90,7 +90,7 @@ export default function SectionRight() {
                 animated
                 color='dark'
                 iconStart={
-                    !!isConnected() &&
+                    !isConnected() &&
                     <FaWallet />
                 }
                 iconEnd={
