@@ -33,6 +33,10 @@
     & a
     {
         text-decoration: underline;
+        &:hover
+        {
+            opacity: .8;
+        }
     }
 }
 

@@ -197,6 +197,7 @@ export default function TabSocials() {
                                             color='dark'
                                             animated
                                             onClick={ section.name === 'telegram' ? () => setModalTelegram(true) : undefined }
+                                            hovered
                                         >
                                             Connect account
                                         </Button>

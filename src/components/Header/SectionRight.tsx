@@ -34,7 +34,7 @@ export default function SectionRight() {
         {
             !!isConnected() &&
                 <>
-                    <Button className={css.buttonAddPlanet}>Add your planet</Button>
+                    <Button hovered className={css.buttonAddPlanet}>Add your planet</Button>
                     <ButtonIcon className={css.buttonAddPlanetMobile}>
                         <Image
                             src={iconAddPlaet}
