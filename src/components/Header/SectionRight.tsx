@@ -19,7 +19,6 @@ import Dropdown from '@/components/core/Dropdown';
 import css from './index.module.scss';
 import iconWallet from './img/wallet.svg'
 import iconAddPlaet from './img/icon-add-planet.svg'
-import IconArrowDown from './img/IconArrowDown'
 import IconNotifications from './img/IconNotifications'
 
 import DropdownNetwork from './DropdownNetwork'

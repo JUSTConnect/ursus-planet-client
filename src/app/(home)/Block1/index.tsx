@@ -14,6 +14,7 @@ import bgRelief from './img/relief.svg'
 import bgLForest from './img/forest-left.svg'
 import bgRForest from './img/forest-right.svg'
 
+import { useMetaMask } from '@/hooks/useMetamask';
 import Box from '@/components/core/Box'
 import Container from '@/components/core/Container'
 import Button from '@/components/core/Button'
@@ -27,6 +28,7 @@ import BottomSection from './BottomSection'
 
 
 export default function Block1() {
+    const {isConnected} = useMetaMask()
 
     return <Box className={css.wrapper}>
         <Image className={css.bgSpace} src={bgSpace} alt='bg'/>
@@ -55,7 +57,7 @@ export default function Block1() {
             <Stack fullWidth justifyCenter>
                 <Button
                     size='lg'
-                    color="primary"
+                    color={isConnected() ? 'primary' : 'dark'}
                     iconStart={<FaPlay />}
                     className={css.introButton}
                 >
@@ -66,6 +68,7 @@ export default function Block1() {
                     color="dark"
                     iconStart={<SiOpenlayers />}
                     className={css.introButton}
+                    disabled={isConnected()}
                 >
                     PROJECT
                 </Button>
