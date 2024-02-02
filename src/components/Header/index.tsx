@@ -69,7 +69,7 @@ const menu: IMenuItem[] = [
         ]
     },
     {
-        name: "Spaces"
+        name: "Universe"
     },
     {
         name: "Leaderboard",

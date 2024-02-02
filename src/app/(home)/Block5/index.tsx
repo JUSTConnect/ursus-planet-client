@@ -34,7 +34,7 @@ export default function Block6() {
 
     return <Container className={css.container}>
         <Stack fullWidth className={[css.headingStack, indexCss.headingStack].join(' ')}>
-            <Button hovered className={indexCss.buttonSpace}>Space</Button>
+            <Button hovered className={indexCss.buttonSpace}>Universe</Button>
             <Stack className={[css.headingButtons, indexCss.headingButtonsSpace].join(' ')}>
                 <Dropdown
                     className={css.headingDropdown}

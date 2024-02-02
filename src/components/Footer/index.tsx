@@ -28,7 +28,7 @@ export default function Footer() {
                             Planet
                         </div>
                         <Link className={css.linksLink} href='#'>Discover</Link>
-                        <Link className={css.linksLink} href='#'>Spaces</Link>
+                        <Link className={css.linksLink} href='#'>Universe</Link>
                         <Link className={css.linksLink} href='#'>Leaderboard</Link>
                     </div>
                     <div className={css.linksSection}>
@@ -53,7 +53,7 @@ export default function Footer() {
                             Support
                         </div>
                         <Link className={css.linksLink} href='#'>Help</Link>
-                        <Link className={css.linksLink} href='#'>Spaces</Link>
+                        <Link className={css.linksLink} href='#'>Universe</Link>
                         <Link className={css.linksLink} href='#'>Support</Link>
                     </div>
                 </nav>
