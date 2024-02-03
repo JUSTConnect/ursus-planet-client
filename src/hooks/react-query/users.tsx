@@ -22,6 +22,7 @@ interface IUser {
     project_notifications_frequency: 'string'
     groups: any[]
     user_permissions: any[]
+    points: number
 }
 
 

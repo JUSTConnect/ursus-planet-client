@@ -40,7 +40,7 @@ export default function Top(props: Props)
                             src={ crown }
                             alt='crown'
                         />
-                        12
+                        {Number.isInteger(data?.points) ? '...' : 'Loading...'}
                     </div>
                     <div className={css.point}>
                         <Image
@@ -48,7 +48,7 @@ export default function Top(props: Props)
                             src={ asterisk }
                             alt='asterisk'
                         />
-                        12343
+                        {Number.isInteger(data?.points) ? data?.points : 'Loading...'}
                     </div>
                 </div>
                 <div className={css.username}>
