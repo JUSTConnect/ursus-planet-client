@@ -44,9 +44,15 @@
 
     &Button
     {
+        display: block;
         width: 100%;
 
-        &:hover
+        & button
+        {
+            width: 100%;
+        }
+
+        & button:hover
         {
             background: white;
             color: var(--color-black)

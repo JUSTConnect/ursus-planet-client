@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
+import Link from 'next/link'
 
 import css from './index.module.scss'
 import IconAptos from './img/IconAptos'
@@ -143,8 +144,12 @@ export default function TabProfile() {
                                 alt='figure'
                             />
                             <Stack className={css.cardProjectButtons} gap={.5} fullWidth>
-                                <Button color='gray' className={css.cardProjectButton}>Add project</Button>
-                                <Button color='gray' className={css.cardProjectButton}>More info</Button>
+                                <Link href='https://forms.gle/mzmKtGQ4mqhVP6an8' className={css.cardProjectButton}>
+                                    <Button color='gray'>Add project</Button>
+                                </Link>
+                                <Link href='https://docs-project.ursasplanet.com/' className={css.cardProjectButton}>
+                                    <Button color='gray'>More info</Button>
+                                </Link>
                             </Stack>
                         </Box>
                     </CardBody>
