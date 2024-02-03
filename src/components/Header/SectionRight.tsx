@@ -37,7 +37,7 @@ export default function SectionRight() {
             window.ethereum?.request({
                 "method": "eth_chainId",
                 "params": []
-            }).then((res: string) => console.log(res))    
+            }).then((res: string) => setChain(res))    
         });
     }, [])
 
@@ -45,7 +45,7 @@ export default function SectionRight() {
         window.ethereum?.request({
             "method": "eth_chainId",
             "params": []
-        }).then((res: string) => console.log(res))
+        }).then((res: string) => setChain(res))
     }, [chain])
 
     return <div className={css.headerSection}>
@@ -70,7 +70,7 @@ export default function SectionRight() {
         }
         {
             !!isConnected() &&
-            <DropdownNetwork />
+            <DropdownNetwork chain={chain} />
         }
         <Dropdown
             className={css.buttonWalletDropdown}

@@ -5,8 +5,15 @@ import Image, { StaticImageData } from 'next/image'
 
 import css from './index.module.scss'
 import iconArrow from './img/icon-arrow.svg'
-import iconMetamask from './img/icon-metamask.svg'
 import iconPolygon from './img/icon-polygon.svg'
+import iconInvalid from './img/invalid.svg'
+import iconArb from './img/icon-arb.svg'
+import iconBnb from './img/icon-bnb.svg'
+
+
+interface IDropdownNetwork {
+    chain: string
+}
 
 
 interface Item
@@ -18,23 +25,38 @@ interface Item
 
 const items: Item[] = [
     {
-        value: 'metamask',
-        icon: iconMetamask
-    },
-    {
         value: 'polygon',
         icon: iconPolygon
+    },
+    {
+        value: 'bnb',
+        icon: iconBnb
+    },
+    {
+        value: 'arb',
+        icon: iconArb
     }
 ]
 
 
-export default function DropdownNetwork() {
+export default function DropdownNetwork(props: IDropdownNetwork) {
     const [active, setActive] = useState(false)
     const [itemActive, setItemActive] = useState(items[0])
 
     const handleChoose = (item: Item) => {
         setActive(false)
         setItemActive(item)
+    }
+
+    if (!['0x1', '0x38', '0xa4b1'].includes(props.chain))
+    {
+        return <>
+            <Image
+                className={css.icon}
+                src={iconInvalid}
+                alt='invalid'
+            />
+        </> 
     }
 
     return <div
