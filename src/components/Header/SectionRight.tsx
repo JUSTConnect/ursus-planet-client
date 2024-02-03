@@ -1,6 +1,8 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import { CgLogOut } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
@@ -26,21 +28,38 @@ import DropdownNetwork from './DropdownNetwork'
 
 export default function SectionRight() {
     const dispatch = useDispatch()
-    const {isConnected, disconnectMetaMask} = useMetaMask()
-    const {mutate} = useLogout()
+    const [chain, setChain] = useState('')
+    const { isConnected, disconnectMetaMask } = useMetaMask()
+    const { mutate } = useLogout()
+
+    useEffect(() => {
+        window.ethereum.on('chainChanged', () => {
+            window.ethereum?.request({
+                "method": "eth_chainId",
+                "params": []
+            }).then((res: string) => console.log(res))    
+        });
+    }, [])
+
+    useEffect(() => {
+        window.ethereum?.request({
+            "method": "eth_chainId",
+            "params": []
+        }).then((res: string) => console.log(res))
+    }, [chain])
 
     return <div className={css.headerSection}>
         {
             !!isConnected() &&
-                <>
-                    <Button hovered className={css.buttonAddPlanet}>Add your planet</Button>
-                    <ButtonIcon className={css.buttonAddPlanetMobile}>
-                        <Image
-                            src={iconAddPlaet}
-                            alt='icon'
-                        />
-                    </ButtonIcon>
-                </>
+            <>
+                <Button hovered className={css.buttonAddPlanet}>Add your planet</Button>
+                <ButtonIcon className={css.buttonAddPlanetMobile}>
+                    <Image
+                        src={iconAddPlaet}
+                        alt='icon'
+                    />
+                </ButtonIcon>
+            </>
         }
         {!!isConnected() &&
             <Link href='#'>
@@ -51,7 +70,7 @@ export default function SectionRight() {
         }
         {
             !!isConnected() &&
-                <DropdownNetwork/>
+            <DropdownNetwork />
         }
         <Dropdown
             className={css.buttonWalletDropdown}
@@ -65,7 +84,7 @@ export default function SectionRight() {
                 {
                     name: 'Logout test',
                     icon: <CgLogOut />,
-                    onClick: () => {disconnectMetaMask(); mutate(null)}
+                    onClick: () => { disconnectMetaMask(); mutate(null) }
                 },
                 {
                     name: 'Player',
