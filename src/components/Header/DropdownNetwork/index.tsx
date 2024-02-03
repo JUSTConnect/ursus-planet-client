@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 import css from './index.module.scss'
@@ -46,6 +46,15 @@ const items: Item[] = [
 
 export default function DropdownNetwork(props: IDropdownNetwork) {
     const [active, setActive] = useState(false)
+    const self = useRef<HTMLDivElement>(null)
+
+    useEffect(
+        () => document.addEventListener('mousedown', e => {
+            self.current &&
+                !self.current.contains(e.target as Node) &&
+                setActive(false)
+        }), []
+    )
 
     const handleChoose = (chain_id: string) => {
         setActive(false)
@@ -78,6 +87,7 @@ export default function DropdownNetwork(props: IDropdownNetwork) {
 
     return <div
         className={[css.dropdown, active && css.dropdownActive].join(' ')}
+        ref={self}
     >
         <div
             className={css.button}
