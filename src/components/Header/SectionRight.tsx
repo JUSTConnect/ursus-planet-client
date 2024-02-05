@@ -52,7 +52,9 @@ export default function SectionRight() {
         {
             !!isConnected() &&
             <>
-                <Button hovered className={css.buttonAddPlanet}>Add your planet</Button>
+                <Link href='https://forms.gle/mzmKtGQ4mqhVP6an8'>
+                    <Button hovered className={css.buttonAddPlanet}>Add your planet</Button>
+                </Link>
                 <ButtonIcon className={css.buttonAddPlanetMobile}>
                     <Image
                         src={iconAddPlaet}
