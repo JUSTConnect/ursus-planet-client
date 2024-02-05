@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 import { CgLogOut } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
 import { FaWallet } from "react-icons/fa";
-import { SiOpenlayers } from "react-icons/si";
-import { FaPlay } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { useMetaMask } from '@/hooks/useMetamask';
@@ -21,9 +19,9 @@ import Dropdown from '@/components/core/Dropdown';
 import css from './index.module.scss';
 import iconWallet from './img/wallet.svg'
 import iconAddPlaet from './img/icon-add-planet.svg'
-import IconNotifications from './img/IconNotifications'
 
 import DropdownNetwork from './DropdownNetwork'
+import DropdownNotifications from './DropdownNotifications';
 
 
 export default function SectionRight() {
@@ -64,11 +62,7 @@ export default function SectionRight() {
             </>
         }
         {!!isConnected() &&
-            <Link href='#'>
-                <div className={css.iconNotifications}>
-                    <IconNotifications />
-                </div>
-            </Link>
+            <DropdownNotifications/>
         }
         {
             !!isConnected() &&

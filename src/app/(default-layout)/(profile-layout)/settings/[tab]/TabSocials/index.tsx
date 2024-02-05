@@ -80,7 +80,7 @@ export default function TabSocials() {
                     router.replace(pathname)
                 })
         }
-    }, [])
+    }, [mutateAsync, pathname, refetch, router, searchParams])
 
     const {mutate: mutateDelete} = useSocialsDelete()
 

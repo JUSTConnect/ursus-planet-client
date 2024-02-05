@@ -27,7 +27,7 @@ export default function Modal({
                 setActive(false)
             }
         })
-    }, [])
+    }, [setActive])
 
     const getClassName = () => {
         return [
