@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { IoIosArrowDown } from 'react-icons/io'
+
 import css from './index.module.scss'
 import iconArrowDown from './img/arrow-down.svg'
 
@@ -48,11 +50,8 @@ export default function MenuMobile(props: IMenuMobile) {
                     >
                         {item.name}
                         {item.children &&
-                            <Image
-                                className={css.menuBottomItemArrow}
-                                src={iconArrowDown}
-                                alt='arrow'
-                            />
+                            <IoIosArrowDown
+                                className={css.menuBottomItemArrow}/>
                         }
                     </div>
             )}

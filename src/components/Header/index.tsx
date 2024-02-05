@@ -118,10 +118,12 @@ export default function Header() {
 
     return <header className={css.header}>
         <Container className={css.headerContainer}>
-            <Link href='/'>
-                <Image className={css.logo} src={logo} alt='logo' />
-            </Link>
-            <Menu items={menu}/>
+            <div className={css.sectionLeft}>
+                <Link href='/'>
+                    <Image className={css.logo} src={logo} alt='logo' />
+                </Link>
+                <Menu items={menu}/>
+            </div>
             <SectionRight/>
         </Container>
         <MenuMobile items={menu}/>
