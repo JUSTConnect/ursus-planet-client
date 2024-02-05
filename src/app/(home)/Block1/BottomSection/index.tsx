@@ -23,7 +23,7 @@ import Stack from '@/components/core/Stack'
 
 export default function Block2() {
     const dispatch = useDispatch()
-    const {seasonCurrent, seasonActive, seasonAvailable} = useSelector((state: RootState) => state.tmp)
+    const {seasonCurrent, seasonActive} = useSelector((state: RootState) => state.tmp)
 
     return <div className={css.wrapper}>
         <div className={css.bgDrop}></div>

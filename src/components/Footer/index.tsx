@@ -28,8 +28,8 @@ export default function Footer() {
                             Planet
                         </div>
                         <Link className={css.linksLink} href='#'>Discover</Link>
-                        <Link className={css.linksLink} href='#'>Universe</Link>
-                        <Link className={css.linksLink} href='#'>Leaderboard</Link>
+                        <Link className={[css.linksLink, css.linksLinkDisabled].join(' ')} href='#'>Universe</Link>
+                        <Link className={[css.linksLink, css.linksLinkDisabled].join(' ')} href='#'>Leaderboard</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>

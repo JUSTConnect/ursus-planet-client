@@ -170,6 +170,7 @@ export default function TabProfile() {
                                                     onInput={e => setUsernameValue(e.currentTarget.value)}
                                                     name='username'
                                                     error={((error as AxiosError)?.response?.data as any)?.username}
+                                                    placeholder='Set your username'
                                                 />
                                             </Stack>
                                         </Box>
@@ -220,6 +221,7 @@ export default function TabProfile() {
                                             iconStart={
                                                 <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />
                                             }
+                                            placeholder='Set your email'
                                         />
                                     </div>
                                     <input type="submit" hidden ref={usernameFormSubmit} />

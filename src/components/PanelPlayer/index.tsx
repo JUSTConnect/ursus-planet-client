@@ -29,9 +29,9 @@ export default function Top(props: Props)
 
     return <Container className={css.wrapper}>
         <Container className={css.top}>
-            <Link href='/account'>
-                <Avatar src={data?.avatar} className={css.avatar}/>
-            </Link>
+            <Avatar src={data?.avatar} className={css.avatar}/>
+            {/* <Link href='/account'>
+            </Link> */}
             <div className={css.info}>
                 <div className={css.points}>
                     <div className={css.point}>
@@ -51,8 +51,8 @@ export default function Top(props: Props)
                         {Number.isInteger(data?.points) ? data?.points : 'Loading...'}
                     </div>
                 </div>
-                <div className={css.username}>
-                    {data?.username || 'Loading...'}
+                <div className={[css.username, data?.username===null && css.usernameDisabled].join(' ')}>
+                    {data?.username===null ? 'No Username' : data?.username || 'Loading...'}
                 </div>
                 <div className={css.button}>
                     {/* <div className={ css.wallets }>

@@ -38,10 +38,10 @@
         width: 94px !important;
     }
 
-    &:hover
-    {
-        opacity: .8;
-    }
+    // &:hover
+    // {
+    //     opacity: .8;
+    // }
 }
 
 .points
@@ -79,6 +79,11 @@
     {
         font-size: 18px;
         margin-bottom: 24px;
+    }
+
+    &Disabled
+    {
+        opacity: .3;
     }
 }
 

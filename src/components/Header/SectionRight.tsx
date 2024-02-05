@@ -86,15 +86,15 @@ export default function SectionRight() {
                     icon: <CgLogOut />,
                     onClick: () => { disconnectMetaMask(); mutate(null) }
                 },
-                {
-                    name: 'Player',
-                    icon: <FaPlay />,
-                    link: '/account'
-                },
-                {
-                    name: 'Project',
-                    icon: <SiOpenlayers />
-                },
+                // {
+                //     name: 'Player',
+                //     icon: <FaPlay />,
+                //     link: '/account'
+                // },
+                // {
+                //     name: 'Project',
+                //     icon: <SiOpenlayers />
+                // },
                 {
                     name: 'Settings',
                     icon: <IoMdSettings />,

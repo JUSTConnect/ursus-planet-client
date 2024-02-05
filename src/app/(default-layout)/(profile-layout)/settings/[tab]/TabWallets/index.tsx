@@ -83,6 +83,7 @@ export default function TabProfile() {
                                     iconStart={<Image src={iconSol} alt='icon'/>}
                                     color='gray'
                                     fullWidth
+                                    disabled
                                 >
                                     Solana
                                 </Button>
@@ -90,6 +91,7 @@ export default function TabProfile() {
                                     iconStart={<IconAptos/>}
                                     color='gray'
                                     fullWidth
+                                    disabled
                                 >
                                     Aptos
                                 </Button>
@@ -97,6 +99,7 @@ export default function TabProfile() {
                                     iconStart={<Image src={iconSui} alt='icon'/>}
                                     color='gray'
                                     fullWidth
+                                    disabled
                                 >
                                     Sui
                                 </Button>

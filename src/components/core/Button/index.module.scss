@@ -78,7 +78,7 @@
     color: var(--color-white);
     background: var(--color-gray);
 
-    &:hover
+    &:hover:not(:disabled)
     {
         color: var(--color-black);
         background: var(--color-white);
