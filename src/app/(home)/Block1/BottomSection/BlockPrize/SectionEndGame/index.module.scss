@@ -1,0 +1,20 @@
+.section
+{
+    margin-bottom: 1.5rem;
+}
+
+.bar
+{
+    background: #1C1931;
+    border-radius: 100px;
+    overflow: hidden;
+
+    margin-bottom: 1rem;
+    
+    & div
+    {
+        height: .4rem;
+        background: #2548A9;
+        width: 50%;
+    }
+}

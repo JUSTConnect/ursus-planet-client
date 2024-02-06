@@ -45,6 +45,9 @@
 		{
 			"path": "src/app/(default-layout)/(profile-layout)/settings/[tab]/TabSocials/"
 		},
+		{
+			"path": "src/app/(home)/Block1/BottomSection/"
+		},
 	],
 	"settings": {
 		"nuxt.isNuxtApp": false

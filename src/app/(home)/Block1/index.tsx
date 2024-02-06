@@ -32,51 +32,53 @@ export default function Block1() {
     const {isConnected} = useMetaMask()
 
     return <Box className={css.wrapper}>
-        <Image className={css.bgSpace} src={bgSpace} alt='bg'/>
-        <div className={css.bgRForest}>
-            <Image src={bgRForest} alt='bg relief'/>
-        </div>
-        <div className={css.bgLForest}>
-            <Image src={bgLForest} alt='bg relief'/>
-        </div>
-        <Image className={css.bgRelief} src={bgRelief} alt='bg relief'/>
-        <Header/>
-        <Container className={css.intro}>
-            <div>
-                <Image
-                    className={css.introFigure}
-                    src={figureUrsa}
-                    alt='figure-ursa'
-                />
-                <Typography
-                    className={css.introHeading}
-                    variant="h1"
-                >
-                    Who are you?
-                </Typography>
+        <div className={css.topSection}>
+            <Image className={css.bgSpace} src={bgSpace} alt='bg'/>
+            <div className={css.bgRForest}>
+                <Image src={bgRForest} alt='bg relief'/>
             </div>
-            <Stack fullWidth justifyCenter>
-                <Button
-                    onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
-                    size='lg'
-                    color={isConnected() ? 'primary' : 'dark'}
-                    iconStart={<FaPlay />}
-                    className={css.introButton}
-                >
-                    PLAYER
-                </Button>
-                <Button
-                    onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
-                    size='lg'
-                    color="dark"
-                    iconStart={<SiOpenlayers />}
-                    className={css.introButton}
-                    disabled={isConnected()}
-                >
-                    PROJECT
-                </Button>
-            </Stack>
-        </Container>
+            <div className={css.bgLForest}>
+                <Image src={bgLForest} alt='bg relief'/>
+            </div>
+            <Image className={css.bgRelief} src={bgRelief} alt='bg relief'/>
+            <Header/>
+            <Container className={css.intro}>
+                <div>
+                    <Image
+                        className={css.introFigure}
+                        src={figureUrsa}
+                        alt='figure-ursa'
+                    />
+                    <Typography
+                        className={css.introHeading}
+                        variant="h1"
+                    >
+                        Who are you?
+                    </Typography>
+                </div>
+                <Stack fullWidth justifyCenter>
+                    <Button
+                        onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
+                        size='lg'
+                        color={isConnected() ? 'primary' : 'dark'}
+                        iconStart={<FaPlay />}
+                        className={css.introButton}
+                    >
+                        PLAYER
+                    </Button>
+                    <Button
+                        onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
+                        size='lg'
+                        color="dark"
+                        iconStart={<SiOpenlayers />}
+                        className={css.introButton}
+                        disabled={isConnected()}
+                    >
+                        PROJECT
+                    </Button>
+                </Stack>
+            </Container>
+        </div>
         <BottomSection/>
     </Box>
 }

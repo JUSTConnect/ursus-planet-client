@@ -1,0 +1,36 @@
+@import '@mixins';
+
+.heading {
+    margin-bottom: 3rem;
+
+    @include tablet {
+        margin-bottom: 2rem;
+    }
+
+    @include mobile {
+        font-size: 30px;
+    }
+
+    & [class*=Stack] {
+        gap: 1rem !important;
+
+        @include mobile {
+            gap: .8rem !important;
+        }
+    }
+
+    &Icon {
+        width: 60px;
+        height: 60px;
+
+        @include tablet {
+            height: 48px;
+            width: 48px;
+        }
+
+        @include mobile {
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
