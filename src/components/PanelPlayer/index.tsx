@@ -59,6 +59,7 @@ export default function Top(props: Props)
                     {/* <div className={ css.wallets }>
                         <Image className={css.wallet} src={wallet1} alt='wallet'/>
                     </div> */}
+                    <div></div>
                     {
                         !pathname.startsWith('/settings') &&
                             <>
