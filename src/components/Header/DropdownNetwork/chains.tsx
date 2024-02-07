@@ -1,4 +1,23 @@
 const chains: {[key: string]: {}} = {
+    '0x89': {
+        "chainId": "0x89",
+        "chainName": "Polygon Mainnet",
+        "rpcUrls": [
+            "https://polygon.meowrpc.com"
+        ],
+        "iconUrls": [
+            "https://cryptologos.cc/logos/polygon-matic-logo.png?v=029",
+            "https://cryptologos.cc/logos/polygon-matic-logo.svg?v=029"
+        ],
+        "nativeCurrency": {
+            "name": "MATIC",
+            "symbol": "MATIC",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://polygonscan.com/"
+        ]
+    },
     '0x38': {
         "chainId": "0x38",
         "chainName": "BNB Chain",

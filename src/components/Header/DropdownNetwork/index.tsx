@@ -29,7 +29,7 @@ const items: Item[] = [
     {
         value: 'polygon',
         icon: iconPolygon,
-        chain_id: '0x1'
+        chain_id: '0x89'
     },
     {
         value: 'bnb',
@@ -94,7 +94,7 @@ export default function DropdownNetwork(props: IDropdownNetwork) {
             onClick={() => setActive(!active)}
         >
             {
-                !['0x1', '0x38', '0xa4b1'].includes(props.chain) ?
+                !['0x89', '0x38', '0xa4b1'].includes(props.chain) ?
                     <Image
                         className={css.icon}
                         src={iconInvalid}
