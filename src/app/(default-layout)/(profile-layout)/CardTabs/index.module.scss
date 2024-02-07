@@ -1,0 +1,12 @@
+@import '@mixins';
+
+
+.tabs
+{
+    display: none;
+
+    @include tablet
+    {
+        display: flex;
+    }
+}
