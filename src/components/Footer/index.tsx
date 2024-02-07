@@ -35,18 +35,18 @@ export default function Footer() {
                         <div className={css.linksHeading}>
                             About
                         </div>
-                        <Link className={css.linksLink} href='#'>Docs</Link>
-                        <Link className={css.linksLink} href='#'>Docs</Link>
+                        <Link className={css.linksLink} href='https://docs-project.ursasplanet.com'>Docs project</Link>
+                        <Link className={css.linksLink} href='https://docs.ursasplanet.com'>Docs platform</Link>
                         <Link className={css.linksLink} href='#'>Brand Kit</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>
                             Community
                         </div>
-                        <Link className={css.linksLink} href='#'>Medium</Link>
-                        <Link className={css.linksLink} href='#'>Twitter</Link>
-                        <Link className={css.linksLink} href='#'>Telegram</Link>
-                        <Link className={css.linksLink} href='#'>Discord</Link>
+                        <Link className={css.linksLink} href='https://medium.com/@TEDDY_Arrr'>Medium</Link>
+                        <Link className={css.linksLink} href='https://twitter.com/UrsasPlanet'>Twitter</Link>
+                        <Link className={css.linksLink} href='https://t.me/ursasplanet'>Telegram</Link>
+                        <Link className={css.linksLink} href='https://discord.gg/ursas'>Discord</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>
