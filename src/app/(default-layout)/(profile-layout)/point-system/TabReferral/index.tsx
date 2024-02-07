@@ -32,6 +32,7 @@ type TabName = 'code' | 'info'
 export default function TabProfile() {
 
     const [activeTab, setActiveTab] = useState<TabName>('code')
+    const [isCopied, setIsCopied] = useState(false)
 
     const mobileTabs: ICardTab[] = [
         {
@@ -45,6 +46,14 @@ export default function TabProfile() {
             icon: <FaInfoCircle />
         }
     ]
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText('4t43g554ehgb54reregergerg');
+        setIsCopied(true)
+        setTimeout(() => {
+            setIsCopied(false)
+        }, 1000)
+    }
 
     return <Container>
         <CardTabs
@@ -94,10 +103,20 @@ export default function TabProfile() {
                         <div className={css.codeBottomCode}>
                             Your referal code : 4t43g554ehgb54reregergerg
                         </div>
-                        <Box>
-                            <Button className={css.codeBottomButton} color='white'>Copy link</Button>
-                        </Box>
-                        <FaCopy className={css.codeBottomButtonMobile} />
+                        <Button
+                            onClick={handleCopy}
+                            className={css.codeBottomButton}
+                            color='white'
+                            disabled={isCopied}
+                        >
+                            {
+                                isCopied ?
+                                    'Copied'
+                                    :
+                                    'Copy'
+                            }
+                        </Button>
+                        <FaCopy onClick={handleCopy} className={css.codeBottomButtonMobile} />
                     </Box>
                 </CardBody>
             </Card>
@@ -121,8 +140,8 @@ export default function TabProfile() {
                             <Table.Body>
                                 {
                                     Array.from(Array(5)).map((_, index)=>
-                                        <Table.Row>
-                                            <Table.RowHeaderCell>1. Username</Table.RowHeaderCell>
+                                        <Table.Row key={index}>
+                                            <Table.RowHeaderCell>{index}. Username</Table.RowHeaderCell>
                                             <Table.Cell>0x0ad6a1b701edde68520538d502c16900a1ee73f5</Table.Cell>
                                             <Table.Cell>101</Table.Cell>
                                         </Table.Row>

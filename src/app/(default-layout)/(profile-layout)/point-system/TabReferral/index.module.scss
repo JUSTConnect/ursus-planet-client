@@ -86,6 +86,14 @@
 
     &Button
     {
+        max-width: 200px;
+        width: 100%;
+
+        @include tablet
+        {
+            max-width: 100px;
+        }
+
         @include mobile
         {
             display: none;
@@ -170,6 +178,7 @@
 
     & td, & th
     {
+        color: var(--color-white);
         padding: 1rem !important;
     }
 }

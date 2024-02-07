@@ -57,7 +57,7 @@ export default function TabProfile() {
                         <div className={css.items}>
                             {
                                 Array.from(Array(5)).map((_, index) =>
-                                    <Item title='Follow project on platform' points={150} connect />
+                                    <Item key={index} title='Follow project on platform' points={150} connect />
                                 )
                             }
                             <Item title='Follow project on platform' points={150} connect follow />
@@ -79,7 +79,7 @@ export default function TabProfile() {
                         <div className={css.items}>
                             {
                                 Array.from(Array(5)).map((_, index) =>
-                                    <Item title='Follow project on platform' points={150} connect />
+                                    <Item key={index} title='Follow project on platform' points={150} connect />
                                 )
                             }
                             <Item title='Follow project on platform' points={150} connect follow />
