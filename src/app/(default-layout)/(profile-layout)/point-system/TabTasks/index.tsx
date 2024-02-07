@@ -8,10 +8,14 @@ import { PiFlagBannerFill } from "react-icons/pi";
 import { CardBody, CardFooter } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
+
 import CardTabs from '../../CardTabs'
 import Card from '../../Card'
 import CardHead from '../../CardHead'
 import Cards from '../../Cards'
+
+import css from './index.module.scss'
+import Item from './Item'
 
 
 type TabName = 'projects' | 'platform'
@@ -24,12 +28,12 @@ export default function TabProfile() {
     const mobileTabs: ICardTab[] = [
         {
             value: 'projects',
-            title: 'Avatar',
+            title: 'Mission project',
             icon: <IoIosAlarm />
         },
         {
             value: 'platform',
-            title: 'Profile',
+            title: 'Mission platform',
             icon: <PiFlagBannerFill />
         }
     ]
@@ -46,11 +50,20 @@ export default function TabProfile() {
             >
                 <div>
                     <CardHead
-                        title='Avatar'
-                        icon={<IoIosAlarm />}   
+                        title='Mission project'
+                        icon={<IoIosAlarm />}
                     />
                     <CardBody>
-
+                        <div className={css.items}>
+                            {
+                                Array.from(Array(5)).map((_, index) =>
+                                    <Item title='Follow project on platform' points={150} connect />
+                                )
+                            }
+                            <Item title='Follow project on platform' points={150} connect follow />
+                            <Item title='Follow project on platform' points={150} />
+                            <Item title='Follow project on platform' points={150} done />
+                        </div>
                     </CardBody>
                 </div>
             </Card>
@@ -59,10 +72,20 @@ export default function TabProfile() {
             >
                 <div>
                     <CardHead
-                        title='Profile'
-                        icon={<PiFlagBannerFill/>}
+                        title='Mission Platform'
+                        icon={<PiFlagBannerFill />}
                     />
                     <CardBody>
+                        <div className={css.items}>
+                            {
+                                Array.from(Array(5)).map((_, index) =>
+                                    <Item title='Follow project on platform' points={150} connect />
+                                )
+                            }
+                            <Item title='Follow project on platform' points={150} connect follow />
+                            <Item title='Follow project on platform' points={150} />
+                            <Item title='Follow project on platform' points={150} done />
+                        </div>
                     </CardBody>
                 </div>
             </Card>

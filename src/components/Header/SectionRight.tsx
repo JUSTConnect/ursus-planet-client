@@ -8,6 +8,7 @@ import { CgLogOut } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
 import { FaWallet } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { RiArrowRightDoubleFill } from "react-icons/ri";
 
 import { useMetaMask } from '@/hooks/useMetamask';
 import { useLogout } from '@/hooks/react-query/web3auth';
@@ -95,6 +96,11 @@ export default function SectionRight() {
                     name: 'Settings',
                     icon: <IoMdSettings />,
                     link: '/settings/profile/'
+                },
+                {
+                    name: 'Point system',
+                    icon: <RiArrowRightDoubleFill />,
+                    link: '/point-system/'
                 },
             ]}
         >
