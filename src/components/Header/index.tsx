@@ -3,6 +3,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { ImSpades } from "react-icons/im";
+import { TbFreeRights } from "react-icons/tb";
+import { FaHeart } from "react-icons/fa6";
+import { GiNextButton } from "react-icons/gi";
+import { FaDroplet } from "react-icons/fa6";
+import { FaLayerGroup } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
+import { IoDocumentText } from "react-icons/io5";
+import { FaStar } from "react-icons/fa";
+import { IoExtensionPuzzle } from "react-icons/io5";
+import { FiShare2 } from "react-icons/fi";
+import { MdSupport } from "react-icons/md";
+
+
 import css from './index.module.scss'
 import logo from './img/logo.svg'
 
@@ -44,27 +58,27 @@ const menu: IMenuItem[] = [
                 {
                     name: 'Main',
                     value: 'main',
-                    icon: <IconMain />
+                    icon: <ImSpades />
                 },
                 {
                     name: 'Free',
                     value: 'free',
-                    icon: <IconFree />
+                    icon: <TbFreeRights />
                 },
                 {
                     name: 'Best',
                     value: 'best',
-                    icon: <IconBest />
+                    icon: <FaHeart />
                 },
                 {
                     name: 'Upcoming',
                     value: 'upcoming',
-                    icon: <IconUpcoming />
+                    icon: <GiNextButton />
                 },
                 {
                     name: 'Your Drops',
                     value: 'your-drops',
-                    icon: <IconYourDrops />
+                    icon: <FaDroplet />
                 }
         ]
     },
@@ -77,12 +91,12 @@ const menu: IMenuItem[] = [
             {
                 name: 'Projects',
                 value: 'main',
-                icon: <IconProjects />
+                icon: <FaLayerGroup />
             },
             {
                 name: 'Players',
                 value: 'free',
-                icon: <IconPlayers />
+                icon: <FaPlay />
             },
         ]
     },
@@ -91,23 +105,23 @@ const menu: IMenuItem[] = [
         children: [
             {
                 name: 'Docs',
-                icon: <IconDocs />
+                icon: <IoDocumentText />
             },
             {
                 name: 'Careers',
-                icon: <IconCareers />
+                icon: <FaStar />
             },
             {
                 name: 'Brand kit',
-                icon: <IconBrandKit />
+                icon: <IoExtensionPuzzle />
             },
             {
                 name: 'Media',
-                icon: <IconMedia />
+                icon: <FiShare2 />
             },
             {
                 name: 'Support',
-                icon: <IconSupport />
+                icon: <MdSupport />
             },
         ]
     }
