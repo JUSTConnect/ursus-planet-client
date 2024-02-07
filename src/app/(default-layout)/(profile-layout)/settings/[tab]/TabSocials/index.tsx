@@ -33,6 +33,7 @@ import Stack from '@/components/core/Stack'
 import Typography from '@/components/core/Typography'
 import { Input } from '@/components/core/Input'
 import Modal from '@/components/core/Modal'
+import CardLoader from '@/components/CardLoader'
 
 
 import {
@@ -61,7 +62,7 @@ export default function TabSocials() {
     const searchParams = useSearchParams()
     const [modalTelegram, setModalTelegram] = useState(false)
 
-    const {data, refetch} = useSocials()
+    const {data, isLoading, refetch} = useSocials()
     const {data: configData} = useSocialConfig()
 
     const {mutateAsync} = useAuth()
@@ -146,64 +147,68 @@ export default function TabSocials() {
                 sections.map(section =>
                     <Card key={section.title}>
                         <CardBody className={css.cardSocialBody}>
-                            <Image className={css.cardSocialBgDrop} src={bgDrop} alt='bg drop'/>
-                            <div>
-                                <Typography
-                                    className={css.cardSocialTitle}
-                                    variant='p'
-                                >
-                                    { section.title === 'X' ? 'X account' : section.title }
-                                </Typography>
-                                <Typography
-                                    className={css.cardSocialDescription}
-                                    variant='p'
-                                >
-                                    Connect your {section.title} account to the application to be able to quickly complete tasks.
-                                </Typography>
-                            </div>
-                            <Typography color='error' variant='p'>
-                                {section.error?.response?.data?.detail}
-                            </Typography>
-                            <div>
-                                <Image className={css.cardSocialFigure} src={section.figure} alt='figure'/>
-                                { data && data[section.name] ?
-                                    <Stack gap={.5} className={css.cardSocialForm} fullWidth alignCenter>
-                                        <Input
-                                            fullWidth
-                                            value={data[section.name]||''}
-                                            onChange={() => {}}
-                                            iconStart={<Image src={iconOk} alt='icon'/>}
-                                        />
-                                        <Link href={section.link||'#'}>
-                                            <ButtonIcon
-                                                onClick={() => {section.name === 'telegram' && setModalTelegram(true)}}
-                                                className={css.cardSocialButtonIcon}
-                                                color='gray'
-                                            >
-                                                <Image src={iconReload} alt='icon'/>
-                                            </ButtonIcon>
-                                        </Link>
-                                        <div>
-                                            <ButtonIcon onClick={() => handleDelete(section.name)} className={css.cardSocialButtonIcon} color='gray'>
-                                                <Image src={iconDelete} alt='icon'/>
-                                            </ButtonIcon>
-                                        </div>
-                                    </Stack>
-                                :
-                                    <Link href={section.link||'#'}>
-                                        <Button
-                                            className={css.cardSocialButton}
-                                            iconStart={<Image src={section.icon} alt='icon'/>}
-                                            color='dark'
-                                            animated
-                                            onClick={ section.name === 'telegram' ? () => setModalTelegram(true) : undefined }
-                                            hovered
+                            {
+                                !isLoading ? <>
+                                    <Image className={css.cardSocialBgDrop} src={bgDrop} alt='bg drop'/>
+                                    <div>
+                                        <Typography
+                                            className={css.cardSocialTitle}
+                                            variant='p'
                                         >
-                                            Connect account
-                                        </Button>
-                                    </Link>
-                                }
-                            </div>
+                                            { section.title === 'X' ? 'X account' : section.title }
+                                        </Typography>
+                                        <Typography
+                                            className={css.cardSocialDescription}
+                                            variant='p'
+                                        >
+                                            Connect your {section.title} account to the application to be able to quickly complete tasks.
+                                        </Typography>
+                                    </div>
+                                    <Typography color='error' variant='p'>
+                                        {section.error?.response?.data?.detail}
+                                    </Typography>
+                                    <div>
+                                        <Image className={css.cardSocialFigure} src={section.figure} alt='figure'/>
+                                        { data && data[section.name] ?
+                                            <Stack gap={.5} className={css.cardSocialForm} fullWidth alignCenter>
+                                                <Input
+                                                    fullWidth
+                                                    value={data[section.name]||''}
+                                                    onChange={() => {}}
+                                                    iconStart={<Image src={iconOk} alt='icon'/>}
+                                                />
+                                                <Link href={section.link||'#'}>
+                                                    <ButtonIcon
+                                                        onClick={() => {section.name === 'telegram' && setModalTelegram(true)}}
+                                                        className={css.cardSocialButtonIcon}
+                                                        color='gray'
+                                                    >
+                                                        <Image src={iconReload} alt='icon'/>
+                                                    </ButtonIcon>
+                                                </Link>
+                                                <div>
+                                                    <ButtonIcon onClick={() => handleDelete(section.name)} className={css.cardSocialButtonIcon} color='gray'>
+                                                        <Image src={iconDelete} alt='icon'/>
+                                                    </ButtonIcon>
+                                                </div>
+                                            </Stack>
+                                        :
+                                            <Link href={section.link||'#'}>
+                                                <Button
+                                                    className={css.cardSocialButton}
+                                                    iconStart={<Image src={section.icon} alt='icon'/>}
+                                                    color='dark'
+                                                    animated
+                                                    onClick={ section.name === 'telegram' ? () => setModalTelegram(true) : undefined }
+                                                    hovered
+                                                >
+                                                    Connect account
+                                                </Button>
+                                            </Link>
+                                        }
+                                    </div>
+                                </> : <CardLoader/>
+                            }
                         </CardBody>
                     </Card>
                 )

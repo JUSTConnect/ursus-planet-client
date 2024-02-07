@@ -12,6 +12,8 @@ import Container from "@/components/core/Container"
 import ModalEmail from '@/components/ModalEmail'
 import Typography from '@/components/core/Typography'
 import Switch from '@/components/core/Switch'
+import CardLoader from '@/components/CardLoader'
+
 import BlockFrequency from './BlockFrequency'
 
 import css from './index.module.scss'
@@ -85,7 +87,7 @@ export default function TabProfile() {
                     </CardHead>
                     <CardBody className={css.cardBody}>
                         {
-                            isLoading ? 'Loading...' :
+                            isLoading ? <CardLoader/> :
                             <form onSubmit={handleSubmitSettings}>
                                 <Typography variant='p'>Cabinet notification</Typography>
                                 <div className={css.blockSubscription}>

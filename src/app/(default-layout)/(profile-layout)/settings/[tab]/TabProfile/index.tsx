@@ -21,6 +21,7 @@ import Checkbox from '@/components/core/Checkbox'
 import Box from '@/components/core/Box'
 import Scroller from '@/components/core/Scroller'
 import CardTabs, { ICardTab } from '@/components/CardTabs'
+import CardLoader from '@/components/CardLoader'
 
 import ModalEmail from '@/components/ModalEmail'
 import { AxiosError } from 'axios'
@@ -127,7 +128,7 @@ export default function TabProfile() {
                                     </Stack>
                                     <input type='submit' hidden ref={avatarFormSubmit}/>
                                 </form>
-                                : 'Loading'
+                                : <CardLoader/>
                         }
                     </CardBody>
                 </div>
@@ -226,8 +227,7 @@ export default function TabProfile() {
                                     </div>
                                     <input type="submit" hidden ref={usernameFormSubmit} />
                                 </form>
-                                :
-                                'Loading...'
+                                : <CardLoader/>
                         }
                     </CardBody>
                 </div>
