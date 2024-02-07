@@ -1,0 +1,24 @@
+.wrapper
+{
+    background: var(--color-white);
+    border-radius: .2rem;
+    animation: wrapper 1s ease infinite;
+    height: 1em;
+}
+
+@keyframes wrapper {
+    from
+    {
+        opacity: .3;
+    };
+
+    50%
+    {
+        opacity: .5;
+    };
+
+    to
+    {
+        opacity: .3;
+    };
+}

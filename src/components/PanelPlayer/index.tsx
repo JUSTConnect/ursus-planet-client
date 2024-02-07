@@ -15,6 +15,7 @@ import { useUsersSelf } from '@/hooks/react-query/users'
 import Container from '@/components/core/Container'
 import Avatar from '@/components/Avatar'
 import Button from '@/components/core/Button'
+import Skeleton from '@/components/core/Skeleton'
 
 
 interface Props
@@ -40,7 +41,7 @@ export default function Top(props: Props)
                             src={ crown }
                             alt='crown'
                         />
-                        {Number.isInteger(data?.points) ? '...' : 'Loading...'}
+                        {Number.isInteger(data?.points) ? '...' : <Skeleton length={3}/>}
                     </div>
                     <div className={css.point}>
                         <Image
@@ -48,11 +49,11 @@ export default function Top(props: Props)
                             src={ asterisk }
                             alt='asterisk'
                         />
-                        {Number.isInteger(data?.points) ? data?.points : 'Loading...'}
+                        {Number.isInteger(data?.points) ? data?.points : <Skeleton length={3}/>}
                     </div>
                 </div>
                 <div className={[css.username, data?.username===null && css.usernameDisabled].join(' ')}>
-                    {data?.username===null ? 'No Username' : data?.username || 'Loading...'}
+                    {data?.username===null ? 'No Username' : data?.username || <Skeleton length={10}/>}
                 </div>
                 <div className={css.button}>
                     {/* <div className={ css.wallets }>
