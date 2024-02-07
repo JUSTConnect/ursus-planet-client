@@ -111,7 +111,7 @@ export default function TabProfile() {
                                     </Typography>
                                     <Stack gap={1.5}>
                                         <div>
-                                            <Avatar src={avatar || data?.avatar} className={css.avatar} />
+                                            <Avatar isLoading={isLoading} colors={data} src={avatar || data?.avatar} className={css.avatar} />
                                         </div>
                                         <div>
                                             <div className={css.avatarRecommend}>

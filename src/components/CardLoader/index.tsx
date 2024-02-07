@@ -9,7 +9,7 @@ function CardLoader() {
     return <div className={css.wrapper}>
         <RotatingLines
             visible={true}
-            width="2rem"
+            width="3rem"
             strokeWidth="5"
             animationDuration="0.75"
             ariaLabel="rotating-lines-loading"

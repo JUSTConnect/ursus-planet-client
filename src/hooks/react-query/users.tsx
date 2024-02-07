@@ -23,6 +23,11 @@ interface IUser {
     groups: any[]
     user_permissions: any[]
     points: number
+    color1: string
+    color2: string
+    color3: string
+    color4: string
+    color5: string
 }
 
 

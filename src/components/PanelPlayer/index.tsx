@@ -24,12 +24,12 @@ interface Props
 
 export default function Top(props: Props)
 {
-    const {data} = useUsersSelf()
+    const {data, isLoading} = useUsersSelf()
     const pathname = usePathname()
 
     return <Container className={css.wrapper}>
         <Container className={css.top}>
-            <Avatar src={data?.avatar} className={css.avatar}/>
+            <Avatar isLoading={isLoading} colors={data} src={data?.avatar} className={css.avatar}/>
             {/* <Link href='/account'>
             </Link> */}
             <div className={css.info}>
