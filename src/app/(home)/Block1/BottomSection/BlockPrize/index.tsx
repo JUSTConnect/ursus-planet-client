@@ -16,6 +16,7 @@ import BlockHeading from '../HeadingBlock';
 import SectionNFT from './SectionNFT';
 import SectionEndGame from './SectionEndGame';
 import UnitNFTRaffle from './UnitNFTRaffle';
+import UnitWinList from './UnitWinList';
 
 
 export default function BlockPrize() {
@@ -27,11 +28,7 @@ export default function BlockPrize() {
         <Box className={css.grid}>
             <Box>
                 <UnitNFTRaffle/>
-                <UnitValue
-                    title='Win list'
-                    value='1'
-                    icon={<FaTrophy/>}
-                />
+                <UnitWinList/>
                 <SectionEndGame/>
             </Box>
             <Box>
@@ -42,11 +39,7 @@ export default function BlockPrize() {
             </Box>
             <Box>
                 <Box className={css.winListTablet}>
-                    <UnitValue
-                        title='Win list'
-                        value='1'
-                        icon={<FaTrophy/>}
-                    />
+                    <UnitWinList/>
                 </Box>
                 <UnitValue
                     title='Participants'

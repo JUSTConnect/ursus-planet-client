@@ -14,3 +14,12 @@
         width: 50%;
     }
 }
+
+.unitWinList
+{
+    display: none;
+
+    @media (max-width: 775px) {
+        display: block;
+    }
+}

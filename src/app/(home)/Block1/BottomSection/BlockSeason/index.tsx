@@ -8,9 +8,11 @@ import css from './index.module.scss'
 import iconSeason from './img/icon-season.svg'
 
 import { RootState } from '@/store'
+import Box from '@/components/core/Box';
 
 import BlockHeading from '../HeadingBlock';
 import UnitValue from '../UnitValue'
+import UnitWinList from '../BlockPrize/UnitWinList';
 
 
 export default function BlockSession() {
@@ -21,6 +23,9 @@ export default function BlockSession() {
             title={`Season ${seasonActive}`}
             icon={iconSeason}
         />
+        <Box className={css.unitWinList}>
+            <UnitWinList/>
+        </Box>
         <UnitValue
             title='Game start date'
             value='13 March 2024 00:01'

@@ -67,3 +67,10 @@
         display: block;
     }
 }
+
+.winListTablet
+{
+    @media (max-width: 775px) {
+        display: none;
+    }
+}
