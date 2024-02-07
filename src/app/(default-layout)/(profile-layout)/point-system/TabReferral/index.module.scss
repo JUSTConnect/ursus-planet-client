@@ -1,0 +1,175 @@
+@import '@mixins';
+
+.figure
+{
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem;
+
+    & img
+    {
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 2;
+    }
+
+    &::before
+    {
+        content: "";
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        background: linear-gradient(270deg, #2548A9 13.06%, #41B4D8 41.17%, #BA89C2 71.1%);
+        filter: blur(60px);
+        opacity: .15;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        
+        // @include tablet
+        // {
+        //     display: none;
+        // }
+    }
+
+    @include tablet
+    {
+        margin: 1rem;
+    }
+
+    @include mobile
+    {
+        display: none;
+    }
+}
+
+.codeBody
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.codeTop
+{
+    display: flex;
+    align-items: center;
+}
+
+.codeBottom
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1B1831;
+    padding: .5rem;
+    padding-left: 1rem;
+    border-radius: 100px;
+    gap: 1rem;
+
+    &Code
+    {
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    @include mobile
+    {
+        padding: 1rem;
+    }
+
+    &Button
+    {
+        @include mobile
+        {
+            display: none;
+        }
+    }
+
+    &ButtonMobile
+    {
+        display: none;
+
+        @include mobile
+        {
+            display: block;
+        }
+    }
+}
+
+.codeMessage
+{
+    position: relative;
+    background: #1C1931;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+
+    &Bottom
+    {
+        position: absolute;
+        bottom: 0;
+        left: 1.5rem;
+        transform: translateY(100%);
+    }
+
+    @include mobile
+    {
+        background: transparent;
+        padding: 0;
+
+        &Bottom
+        {
+            display: none;
+        }
+    }
+}
+
+.codeDescription
+{
+    margin-bottom: 1.5rem;
+}
+
+.codeContent
+{
+    max-width: 400px;
+    width: 100%;
+}
+
+.points
+{
+    color: #FF8300;
+    font-weight: bold;
+}
+
+.infoNote
+{
+    margin-bottom: 1rem;
+}
+
+.infoValue
+{
+    font-weight: bold;
+}
+
+.infoNoteTitle
+{
+    font-size: 1.5rem;
+}
+
+.infoTable
+{
+    text-wrap: nowrap;
+    margin-bottom: 2rem;
+
+    & td, & th
+    {
+        padding: 1rem !important;
+    }
+}

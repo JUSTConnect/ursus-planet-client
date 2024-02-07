@@ -1,5 +1,6 @@
 'use client'
 
+import { Theme } from '@radix-ui/themes';
 import { Provider } from "react-redux"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { MetaMaskContextProvider } from "@/hooks/useMetamask"
