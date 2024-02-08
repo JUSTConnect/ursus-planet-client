@@ -12,7 +12,7 @@ function UnitNFTRaffle() {
     const seasonActive = useSelector((state: RootState) => state.tmp.seasonActive)
 
     return <Box className={css.section}>
-        <Typography variant='p'>
+        <Typography className={css.top} variant='p'>
             <Typography variant='h4' className={css.nft}>
                 {
                     seasonActive === 1 && 'WL'
@@ -35,6 +35,7 @@ function UnitNFTRaffle() {
                 seasonActive === 3 && 'Airdrop'
             }
         </Typography>
+        <Typography variant="p">&nbsp;</Typography>
     </Box>
 }
 
