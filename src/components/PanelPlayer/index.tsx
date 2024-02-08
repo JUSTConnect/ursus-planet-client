@@ -66,7 +66,7 @@ export default function Top(props: Props)
                         !pathname.startsWith('/settings') &&
                             <div>
                                 <Link href='/settings/profile'>
-                                    <Button className={css.buttonSettings}>Settings</Button>
+                                    <Button className={css.buttonSettings} hovered>Settings</Button>
                                 </Link>
                                 <Link className={css.iconSettings} href='/settings/profile'>
                                     <IoMdSettings/>
@@ -77,7 +77,7 @@ export default function Top(props: Props)
                         !pathname.startsWith('/point-system') &&
                         <div>
                             <Link href='/point-system'>
-                                <Button className={css.buttonSettings}>Point System</Button>
+                                <Button className={css.buttonSettings} hovered>Point System</Button>
                             </Link>
                             <Link className={css.iconSettings} href='/point-system'>
                                 <IoSend/>

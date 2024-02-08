@@ -10,7 +10,6 @@ import { FaLink } from "react-icons/fa6";
 import { FaCopy } from "react-icons/fa6";
 
 import { useUsersSelf } from '@/hooks/react-query/users';
-import Skeleton from '@/components/core/Skeleton';
 import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
@@ -18,6 +17,7 @@ import Box from '@/components/core/Box';
 import { Input } from '@/components/core/Input';
 import Button from '@/components/core/Button';
 import Stack from '@/components/core/Stack';
+import ModalReferralCode from '@/components/ModalReferralCode'
 
 import CardTabs from '../../CardTabs'
 import Card from '../../Card'
@@ -27,6 +27,7 @@ import Cards from '../../Cards'
 import css from './index.module.scss'
 import figure from './img/figure.svg'
 import messageBottom from './img/message-bottom.svg'
+import Skeleton from '@/components/core/Skeleton';
 
 
 type TabName = 'code' | 'info'
@@ -35,6 +36,7 @@ type TabName = 'code' | 'info'
 export default function TabProfile() {
 
     const {data, isLoading} = useUsersSelf()
+    const [isModalReferralCodeActive, setIsModalReferralCodeActive] = useState(false)
 
     const [activeTab, setActiveTab] = useState<TabName>('code')
     const [isCopied, setIsCopied] = useState(false)
@@ -103,6 +105,7 @@ export default function TabProfile() {
                                 You can get referral code in our telegram or discord chat
                             </Stack>
                             <Input
+                                onClick={ () => setIsModalReferralCodeActive(true) }
                                 placeholder='Enter referral code'
                             />
                         </Box>
@@ -184,5 +187,9 @@ export default function TabProfile() {
                 </CardBody>
             </Card>
         </Cards>
+        <ModalReferralCode
+            active={isModalReferralCodeActive}
+            setActive={setIsModalReferralCodeActive}
+        />
     </Container>
 }
