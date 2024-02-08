@@ -41,7 +41,7 @@ export default function Top(props: Props)
                             src={ crown }
                             alt='crown'
                         />
-                        {Number.isInteger(data?.points) ? '...' : <Skeleton length={3}/>}
+                        {Number.isInteger(data?.points) ? '...' : <Skeleton length={5}/>}
                     </div>
                     <div className={css.point}>
                         <Image
@@ -49,11 +49,11 @@ export default function Top(props: Props)
                             src={ asterisk }
                             alt='asterisk'
                         />
-                        {Number.isInteger(data?.points) ? data?.points : <Skeleton length={3}/>}
+                        {Number.isInteger(data?.points) ? data?.points : <Skeleton length={5}/>}
                     </div>
                 </div>
                 <div className={[css.username, data?.username===null && css.usernameDisabled].join(' ')}>
-                    {data?.username===null ? 'No Username' : data?.username || <Skeleton length={10}/>}
+                    {data?.username===null ? 'No Username' : data?.username || <Skeleton length={25}/>}
                 </div>
                 <div className={css.button}>
                     {/* <div className={ css.wallets }>
