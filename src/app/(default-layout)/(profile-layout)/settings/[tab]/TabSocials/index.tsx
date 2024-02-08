@@ -198,8 +198,8 @@ export default function TabSocials() {
                                                     className={css.cardSocialButton}
                                                     iconStart={<Image src={section.icon} alt='icon'/>}
                                                     color='dark'
-                                                    animated
                                                     onClick={ section.name === 'telegram' ? () => setModalTelegram(true) : undefined }
+                                                    animated
                                                     hovered
                                                 >
                                                     Connect account

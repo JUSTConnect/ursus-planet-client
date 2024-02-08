@@ -62,28 +62,27 @@ export default function Top(props: Props)
                     {/* <div className={ css.wallets }>
                         <Image className={css.wallet} src={wallet1} alt='wallet'/>
                     </div> */}
-                    <div></div>
                     {
                         !pathname.startsWith('/settings') &&
-                            <>
+                            <div>
                                 <Link href='/settings/profile'>
                                     <Button className={css.buttonSettings}>Settings</Button>
                                 </Link>
                                 <Link className={css.iconSettings} href='/settings/profile'>
                                     <IoMdSettings/>
                                 </Link>
-                            </>
+                            </div>
                     }
                     {
                         !pathname.startsWith('/point-system') &&
-                        <>
+                        <div>
                             <Link href='/point-system'>
                                 <Button className={css.buttonSettings}>Point System</Button>
                             </Link>
                             <Link className={css.iconSettings} href='/point-system'>
                                 <IoSend/>
                             </Link>
-                        </>
+                        </div>
                     }
                 </div>
                 
