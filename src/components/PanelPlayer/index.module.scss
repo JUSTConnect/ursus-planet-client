@@ -91,10 +91,21 @@
 {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+
+    @include tablet
+    {
+        gap: .5rem;
+    }
+
+    @include mobile {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+    }
 }
 
 .wallets
@@ -113,6 +124,8 @@
 {
     padding-left: 74px;
     padding-right: 74px;
+    max-width: 200px;
+    width: 100%;
 
     @include tablet
     {
@@ -122,20 +135,18 @@
 
     @include mobile
     {
-        display: none;
+        display: none !important;
     }
 }
 
 .iconSettings
 {
     display: none;
+    color: var(--color-primary);
 
     @include mobile
     {
         display: block;
-        position: absolute;
-        right: 16px;
-        top: 16px;
 
         & img
         {

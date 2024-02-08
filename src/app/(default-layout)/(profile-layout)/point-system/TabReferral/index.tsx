@@ -15,6 +15,7 @@ import { ICardTab } from '@/components/CardTabs'
 import Box from '@/components/core/Box';
 import { Input } from '@/components/core/Input';
 import Button from '@/components/core/Button';
+import Stack from '@/components/core/Stack';
 
 import CardTabs from '../../CardTabs'
 import Card from '../../Card'
@@ -80,10 +81,10 @@ export default function TabProfile() {
                         <Box className={css.codeContent}>
                             <Box className={css.codeMessage}>
                                 <Box mb={1}>
-                                    Enter refferal code  - <span className={css.points}>900 points</span>
+                                    Enter referral code  - <span className={css.points}>900 points</span>
                                 </Box>
                                 <Box>
-                                    Refferal player  - <span className={css.points}>900 points</span>
+                                    Referral player  - <span className={css.points}>900 points</span>
                                 </Box>
                                 <Image
                                     className={css.codeMessageBottom}
@@ -91,17 +92,20 @@ export default function TabProfile() {
                                     alt='figure'
                                 />
                             </Box>
-                            <Box className={css.codeDescription}>
-                                We recommend an image of at least 300x300. Gift work too. Max 5 mb.
-                            </Box>
+                            <Stack gap={1} alignCenter className={css.codeDescription}>
+                                <Box>
+                                    <FaInfoCircle/>
+                                </Box>
+                                You can get referral code in our telegram or discord chat
+                            </Stack>
                             <Input
-                                placeholder='Enter refferal code'
+                                placeholder='Enter referral code'
                             />
                         </Box>
                     </Box>
                     <Box className={css.codeBottom}>
                         <div className={css.codeBottomCode}>
-                            Your referal code : 4t43g554ehgb54reregergerg
+                            Your referral code : 4t43g554ehgb54reregergerg
                         </div>
                         <Button
                             onClick={handleCopy}

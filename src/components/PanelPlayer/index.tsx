@@ -4,6 +4,9 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { IoMdSettings } from "react-icons/io";
+import { IoSend } from "react-icons/io5";
+
 import css from './index.module.scss'
 import crown from './img/crown.png'
 import asterisk from './img/asterisk.png'
@@ -66,10 +69,21 @@ export default function Top(props: Props)
                                 <Link href='/settings/profile'>
                                     <Button className={css.buttonSettings}>Settings</Button>
                                 </Link>
-                                <Link className={css.iconSettings} href='/settings'>
-                                    <Image src={iconSettings} alt='icon-settings'/>
+                                <Link className={css.iconSettings} href='/settings/profile'>
+                                    <IoMdSettings/>
                                 </Link>
                             </>
+                    }
+                    {
+                        !pathname.startsWith('/point-system') &&
+                        <>
+                            <Link href='/point-system'>
+                                <Button className={css.buttonSettings}>Point System</Button>
+                            </Link>
+                            <Link className={css.iconSettings} href='/point-system'>
+                                <IoSend/>
+                            </Link>
+                        </>
                     }
                 </div>
                 

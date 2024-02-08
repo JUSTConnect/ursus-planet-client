@@ -19,7 +19,7 @@ export default function Footer() {
                         <Image className={css.logo} src={logo} alt='logo' />
                     </Link>
                     <div className={css.briefText}>
-                        Ursas Planet is the first gamefi raffle platform for building Web3 community. Noname has propelled the growth of Polygon,Arbitrum, BSC, zkSync, Solana, Aptos and other more popular networks. Noname changed game and get oppatunity for building earn all member of market.
+                        Ursas Planet is the first raffle SocialFi platform for creating a community on Web3, helping to unite projects and communities for mutual benefit. Ursas Planet strives to popularize the launch of new Web3 projects and help them grow.
                     </div>
                 </div>
                 <nav className={css.links}>
