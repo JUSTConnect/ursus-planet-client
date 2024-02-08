@@ -28,22 +28,34 @@ function Item(props: IItem) {
             {
                 props.done ?
                 <>
-                    <Stack fullWidth/>
-                    <Button className={css.button} hovered color='gray' disabled>Done</Button>
+                    <Box className={css.button}>
+                        <Stack fullWidth/>
+                    </Box>
+                    <Box className={css.button}>
+                        <Button fullWidth hovered color='gray' disabled>Done</Button>
+                    </Box>
                 </>
                 :
                 <>
                     {
                         props.connect ?
-                            <Button className={css.button} hovered color='white'>Connect</Button>
+                            <Box className={css.button}>
+                                <Button fullWidth hovered color='white'>Connect</Button>
+                            </Box>
                         :
-                            <Stack fullWidth/>
+                            <Box className={css.button}>
+                                <Stack fullWidth/>
+                            </Box>
                     }
                     {
                         props.follow ?
-                            <Button className={css.button} hovered color='white'>Follow</Button>
+                            <Box className={css.button}>
+                                <Button fullWidth hovered color='white'>Follow</Button>
+                            </Box>
                         :
-                            <Button className={css.button} hovered color='white'>Do it</Button>
+                            <Box className={css.button}>
+                                <Button fullWidth hovered color='white'>Do it</Button>
+                            </Box>
                     }
                 </>
             }

@@ -108,9 +108,10 @@
     {
         margin: 0 auto;
 
-        &Icon
+        &:hover
         {
-            padding: .6rem !important;
+            background: var(--color-white);
+            color: var(--color-black);
         }
     }
 }

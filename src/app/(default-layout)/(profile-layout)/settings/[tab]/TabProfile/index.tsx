@@ -218,7 +218,8 @@ export default function TabProfile() {
                                             onChange={ () => {} }
                                             className={css.inputEmail}
                                             iconStart={
-                                                <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />
+                                                data?.email &&
+                                                    <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />
                                             }
                                             placeholder='Set your email'
                                         />

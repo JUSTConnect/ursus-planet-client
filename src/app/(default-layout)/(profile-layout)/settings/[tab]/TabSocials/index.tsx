@@ -7,6 +7,10 @@ import { useSearchParams } from 'next/navigation'
 import { redirect } from 'next/navigation'
 import { AxiosError, AxiosResponse } from 'axios'
 
+import { FaDiscord } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaTelegram } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 import css from './index.module.scss'
 import figureDiscord from './img/figure-discord.svg'
@@ -48,7 +52,7 @@ interface Section
     title: string
     name: 'discord' | 'telegram' | 'x' | 'github'
     figure: string
-    icon: StaticImageData
+    icon: React.ReactNode
     connected: boolean
     link?: string
     onDelete?: CallableFunction
@@ -113,7 +117,7 @@ export default function TabSocials() {
             name: 'discord',
             figure: figureDiscord,
             connected: false,
-            icon: iconButtonDiscord,
+            icon: <FaDiscord/>,
             link: configData && getDiscordUrl(configData?.discord).toString(),
         },
         {
@@ -121,7 +125,7 @@ export default function TabSocials() {
             name: 'x',
             figure: figureX,
             connected: false,
-            icon: iconButtonX,
+            icon: <FaSquareXTwitter/>,
             link: configData && getXUrl(configData?.x).toString()
         },
         {
@@ -129,14 +133,14 @@ export default function TabSocials() {
             name: 'telegram',
             figure: figureTelegram,
             connected: false,
-            icon: iconButtonTelegram,
+            icon: <FaTelegram/>,
         },
         {
             title: 'Github',
             name: 'github',
             figure: figureGithub,
             connected: false,
-            icon: iconButtonGithub,
+            icon: <FaGithub/>,
             link: configData && getGithubUrl(configData?.github).toString(),
         }
     ]
@@ -196,11 +200,9 @@ export default function TabSocials() {
                                             <Link href={section.link||'#'}>
                                                 <Button
                                                     className={css.cardSocialButton}
-                                                    iconStart={<Image src={section.icon} alt='icon'/>}
+                                                    iconStart={section.icon}
                                                     color='dark'
                                                     onClick={ section.name === 'telegram' ? () => setModalTelegram(true) : undefined }
-                                                    animated
-                                                    hovered
                                                 >
                                                     Connect account
                                                 </Button>
