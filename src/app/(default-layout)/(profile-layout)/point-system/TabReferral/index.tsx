@@ -112,6 +112,7 @@ export default function TabProfile() {
                             className={css.codeBottomButton}
                             color='white'
                             disabled={isCopied}
+                            hovered
                         >
                             {
                                 isCopied ?
@@ -134,10 +135,14 @@ export default function TabProfile() {
                 <CardBody className={css.codeBody}>
                     <Box>
                         <Box mb={1}>
-                            Total referrals : <span className={css.infoValue}>30</span>
+                            Total referrals
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span className={css.infoValue}>30</span>
                         </Box>
                         <Box mb={1}>
-                            Quote of referrals : <span className={css.infoValue}>30</span>
+                            Quote of referrals
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span className={css.infoValue}>30</span>
                         </Box>
 
                         <Table.Root className={css.infoTable}>

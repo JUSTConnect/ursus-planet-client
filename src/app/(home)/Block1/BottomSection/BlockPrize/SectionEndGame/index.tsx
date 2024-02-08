@@ -15,7 +15,7 @@ function SectionEndGame() {
         <div className={css.bar}>
             <div></div>
         </div>
-        <Button fullWidth>Enter</Button>
+        <Button fullWidth hovered>Enter</Button>
     </Box>
 }
 

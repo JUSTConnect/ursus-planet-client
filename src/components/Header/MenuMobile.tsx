@@ -37,7 +37,7 @@ export default function MenuMobile(props: IMenuMobile) {
                 item.link ?
                     <Link
                         key={item.name + 'mobile'}
-                        className={css.menuBottomItem}
+                        className={[css.menuBottomItem, item.disabled && css.menuBottomItemDisabled].join(' ')}
                         href={item.link || '#'}
                     >
                         {item.name}
@@ -45,7 +45,7 @@ export default function MenuMobile(props: IMenuMobile) {
                 :
                     <div
                         key={item.name + 'mobile'}
-                        className={[css.menuBottomItem, activeDropdown === item.name && css.menuBottomItemActive].join(' ')}
+                        className={[css.menuBottomItem, activeDropdown === item.name && css.menuBottomItemActive, item.disabled && css.menuBottomItemDisabled].join(' ')}
                         onClick={() => setActiveDropdown(item.name!==activeDropdown?item.name:undefined)}
                     >
                         {item.name}

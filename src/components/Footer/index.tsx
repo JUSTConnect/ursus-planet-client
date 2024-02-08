@@ -35,9 +35,10 @@ export default function Footer() {
                         <div className={css.linksHeading}>
                             About
                         </div>
-                        <Link className={css.linksLink} href='https://docs-project.ursasplanet.com'>Docs project</Link>
-                        <Link className={css.linksLink} href='https://docs.ursasplanet.com'>Docs platform</Link>
-                        <Link className={css.linksLink} href='#'>Brand Kit</Link>
+                        <Link className={css.linksLink} href='#'>About Urs</Link>
+                        <Link className={css.linksLink} href='#'>Documents</Link>
+                        <Link className={css.linksLink} href='#'>Gitbook</Link>
+                        <Link className={css.linksLink} href='#'>Careers</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>
@@ -53,19 +54,18 @@ export default function Footer() {
                             Support
                         </div>
                         <Link className={css.linksLink} href='#'>Help</Link>
-                        <Link className={css.linksLink} href='#'>Universe</Link>
                         <Link className={css.linksLink} href='#'>Support</Link>
                     </div>
                 </nav>
             </div>
             <div className={css.footerBottom}>
                 <div>
-                    <Link href='#'>
+                    {/* <Link href='#'>
                         Terms of Service
                     </Link>&nbsp;&nbsp;&nbsp;
                     <Link href='#'>
                         Privacy Policy
-                    </Link>
+                    </Link> */}
                 </div>
                 Made by ju7tconnect © 2023
             </div>

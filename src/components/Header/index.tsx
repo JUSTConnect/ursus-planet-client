@@ -47,58 +47,61 @@ export interface IMenuItem
     name: string
     link?: string
     children?: IItem[]
+    disabled?: boolean
 }
 
 
 const menu: IMenuItem[] = [
     {
         name: "Discover",
-        children
-        : [
-                {
-                    name: 'Main',
-                    value: 'main',
-                    icon: <ImSpades />
-                },
-                {
-                    name: 'Free',
-                    value: 'free',
-                    icon: <TbFreeRights />
-                },
-                {
-                    name: 'Best',
-                    value: 'best',
-                    icon: <FaHeart />
-                },
-                {
-                    name: 'Upcoming',
-                    value: 'upcoming',
-                    icon: <GiNextButton />
-                },
-                {
-                    name: 'Your Drops',
-                    value: 'your-drops',
-                    icon: <FaDroplet />
-                }
-        ]
+        // children
+        // : [
+        //         {
+        //             name: 'Main',
+        //             value: 'main',
+        //             icon: <ImSpades />
+        //         },
+        //         {
+        //             name: 'Free',
+        //             value: 'free',
+        //             icon: <TbFreeRights />
+        //         },
+        //         {
+        //             name: 'Best',
+        //             value: 'best',
+        //             icon: <FaHeart />
+        //         },
+        //         {
+        //             name: 'Upcoming',
+        //             value: 'upcoming',
+        //             icon: <GiNextButton />
+        //         },
+        //         {
+        //             name: 'Your Drops',
+        //             value: 'your-drops',
+        //             icon: <FaDroplet />
+        //         }
+        // ]
     },
     {
-        name: "Universe"
+        name: "Universe",
+        disabled: true
     },
     {
         name: "Leaderboard",
-        children: [
-            {
-                name: 'Projects',
-                value: 'main',
-                icon: <FaLayerGroup />
-            },
-            {
-                name: 'Players',
-                value: 'free',
-                icon: <FaPlay />
-            },
-        ]
+        disabled: true
+        // children: [
+        //     {
+        //         name: 'Projects',
+        //         value: 'main',
+        //         icon: <FaLayerGroup />
+        //     },
+        //     {
+        //         name: 'Players',
+        //         value: 'free',
+        //         icon: <FaPlay />
+        //     },
+        // ]
     },
     {
         name: "More",

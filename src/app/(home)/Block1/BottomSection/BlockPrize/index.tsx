@@ -1,11 +1,9 @@
-import Image from 'next/image'
-
-import { FaTrophy } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { FaGem } from "react-icons/fa";
 import { LiaCoinsSolid } from "react-icons/lia";
 
-import Typography from '@/components/core/Typography'
+import { RootState } from '@/store';
 import Box from '@/components/core/Box'
 
 import css from './index.module.scss'
@@ -20,6 +18,8 @@ import UnitWinList from './UnitWinList';
 
 
 export default function BlockPrize() {
+    const seasonActive = useSelector((state: RootState) => state.tmp.seasonActive)
+
     return <div className={css.blockPrize}>
         <BlockHeading
             title='Game prize'
@@ -29,7 +29,10 @@ export default function BlockPrize() {
             <Box>
                 <UnitNFTRaffle/>
                 <UnitWinList/>
-                <SectionEndGame/>
+                {
+                    seasonActive === 2 &&
+                        <SectionEndGame/>
+                }
             </Box>
             <Box>
                 <Box className={css.nftRaffleTablet}>

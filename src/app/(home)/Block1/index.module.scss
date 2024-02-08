@@ -49,6 +49,15 @@
     {
         max-width: 212px;
         width: 100%;
+
+        &Hover
+        {
+            &:hover
+            {
+                background: var(--color-white);
+                color: var(--color-black)
+            }
+        }
     }
 }
 

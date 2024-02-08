@@ -146,7 +146,7 @@
 
 .codeContent
 {
-    max-width: 400px;
+    max-width: 320px;
     width: 100%;
 }
 
@@ -178,7 +178,13 @@
 
     & td, & th
     {
-        color: var(--color-white);
         padding: .4rem !important;
+        font-weight: bold;
+        color: #FF8300;
+    }
+
+    & td:last-child
+    {
+        text-align: end;
     }
 }

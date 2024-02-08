@@ -62,7 +62,7 @@ export default function Block1() {
                         size='lg'
                         color={isConnected() ? 'primary' : 'dark'}
                         iconStart={<FaPlay />}
-                        className={css.introButton}
+                        className={[css.introButton, !isConnected() && css.introButtonHover].join(' ')}
                     >
                         PLAYER
                     </Button>
@@ -71,7 +71,7 @@ export default function Block1() {
                         size='lg'
                         color="dark"
                         iconStart={<SiOpenlayers />}
-                        className={css.introButton}
+                        className={[css.introButton, !isConnected() && css.introButtonHover].join(' ')}
                         disabled={isConnected()}
                     >
                         PROJECT

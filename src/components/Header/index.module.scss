@@ -76,6 +76,11 @@
             }
         }
 
+        &Disabled
+        {
+            color: var(--color-neutral);
+            pointer-events: none;
+        }
 
         &Arrow {
             & svg
@@ -116,6 +121,11 @@
             color: var(--color-primary);
         }
 
+        &Disabled
+        {
+            color: var(--color-neutral);
+            pointer-events: none;
+        }
 
         &Active &Arrow
         {
