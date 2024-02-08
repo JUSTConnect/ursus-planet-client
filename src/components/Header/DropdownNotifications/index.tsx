@@ -10,7 +10,7 @@ import IconNotifications from '../img/IconNotifications'
 
 export default function DropdownNotifications() {
     const [isActive, setIsActive] = useState(false)
-    const self = useRef<HTMLAnchorElement>(null)
+    const self = useRef<HTMLDivElement>(null)
 
     useEffect(
         () => document.addEventListener('mousedown', e => {
@@ -20,7 +20,7 @@ export default function DropdownNotifications() {
         }), []
     )
 
-    return <Link href='#' className={css.wrapper} ref={self}>
+    return <div className={css.wrapper} ref={self}>
         <div className={css.iconNotifications} onClick={ () => setIsActive(!isActive) }>
             <IconNotifications />
         </div>
@@ -46,5 +46,5 @@ export default function DropdownNotifications() {
                 </Link>
             </div>
         </div>
-    </Link>
+    </div>
 }

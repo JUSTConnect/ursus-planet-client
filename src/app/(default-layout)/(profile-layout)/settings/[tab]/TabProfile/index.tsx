@@ -165,7 +165,7 @@ export default function TabProfile() {
                                                 </div>
                                                 <Input
                                                     fullWidth
-                                                    defaultValue={data?.username}
+                                                    defaultValue={data?.username||''}
                                                     onInput={e => setUsernameValue(e.currentTarget.value)}
                                                     name='username'
                                                     error={((error as AxiosError)?.response?.data as any)?.username}
@@ -214,7 +214,7 @@ export default function TabProfile() {
                                         <Input
                                             onClick={() => setModalEmail(true)}
                                             fullWidth
-                                            value={data?.email}
+                                            value={data?.email||''}
                                             onChange={ () => {} }
                                             className={css.inputEmail}
                                             iconStart={
