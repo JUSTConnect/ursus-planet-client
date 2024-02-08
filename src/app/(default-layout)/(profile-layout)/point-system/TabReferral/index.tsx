@@ -9,6 +9,8 @@ import { FaInfoCircle } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { FaCopy } from "react-icons/fa6";
 
+import { useUsersSelf } from '@/hooks/react-query/users';
+import Skeleton from '@/components/core/Skeleton';
 import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
@@ -32,6 +34,8 @@ type TabName = 'code' | 'info'
 
 export default function TabProfile() {
 
+    const {data, isLoading} = useUsersSelf()
+
     const [activeTab, setActiveTab] = useState<TabName>('code')
     const [isCopied, setIsCopied] = useState(false)
 
@@ -49,7 +53,7 @@ export default function TabProfile() {
     ]
 
     const handleCopy = () => {
-        navigator.clipboard.writeText('4t43g554ehgb54reregergerg');
+        navigator.clipboard.writeText(data?.username||'');
         setIsCopied(true)
         setTimeout(() => {
             setIsCopied(false)
@@ -104,24 +108,34 @@ export default function TabProfile() {
                         </Box>
                     </Box>
                     <Box className={css.codeBottom}>
-                        <div className={css.codeBottomCode}>
-                            Your referral code : 4t43g554ehgb54reregergerg
-                        </div>
-                        <Button
-                            onClick={handleCopy}
-                            className={css.codeBottomButton}
-                            color='white'
-                            disabled={isCopied}
-                            hovered
-                        >
-                            {
-                                isCopied ?
-                                    'Copied'
-                                    :
-                                    'Copy'
-                            }
-                        </Button>
-                        <FaCopy onClick={handleCopy} className={css.codeBottomButtonMobile} />
+                        {
+                            data?.username ?
+                                <>
+                                    <div className={css.codeBottomCode}>
+                                        Your referral code : {data.username}
+                                    </div>
+                                    <Button
+                                        onClick={handleCopy}
+                                        className={css.codeBottomButton}
+                                        color='white'
+                                        disabled={isCopied}
+                                        hovered
+                                    >
+                                        {
+                                            isCopied ?
+                                                'Copied'
+                                                :
+                                                'Copy'
+                                        }
+                                    </Button>
+                                    <FaCopy onClick={handleCopy} className={css.codeBottomButtonMobile} />
+                                </>
+                            :
+                                <Stack alignCenter gap={1} className={css.codeNoUsername}>
+                                    <FaInfoCircle/>
+                                    You can get referral code in our telegram or discord chat
+                                </Stack>
+                        }
                     </Box>
                 </CardBody>
             </Card>
