@@ -1,7 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { IoIosAlarm } from "react-icons/io";
+import { PiFlagBannerFill } from "react-icons/pi";
 
 import css from './index.module.scss'
 import IconAptos from './img/IconAptos'
@@ -10,18 +14,21 @@ import iconPlayer from './img/player.svg'
 import iconProject from './img/project.svg'
 import iconEth from './img/icon-eth.png'
 import iconSol from './img/icon-sol.png'
-import iconAptos from './img/icon-aptos.png'
 import iconSui from './img/icon-sui.png'
 
 import Box from '@/components/core/Box'
-import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
+import { CardBody, CardFooter } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import Button from "@/components/core/Button"
 import Stack from '@/components/core/Stack'
 import Typography from '@/components/core/Typography'
-import CardTabs, {ICardTab} from '@/components/CardTabs'
+import {ICardTab} from '@/components/CardTabs'
 
+import Card from '../../../Card'
+import CardHead from '../../../CardHead'
 import ChainItem from './ChainItem'
+import CardTabs from '../../../CardTabs';
+import Cards from '../../../Cards'
 
 
 type TabName = 'player' | 'project'
@@ -33,38 +40,31 @@ export default function TabProfile() {
     const tabs: ICardTab[] = [
         {
             value: 'player',
-            title: 'Avatar',
-            icon: iconPlayer
+            title: 'Player',
+            icon: <IoIosAlarm/>
         },
         {
             value: 'project',
-            title: 'Profile',
-            icon: iconProject
+            title: 'Project',
+            icon: <PiFlagBannerFill/>
         }
     ]
 
     return <Container className={css.container}>
         <CardTabs
-            className={css.mobileTabs}
             tabs={tabs}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
         />
-        <div className={css.cards}>
+        <Cards>
             <Card
-                className={[
-
-                    css.card,
-                    activeTab === 'player' &&
-                    css.cardActive
-                ].join(' ')}
+                active={activeTab==='player'}
             >
                 <div>
-                    <CardHead className={
-                        css.cardHead}>
-                        <Image src={iconPlayer} alt='icon' />
-                        Player
-                    </CardHead>
+                    <CardHead
+                        title='Player'
+                        icon={<IoIosAlarm/>}
+                    />
                     <CardBody>
 
                         <Box className={css.cardBlock}>
@@ -82,6 +82,7 @@ export default function TabProfile() {
                                     iconStart={<Image src={iconSol} alt='icon'/>}
                                     color='gray'
                                     fullWidth
+                                    disabled
                                 >
                                     Solana
                                 </Button>
@@ -89,6 +90,7 @@ export default function TabProfile() {
                                     iconStart={<IconAptos/>}
                                     color='gray'
                                     fullWidth
+                                    disabled
                                 >
                                     Aptos
                                 </Button>
@@ -96,6 +98,7 @@ export default function TabProfile() {
                                     iconStart={<Image src={iconSui} alt='icon'/>}
                                     color='gray'
                                     fullWidth
+                                    disabled
                                 >
                                     Sui
                                 </Button>
@@ -121,18 +124,13 @@ export default function TabProfile() {
             </Card>
 
             <Card
-                className={[
-                    css.card,
-                    css.cardEmpty,
-                    activeTab === 'project' &&
-                    css.cardActive
-                ].join(' ')}
+                active={activeTab==='project'}
             >
                 <div>
-                    <CardHead className={css.cardHead}>
-                        <Image src={iconProject} alt='icon' />
-                        Project
-                    </CardHead>
+                    <CardHead
+                        title='Project'
+                        icon={<PiFlagBannerFill/>}
+                    />
                     <CardBody className={css.cardBody}>
                         <Box className={[css.cardBlock, css.cardBlockProject].join(' ')}>
                             <Typography variant='p' className={css.cardProjectTitle}>Add your project</Typography>
@@ -143,14 +141,17 @@ export default function TabProfile() {
                                 alt='figure'
                             />
                             <Stack className={css.cardProjectButtons} gap={.5} fullWidth>
-                                <Button color='gray' className={css.cardProjectButton}>Add project</Button>
-                                <Button color='gray' className={css.cardProjectButton}>More info</Button>
+                                <Link href='https://forms.gle/mzmKtGQ4mqhVP6an8' className={css.cardProjectButton}>
+                                    <Button color='gray'>Add project</Button>
+                                </Link>
+                                <Link href='https://docs-project.ursasplanet.com/' className={css.cardProjectButton}>
+                                    <Button color='gray'>More info</Button>
+                                </Link>
                             </Stack>
                         </Box>
                     </CardBody>
                 </div>
             </Card>
-            
-        </div>
+        </Cards>
     </Container>
 }

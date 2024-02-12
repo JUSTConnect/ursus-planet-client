@@ -51,7 +51,7 @@
     list-style: none;
 
 
-    @include tablet {
+    @media (max-width: 1100px) {
         display: none;
     }
 
@@ -76,6 +76,11 @@
             }
         }
 
+        &Disabled
+        {
+            color: var(--color-neutral);
+            pointer-events: none;
+        }
 
         &Arrow {
             & svg
@@ -92,7 +97,6 @@
 
     display: none;
     gap: 18px;
-    color: var(--color-neutral);
     overflow-x: auto;
 
     @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer:coarse) {
@@ -102,8 +106,7 @@
         }
     }
 
-    @include tablet
-    {
+    @media (max-width: 1100px) {
         display: flex;
         padding-top: 0;
     }
@@ -118,8 +121,10 @@
             color: var(--color-primary);
         }
 
-        &Arrow {
-            transform: translateY(20%);
+        &Disabled
+        {
+            color: var(--color-neutral);
+            pointer-events: none;
         }
 
         &Active &Arrow
@@ -222,6 +227,15 @@
     {
         background: var(--color-white);
         color: var(--color-black) !important;
+
+    }
+
+    &:hover &Arrow
+    {
+        & svg
+        {
+            fill: var(--color-black);
+        }
     }
 
     &Mobile
@@ -261,18 +275,14 @@
         position: relative;
         
         [class*=dropdownActive] & {
-            top: .1rem;
+            // top: .1rem;
             transform: rotate(180deg) !important;
         }
 
         & svg
         {
-            height: .8rem !important;
-
-            & path
-            {
-                stroke: var(--color-neutral);
-            }
+            height: 1rem !important;
+            fill: var(--color-white);
         }
     }
 
@@ -297,3 +307,14 @@
     }
 }
 
+
+.sectionLeft
+{
+    display: flex;
+    align-items: center;
+    gap: calc(35vw - 300px);
+
+    @media (max-width: 1400px) {
+        gap: 5vw;
+    }
+}

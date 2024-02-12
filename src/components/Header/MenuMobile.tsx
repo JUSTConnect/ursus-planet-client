@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { IoIosArrowDown } from 'react-icons/io'
+
 import css from './index.module.scss'
 import iconArrowDown from './img/arrow-down.svg'
 
@@ -35,7 +37,7 @@ export default function MenuMobile(props: IMenuMobile) {
                 item.link ?
                     <Link
                         key={item.name + 'mobile'}
-                        className={css.menuBottomItem}
+                        className={[css.menuBottomItem, item.disabled && css.menuBottomItemDisabled].join(' ')}
                         href={item.link || '#'}
                     >
                         {item.name}
@@ -43,16 +45,13 @@ export default function MenuMobile(props: IMenuMobile) {
                 :
                     <div
                         key={item.name + 'mobile'}
-                        className={[css.menuBottomItem, activeDropdown === item.name && css.menuBottomItemActive].join(' ')}
+                        className={[css.menuBottomItem, activeDropdown === item.name && css.menuBottomItemActive, item.disabled && css.menuBottomItemDisabled].join(' ')}
                         onClick={() => setActiveDropdown(item.name!==activeDropdown?item.name:undefined)}
                     >
                         {item.name}
                         {item.children &&
-                            <Image
-                                className={css.menuBottomItemArrow}
-                                src={iconArrowDown}
-                                alt='arrow'
-                            />
+                            <IoIosArrowDown
+                                className={css.menuBottomItemArrow}/>
                         }
                     </div>
             )}

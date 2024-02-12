@@ -1,5 +1,6 @@
 .avatar
 {
+    position: relative;
     background: #080713;
     width: auto;
     aspect-ratio: 1 / 1;
@@ -15,6 +16,12 @@
 {
     height: 50%;
     width: 50%;
+
+    & svg
+    {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .image

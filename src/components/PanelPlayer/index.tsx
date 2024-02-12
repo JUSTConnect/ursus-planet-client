@@ -4,6 +4,9 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { IoMdSettings } from "react-icons/io";
+import { IoSend } from "react-icons/io5";
+
 import css from './index.module.scss'
 import crown from './img/crown.png'
 import asterisk from './img/asterisk.png'
@@ -15,6 +18,7 @@ import { useUsersSelf } from '@/hooks/react-query/users'
 import Container from '@/components/core/Container'
 import Avatar from '@/components/Avatar'
 import Button from '@/components/core/Button'
+import Skeleton from '@/components/core/Skeleton'
 
 
 interface Props
@@ -24,14 +28,14 @@ interface Props
 
 export default function Top(props: Props)
 {
-    const {data} = useUsersSelf()
+    const {data, isLoading} = useUsersSelf()
     const pathname = usePathname()
 
     return <Container className={css.wrapper}>
         <Container className={css.top}>
-            <Link href='/account'>
-                <Avatar src={data?.avatar} className={css.avatar}/>
-            </Link>
+            <Avatar isLoading={isLoading} colors={data} src={data?.avatar} className={css.avatar}/>
+            {/* <Link href='/account'>
+            </Link> */}
             <div className={css.info}>
                 <div className={css.points}>
                     <div className={css.point}>
@@ -40,7 +44,7 @@ export default function Top(props: Props)
                             src={ crown }
                             alt='crown'
                         />
-                        12
+                        {Number.isInteger(data?.points) ? '...' : <Skeleton length={5}/>}
                     </div>
                     <div className={css.point}>
                         <Image
@@ -48,26 +52,37 @@ export default function Top(props: Props)
                             src={ asterisk }
                             alt='asterisk'
                         />
-                        12343
+                        {Number.isInteger(data?.points) ? data?.points : <Skeleton length={5}/>}
                     </div>
                 </div>
-                <div className={css.username}>
-                    {data?.username || 'Loading...'}
+                <div className={[css.username, data?.username===null && css.usernameDisabled].join(' ')}>
+                    {data?.username===null ? 'No Username' : data?.username || <Skeleton length={25}/>}
                 </div>
                 <div className={css.button}>
-                    <div className={ css.wallets }>
+                    {/* <div className={ css.wallets }>
                         <Image className={css.wallet} src={wallet1} alt='wallet'/>
-                    </div>
+                    </div> */}
                     {
                         !pathname.startsWith('/settings') &&
-                            <>
+                            <div>
                                 <Link href='/settings/profile'>
-                                    <Button className={css.buttonSettings}>Settings</Button>
+                                    <Button className={css.buttonSettings} hovered>Settings</Button>
                                 </Link>
-                                <Link className={css.iconSettings} href='/settings'>
-                                    <Image src={iconSettings} alt='icon-settings'/>
+                                <Link className={css.iconSettings} href='/settings/profile'>
+                                    <IoMdSettings/>
                                 </Link>
-                            </>
+                            </div>
+                    }
+                    {
+                        !pathname.startsWith('/point-system') &&
+                        <div>
+                            <Link href='/point-system'>
+                                <Button className={css.buttonSettings} hovered>Point System</Button>
+                            </Link>
+                            <Link className={css.iconSettings} href='/point-system'>
+                                <IoSend/>
+                            </Link>
+                        </div>
                     }
                 </div>
                 

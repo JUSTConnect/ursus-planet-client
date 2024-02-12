@@ -44,12 +44,12 @@
 
     &Button
     {
+        display: block;
         width: 100%;
 
-        &:hover
+        & button
         {
-            background: white;
-            color: var(--color-black)
+            width: 100%;
         }
     }
 }

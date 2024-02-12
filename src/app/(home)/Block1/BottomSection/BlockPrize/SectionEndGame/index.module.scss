@@ -1,0 +1,19 @@
+.section
+{
+    margin-bottom: 1.5rem;
+}
+
+.bar
+{
+    background: #1C1931;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    
+    & div
+    {
+        height: .4rem;
+        background: linear-gradient(90deg, rgba(186,137,194,1) 0%, rgba(37,72,169,1) 90%);
+        width: 50%;
+    }
+}

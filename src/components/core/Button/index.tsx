@@ -21,6 +21,7 @@ export interface IButton extends React.HTMLAttributes<HTMLButtonElement>
     // modificators
     fullWidth?: boolean
     animated?: boolean,
+    hovered?: boolean,
     disabled?: boolean
 }
 
@@ -42,6 +43,7 @@ export default function Button(props: IButton) {
     
             props.fullWidth && css.fullWidth,
             props.animated && css.animated,
+            props.hovered && css.hovered,
             props.className,
         ].join(' ')
     }

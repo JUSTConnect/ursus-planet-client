@@ -1,12 +1,14 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import { CgLogOut } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
 import { FaWallet } from "react-icons/fa";
-import { SiOpenlayers } from "react-icons/si";
-import { FaPlay } from "react-icons/fa6";
+import { IoIosArrowDown } from "react-icons/io";
+import { RiArrowRightDoubleFill } from "react-icons/ri";
 
 import { useMetaMask } from '@/hooks/useMetamask';
 import { useLogout } from '@/hooks/react-query/web3auth';
@@ -18,45 +20,54 @@ import Dropdown from '@/components/core/Dropdown';
 import css from './index.module.scss';
 import iconWallet from './img/wallet.svg'
 import iconAddPlaet from './img/icon-add-planet.svg'
-import IconArrowDown from './img/IconArrowDown'
-import IconNotifications from './img/IconNotifications'
-import IconWallet from './img/IconWallet'
-import IconLogout from './img/IconLogout'
-import IconPlayers from './img/IconPlayers'
-import IconProjects from './img/IconProjects'
-import IconSettings from './img/IconSettings'
 
 import DropdownNetwork from './DropdownNetwork'
+import DropdownNotifications from './DropdownNotifications';
 
 
 export default function SectionRight() {
     const dispatch = useDispatch()
-    const {isConnected, disconnectMetaMask} = useMetaMask()
-    const {mutate} = useLogout()
+    const [chain, setChain] = useState('')
+    const { isConnected, disconnectMetaMask } = useMetaMask()
+    const { mutate } = useLogout()
+
+    useEffect(() => {
+        window.ethereum.on('chainChanged', () => {
+            window.ethereum?.request({
+                "method": "eth_chainId",
+                "params": []
+            }).then((res: string) => setChain(res))    
+        });
+    }, [])
+
+    useEffect(() => {
+        window.ethereum?.request({
+            "method": "eth_chainId",
+            "params": []
+        }).then((res: string) => setChain(res))
+    }, [chain])
 
     return <div className={css.headerSection}>
         {
             !!isConnected() &&
-                <>
-                    <Button className={css.buttonAddPlanet}>Add your planet</Button>
-                    <ButtonIcon className={css.buttonAddPlanetMobile}>
-                        <Image
-                            src={iconAddPlaet}
-                            alt='icon'
-                        />
-                    </ButtonIcon>
-                </>
+            <>
+                <Link href='https://forms.gle/mzmKtGQ4mqhVP6an8'>
+                    <Button hovered className={css.buttonAddPlanet}>Add your planet</Button>
+                </Link>
+                <ButtonIcon className={css.buttonAddPlanetMobile}>
+                    <Image
+                        src={iconAddPlaet}
+                        alt='icon'
+                    />
+                </ButtonIcon>
+            </>
         }
         {!!isConnected() &&
-            <Link href='#'>
-                <div className={css.iconNotifications}>
-                    <IconNotifications />
-                </div>
-            </Link>
+            <DropdownNotifications/>
         }
         {
             !!isConnected() &&
-                <DropdownNetwork/>
+            <DropdownNetwork chain={chain} />
         }
         <Dropdown
             className={css.buttonWalletDropdown}
@@ -70,21 +81,26 @@ export default function SectionRight() {
                 {
                     name: 'Logout test',
                     icon: <CgLogOut />,
-                    onClick: () => {disconnectMetaMask(); mutate(null)}
+                    onClick: () => { disconnectMetaMask(); mutate(null) }
                 },
-                {
-                    name: 'Player',
-                    icon: <FaPlay />,
-                    link: '/account'
-                },
-                {
-                    name: 'Project',
-                    icon: <SiOpenlayers />
-                },
+                // {
+                //     name: 'Player',
+                //     icon: <FaPlay />,
+                //     link: '/account'
+                // },
+                // {
+                //     name: 'Project',
+                //     icon: <SiOpenlayers />
+                // },
                 {
                     name: 'Settings',
                     icon: <IoMdSettings />,
                     link: '/settings/profile/'
+                },
+                {
+                    name: 'Point system',
+                    icon: <RiArrowRightDoubleFill />,
+                    link: '/point-system/'
                 },
             ]}
         >
@@ -94,16 +110,12 @@ export default function SectionRight() {
                 animated
                 color='dark'
                 iconStart={
-                    !!isConnected() &&
-                        <Image
-                            className={css.buttonWalletIcon}
-                            src={iconWallet}
-                            alt='arrow' />
-
+                    !isConnected() &&
+                    <FaWallet />
                 }
                 iconEnd={
                     !!isConnected() && <div className={css.buttonWalletArrow}>
-                        <IconArrowDown />
+                        <IoIosArrowDown />
                     </div>
                 }
             >

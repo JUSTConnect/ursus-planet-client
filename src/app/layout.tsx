@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.scss'
+import '@radix-ui/themes/styles.css';
 import { play, fkalakokz } from '../fonts'
 import Providers from '@/providers'
 import ModalWalletConnect from '@/components/ModalWalletConnect'
@@ -21,13 +22,13 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </head>
-      <Providers>
-        <body className={[play.className, fkalakokz.variable].join(' ')}>
+      <body className={[play.className, fkalakokz.variable].join(' ')}>
+        <Providers>
           {children}
-          <ModalWalletConnect/>
-          <ModalDebug/>
-        </body>
-      </Providers>
+          <ModalWalletConnect />
+          <ModalDebug />
+        </Providers>
+      </body>
     </html>
   )
 }

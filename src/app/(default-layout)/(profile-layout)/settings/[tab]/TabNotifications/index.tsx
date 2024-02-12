@@ -1,22 +1,28 @@
 'use client'
 
-import { Suspense, useState } from 'react'
-import Image from 'next/image'
+import { useState } from 'react'
+
+import { FaList } from "react-icons/fa6";
+import { FaBell } from "react-icons/fa6";
 
 import { FormEventHandler } from 'react'
 import { useUsersSelf, useUsersSelfUpdate } from '@/hooks/react-query/users'
 import Button from '@/components/core/Button'
-import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
-import CardTabs, {ICardTab} from '@/components/CardTabs'
+import { CardBody } from "@/components/core/Card"
+import {ICardTab} from '@/components/CardTabs'
 import Container from "@/components/core/Container"
 import ModalEmail from '@/components/ModalEmail'
 import Typography from '@/components/core/Typography'
 import Switch from '@/components/core/Switch'
-import BlockFrequency from './BlockFrequency'
+import CardLoader from '@/components/CardLoader'
+
+import CardHead from '../../../CardHead'
+import CardTabs from '../../../CardTabs'
+import Card from '../../../Card'
+import Cards from '../../../Cards'
 
 import css from './index.module.scss'
-import iconNotification from './icons/icon-notification.png'
-import iconSubscription from './icons/icon-subscription.png'
+import BlockFrequency from './BlockFrequency'
 
 
 type TabName = 'notifications' | 'subscriptions'
@@ -25,12 +31,12 @@ const tabs: ICardTab[] = [
     {
         value: 'notifications',
         title: 'Notifications',
-        icon: iconNotification
+        icon: <FaList/>
     },
     {
         value: 'subscriptions',
         title: 'Subscriptions',
-        icon: iconSubscription
+        icon: <FaBell/>
     }
 ]
 
@@ -55,37 +61,31 @@ export default function TabProfile() {
             setActiveTab={setActiveTab}
             className={css.mobileTabs}
         />
-        <div className={css.cards}>
+        <Cards>
             <Card
-                className={[
-                    css.card,
-                    activeTab === 'notifications' && css.cardActive
-                ].join(' ')}
+                active={activeTab === 'notifications'}
             >
                 <div>
-                    <CardHead className={css.cardHead}>
-                        <Image className={css.cardHeadIcon} src={iconNotification} alt='icon' />
-                        Notifications
-                    </CardHead>
+                    <CardHead
+                        title='Notifications'
+                        icon={<FaList/>}
+                    />
                     <CardBody className={css.cardBody}>
                         <Typography className={css.emptyDescription} variant='p' color='neutral'>It&apos;s empty here...</Typography>
                     </CardBody>
                 </div>
             </Card>
             <Card
-                className={[
-                    css.card,
-                    activeTab === 'subscriptions' && css.cardActive
-                ].join(' ')}
+                active={activeTab === 'subscriptions'}
             >
                 <div>
-                    <CardHead className={css.cardHead}>
-                        <Image className={css.cardHeadIcon} src={iconSubscription} alt='icon' />
-                        Subscription management
-                    </CardHead>
+                    <CardHead
+                        title='Subscription management'
+                        icon={<FaBell/>}
+                    />
                     <CardBody className={css.cardBody}>
                         {
-                            isLoading ? 'Loading...' :
+                            isLoading ? <CardLoader/> :
                             <form onSubmit={handleSubmitSettings}>
                                 <Typography variant='p'>Cabinet notification</Typography>
                                 <div className={css.blockSubscription}>
@@ -135,7 +135,7 @@ export default function TabProfile() {
                     </CardBody>
                 </div>
             </Card>
-        </div>
+        </Cards>
         <ModalEmail active={modalEmail} setActive={setModalEmail}/>
     </Container>
 }

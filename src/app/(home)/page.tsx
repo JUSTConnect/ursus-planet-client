@@ -9,10 +9,12 @@ import Block5 from './Block5'
 export default function Home() {
   return <>
     <Block1/>
+    {/*     
     <Block2/>
     <Block3/>
     <Block4/>
     <Block5/>
+    */}
     <Footer/>
   </>
 }

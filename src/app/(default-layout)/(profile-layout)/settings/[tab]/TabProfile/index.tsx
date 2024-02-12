@@ -2,16 +2,18 @@
 
 import { useState, useRef, FormEvent, useEffect } from 'react'
 import Image from 'next/image'
+import { AxiosError } from 'axios'
+
+import { FaCircleUser } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
 
 import css from './index.module.scss'
-import iconAvatar from './icons/avatar.svg'
-import iconProfile from './icons/profile.svg'
 import iconInfo from './icons/info.svg'
 import iconEmailOk from './icons/email-ok.svg.svg'
 
 import { useUsersSelf, useUsersSelfUpdate } from '@/hooks/react-query/users'
 import Avatar from "@/components/Avatar"
-import Card, { CardBody, CardHead, CardFooter } from "@/components/core/Card"
+import { CardBody, CardFooter } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import Button from "@/components/core/Button"
 import Typography from '@/components/core/Typography'
@@ -20,10 +22,14 @@ import { Input } from '@/components/core/Input'
 import Checkbox from '@/components/core/Checkbox'
 import Box from '@/components/core/Box'
 import Scroller from '@/components/core/Scroller'
-import CardTabs, { ICardTab } from '@/components/CardTabs'
+import { ICardTab } from '@/components/CardTabs'
+import CardLoader from '@/components/CardLoader'
 
 import ModalEmail from '@/components/ModalEmail'
-import { AxiosError } from 'axios'
+import CardHead from '../../../CardHead'
+import CardTabs from '../../../CardTabs'
+import Card from '../../../Card'
+import Cards from '../../../Cards'
 
 
 type TabName = 'avatar' | 'profile'
@@ -37,7 +43,7 @@ export default function TabProfile() {
     const [avatar, setAvatar] = useState('')
 
     const { data, isLoading, refetch } = useUsersSelf()
-    const { data: MutationData, mutate, isPending, error } = useUsersSelfUpdate()
+    const { mutate, isPending, error } = useUsersSelfUpdate()
 
     const avatarInput = useRef<HTMLInputElement>(null)
     const avatarFormSubmit = useRef<HTMLInputElement>(null)
@@ -53,12 +59,12 @@ export default function TabProfile() {
         {
             value: 'avatar',
             title: 'Avatar',
-            icon: iconAvatar
+            icon: <FaCircleUser/>
         },
         {
             value: 'profile',
             title: 'Profile',
-            icon: iconProfile
+            icon: <FaEdit/>
         }
     ]
 
@@ -84,23 +90,19 @@ export default function TabProfile() {
 
     return <Container className={css.container}>
         <CardTabs
-            className={css.mobileTabs}
             tabs={mobileTabs}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
         />
-        <div className={css.cards}>
+        <Cards>
             <Card
-                className={[
-                    css.card,
-                    activeTab === 'avatar' && css.cardActive
-                ].join(' ')}
+                active={activeTab === 'avatar'}
             >
                 <div>
-                    <CardHead className={css.cardHead}>
-                        <Image src={iconAvatar} alt='icon' />
-                        Avatar
-                    </CardHead>
+                    <CardHead
+                        title='Avatar'
+                        icon={<FaCircleUser/>}
+                    />
                     <CardBody className={css.cardBody}>
                         {
                             !isLoading ?
@@ -110,12 +112,12 @@ export default function TabProfile() {
                                     </Typography>
                                     <Stack gap={1.5}>
                                         <div>
-                                            <Avatar src={avatar || data?.avatar} className={css.avatar} />
+                                            <Avatar isLoading={isLoading} colors={data} src={avatar || data?.avatar} className={css.avatar} />
                                         </div>
                                         <div>
                                             <div className={css.avatarRecommend}>
                                                 <Image src={iconInfo} alt='icon' />
-                                                recommend an image of at least 300x300. Gift work too. Max 5 mb.
+                                                Recommend an image of at least 300x300. Max 5 mb.
                                             </div>
                                             <br />
                                             <Stack className={css.buttonsUpload} gap={.5}>
@@ -127,7 +129,7 @@ export default function TabProfile() {
                                     </Stack>
                                     <input type='submit' hidden ref={avatarFormSubmit}/>
                                 </form>
-                                : 'Loading'
+                                : <CardLoader/>
                         }
                     </CardBody>
                 </div>
@@ -141,16 +143,13 @@ export default function TabProfile() {
                 </CardFooter>
             </Card>
             <Card
-                className={[
-                    css.card,
-                    activeTab === 'profile' && css.cardActive
-                ].join(' ')}
+                active={activeTab === 'profile'}
             >
                 <div>
-                    <CardHead className={css.cardHead}>
-                        <Image src={iconProfile} alt='icon' />
-                        Profile
-                    </CardHead>
+                    <CardHead
+                        title='Profile'
+                        icon={<FaEdit/>}
+                    />
                     <CardBody className={css.cardBody}>
                         {
                             !isLoading ?
@@ -166,10 +165,11 @@ export default function TabProfile() {
                                                 </div>
                                                 <Input
                                                     fullWidth
-                                                    defaultValue={data?.username}
+                                                    defaultValue={data?.username||''}
                                                     onInput={e => setUsernameValue(e.currentTarget.value)}
                                                     name='username'
                                                     error={((error as AxiosError)?.response?.data as any)?.username}
+                                                    placeholder='Set your username'
                                                 />
                                             </Stack>
                                         </Box>
@@ -214,18 +214,19 @@ export default function TabProfile() {
                                         <Input
                                             onClick={() => setModalEmail(true)}
                                             fullWidth
-                                            value={data?.email}
+                                            value={data?.email||''}
                                             onChange={ () => {} }
                                             className={css.inputEmail}
                                             iconStart={
-                                                <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />
+                                                data?.email &&
+                                                    <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />
                                             }
+                                            placeholder='Set your email'
                                         />
                                     </div>
                                     <input type="submit" hidden ref={usernameFormSubmit} />
                                 </form>
-                                :
-                                'Loading...'
+                                : <CardLoader/>
                         }
                     </CardBody>
                 </div>
@@ -240,7 +241,7 @@ export default function TabProfile() {
                     }
                 </CardFooter>
             </Card>
-        </div>
+        </Cards>
         <ModalEmail active={modalEmail} setActive={setModalEmail} />
     </Container>
 }

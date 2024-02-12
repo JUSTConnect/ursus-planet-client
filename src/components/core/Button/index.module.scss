@@ -29,7 +29,6 @@
     {
         width: max-content;
     }
-
 }
 
 .buttonIcon
@@ -79,7 +78,7 @@
     color: var(--color-white);
     background: var(--color-gray);
 
-    &:hover
+    &:hover:not(:disabled)
     {
         color: var(--color-black);
         background: var(--color-white);
@@ -204,6 +203,14 @@
         &:hover::before {
             left: 200%;
         }
+    }
+}
+
+.hovered
+{
+    &:hover
+    {
+        opacity: .8 !important;
     }
 }
 

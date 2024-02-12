@@ -1,5 +1,6 @@
 @use '@mixins' as *;
 
+
 @import 'reset-css';
 
 * {
@@ -33,7 +34,7 @@
 
 body {
     position: relative;
-    background: var(--color-dark-200);
+    background: var(--color-dark-200) !important;
     color: var(--color-white);
     z-index: 1;
 }
@@ -60,9 +61,4 @@ a {
 ::-webkit-scrollbar-thumb {
     background: var(--color-neutral);
     border-radius: 100px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    // background: #555;
 }

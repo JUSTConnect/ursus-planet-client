@@ -1,13 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import Image from 'next/image'
 
+import { GiNextButton, GiPreviousButton } from "react-icons/gi";
+import { FaPlay } from "react-icons/fa";
 
 import css from './index.module.scss'
-import iconCurrent from './img/block-2-current.png'
-import iconNext from './img/block-2-next.png'
-import iconPrev from './img/block-2-prev.png'
-import iconSeason from './img/icon-season.svg'
-import iconGamePrize from '../../img/block-2-game-prize.png'
 import IconLast from './img/IconLast'
 import IconCurrent from './img/IconCurrent'
 import IconUpcoming from './img/IconUpcoming'
@@ -20,10 +17,14 @@ import Typography from '@/components/core/Typography'
 import Button from '@/components/core/Button'
 import Stack from '@/components/core/Stack'
 
+import BlockSeason from './BlockSeason'
+import BlockPrize from './BlockPrize'
+import SectionEndGame from './BlockPrize/SectionEndGame'
+
 
 export default function Block2() {
     const dispatch = useDispatch()
-    const {seasonCurrent, seasonActive, seasonAvailable} = useSelector((state: RootState) => state.tmp)
+    const { seasonCurrent, seasonActive } = useSelector((state: RootState) => state.tmp)
 
     return <div className={css.wrapper}>
         <div className={css.bgDrop}></div>
@@ -33,93 +34,73 @@ export default function Block2() {
                 <div className={css.buttons}>
                     <Button
                         className={[css.buttonSwitch, seasonCurrent + 1 === seasonActive && css.buttonSwitchActive].join(' ')}
-                        onClick={ () => dispatch(setSeasonActive(seasonCurrent+1)) }
+                        onClick={() => dispatch(setSeasonActive(seasonCurrent + 1))}
                         variant='blank'
                         size='lg'
-                        iconStart={<IconUpcoming />}
+                        iconStart={<GiNextButton />}
+                        hovered={seasonCurrent + 1 !== seasonActive}
                     >
                         Upcoming season
                     </Button>
                     <Button
                         className={[css.buttonSwitch, seasonCurrent === seasonActive && css.buttonSwitchActive].join(' ')}
-                        onClick={ () => dispatch(setSeasonActive(seasonCurrent)) }
+                        onClick={() => dispatch(setSeasonActive(seasonCurrent))}
                         variant='blank'
                         size='lg'
-                        iconStart={<IconCurrent />}
+                        iconStart={<FaPlay />}
                         animated
+                        hovered={seasonCurrent !== seasonActive}
                     >
                         Current season
                     </Button>
                     <Button
                         className={[css.buttonSwitch, seasonCurrent - 1 === seasonActive && css.buttonSwitchActive].join(' ')}
-                        onClick={ () => dispatch(setSeasonActive(seasonCurrent-1)) }
+                        onClick={() => dispatch(setSeasonActive(seasonCurrent - 1))}
                         variant="blank"
                         size='lg'
-                        iconStart={<IconLast />}
+                        iconStart={<GiPreviousButton />}
+                        hovered={seasonCurrent - 1 !== seasonActive}
                     >
                         Last season
                     </Button>
                 </div>
             </div>
-        
+
             <div className={css.buttonsMobile}>
                 <div className={css.buttonsMobileBgDropTop}></div>
                 <div className={css.buttonsMobileBgDrop}></div>
-                <Button 
-                    className={[css.buttonMobileSwitch, seasonCurrent+1 === seasonActive && css.buttonMobileSwitchActive].join(' ')}
-                    iconStart={<IconLast />}
-                    onClick={ () => dispatch(setSeasonActive(seasonCurrent+1)) }
+                <Button
+                    className={[css.buttonMobileSwitch, seasonCurrent + 1 === seasonActive && css.buttonMobileSwitchActive].join(' ')}
+                    iconStart={<GiPreviousButton />}
+                    onClick={() => dispatch(setSeasonActive(seasonCurrent + 1))}
                     variant='blank'
                 >
                     Last season
                 </Button>
-                <Button 
+                <Button
                     className={[css.buttonMobileSwitch, seasonCurrent === seasonActive && css.buttonMobileSwitchActive].join(' ')}
-                    onClick={ () => dispatch(setSeasonActive(seasonCurrent)) }
-                    iconStart={<IconCurrent />}
-                    color='dark'
+                    onClick={() => dispatch(setSeasonActive(seasonCurrent))}
+                    iconStart={<FaPlay />}
+                    variant='blank'
                 >
                     Current season
                 </Button>
-                <Button 
+                <Button
                     variant='blank'
-                    onClick={ () => dispatch(setSeasonActive(seasonCurrent-1)) }
-                    iconEnd={<IconUpcoming />}
-                    className={[css.buttonMobileSwitch, seasonCurrent-1 === seasonActive && css.buttonMobileSwitchActive].join(' ')}
+                    onClick={() => dispatch(setSeasonActive(seasonCurrent - 1))}
+                    iconEnd={<GiNextButton />}
+                    className={[css.buttonMobileSwitch, seasonCurrent - 1 === seasonActive && css.buttonMobileSwitchActive].join(' ')}
                 >
                     Next season
-                </Button> 
+                </Button>
             </div>
             <div className={css.sectionRight}>
-                <div className={css.blockSeason}>
-                    <Typography className={css.heading} variant="h2" color='neutral'>
-                        <Stack alignCenter>
-                            <Image
-
-                                className={css.headingIcon}
-                                src={iconSeason}
-                                alt='icon'
-                            />
-                            Season {seasonActive}
-                        </Stack>
-                    </Typography>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis soluta, quod accusantium harum neque error explicabo fugit facere magni quo, quae distinctio quas? Ducimus doloribus voluptas, laudantium rem aliquam fugiat!</p>
-                </div>
-                <div className={css.blockPrize}>
-                    <Typography className={css.heading} variant="h2" color='neutral'>
-                        <Stack alignCenter>
-                            <Image
-                                className={css.headingIcon}
-                                src={iconGamePrize}
-                                alt='icon'
-                            />
-                            Game prize
-                        </Stack>
-                    </Typography>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui reprehenderit nulla repellendus placeat sequi earum, ex necessitatibus veniam nemo similique iure distinctio culpa maxime eius tempora possimus nesciunt commodi quidem.</p>
-                </div>
+                <BlockSeason />
+                <BlockPrize />
             </div>
-
+        </Container>
+        <Container className={css.tabletEndGame}>
+            <SectionEndGame />
         </Container>
     </div>
 }

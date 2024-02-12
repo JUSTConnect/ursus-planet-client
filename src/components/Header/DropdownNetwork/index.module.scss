@@ -12,6 +12,11 @@
     align-items: center;
     gap: .2rem;
 
+    &:hover
+    {
+        opacity: .8;
+    }
+
     @include mobile
     {
         background: var(--color-gray);

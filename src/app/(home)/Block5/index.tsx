@@ -34,7 +34,7 @@ export default function Block6() {
 
     return <Container className={css.container}>
         <Stack fullWidth className={[css.headingStack, indexCss.headingStack].join(' ')}>
-            <Button className={indexCss.buttonSpace}>Space</Button>
+            <Button hovered className={indexCss.buttonSpace}>Universe</Button>
             <Stack className={[css.headingButtons, indexCss.headingButtonsSpace].join(' ')}>
                 <Dropdown
                     className={css.headingDropdown}
@@ -48,6 +48,7 @@ export default function Block6() {
                             className={css.headingDropdownIcon} />
                         }
                         color='dark'
+                        hovered={true}
                     >
                         { filters.filter(item => item.value === filter)[0]?.name }
                     </DropdownButton>
@@ -57,7 +58,9 @@ export default function Block6() {
                     color='white'
                     iconEnd={
                         <Image src={iconViewMore} alt="icon" className={css.buttonViewMoreIcon} />
-                    }>
+                    }
+                    hovered
+                >
                     <div className={css.buttonViewMoreText}>
                         2k+ on Trusted projects
                     </div>

@@ -9,6 +9,7 @@
     display: flex;
 
     z-index: 1;
+    gap: 2rem;
 
     @include tablet {
         flex-direction: column;
@@ -16,7 +17,9 @@
 }
 
 .sectionLeft,
-.sectionRight {
+.blockSeason,
+.blockPrize
+{
     & .heading {
         margin-bottom: 3rem;
 
@@ -29,7 +32,12 @@
         }
 
         & [class*=Stack] {
-            gap: 4px !important;
+            gap: 1rem !important;
+
+            @include mobile
+            {
+                gap: .8rem !important;
+            }
         }
 
         &Icon {
@@ -52,17 +60,18 @@
 .sectionLeft {
 
     & .buttonSwitch {
-        color: #584F88;
+        color: var(--color-white);
         border-radius: 0;
 
         & svg
         {
-            height: 1.2rem;
+            height: 1.2rem !important;
+            width: auto;
         }
 
         & path, & defs
         {
-            fill: var(--color-neutral);
+            fill: var(--color-white);
         }
     }
 
@@ -94,24 +103,6 @@
 
     @include tablet {
         gap: 1rem;
-    }
-}
-
-.blockSeason {
-    max-width: 300px;
-    width: 50%;
-
-    @include tablet {
-        max-width: initial;
-    }
-}
-
-.blockPrize {
-    max-width: 600px;
-    width: 50%;
-
-    @include tablet {
-        max-width: initial;
     }
 }
 
@@ -162,7 +153,7 @@
         position: absolute;
         background: red;
         background: linear-gradient(180deg, #211E3D 0%, rgba(8, 7, 19) 80%);
-        height: 250px;
+        height: 60%;
         width: 100%;
         z-index: -1;
     }
@@ -170,6 +161,8 @@
 
 .buttonMobileSwitch
 {
+    color: var(--color-white);
+
     @include mobile
     {
         flex-direction: column;
@@ -184,6 +177,7 @@
 
         & svg
         {
+            height: 1rem;
             order: -1;
 
             & path
@@ -193,11 +187,6 @@
         }
     }
 
-}
-
-.buttonMobileSwitch
-{
-    color: #584F88 !important;
 }
 
 .buttonMobileSwitchActive {
@@ -238,4 +227,14 @@
         border-top-left-radius: 1rem;
     }
 
+}
+
+.tabletEndGame
+{
+    display: none;
+
+    @include tablet
+    {
+        display: block;
+    }
 }

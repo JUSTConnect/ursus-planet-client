@@ -19,7 +19,7 @@ export default function Footer() {
                         <Image className={css.logo} src={logo} alt='logo' />
                     </Link>
                     <div className={css.briefText}>
-                        Ursas Planet is the first gamefi raffle platform for building Web3 community. Noname has propelled the growth of Polygon,Arbitrum, BSC, zkSync, Solana, Aptos and other more popular networks. Noname changed game and get oppatunity for building earn all member of market.
+                        Ursas Planet is the first raffle SocialFi platform for creating a community on Web3, helping to unite projects and communities for mutual benefit. Ursas Planet strives to popularize the launch of new Web3 projects and help them grow.
                     </div>
                 </div>
                 <nav className={css.links}>
@@ -28,44 +28,44 @@ export default function Footer() {
                             Planet
                         </div>
                         <Link className={css.linksLink} href='#'>Discover</Link>
-                        <Link className={css.linksLink} href='#'>Spaces</Link>
-                        <Link className={css.linksLink} href='#'>Leaderboard</Link>
+                        <Link className={[css.linksLink, css.linksLinkDisabled].join(' ')} href='#'>Universe</Link>
+                        <Link className={[css.linksLink, css.linksLinkDisabled].join(' ')} href='#'>Leaderboard</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>
                             About
                         </div>
-                        <Link className={css.linksLink} href='#'>Docs</Link>
-                        <Link className={css.linksLink} href='#'>Docs</Link>
-                        <Link className={css.linksLink} href='#'>Brand Kit</Link>
+                        <Link className={css.linksLink} href='#'>About Urs</Link>
+                        <Link className={css.linksLink} href='#'>Documents</Link>
+                        <Link className={css.linksLink} href='#'>Gitbook</Link>
+                        <Link className={css.linksLink} href='#'>Careers</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>
                             Community
                         </div>
-                        <Link className={css.linksLink} href='#'>Medium</Link>
-                        <Link className={css.linksLink} href='#'>Twitter</Link>
-                        <Link className={css.linksLink} href='#'>Telegram</Link>
-                        <Link className={css.linksLink} href='#'>Discord</Link>
+                        <Link className={css.linksLink} href='https://medium.com/@TEDDY_Arrr'>Medium</Link>
+                        <Link className={css.linksLink} href='https://twitter.com/UrsasPlanet'>Twitter</Link>
+                        <Link className={css.linksLink} href='https://t.me/ursasplanet'>Telegram</Link>
+                        <Link className={css.linksLink} href='https://discord.gg/ursas'>Discord</Link>
                     </div>
                     <div className={css.linksSection}>
                         <div className={css.linksHeading}>
                             Support
                         </div>
                         <Link className={css.linksLink} href='#'>Help</Link>
-                        <Link className={css.linksLink} href='#'>Spaces</Link>
                         <Link className={css.linksLink} href='#'>Support</Link>
                     </div>
                 </nav>
             </div>
             <div className={css.footerBottom}>
                 <div>
-                    <Link href='#'>
+                    {/* <Link href='#'>
                         Terms of Service
                     </Link>&nbsp;&nbsp;&nbsp;
                     <Link href='#'>
                         Privacy Policy
-                    </Link>
+                    </Link> */}
                 </div>
                 Made by ju7tconnect © 2023
             </div>

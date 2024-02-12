@@ -2,7 +2,7 @@
 
 .card
 {
-    border-radius: 16px;
+    border-radius: 1rem;
     overflow: hidden;
 
     @include dark
@@ -11,9 +11,9 @@
     }
 }
 
-.card--outlined
-{
-}
+// .card--outlined
+// {
+// }
 
 .card--contained
 {
@@ -25,7 +25,12 @@
     padding: 1rem;
 }
 
-.cardHead, .cardFooter
+.cardHead
+{
+    border-radius: 1rem 1rem 0 0;
+}
+
+.cardHead
 {
     background: #1C1931;
     backdrop-filter: blur(10px);

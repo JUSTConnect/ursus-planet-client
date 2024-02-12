@@ -1,12 +1,15 @@
-import Image, { StaticImageData } from 'next/image'
+import Box from '@/components/core/Box'
+import CardLoader from '@/components/CardLoader'
 
 import css from './index.module.scss'
-import figure from './img/figure.svg'
+import Figure, {IFigure} from './img/Figure'
 
 
 interface Props extends React.HTMLAttributes<HTMLDivElement>
 {
+    isLoading: boolean
     src?: string
+    colors?: IFigure
 }
 
 
@@ -19,10 +22,14 @@ export default function Avatar(props: Props) {
     }
 
     return <div className={ getClassName() }>
-        { props.src ?
-            <img src={props.src} alt='figure' className={css.image}/>
-            :
-            <Image className={css.figure} src={figure} alt='figure'/>
+        {
+            props.isLoading ? <CardLoader/> :
+            props.src ?
+                <img src={props.src} alt='figure' className={css.image}/>
+                :
+                <Box className={css.figure}>
+                    <Figure {...props.colors}/>
+                </Box>
         }
     </div>
 }

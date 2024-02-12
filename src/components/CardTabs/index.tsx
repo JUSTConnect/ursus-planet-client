@@ -5,7 +5,7 @@ import { CardHead } from "@/components/core/Card"
 import css from './index.module.scss'
 
 
-interface ICardTabs extends React.HTMLAttributes<HTMLDivElement>
+export interface ICardTabs extends React.HTMLAttributes<HTMLDivElement>
 {
     tabs: ICardTab[]    
     activeTab: string
@@ -16,7 +16,7 @@ interface ICardTabs extends React.HTMLAttributes<HTMLDivElement>
 export interface ICardTab {
     value: string
     title: string
-    icon: StaticImageData
+    icon: React.ReactNode
 }
 
 
@@ -35,11 +35,7 @@ export default function CardTabs(props: ICardTabs) {
                     className={[css.cardTab, props.activeTab === tab.value && css.cardTabActive].join(' ')}
                     onClick={() => props.setActiveTab(tab.value)}
                 >
-                    <Image
-                        className={css.cardTabIcon}
-                        src={tab.icon}
-                        alt='icon'
-                    />
+                    {tab.icon}
                     {tab.title}
                 </CardHead>
             )

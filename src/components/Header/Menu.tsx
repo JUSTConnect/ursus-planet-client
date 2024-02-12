@@ -26,7 +26,7 @@ export default function Menu(props: IMenu) {
                         hover
                     >
                         <div
-                            className={css.menuItem}
+                            className={[css.menuItem, item.disabled && css.menuItemDisabled].join(' ')}
                         >
                             {item.name}
                             <div className={css.menuItemArrow}>
@@ -37,7 +37,7 @@ export default function Menu(props: IMenu) {
                 :
                 <Link
                     key={item.name}
-                    className={css.menuItem}
+                    className={[css.menuItem, item.disabled && css.menuItemDisabled].join(' ')}
                     href={ item.link || '#' }
                 >
                     {item.name}

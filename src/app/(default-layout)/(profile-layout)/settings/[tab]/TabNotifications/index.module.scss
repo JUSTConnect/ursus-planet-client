@@ -27,5 +27,10 @@
     &.blockEveryDay
     {
         background: #080713 !important;
+        cursor: pointer;
+        &:hover
+        {
+            opacity: .8;
+        }
     }
 }

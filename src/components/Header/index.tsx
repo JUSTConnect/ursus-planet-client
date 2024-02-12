@@ -3,6 +3,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { ImSpades } from "react-icons/im";
+import { TbFreeRights } from "react-icons/tb";
+import { FaHeart } from "react-icons/fa6";
+import { GiNextButton } from "react-icons/gi";
+import { FaDroplet } from "react-icons/fa6";
+import { FaLayerGroup } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
+import { IoDocumentText } from "react-icons/io5";
+import { FaStar } from "react-icons/fa";
+import { IoExtensionPuzzle } from "react-icons/io5";
+import { FiShare2 } from "react-icons/fi";
+import { MdSupport } from "react-icons/md";
+
+
 import css from './index.module.scss'
 import logo from './img/logo.svg'
 
@@ -33,81 +47,84 @@ export interface IMenuItem
     name: string
     link?: string
     children?: IItem[]
+    disabled?: boolean
 }
 
 
 const menu: IMenuItem[] = [
     {
         name: "Discover",
-        children
-        : [
-                {
-                    name: 'Main',
-                    value: 'main',
-                    icon: <IconMain />
-                },
-                {
-                    name: 'Free',
-                    value: 'free',
-                    icon: <IconFree />
-                },
-                {
-                    name: 'Best',
-                    value: 'best',
-                    icon: <IconBest />
-                },
-                {
-                    name: 'Upcoming',
-                    value: 'upcoming',
-                    icon: <IconUpcoming />
-                },
-                {
-                    name: 'Your Drops',
-                    value: 'your-drops',
-                    icon: <IconYourDrops />
-                }
-        ]
+        // children
+        // : [
+        //         {
+        //             name: 'Main',
+        //             value: 'main',
+        //             icon: <ImSpades />
+        //         },
+        //         {
+        //             name: 'Free',
+        //             value: 'free',
+        //             icon: <TbFreeRights />
+        //         },
+        //         {
+        //             name: 'Best',
+        //             value: 'best',
+        //             icon: <FaHeart />
+        //         },
+        //         {
+        //             name: 'Upcoming',
+        //             value: 'upcoming',
+        //             icon: <GiNextButton />
+        //         },
+        //         {
+        //             name: 'Your Drops',
+        //             value: 'your-drops',
+        //             icon: <FaDroplet />
+        //         }
+        // ]
     },
     {
-        name: "Spaces"
+        name: "Universe",
+        disabled: true
     },
     {
         name: "Leaderboard",
-        children: [
-            {
-                name: 'Projects',
-                value: 'main',
-                icon: <IconProjects />
-            },
-            {
-                name: 'Players',
-                value: 'free',
-                icon: <IconPlayers />
-            },
-        ]
+        disabled: true
+        // children: [
+        //     {
+        //         name: 'Projects',
+        //         value: 'main',
+        //         icon: <FaLayerGroup />
+        //     },
+        //     {
+        //         name: 'Players',
+        //         value: 'free',
+        //         icon: <FaPlay />
+        //     },
+        // ]
     },
     {
         name: "More",
         children: [
             {
                 name: 'Docs',
-                icon: <IconDocs />
+                icon: <IoDocumentText />
             },
             {
                 name: 'Careers',
-                icon: <IconCareers />
+                icon: <FaStar />
             },
             {
                 name: 'Brand kit',
-                icon: <IconBrandKit />
+                icon: <IoExtensionPuzzle />
             },
             {
                 name: 'Media',
-                icon: <IconMedia />
+                icon: <FiShare2 />
             },
             {
                 name: 'Support',
-                icon: <IconSupport />
+                icon: <MdSupport />
             },
         ]
     }
@@ -118,10 +135,12 @@ export default function Header() {
 
     return <header className={css.header}>
         <Container className={css.headerContainer}>
-            <Link href='/'>
-                <Image className={css.logo} src={logo} alt='logo' />
-            </Link>
-            <Menu items={menu}/>
+            <div className={css.sectionLeft}>
+                <Link href='/'>
+                    <Image className={css.logo} src={logo} alt='logo' />
+                </Link>
+                <Menu items={menu}/>
+            </div>
             <SectionRight/>
         </Container>
         <MenuMobile items={menu}/>
