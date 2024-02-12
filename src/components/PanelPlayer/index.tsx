@@ -28,7 +28,7 @@ interface Props
 
 export default function Top(props: Props)
 {
-    const {data, isLoading} = useUsersSelf()
+    const {data, isLoading, isError} = useUsersSelf()
     const pathname = usePathname()
 
     return <Container className={css.wrapper}>
@@ -39,7 +39,7 @@ export default function Top(props: Props)
             <div className={css.info}>
                 <div className={css.points}>
                     {
-                        isLoading ? <Skeleton length={25}/> :
+                        isLoading || isError ? <Skeleton length={25}/> :
                         <>
                             <div className={css.point}>
                                 <Image
@@ -47,7 +47,7 @@ export default function Top(props: Props)
                                     src={ crown }
                                     alt='crown'
                                 />
-                                {Number.isInteger(data?.points) ? '...' : <Skeleton length={5}/>}
+                                ...
                             </div>
                             <div className={css.point}>
                                 <Image
@@ -55,14 +55,14 @@ export default function Top(props: Props)
                                     src={ asterisk }
                                     alt='asterisk'
                                 />
-                                {Number.isInteger(data?.points) ? data?.points : <Skeleton length={5}/>}
+                                {data?.points}
                             </div>
                         </>
                     }
                 </div>
                 <div className={[css.username, (!data?.username.length || data?.username===null) && css.usernameDisabled].join(' ')}>
                     {
-                        isLoading ?
+                        isLoading || isError ?
                             <Skeleton length={25}/>
                         :
                         !data?.username.length || data?.username===null ? `Unknown`
