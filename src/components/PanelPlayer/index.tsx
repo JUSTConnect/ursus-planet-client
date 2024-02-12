@@ -38,25 +38,37 @@ export default function Top(props: Props)
             </Link> */}
             <div className={css.info}>
                 <div className={css.points}>
-                    <div className={css.point}>
-                        <Image
-                            className={css.pointIcon}
-                            src={ crown }
-                            alt='crown'
-                        />
-                        {Number.isInteger(data?.points) ? '...' : <Skeleton length={5}/>}
-                    </div>
-                    <div className={css.point}>
-                        <Image
-                            className={css.pointIcon}
-                            src={ asterisk }
-                            alt='asterisk'
-                        />
-                        {Number.isInteger(data?.points) ? data?.points : <Skeleton length={5}/>}
-                    </div>
+                    {
+                        isLoading ? <Skeleton length={25}/> :
+                        <>
+                            <div className={css.point}>
+                                <Image
+                                    className={css.pointIcon}
+                                    src={ crown }
+                                    alt='crown'
+                                />
+                                {Number.isInteger(data?.points) ? '...' : <Skeleton length={5}/>}
+                            </div>
+                            <div className={css.point}>
+                                <Image
+                                    className={css.pointIcon}
+                                    src={ asterisk }
+                                    alt='asterisk'
+                                />
+                                {Number.isInteger(data?.points) ? data?.points : <Skeleton length={5}/>}
+                            </div>
+                        </>
+                    }
                 </div>
-                <div className={[css.username, data?.username===null && css.usernameDisabled].join(' ')}>
-                    {data?.username===null ? 'No Username' : data?.username || <Skeleton length={25}/>}
+                <div className={[css.username, (!data?.username.length || data?.username===null) && css.usernameDisabled].join(' ')}>
+                    {
+                        isLoading ?
+                            <Skeleton length={25}/>
+                        :
+                        !data?.username.length || data?.username===null ? `Unknown`
+                        :
+                        data?.username
+                    }
                 </div>
                 <div className={css.button}>
                     {/* <div className={ css.wallets }>

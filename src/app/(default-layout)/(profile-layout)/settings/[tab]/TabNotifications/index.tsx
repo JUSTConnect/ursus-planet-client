@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 
 import { FaList } from "react-icons/fa6";
@@ -38,7 +36,7 @@ const tabs: ICardTab[] = [
         title: 'Subscriptions',
         icon: <FaBell/>
     }
-]
+]  
 
 
 export default function TabProfile() {
