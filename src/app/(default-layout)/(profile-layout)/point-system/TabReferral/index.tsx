@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Table } from '@radix-ui/themes';
 
@@ -136,7 +137,9 @@ export default function TabProfile() {
                             :
                                 <Stack alignCenter gap={1} className={css.codeNoUsername}>
                                     <FaInfoCircle/>
-                                    You can get referral code in our telegram or discord chat
+                                    <Box>
+                                        To have your own referral code you have to <Link className={css.linkSetUsername} href={'/settings/profile'}>set username</Link>
+                                    </Box>
                                 </Stack>
                         }
                     </Box>
