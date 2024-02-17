@@ -60,12 +60,12 @@ export default function Top(props: Props)
                         </>
                     }
                 </div>
-                <div className={[css.username, (!data?.username.length || data?.username===null) && css.usernameDisabled].join(' ')}>
+                <div className={[css.username, (!data?.username?.length || data?.username===null) && css.usernameDisabled].join(' ')}>
                     {
                         isLoading || isError ?
                             <Skeleton length={25}/>
                         :
-                        !data?.username.length || data?.username===null ? `Unknown`
+                        !data?.username?.length || data?.username===null ? `Unknown`
                         :
                         data?.username
                     }
