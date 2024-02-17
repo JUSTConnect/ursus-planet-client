@@ -30,14 +30,6 @@ const items: IItem[] = [
         detected: true
     },
     {
-        figure: figureTrustWallet,
-        name: 'Trust wallet'
-    },
-    {
-        figure: figurePhantom,
-        name: 'Phantom'
-    },
-    {
         figure: figureWalletConnect,
         name: 'WalletConnect'
     },
