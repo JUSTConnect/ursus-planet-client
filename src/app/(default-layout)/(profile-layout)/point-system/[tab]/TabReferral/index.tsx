@@ -20,10 +20,10 @@ import Button from '@/components/core/Button';
 import Stack from '@/components/core/Stack';
 import ModalReferralCode from '@/components/ModalReferralCode'
 
-import CardTabs from '../../CardTabs'
-import Card from '../../Card'
-import CardHead from '../../CardHead'
-import Cards from '../../Cards'
+import CardTabs from '../../../CardTabs'
+import Card from '../../../Card'
+import CardHead from '../../../CardHead'
+import Cards from '../../../Cards'
 
 import css from './index.module.scss'
 import figure from './img/figure.svg'

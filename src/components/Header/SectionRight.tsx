@@ -100,7 +100,7 @@ export default function SectionRight() {
                 {
                     name: 'Point system',
                     icon: <RiArrowRightDoubleFill />,
-                    link: '/point-system/'
+                    link: '/point-system/tasks/'
                 },
             ]}
         >

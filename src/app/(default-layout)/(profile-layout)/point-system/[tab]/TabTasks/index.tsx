@@ -10,10 +10,10 @@ import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
 
-import CardTabs from '../../CardTabs'
-import Card from '../../Card'
-import CardHead from '../../CardHead'
-import Cards from '../../Cards'
+import CardTabs from '../../../CardTabs'
+import Card from '../../../Card'
+import CardHead from '../../../CardHead'
+import Cards from '../../../Cards'
 
 import css from './index.module.scss'
 import Item from './Item'
@@ -39,8 +39,10 @@ export default function TabProfile() {
                         'name': item,
                         'title': tasksPlatformSettings[`${item}_title` as keyof ITasksPlatformSettings],
                         'reward': tasksPlatformSettings[`${item}_reward` as keyof ITasksPlatformSettings],
-                        'link': tasksPlatformSettings[`${item}_link` as keyof ITasksPlatformSettings]
+                        'link': tasksPlatformSettings[`${item}_link` as keyof ITasksPlatformSettings],
+                        'is_active': tasksPlatformSettings[`${item}_is_active` as keyof ITasksPlatformSettings]
                     }))
+                    .filter(item=>item.is_active)
         }
         return []
     }
@@ -77,11 +79,6 @@ export default function TabProfile() {
                     />
                     <CardBody>
                         <div className={css.items}>
-                            {
-                                getTasksPlatform().map((task, index) =>
-                                    <Item key={index} title={task.title} reward={task.reward} link={task.link}/>                                
-                                )
-                            }
                             {/* {
                                 Array.from(Array(5)).map((_, index) =>
                                     <Item key={index} title='Follow project on platform' points={150} connect />
@@ -104,6 +101,11 @@ export default function TabProfile() {
                     />
                     <CardBody>
                         <div className={css.items}>
+                            {
+                                getTasksPlatform().map((task, index) =>
+                                    <Item key={index} title={task.title} reward={task.reward} link={task.link}/>                                
+                                )
+                            }
                             {/* {
                                 Array.from(Array(5)).map((_, index) =>
                                     <Item key={index} title='Follow project on platform' points={150} connect />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 import PanelPlayerTabs, {IPanelPlayerTab} from "@/components/PanelPlayerTabs"
 
@@ -29,22 +29,22 @@ const tabs: IPanelPlayerTab[] = [
 ]
 
 
-export default function Profile() {
-    const [activeTab, setActiveTab] = useState('tasks')
+export default function Profile({ params }: { params: { tab: string } }) {
+    const router = useRouter()
 
     return <>
         <PanelPlayerTabs
-            setActiveTab={setActiveTab}
-            activeTab={activeTab}
+            setActiveTab={(name) => router.push(name)}
+            activeTab={params.tab}
             tabs={tabs}
         />
         <div className={css.tabsContent}>
             {
-                activeTab === 'tasks' &&
+                params.tab === 'tasks' &&
                     <TabTasks/>
             }
             {
-                activeTab === 'referral' &&
+                params.tab === 'referral' &&
                     <TabReferral/>
             }
         </div>
