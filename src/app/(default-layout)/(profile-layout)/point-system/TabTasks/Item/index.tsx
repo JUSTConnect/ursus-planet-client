@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { memo } from 'react'
 
 import Box from '@/components/core/Box'
@@ -10,10 +11,11 @@ import css from './index.module.scss'
 interface IItem
 {
     title: string
-    points: number
+    reward: number
     done?: boolean
     connect?: boolean
     follow?: boolean
+    link?: string
 }
 
 
@@ -21,7 +23,7 @@ function Item(props: IItem) {
     return <Box className={css.item}>
         <Stack fullWidth>
             <Box>
-                {props.title} - <span className={css.points}>{props.points} points</span>
+                {props.title} - <span className={css.points}>{props.reward} points</span>
             </Box>
         </Stack>
         <Box className={css.buttons}>
@@ -53,9 +55,11 @@ function Item(props: IItem) {
                                 <Button fullWidth hovered color='white'>Follow</Button>
                             </Box>
                         :
-                            <Box className={css.button}>
-                                <Button fullWidth hovered color='white'>Do it</Button>
-                            </Box>
+                            <Link className={css.button} href={props.link||'#'}>
+                                <Box>
+                                    <Button fullWidth hovered color='white'>Do it</Button>
+                                </Box>
+                            </Link>
                     }
                 </>
             }
