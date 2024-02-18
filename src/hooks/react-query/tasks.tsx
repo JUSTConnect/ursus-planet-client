@@ -68,9 +68,30 @@ export interface ITasksPlatformSettings {
 }
 
 
+export interface ITasksPlatformLog
+{
+    got: boolean,
+    reward: null|number
+    user: number|null
+}
+
+
+export type ITasksPlatformLogs = {
+    [key: string]: ITasksPlatformLog
+}
+
+
 export function useTasksPlatformSettings() {
     return useBaseQuery<ITasksPlatformSettings>({
         keys: ['tasks-platform-settings'],
         url: 'tasks/platform/'
+    })
+}
+
+
+export function useTasksPlatformLogs() {
+    return useBaseQuery<ITasksPlatformLogs>({
+        keys: ['tasks-platform-logs'],
+        url: 'tasks/platform/logs/'
     })
 }

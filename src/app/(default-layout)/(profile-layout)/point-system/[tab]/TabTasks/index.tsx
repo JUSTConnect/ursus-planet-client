@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { IoIosAlarm } from "react-icons/io";
 import { PiFlagBannerFill } from "react-icons/pi";
 
-import { ITasksPlatformSettings ,useTasksPlatformSettings } from '@/hooks/react-query/tasks';
+import { ITasksPlatformSettings, ITasksPlatformLogs, useTasksPlatformSettings, useTasksPlatformLogs } from '@/hooks/react-query/tasks';
 import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
@@ -24,9 +24,10 @@ type TabName = 'projects' | 'platform'
 
 export default function TabProfile() {
     const {data: tasksPlatformSettings} = useTasksPlatformSettings()
+    const {data: tasksPlatformLogs} = useTasksPlatformLogs()
 
     const getTasksPlatform = () => {
-        if (tasksPlatformSettings) {
+        if (tasksPlatformSettings && tasksPlatformLogs) {
             return Array.from(new Set(Object
                     .keys(tasksPlatformSettings)
                     .filter(item=> item.match('^task'))
@@ -40,7 +41,12 @@ export default function TabProfile() {
                         'title': tasksPlatformSettings[`${item}_title` as keyof ITasksPlatformSettings],
                         'reward': tasksPlatformSettings[`${item}_reward` as keyof ITasksPlatformSettings],
                         'link': tasksPlatformSettings[`${item}_link` as keyof ITasksPlatformSettings],
-                        'is_active': tasksPlatformSettings[`${item}_is_active` as keyof ITasksPlatformSettings]
+                        'is_active': tasksPlatformSettings[`${item}_is_active` as keyof ITasksPlatformSettings],
+                        'log': {
+                            'user': tasksPlatformLogs[item as keyof ITasksPlatformLogs]?.user,
+                            'reward': tasksPlatformLogs[item as keyof ITasksPlatformLogs]?.reward,
+                            'got': tasksPlatformLogs[item as keyof ITasksPlatformLogs]?.got,
+                        }
                     }))
                     .filter(item=>item.is_active)
         }
@@ -103,7 +109,7 @@ export default function TabProfile() {
                         <div className={css.items}>
                             {
                                 getTasksPlatform().map((task, index) =>
-                                    <Item key={index} title={task.title} reward={task.reward} link={task.link}/>                                
+                                    <Item key={index} title={task.title} reward={task.reward} link={task.link} log={task.log}/>                                
                                 )
                             }
                             {/* {
