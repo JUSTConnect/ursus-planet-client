@@ -1,27 +1,18 @@
 'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { ImSpades } from "react-icons/im";
-import { TbFreeRights } from "react-icons/tb";
-import { FaHeart } from "react-icons/fa6";
-import { GiNextButton } from "react-icons/gi";
-import { FaDroplet } from "react-icons/fa6";
-import { FaLayerGroup } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
 import { IoDocumentText } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { IoExtensionPuzzle } from "react-icons/io5";
 import { FiShare2 } from "react-icons/fi";
 import { MdSupport } from "react-icons/md";
 
+import { IItem } from '@/components/core/Dropdown'
+import Container from '@/components/core/Container'
 
 import css from './index.module.scss'
 import logo from './img/logo.svg'
-
-import { IItem } from '@/components/core/Dropdown'
-import Container from '@/components/core/Container'
 
 import Menu from './Menu'
 import MenuMobile from './MenuMobile'
@@ -40,8 +31,8 @@ export interface IMenuItem
 const menu: IMenuItem[] = [
     {
         name: "Discover",
-        // children
-        // : [
+        // children: [
+        //
         //         {
         //             name: 'Main',
         //             value: 'main',

@@ -24,6 +24,7 @@ export default function Avatar({
 
     const getClassName = () => {
         return [
+            className,
             css.avatar,
             css[`avatar--${size}`]
         ].join(' ')

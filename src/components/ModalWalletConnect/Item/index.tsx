@@ -14,7 +14,7 @@ export interface IItem {
     figure: StaticImageData
     name: string
     detected?: boolean
-    setModalActive?: (value: boolean) => void
+    setModalActive?: (_: boolean) => void
 }
 
 

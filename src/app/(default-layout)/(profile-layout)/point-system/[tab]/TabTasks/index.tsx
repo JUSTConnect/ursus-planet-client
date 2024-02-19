@@ -5,10 +5,11 @@ import { useState } from 'react'
 import { IoIosAlarm } from "react-icons/io";
 import { PiFlagBannerFill } from "react-icons/pi";
 
-import { ITasksPlatformSettings, ITasksPlatformLogs, useTasksPlatformSettings, useTasksPlatformLogs } from '@/hooks/react-query/tasks';
+import { useTasksPlatform } from '@/hooks/react-query/tasks';
 import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
+import Box from '@/components/core/Box';
 
 import CardTabs from '../../../CardTabs'
 import Card from '../../../Card'
@@ -23,35 +24,7 @@ type TabName = 'projects' | 'platform'
 
 
 export default function TabProfile() {
-    const {data: tasksPlatformSettings} = useTasksPlatformSettings()
-    const {data: tasksPlatformLogs} = useTasksPlatformLogs()
-
-    const getTasksPlatform = () => {
-        if (tasksPlatformSettings && tasksPlatformLogs) {
-            return Array.from(new Set(Object
-                    .keys(tasksPlatformSettings)
-                    .filter(item=> item.match('^task'))
-                    .map(item=>item.replace('_reward', ''))
-                    .map(item=>item.replace('_link', ''))
-                    .map(item=>item.replace('_title', ''))
-                    .map(item=>item.replace('_is_active', ''))
-                ))
-                    .map(item=>Object({
-                        'name': item,
-                        'title': tasksPlatformSettings[`${item}_title` as keyof ITasksPlatformSettings],
-                        'reward': tasksPlatformSettings[`${item}_reward` as keyof ITasksPlatformSettings],
-                        'link': tasksPlatformSettings[`${item}_link` as keyof ITasksPlatformSettings],
-                        'is_active': tasksPlatformSettings[`${item}_is_active` as keyof ITasksPlatformSettings],
-                        'log': {
-                            'user': tasksPlatformLogs[item as keyof ITasksPlatformLogs]?.user,
-                            'reward': tasksPlatformLogs[item as keyof ITasksPlatformLogs]?.reward,
-                            'got': tasksPlatformLogs[item as keyof ITasksPlatformLogs]?.got,
-                        }
-                    }))
-                    .filter(item=>item.is_active)
-        }
-        return []
-    }
+    const {data: tasksPlatform} = useTasksPlatform()
 
     const [activeTab, setActiveTab] = useState<TabName>('projects')
 
@@ -78,51 +51,44 @@ export default function TabProfile() {
             <Card
                 active={activeTab === 'projects'}
             >
-                <div>
+                <Box>
                     <CardHead
                         title='Mission project'
                         icon={<IoIosAlarm />}
                     />
                     <CardBody>
-                        <div className={css.items}>
-                            {/* {
-                                Array.from(Array(5)).map((_, index) =>
-                                    <Item key={index} title='Follow project on platform' points={150} connect />
-                                )
-                            }
-                            <Item title='Follow project on platform' points={150} connect follow />
-                            <Item title='Follow project on platform' points={150} />
-                            <Item title='Follow project on platform' points={150} done /> */}
-                        </div>
+                        <Box className={css.items}>
+                        </Box>
                     </CardBody>
-                </div>
+                </Box>
             </Card>
             <Card
                 active={activeTab === 'platform'}
             >
-                <div>
+                <Box>
                     <CardHead
                         title='Mission Platform'
                         icon={<PiFlagBannerFill />}
                     />
                     <CardBody>
-                        <div className={css.items}>
+                        <Box className={css.items}>
                             {
-                                getTasksPlatform().map((task, index) =>
-                                    <Item key={index} title={task.title} reward={task.reward} link={task.link} log={task.log}/>                                
+                                tasksPlatform && tasksPlatform
+                                    .filter(item=>item.is_active)
+                                    .map((task, index) =>
+                                        <Item
+                                            name={task.name}
+                                            key={index}
+                                            title={task.title}
+                                            reward={task.reward}
+                                            link={task.link}
+                                            log={task.log}
+                                        />                                
                                 )
                             }
-                            {/* {
-                                Array.from(Array(5)).map((_, index) =>
-                                    <Item key={index} title='Follow project on platform' points={150} connect />
-                                )
-                            }
-                            <Item title='Follow project on platform' points={150} connect follow />
-                            <Item title='Follow project on platform' points={150} />
-                            <Item title='Follow project on platform' points={150} done /> */}
-                        </div>
+                        </Box>
                     </CardBody>
-                </div>
+                </Box>
             </Card>
         </Cards>
     </Container>

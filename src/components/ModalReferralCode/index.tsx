@@ -1,32 +1,18 @@
 'use client'
-
-import { useState } from 'react'
-import { StaticImageData } from 'next/image'
-
-import css from './index.module.scss'
-
-import { useEmailChange, useEmailVerify, useUsersSelf } from '@/hooks/react-query/users'
-import { validateEmail } from '@/utils/validateEmail'
 import Box from '@/components/core/Box'
 import Card, {CardBody} from '@/components/core/Card'
 import Modal from '@/components/core/Modal'
 import Typography from '@/components/core/Typography'
 import Button from '@/components/core/Button'
 import Input from '@/components/core/Input/Input'
-import { AxiosError } from 'axios'
+
+import css from './index.module.scss'
 
 
 interface Props
 {
     active: boolean
     setActive: CallableFunction
-}
-
-interface Item
-{
-    figure: StaticImageData
-    name: string
-    detected?: boolean
 }
 
 

@@ -1,5 +1,4 @@
 import css from './index.module.scss'
-import Container from '@/components/core/Container'
 
 
 interface Props extends React.HTMLAttributes<HTMLDivElement>

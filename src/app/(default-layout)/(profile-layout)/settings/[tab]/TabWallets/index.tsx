@@ -10,8 +10,6 @@ import { PiFlagBannerFill } from "react-icons/pi";
 import css from './index.module.scss'
 import IconAptos from './img/IconAptos'
 import cardProjectFigure from './img/card-project-figure.png'
-import iconPlayer from './img/player.svg'
-import iconProject from './img/project.svg'
 import iconEth from './img/icon-eth.png'
 import iconSol from './img/icon-sol.png'
 import iconSui from './img/icon-sui.png'

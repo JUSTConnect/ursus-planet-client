@@ -28,7 +28,6 @@ import Cards from '../../../Cards'
 import css from './index.module.scss'
 import figure from './img/figure.svg'
 import messageBottom from './img/message-bottom.svg'
-import Skeleton from '@/components/core/Skeleton';
 
 
 type TabName = 'code' | 'info'
@@ -36,7 +35,7 @@ type TabName = 'code' | 'info'
 
 export default function TabProfile() {
 
-    const {data, isLoading} = useUsersSelf()
+    const {data} = useUsersSelf()
     const [isModalReferralCodeActive, setIsModalReferralCodeActive] = useState(false)
 
     const [activeTab, setActiveTab] = useState<TabName>('code')

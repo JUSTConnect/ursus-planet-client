@@ -1,14 +1,11 @@
 import Image from 'next/image';
 
 import iconPng from './icons/png.png'
-import IconSvg from './icons/Svg'
 
 import { Input, InputSize } from "@/components/core/Input";
 import Container from "@/components/core/Container";
 import Box from '@/components/core/Box';
 import Typography from '@/components/core/Typography';
-import Scroller from '@/components/core/Scroller';
-import Stack from '@/components/core/Stack';
 
 
 const sizes: InputSize[] = ['sm', 'md', 'lg']

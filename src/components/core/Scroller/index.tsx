@@ -3,7 +3,6 @@ import css from './index.module.scss'
 
 export default function Scroller({
     className,
-    style,
     children
 }: React.HTMLAttributes<HTMLDivElement>) {
 

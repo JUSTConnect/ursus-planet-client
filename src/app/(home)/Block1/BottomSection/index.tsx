@@ -1,21 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
-import Image from 'next/image'
 
 import { GiNextButton, GiPreviousButton } from "react-icons/gi";
 import { FaPlay } from "react-icons/fa";
-
-import css from './index.module.scss'
-import IconLast from './img/IconLast'
-import IconCurrent from './img/IconCurrent'
-import IconUpcoming from './img/IconUpcoming'
-
 
 import { RootState } from '@/store'
 import { setSeasonActive } from '@/features/tmp/tmpSlice'
 import Container from '@/components/core/Container'
 import Typography from '@/components/core/Typography'
 import Button from '@/components/core/Button'
-import Stack from '@/components/core/Stack'
+
+import css from './index.module.scss'
 
 import BlockSeason from './BlockSeason'
 import BlockPrize from './BlockPrize'
