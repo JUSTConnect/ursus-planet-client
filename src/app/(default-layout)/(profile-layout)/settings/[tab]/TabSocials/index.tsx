@@ -39,6 +39,7 @@ import {
     getXUrl,
     getGithubUrl
 } from './urls'
+import { useUsersSelf } from '@/hooks/react-query/users'
 
 
 interface Section
@@ -61,6 +62,7 @@ export default function TabSocials() {
     const [modalTelegram, setModalTelegram] = useState(false)
 
     const {data, isLoading, refetch} = useSocials()
+    const {refetch: refetchUser} = useUsersSelf()
     const {data: configData} = useSocialConfig()
 
     const {mutateAsync} = useAuth()
@@ -79,7 +81,7 @@ export default function TabSocials() {
                     router.replace(pathname)
                 })
         }
-    }, [mutateAsync, pathname, refetch, router, searchParams])
+    }, [mutateAsync, pathname, refetch, refetchUser, router, searchParams])
 
     const {mutate: mutateDelete} = useSocialsDelete()
 
@@ -102,7 +104,7 @@ export default function TabSocials() {
         const data = new FormData()
         data.append('social', social)
         mutateDelete(data)
-        setTimeout(() => refetch(), 1000)
+        setTimeout(() => {refetch(); refetchUser()}, 1000)
     }
 
     const sections: Section[] = [

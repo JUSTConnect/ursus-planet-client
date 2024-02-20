@@ -40,10 +40,10 @@ export function useBaseQuery<Response>(params: BaseQueryParameters) {
 }
 
 
-export function useBaseMutation<_, MutationResponse>(params: BaseMutationParameters) {
-    return useMutation<MutationResponse, AxiosError>({
+export function useBaseMutation(params: BaseMutationParameters) {
+    return useMutation({
         mutationKey: params.keys,
-        mutationFn: async (mutationData) => {
+        mutationFn: async (mutationData: FormData) => {
             const config: AxiosRequestConfig = {
                 method: params.method || 'post',
                 url: params.url,
