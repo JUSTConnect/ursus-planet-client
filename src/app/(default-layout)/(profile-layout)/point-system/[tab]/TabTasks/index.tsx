@@ -24,7 +24,7 @@ type TabName = 'projects' | 'platform'
 
 
 export default function TabProfile() {
-    const {data: tasksPlatform} = useTasksPlatform()
+    const {data: tasksPlatform, isSuccess: tasksPlatformSuccess} = useTasksPlatform()
 
     const [activeTab, setActiveTab] = useState<TabName>('projects')
 
@@ -73,7 +73,7 @@ export default function TabProfile() {
                     <CardBody>
                         <Box className={css.items}>
                             {
-                                tasksPlatform && tasksPlatform
+                                tasksPlatformSuccess && tasksPlatform
                                     .filter(item=>item.is_active)
                                     .map((task, index) =>
                                         <Item

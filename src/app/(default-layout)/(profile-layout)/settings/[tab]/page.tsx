@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
+import protectedPage from '@/hocs/protectedPage'
 import PanelPlayerTabs, { IPanelPlayerTab } from '@/components/PanelPlayerTabs'
 
 import css from './index.module.scss'
@@ -40,7 +41,7 @@ const tabs: IPanelPlayerTab[] = [
 ]
 
 
-export default function PageSettings({ params }: { params: { tab: string } }) {
+function SettingsPage({ params }: { params: { tab: string } }) {
     const router = useRouter()
 
     return <>
@@ -69,3 +70,6 @@ export default function PageSettings({ params }: { params: { tab: string } }) {
         </div>
     </>
 }
+
+
+export default protectedPage(SettingsPage)

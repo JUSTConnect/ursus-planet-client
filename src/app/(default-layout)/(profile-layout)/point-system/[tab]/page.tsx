@@ -8,6 +8,8 @@ import css from './index.module.scss'
 import { IoSend } from "react-icons/io5";
 import { FaLink } from "react-icons/fa6";
 
+import protectedPage from "@/hocs/protectedPage";
+
 import TabTasks from './TabTasks'
 import TabReferral from './TabReferral'
 
@@ -29,7 +31,7 @@ const tabs: IPanelPlayerTab[] = [
 ]
 
 
-export default function Profile({ params }: { params: { tab: string } }) {
+function Profile({ params }: { params: { tab: string } }) {
     const router = useRouter()
 
     return <>
@@ -50,3 +52,6 @@ export default function Profile({ params }: { params: { tab: string } }) {
         </div>
     </>
 }
+
+
+export default protectedPage(Profile)

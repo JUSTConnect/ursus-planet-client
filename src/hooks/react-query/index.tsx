@@ -1,4 +1,4 @@
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosError, AxiosRequestConfig} from "axios";
 import { useQuery, useMutation } from "@tanstack/react-query";
 
 
@@ -27,20 +27,23 @@ export const apiInstance = axios.create({
 
 
 export function useBaseQuery<Response>(params: BaseQueryParameters) {
-    return useQuery({
-        queryKey: params.keys,
-        queryFn: async () => {
-            const { data } = await apiInstance.get(params.url, params.extraConfig)
-            return data as Response
+    return useQuery<Response, AxiosError>(
+        {
+            queryKey: params.keys,
+            queryFn: async () => {
+                const { data } = await apiInstance.get(params.url, params.extraConfig)
+                return data as Response
+            },
+            retry: false
         }
-    })
+    )
 }
 
 
-export function useBaseMutation<MutationData, MutationResponse>(params: BaseMutationParameters) {
-    return useMutation({
+export function useBaseMutation<_, MutationResponse>(params: BaseMutationParameters) {
+    return useMutation<MutationResponse, AxiosError>({
         mutationKey: params.keys,
-        mutationFn: async (mutationData: MutationData) => {
+        mutationFn: async (mutationData) => {
             const config: AxiosRequestConfig = {
                 method: params.method || 'post',
                 url: params.url,
@@ -48,7 +51,7 @@ export function useBaseMutation<MutationData, MutationResponse>(params: BaseMuta
                 ...params.extraConfig
             }
             const { data } = await apiInstance(config)
-            return data as MutationResponse
+            return data
         }
     })
 }
