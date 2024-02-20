@@ -90,7 +90,7 @@ export default function TabProfile() {
                                     Enter referral code  - <span className={css.points}>900 points</span>
                                 </Box>
                                 <Box>
-                                    Referral player  - <span className={css.points}>900 points</span>
+                                Earn from referral player - <span className={css.points}>2%</span>
                                 </Box>
                                 <Image
                                     className={css.codeMessageBottom}

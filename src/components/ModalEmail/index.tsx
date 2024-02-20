@@ -113,7 +113,15 @@ export default function ModalWalletConnect(props: Props) {
                         </Button>
                     </Box>
                     <Box>
-                        <Button size="lg" color="gray" fullWidth animated>Cancel</Button>
+                        <Button
+                            onClick={ () => props.setActive(false) }
+                            size="lg"
+                            color="gray"
+                            fullWidth
+                            animated
+                        >
+                            Cancel
+                        </Button>
                     </Box>
                 </form>
             </CardBody>
