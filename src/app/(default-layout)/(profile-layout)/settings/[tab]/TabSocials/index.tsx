@@ -220,7 +220,7 @@ export default function TabSocials() {
                         <br />
                         <Input placeholder='Enter code...' name='code'/>
                         <br />
-                        <Link href='https://t.me/hoolitest_bot' target="_blank">
+                        <Link href='https://t.me/ursasplanet_bot' target="_blank">
                             <Button fullWidth color='white' type='button'>Go to bot</Button>
                         </Link>
                         <br />

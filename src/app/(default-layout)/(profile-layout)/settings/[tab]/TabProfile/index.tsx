@@ -217,6 +217,7 @@ export default function TabProfile() {
                                             value={data?.email||''}
                                             onChange={ () => {} }
                                             className={css.inputEmail}
+                                            readOnly
                                             iconStart={
                                                 data?.email &&
                                                     <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />
