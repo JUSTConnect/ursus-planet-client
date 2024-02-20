@@ -170,6 +170,7 @@ export default function TabProfile() {
                                                     name='username'
                                                     error={((error as AxiosError)?.response?.data as any)?.username}
                                                     placeholder='Set your username'
+                                                    required
                                                 />
                                             </Stack>
                                         </Box>
