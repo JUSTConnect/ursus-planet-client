@@ -17,6 +17,14 @@ interface BaseMutationParameters extends Omit<BaseQueryParameters, 'keys'> {
 }
 
 
+export type ListResponse<T> = {
+    count: number,
+    next: string|null,
+    previous: string|null,
+    results: T[]
+}
+
+
 export const apiInstance = axios.create({
     baseURL: SERVER_URL + '/api/',
     withCredentials: true,

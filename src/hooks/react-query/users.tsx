@@ -1,6 +1,6 @@
 'use client'
 
-import { useBaseQuery, useBaseMutation } from "@/hooks/react-query"
+import { useBaseQuery, useBaseMutation, type ListResponse } from "@/hooks/react-query"
 
 
 interface IUser {
@@ -14,6 +14,8 @@ interface IUser {
     email: string
     password: string
     avatar: string
+    referrer: string,
+    referral_quote: number
     cabinet_notifications_email: boolean
     cabinet_notifications_account: boolean
     cabinet_notifications_frequency: 'string'
@@ -35,6 +37,30 @@ export function useUsersSelf() {
     return useBaseQuery<IUser>({
         keys: ['users-self'],
         url: 'users/me/'
+    })
+}
+
+
+export function useUserSelfReferrals() {
+    return useBaseQuery<ListResponse<{username: string, wallets: string[]}>>({
+        keys: ['users-self-referrals'],
+        url: 'users/referrals/'
+    })
+}
+
+
+export function useUserSelfSetReferrer() {
+    return useBaseMutation<{username: string}, {success: 'ok'}>({
+        url: 'users/referrer/set',
+        method: 'post'
+    })
+}
+
+
+export function useUserSelfSetReferrerCookie() {
+    return useBaseMutation({
+        url: 'users/referrer/set/cookie/',
+        method: 'post'
     })
 }
 

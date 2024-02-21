@@ -19,6 +19,12 @@ export interface ITasksPlatform
     log: ITasksPlatformLog
 }
 
+export interface ITasksPlatformSettings
+{
+    cancel_fee: number,
+    referral_quote: number
+}
+
 
 export function useTasksPlatform() {
     return useBaseQuery<ITasksPlatform[]>({
@@ -27,6 +33,12 @@ export function useTasksPlatform() {
     })
 }
 
+export function useTasksPlatformSettings() {
+    return useBaseQuery<ITasksPlatformSettings>({
+        keys: ['tasks-platform-settings'],
+        url: 'tasks/platform/settings/'
+    })
+}
 
 export function useTasksPlatformGetReward() {
     return useBaseMutation<{task_name: string}, any>({

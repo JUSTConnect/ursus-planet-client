@@ -1,4 +1,5 @@
 'use client'
+// import { useUserSelfSetReferrer, useUsersSelf } from '@/hooks/react-query/users'
 import Box from '@/components/core/Box'
 import Card, {CardBody} from '@/components/core/Card'
 import Modal from '@/components/core/Modal'
@@ -18,11 +19,17 @@ interface Props
 
 export default function ModalWalletConnect(props: Props) {
 
+    // const {refetch} = useUsersSelf()
+    // const {mutateAsync} = useUserSelfSetReferrer()
+
+    const handleSubmit = () => {
+
+    }
 
     return <Modal active={props.active} setActive={props.setActive} style={{ maxWidth: '480px' }}>
         <Card className={css.card}>
             <CardBody>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <Box mb={2}>
                         <Typography className={css.heading} variant="h3" center>Enter referral code</Typography>
                         <Typography className={css.headingBottom} variant="p" center>
@@ -33,6 +40,7 @@ export default function ModalWalletConnect(props: Props) {
                         <Input
                             placeholder='Enter code'
                             type='email'
+                            name=''
                         />
                     </Box>
                     <Box mb={1}>

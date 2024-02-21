@@ -10,7 +10,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { FaCopy } from "react-icons/fa6";
 
-import { useUsersSelf } from '@/hooks/react-query/users';
+import { useUsersSelf, useUserSelfReferrals } from '@/hooks/react-query/users';
 import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
@@ -36,6 +36,7 @@ type TabName = 'code' | 'info'
 export default function TabProfile() {
 
     const {data} = useUsersSelf()
+    const {data: dataReferrals} = useUserSelfReferrals()
     const [isModalReferralCodeActive, setIsModalReferralCodeActive] = useState(false)
 
     const [activeTab, setActiveTab] = useState<TabName>('code')
@@ -98,22 +99,41 @@ export default function TabProfile() {
                                     alt='figure'
                                 />
                             </Box>
-                            <Stack gap={1} alignCenter className={css.codeDescription}>
-                                <Box>
-                                    <FaInfoCircle/>
-                                </Box>
-                                You can get referral code in our telegram or discord chat
-                            </Stack>
+                            {
+                                !data?.referrer &&
+                                    <Stack gap={1} alignCenter className={css.codeDescription}>
+                                        <Box>
+                                            <FaInfoCircle/>
+                                        </Box>
+                                        You can get referral code in our telegram or discord chat
+                                    </Stack>
+                            }
                             <Input
                                 onClick={ () => setIsModalReferralCodeActive(true) }
                                 placeholder='Enter referral code'
+                                value={data?.referrer}
                                 readOnly
                             />
                         </Box>
                     </Box>
                     <Box className={css.codeBottom}>
                         {
-                            data?.username ?
+                            !data?.username ?
+                                <Stack alignCenter gap={1} className={css.codeNoUsername}>
+                                    <FaInfoCircle/>
+                                    <Box>
+                                        To have your own referral code you have to <Link className={css.linkSetUsername} href={'/settings/profile'}>set username</Link>
+                                    </Box>
+                                </Stack>
+                            :
+                            !data?.referrer ?
+                                <Stack alignCenter gap={1} className={css.codeNoUsername}>
+                                    <FaInfoCircle/>
+                                    <Box>
+                                        To have your own referral code you have to set referral code
+                                    </Box>
+                                </Stack>
+                            :
                                 <>
                                     <div className={css.codeBottomCode}>
                                         Your referral code : {data.username}
@@ -134,13 +154,6 @@ export default function TabProfile() {
                                     </Button>
                                     <FaCopy onClick={handleCopy} className={css.codeBottomButtonMobile} />
                                 </>
-                            :
-                                <Stack alignCenter gap={1} className={css.codeNoUsername}>
-                                    <FaInfoCircle/>
-                                    <Box>
-                                        To have your own referral code you have to <Link className={css.linkSetUsername} href={'/settings/profile'}>set username</Link>
-                                    </Box>
-                                </Stack>
                         }
                     </Box>
                 </CardBody>
@@ -157,21 +170,21 @@ export default function TabProfile() {
                         <Box mb={1}>
                             Total referrals
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span className={css.infoValue}>30</span>
+                            <span className={css.infoValue}>{dataReferrals?.count}</span>
                         </Box>
                         <Box mb={1}>
                             Quote of referrals
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span className={css.infoValue}>30</span>
+                            <span className={css.infoValue}>{data?.referral_quote}</span>
                         </Box>
 
                         <Table.Root className={css.infoTable}>
                             <Table.Body>
                                 {
-                                    Array.from(Array(5)).map((_, index)=>
+                                    dataReferrals?.results && dataReferrals.results.map((referral, index)=>
                                         <Table.Row key={index}>
-                                            <Table.RowHeaderCell>{index+1}. Username</Table.RowHeaderCell>
-                                            <Table.Cell>0x0ad6a1b701edde68520538d502c16900a1ee73f5</Table.Cell>
+                                            <Table.RowHeaderCell>{index+1}. {referral.username}</Table.RowHeaderCell>
+                                            <Table.Cell>{referral.wallets[0]}</Table.Cell>
                                             <Table.Cell>101</Table.Cell>
                                         </Table.Row>
                                     )
