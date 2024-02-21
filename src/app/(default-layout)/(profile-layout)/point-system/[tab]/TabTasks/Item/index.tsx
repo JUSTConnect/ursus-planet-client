@@ -36,7 +36,7 @@ function Item(props: IItem) {
     return <Box className={css.item}>
         <Stack fullWidth>
             <Box>
-                {props.title} - <span className={css.points}>{props.reward} points</span>
+                {props.title} - <span className={css.points}>{props.log ? props.log.reward : props.reward} points</span>
             </Box>
         </Stack>
         <Box className={css.buttons}>
