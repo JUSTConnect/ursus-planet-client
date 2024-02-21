@@ -109,7 +109,7 @@ export default function TabProfile() {
                                     </Stack>
                             }
                             <Input
-                                onClick={ () => setIsModalReferralCodeActive(true) }
+                                onClick={ () => !data?.referrer && setIsModalReferralCodeActive(true) }
                                 placeholder='Enter referral code'
                                 value={data?.referrer}
                                 readOnly

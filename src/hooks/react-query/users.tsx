@@ -51,7 +51,7 @@ export function useUserSelfReferrals() {
 
 export function useUserSelfSetReferrer() {
     return useBaseMutation<{username: string}, {success: 'ok'}>({
-        url: 'users/referrer/set',
+        url: 'users/referrer/set/',
         method: 'post'
     })
 }
