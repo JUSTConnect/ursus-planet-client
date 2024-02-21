@@ -40,7 +40,8 @@ export default function TabProfile() {
     const [isModalReferralCodeActive, setIsModalReferralCodeActive] = useState(false)
 
     const [activeTab, setActiveTab] = useState<TabName>('code')
-    const [isCopied, setIsCopied] = useState(false)
+    const [isCopiedUsername, setIsCopiedUsername] = useState(false)
+    const [isCopiedLink, setIsCopiedLink] = useState(false)
 
     const mobileTabs: ICardTab[] = [
         {
@@ -55,11 +56,19 @@ export default function TabProfile() {
         }
     ]
 
-    const handleCopy = () => {
+    const handleCopyUsername = () => {
         navigator.clipboard.writeText(data?.username||'');
-        setIsCopied(true)
+        setIsCopiedUsername(true)
         setTimeout(() => {
-            setIsCopied(false)
+            setIsCopiedUsername(false)
+        }, 1000)
+    }
+
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(`${window.location.hostname}${window.location.port && ':'+window.location.port}?referrer=${data?.username}`);
+        setIsCopiedLink(true)
+        setTimeout(() => {
+            setIsCopiedLink(false)
         }, 1000)
     }
 
@@ -139,20 +148,34 @@ export default function TabProfile() {
                                         Your referral code : {data.username}
                                     </div>
                                     <Button
-                                        onClick={handleCopy}
+                                        onClick={handleCopyUsername}
                                         className={css.codeBottomButton}
                                         color='white'
-                                        disabled={isCopied}
+                                        disabled={isCopiedUsername}
                                         hovered
                                     >
                                         {
-                                            isCopied ?
+                                            isCopiedUsername ?
                                                 'Copied'
                                                 :
                                                 'Copy'
                                         }
                                     </Button>
-                                    <FaCopy onClick={handleCopy} className={css.codeBottomButtonMobile} />
+                                    <Button
+                                        onClick={handleCopyLink}
+                                        className={css.codeBottomButton}
+                                        color='white'
+                                        disabled={isCopiedLink}
+                                        hovered
+                                    >
+                                        {
+                                            isCopiedLink ?
+                                                'Copied'
+                                                :
+                                                'Copy link'
+                                        }
+                                    </Button>
+                                    <FaCopy onClick={handleCopyLink} className={css.codeBottomButtonMobile} />
                                 </>
                         }
                     </Box>

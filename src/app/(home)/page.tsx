@@ -1,3 +1,8 @@
+'use client'
+import { useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
+
+import { useUserSelfSetReferrerCookie } from '@/hooks/react-query/users'
 import Footer from '@/components/Footer'
 import Block1 from './Block1'
 // import Block2 from './Block2'
@@ -7,6 +12,14 @@ import Block1 from './Block1'
 
 
 export default function Home() {
+  const {mutate} = useUserSelfSetReferrerCookie()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    searchParams.get('referrer') &&
+      mutate({username: searchParams.get('referrer')})
+  }, [mutate, searchParams])
+
   return <>
     <Block1/>
     {/*     
