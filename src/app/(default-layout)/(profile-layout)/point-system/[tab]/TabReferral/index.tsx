@@ -175,7 +175,8 @@ export default function TabProfile() {
                                                 'Copy link'
                                         }
                                     </Button>
-                                    <FaCopy onClick={handleCopyLink} className={css.codeBottomButtonMobile} />
+                                    <FaCopy onClick={handleCopyUsername} className={css.codeBottomButtonMobile} />
+                                    <FaLink onClick={handleCopyLink} className={css.codeBottomButtonMobile} />
                                 </>
                         }
                     </Box>
