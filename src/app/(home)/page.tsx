@@ -20,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     searchParams.get('referrer') &&
       mutateAsync({username: searchParams.get('referrer')}).finally(() => router.push('/'))
-  }, [mutateAsync, searchParams])
+  }, [mutateAsync, searchParams, router])
 
   return <>
     <Block1/>

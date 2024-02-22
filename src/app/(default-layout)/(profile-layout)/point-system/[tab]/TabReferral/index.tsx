@@ -209,7 +209,7 @@ export default function TabProfile() {
                                         <Table.Row key={index}>
                                             <Table.RowHeaderCell>{index+1}. {referral.username}</Table.RowHeaderCell>
                                             <Table.Cell>{referral.wallets[0]}</Table.Cell>
-                                            <Table.Cell>101</Table.Cell>
+                                            <Table.Cell>{referral.referral_count}</Table.Cell>
                                         </Table.Row>
                                     )
                                 }

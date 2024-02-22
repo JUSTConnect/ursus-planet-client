@@ -42,7 +42,7 @@ export function useUsersSelf() {
 
 
 export function useUserSelfReferrals() {
-    return useBaseQuery<ListResponse<{username: string, wallets: string[]}>>({
+    return useBaseQuery<ListResponse<{username: string, wallets: string[], referral_count: number}>>({
         keys: ['users-self-referrals'],
         url: 'users/referrals/'
     })
