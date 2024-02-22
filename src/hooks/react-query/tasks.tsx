@@ -45,3 +45,10 @@ export function useTasksPlatformGetReward() {
         url: 'tasks/platform/get_reward/'
     })
 }
+
+
+export function useTasksReferrerClaim() {
+    return useBaseMutation({
+        url: 'tasks/referrer/claim/'
+    })
+}

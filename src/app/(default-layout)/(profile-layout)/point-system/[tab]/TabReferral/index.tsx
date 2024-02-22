@@ -10,6 +10,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { FaCopy } from "react-icons/fa6";
 
+import { useTasksReferrerClaim } from '@/hooks/react-query/tasks';
 import { useUsersSelf, useUserSelfReferrals } from '@/hooks/react-query/users';
 import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
@@ -35,13 +36,18 @@ type TabName = 'code' | 'info'
 
 export default function TabProfile() {
 
-    const {data} = useUsersSelf()
+    const {data, refetch} = useUsersSelf()
     const {data: dataReferrals} = useUserSelfReferrals()
     const [isModalReferralCodeActive, setIsModalReferralCodeActive] = useState(false)
+    const {mutateAsync} = useTasksReferrerClaim()
 
     const [activeTab, setActiveTab] = useState<TabName>('code')
     const [isCopiedUsername, setIsCopiedUsername] = useState(false)
     const [isCopiedLink, setIsCopiedLink] = useState(false)
+
+    const handleClaim = () => {
+        mutateAsync({}).then(() => refetch())
+    }
 
     const mobileTabs: ICardTab[] = [
         {
@@ -190,17 +196,32 @@ export default function TabProfile() {
                     icon={<FaInfoCircle />}
                 />
                 <CardBody className={css.codeBody}>
-                    <Box>
-                        <Box mb={1}>
-                            Total referrals
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span className={css.infoValue}>{dataReferrals?.count}</span>
-                        </Box>
-                        <Box mb={1}>
-                            Quote of referrals
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span className={css.infoValue}>{data?.referral_quote}</span>
-                        </Box>
+                    <Box mb={3}>
+                        <Stack style={{justifyContent: 'space-between'}} fullWidth>
+                            <Box>
+                                <Box mb={1}>
+                                    Total referrals
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span className={css.infoValue}>{dataReferrals?.count}</span>
+                                </Box>
+                                <Box mb={1}>
+                                    Quote of referrals
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span className={css.infoValue}>{data?.referral_quote}</span>
+                                </Box>
+                            </Box>
+                            {
+                                data?.points_referral ? data?.points_referral > 0 &&
+                                    <Button
+                                        color='white'
+                                        hovered
+                                        onClick={handleClaim}
+                                    >
+                                        Claim - {data?.points_referral}
+                                    </Button>
+                                : ''
+                            }
+                        </Stack>
 
                         <Table.Root className={css.infoTable}>
                             <Table.Body>
