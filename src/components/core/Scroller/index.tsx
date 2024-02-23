@@ -3,7 +3,8 @@ import css from './index.module.scss'
 
 export default function Scroller({
     className,
-    children
+    children,
+    style
 }: React.HTMLAttributes<HTMLDivElement>) {
 
     const getClassName = () => {
@@ -13,7 +14,7 @@ export default function Scroller({
         ].join(' ')
     }
 
-    return <div className={ getClassName() }>
+    return <div style={style} className={ getClassName() }>
         { children }
     </div>
 }

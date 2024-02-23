@@ -14,6 +14,7 @@ import { useTasksPlatform, useTasksPlatformSettings } from '@/hooks/react-query/
 import { useTasksReferrerClaim } from '@/hooks/react-query/tasks';
 import { useUsersSelf, useUserSelfReferrals } from '@/hooks/react-query/users';
 import { CardBody } from "@/components/core/Card"
+import Scroller from '@/components/core/Scroller';
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
 import Box from '@/components/core/Box';
@@ -232,19 +233,21 @@ export default function TabProfile() {
                             }
                         </Stack>
                         <br/>
-                        <Table.Root className={css.infoTable}>
-                            <Table.Body>
-                                {
-                                    dataReferrals?.results && dataReferrals.results.map((referral, index)=>
-                                        <Table.Row key={index}>
-                                            <Table.RowHeaderCell>{index+1}. {referral.username}</Table.RowHeaderCell>
-                                            <Table.Cell>{referral.wallets[0]}</Table.Cell>
-                                            <Table.Cell>{referral.referral_count}</Table.Cell>
-                                        </Table.Row>
-                                    )
-                                }
-                            </Table.Body>
-                        </Table.Root>
+                        <Scroller style={{maxHeight: 220}}>
+                            <Table.Root className={css.infoTable}>
+                                <Table.Body>
+                                    {
+                                        dataReferrals?.results && dataReferrals.results.map((referral, index)=>
+                                            <Table.Row key={index}>
+                                                <Table.RowHeaderCell>{index+1}. {referral.username}</Table.RowHeaderCell>
+                                                <Table.Cell>{referral.wallets[0]}</Table.Cell>
+                                                <Table.Cell>{referral.referral_count}</Table.Cell>
+                                            </Table.Row>
+                                        )
+                                    }
+                                </Table.Body>
+                            </Table.Root>
+                        </Scroller>
                     </Box>
                     <Box className={css.infoNote}>
                         <Box mb={1} className={css.infoNoteTitle}>
