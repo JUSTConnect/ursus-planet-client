@@ -58,9 +58,7 @@ export default function Button(props: IButton) {
         { props.iconStart &&
             props.iconStart
         } 
-        { props.children &&
-            <div className={css.text}>{ props.children }</div>
-        }
+        { props.children }
         { props.iconEnd &&
             props.iconEnd
         } 

@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 import PanelPlayerTabs, {IPanelPlayerTab} from "@/components/PanelPlayerTabs"
 
 import css from './index.module.scss'
 import { IoSend } from "react-icons/io5";
 import { FaLink } from "react-icons/fa6";
+
+import protectedPage from "@/hocs/protectedPage";
 
 import TabTasks from './TabTasks'
 import TabReferral from './TabReferral'
@@ -29,24 +31,27 @@ const tabs: IPanelPlayerTab[] = [
 ]
 
 
-export default function Profile() {
-    const [activeTab, setActiveTab] = useState('tasks')
+function Profile({ params }: { params: { tab: string } }) {
+    const router = useRouter()
 
     return <>
         <PanelPlayerTabs
-            setActiveTab={setActiveTab}
-            activeTab={activeTab}
+            setActiveTab={(name) => router.push(name)}
+            activeTab={params.tab}
             tabs={tabs}
         />
         <div className={css.tabsContent}>
             {
-                activeTab === 'tasks' &&
+                params.tab === 'tasks' &&
                     <TabTasks/>
             }
             {
-                activeTab === 'referral' &&
+                params.tab === 'referral' &&
                     <TabReferral/>
             }
         </div>
     </>
 }
+
+
+export default protectedPage(Profile)

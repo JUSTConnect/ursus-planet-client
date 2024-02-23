@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+import protectedPage from "@/hocs/protectedPage"
 import PanelPlayerTabs, {IPanelPlayerTab} from "@/components/PanelPlayerTabs"
 
 import css from './index.module.scss'
@@ -29,7 +30,7 @@ const tabs: IPanelPlayerTab[] = [
 ]
 
 
-export default function Profile() {
+function AccountPage() {
     const [activeTab, setActiveTab] = useState('games')
 
     return <>
@@ -50,3 +51,6 @@ export default function Profile() {
         </div>
     </>
 }
+
+
+export default protectedPage(AccountPage)

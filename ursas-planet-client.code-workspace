@@ -28,6 +28,9 @@
 			"path": "src/components"
 		},
 		{
+			"path": "src/hocs"
+		},
+		{
 			"path": "src/app"
 		},
 		{

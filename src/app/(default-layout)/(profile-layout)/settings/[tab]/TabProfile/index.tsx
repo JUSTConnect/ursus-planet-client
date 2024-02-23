@@ -170,6 +170,7 @@ export default function TabProfile() {
                                                     name='username'
                                                     error={((error as AxiosError)?.response?.data as any)?.username}
                                                     placeholder='Set your username'
+                                                    required
                                                 />
                                             </Stack>
                                         </Box>
@@ -217,6 +218,7 @@ export default function TabProfile() {
                                             value={data?.email||''}
                                             onChange={ () => {} }
                                             className={css.inputEmail}
+                                            readOnly
                                             iconStart={
                                                 data?.email &&
                                                     <Image src={iconEmailOk} alt='icon' className={css.inputEmailIconOk} />

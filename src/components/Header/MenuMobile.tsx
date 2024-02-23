@@ -1,16 +1,13 @@
 'use client'
-
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import { IoIosArrowDown } from 'react-icons/io'
 
-import css from './index.module.scss'
-import iconArrowDown from './img/arrow-down.svg'
-
 import Container from '@/components/core/Container'
 import DropdownMenu from '@/components/core/Dropdown/DropdownMenu'
+
+import css from './index.module.scss'
 
 import { IMenuItem } from '.'
 

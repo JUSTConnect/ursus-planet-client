@@ -21,7 +21,7 @@ interface IDropdown extends React.HTMLAttributes<HTMLDivElement> {
     hover?: boolean
     classNameMenu?: string
     disabled?: boolean
-    onChoose?: (value?: string) => void
+    onChoose?: (_?: string) => void
 }
 
 

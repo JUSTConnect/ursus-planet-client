@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 
 import { FaList } from "react-icons/fa6";
@@ -38,20 +36,21 @@ const tabs: ICardTab[] = [
         title: 'Subscriptions',
         icon: <FaBell/>
     }
-]
+]  
 
 
 export default function TabProfile() {
 
     const {data, isLoading, refetch} = useUsersSelf()
-    const {mutate, isPending} = useUsersSelfUpdate()
+    const {mutateAsync, isPending} = useUsersSelfUpdate()
     const [activeTab, setActiveTab] = useState<TabName>('notifications')
     const [modalEmail, setModalEmail] = useState(false)
 
     const handleSubmitSettings: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
-        mutate(new FormData(e.currentTarget))
-        refetch()
+        mutateAsync(new FormData(e.currentTarget)).then(() => {
+            refetch()
+        })
     }
 
     return <Container className={css.container}>
@@ -125,7 +124,7 @@ export default function TabProfile() {
                                     name={'project_notifications_frequency'}
                                     defaultValue={data?.project_notifications_frequency}
                                 />
-                                <Button color='gray' className={css.buttonSave} disabled={isPending}>
+                                <Button color='gray' type='submit' className={css.buttonSave} disabled={isPending}>
                                     {
                                         isPending ? 'Saving...' : 'Save'
                                     }

@@ -6,7 +6,7 @@ import iconPng from './icons/png.png'
 import IconSvg from './icons/Svg'
 
 import Box from '@/components/core/Box';
-import Button, { ButtonSize, ButtonColor, ButtonVariant } from '@/components/core/Button';
+import Button, { ButtonSize, ButtonColor } from '@/components/core/Button';
 import ButtonIcon from '@/components/core/Button/ButtonIcon';
 import Container from '@/components/core/Container';
 import Scroller from '@/components/core/Scroller';
@@ -29,10 +29,6 @@ const buttonColors: ButtonColor[] = [
     "error",
 ]
 
-const buttonVariants: ButtonVariant[] = [
-    'regular',
-    'blank'
-]
 
 export default function Kit() {
 

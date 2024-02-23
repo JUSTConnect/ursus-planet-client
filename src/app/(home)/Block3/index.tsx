@@ -13,7 +13,6 @@ import Stack from '@/components/core/Stack'
 import Typography from '@/components/core/Typography'
 import Dropdown from '@/components/core/Dropdown'
 import DropdownButton from '@/components/core/Dropdown/DropdownButton'
-import DropdownMenu from '@/components/core/Dropdown/DropdownMenu'
 import Button from '@/components/core/Button'
 import ButtonIcon from '@/components/core/Button/ButtonIcon'
 

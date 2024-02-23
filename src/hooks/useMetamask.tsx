@@ -28,7 +28,7 @@ const MetaMaskContext = createContext<MetaMaskContextData>({} as MetaMaskContext
 
 declare global
 {
-  interface Window
+  export interface Window
   {
     ethereum: any
   }

@@ -5,14 +5,16 @@ import { useState } from 'react'
 import { IoIosAlarm } from "react-icons/io";
 import { PiFlagBannerFill } from "react-icons/pi";
 
-import { CardBody, CardFooter } from "@/components/core/Card"
+import { useTasksPlatform } from '@/hooks/react-query/tasks';
+import { CardBody } from "@/components/core/Card"
 import Container from "@/components/core/Container"
 import { ICardTab } from '@/components/CardTabs'
+import Box from '@/components/core/Box';
 
-import CardTabs from '../../CardTabs'
-import Card from '../../Card'
-import CardHead from '../../CardHead'
-import Cards from '../../Cards'
+import CardTabs from '../../../CardTabs'
+import Card from '../../../Card'
+import CardHead from '../../../CardHead'
+import Cards from '../../../Cards'
 
 import css from './index.module.scss'
 import Item from './Item'
@@ -22,6 +24,7 @@ type TabName = 'projects' | 'platform'
 
 
 export default function TabProfile() {
+    const {data: tasksPlatform, isSuccess: tasksPlatformSuccess} = useTasksPlatform()
 
     const [activeTab, setActiveTab] = useState<TabName>('projects')
 
@@ -48,46 +51,44 @@ export default function TabProfile() {
             <Card
                 active={activeTab === 'projects'}
             >
-                <div>
+                <Box>
                     <CardHead
                         title='Mission project'
                         icon={<IoIosAlarm />}
                     />
                     <CardBody>
-                        <div className={css.items}>
-                            {
-                                Array.from(Array(5)).map((_, index) =>
-                                    <Item key={index} title='Follow project on platform' points={150} connect />
-                                )
-                            }
-                            <Item title='Follow project on platform' points={150} connect follow />
-                            <Item title='Follow project on platform' points={150} />
-                            <Item title='Follow project on platform' points={150} done />
-                        </div>
+                        <Box className={css.items}>
+                        </Box>
                     </CardBody>
-                </div>
+                </Box>
             </Card>
             <Card
                 active={activeTab === 'platform'}
             >
-                <div>
+                <Box>
                     <CardHead
                         title='Mission Platform'
                         icon={<PiFlagBannerFill />}
                     />
                     <CardBody>
-                        <div className={css.items}>
+                        <Box className={css.items}>
                             {
-                                Array.from(Array(5)).map((_, index) =>
-                                    <Item key={index} title='Follow project on platform' points={150} connect />
+                                tasksPlatformSuccess && tasksPlatform
+                                    .filter(item=>item.is_active)
+                                    .map((task, index) =>
+                                        <Item
+                                            name={task.name}
+                                            key={index}
+                                            title={task.title}
+                                            reward={task.reward}
+                                            link={task.link}
+                                            log={task.log}
+                                        />                                
                                 )
                             }
-                            <Item title='Follow project on platform' points={150} connect follow />
-                            <Item title='Follow project on platform' points={150} />
-                            <Item title='Follow project on platform' points={150} done />
-                        </div>
+                        </Box>
                     </CardBody>
-                </div>
+                </Box>
             </Card>
         </Cards>
     </Container>

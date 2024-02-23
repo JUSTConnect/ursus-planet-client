@@ -9,7 +9,7 @@ interface Props extends InputProps, React.HTMLAttributes<HTMLInputElement>
     type?: string
     iconStart?: React.ReactNode
     iconEnd?: React.ReactNode
-
+    readOnly?: boolean
     name?: string
 }
 
@@ -45,7 +45,7 @@ export default function Input(props: Props) {
             <input
                 className={ computedClassName }
                 style={ props.style }
-                
+                readOnly={ props.readOnly }
                 type={ props.type }
                 placeholder={ `${placeholder}${props.required ? '*' : ''}` }
                 defaultValue={ props.defaultValue }

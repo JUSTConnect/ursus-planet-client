@@ -1,5 +1,3 @@
-import Image, { StaticImageData } from "next/image"
-
 import { CardHead } from "@/components/core/Card"
 
 import css from './index.module.scss'

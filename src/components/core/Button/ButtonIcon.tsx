@@ -14,6 +14,5 @@ export default function ButtonIcon(props: IButton) {
         {...props}
         iconStart={props.children}
         className={className}
-        children={null}
-    />
+    >{null}</Button>
 }

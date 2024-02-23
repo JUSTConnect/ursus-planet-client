@@ -10,9 +10,6 @@ import { IoSend } from "react-icons/io5";
 import css from './index.module.scss'
 import crown from './img/crown.png'
 import asterisk from './img/asterisk.png'
-import wallet1 from './img/wallet-1.png'
-import wallet2 from './img/wallet-2.png'
-import iconSettings from './img/settings.png'
 
 import { useUsersSelf } from '@/hooks/react-query/users'
 import Container from '@/components/core/Container'
@@ -21,47 +18,49 @@ import Button from '@/components/core/Button'
 import Skeleton from '@/components/core/Skeleton'
 
 
-interface Props
+export default function Top()
 {
-    showButtonSettings?: boolean
-}
-
-export default function Top(props: Props)
-{
-    const {data, isLoading} = useUsersSelf()
+    const {data, isLoading, isError} = useUsersSelf()
     const pathname = usePathname()
 
     return <Container className={css.wrapper}>
         <Container className={css.top}>
             <Avatar isLoading={isLoading} colors={data} src={data?.avatar} className={css.avatar}/>
-            {/* <Link href='/account'>
-            </Link> */}
             <div className={css.info}>
                 <div className={css.points}>
-                    <div className={css.point}>
-                        <Image
-                            className={css.pointIcon}
-                            src={ crown }
-                            alt='crown'
-                        />
-                        {Number.isInteger(data?.points) ? '...' : <Skeleton length={5}/>}
-                    </div>
-                    <div className={css.point}>
-                        <Image
-                            className={css.pointIcon}
-                            src={ asterisk }
-                            alt='asterisk'
-                        />
-                        {Number.isInteger(data?.points) ? data?.points : <Skeleton length={5}/>}
-                    </div>
+                    {
+                        isLoading || isError ? <Skeleton length={25}/> :
+                        <>
+                            <div className={css.point}>
+                                <Image
+                                    className={css.pointIcon}
+                                    src={ crown }
+                                    alt='crown'
+                                />
+                                ...
+                            </div>
+                            <div className={css.point}>
+                                <Image
+                                    className={css.pointIcon}
+                                    src={ asterisk }
+                                    alt='asterisk'
+                                />
+                                {Number(data?.points)}
+                            </div>
+                        </>
+                    }
                 </div>
-                <div className={[css.username, data?.username===null && css.usernameDisabled].join(' ')}>
-                    {data?.username===null ? 'No Username' : data?.username || <Skeleton length={25}/>}
+                <div className={[css.username, (!data?.username?.length || data?.username===null) && css.usernameDisabled].join(' ')}>
+                    {
+                        isLoading || isError ?
+                            <Skeleton length={25}/>
+                        :
+                        !data?.username?.length || data?.username===null ? `Unknown`
+                        :
+                        data?.username
+                    }
                 </div>
                 <div className={css.button}>
-                    {/* <div className={ css.wallets }>
-                        <Image className={css.wallet} src={wallet1} alt='wallet'/>
-                    </div> */}
                     {
                         !pathname.startsWith('/settings') &&
                             <div>
@@ -76,10 +75,10 @@ export default function Top(props: Props)
                     {
                         !pathname.startsWith('/point-system') &&
                         <div>
-                            <Link href='/point-system'>
+                            <Link href='/point-system/tasks/'>
                                 <Button className={css.buttonSettings} hovered>Point System</Button>
                             </Link>
-                            <Link className={css.iconSettings} href='/point-system'>
+                            <Link className={css.iconSettings} href='/point-system/tasks/'>
                                 <IoSend/>
                             </Link>
                         </div>

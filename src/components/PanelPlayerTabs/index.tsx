@@ -6,7 +6,7 @@ import Button from '@/components/core/Button'
 
 interface IPanelPlayerTabs {
     activeTab: string
-    setActiveTab: (tab: string) => void
+    setActiveTab: (_: string) => void
     tabs: IPanelPlayerTab[]
 }
 

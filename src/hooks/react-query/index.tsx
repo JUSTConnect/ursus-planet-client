@@ -1,11 +1,8 @@
-'use client'
-
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosError, AxiosRequestConfig} from "axios";
 import { useQuery, useMutation } from "@tanstack/react-query";
 
 
-const SERVER_URL = 'https://api.ursasplanet.com'
-// const SERVER_URL = 'http://localhost:8000'
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
 
 
 interface BaseQueryParameters {
@@ -20,6 +17,14 @@ interface BaseMutationParameters extends Omit<BaseQueryParameters, 'keys'> {
 }
 
 
+export type ListResponse<T> = {
+    count: number,
+    next: string|null,
+    previous: string|null,
+    results: T[]
+}
+
+
 export const apiInstance = axios.create({
     baseURL: SERVER_URL + '/api/',
     withCredentials: true,
@@ -30,13 +35,16 @@ export const apiInstance = axios.create({
 
 
 export function useBaseQuery<Response>(params: BaseQueryParameters) {
-    return useQuery({
-        queryKey: params.keys,
-        queryFn: async () => {
-            const { data } = await apiInstance.get(params.url, params.extraConfig)
-            return data as Response
+    return useQuery<Response, AxiosError>(
+        {
+            queryKey: params.keys,
+            queryFn: async () => {
+                const { data } = await apiInstance.get(params.url, params.extraConfig)
+                return data as Response
+            },
+            retry: false
         }
-    })
+    )
 }
 
 

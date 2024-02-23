@@ -9,7 +9,7 @@ interface IDropdownMenu extends React.HTMLAttributes<HTMLButtonElement>
     items: IItem[]
     active: boolean,
     setActive: CallableFunction
-    onChoose?: (value?: string) => void
+    onChoose?: (_?: string) => void
     testDisableHiding?: boolean
 }
 

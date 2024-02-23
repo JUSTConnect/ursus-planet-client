@@ -1,11 +1,10 @@
 'use client'
 import { FormEvent, useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { redirect } from 'next/navigation'
-import { AxiosError, AxiosResponse } from 'axios'
+import { AxiosError } from 'axios'
 
 import { FaDiscord } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -17,11 +16,6 @@ import figureDiscord from './img/figure-discord.svg'
 import figureX from './img/figure-x.svg'
 import figureTelegram from './img/figure-telegram.svg'
 import figureGithub from './img/figure-github.svg'
-import iconButton from './img/icon-button.svg'
-import iconButtonDiscord from './img/icon-button-discord.png'
-import iconButtonX from './img/icon-button-x.png'
-import iconButtonTelegram from './img/icon-button-telegram.png'
-import iconButtonGithub from './img/icon-button-github.png'
 import iconOk from './img/icon-ok.svg'
 import iconReload from './img/icon-reload.svg'
 import iconDelete from './img/icon-delete.svg'
@@ -45,6 +39,7 @@ import {
     getXUrl,
     getGithubUrl
 } from './urls'
+import { useUsersSelf } from '@/hooks/react-query/users'
 
 
 interface Section
@@ -67,6 +62,7 @@ export default function TabSocials() {
     const [modalTelegram, setModalTelegram] = useState(false)
 
     const {data, isLoading, refetch} = useSocials()
+    const {refetch: refetchUser} = useUsersSelf()
     const {data: configData} = useSocialConfig()
 
     const {mutateAsync} = useAuth()
@@ -85,7 +81,7 @@ export default function TabSocials() {
                     router.replace(pathname)
                 })
         }
-    }, [mutateAsync, pathname, refetch, router, searchParams])
+    }, [mutateAsync, pathname, refetch, refetchUser, router, searchParams])
 
     const {mutate: mutateDelete} = useSocialsDelete()
 
@@ -108,7 +104,7 @@ export default function TabSocials() {
         const data = new FormData()
         data.append('social', social)
         mutateDelete(data)
-        setTimeout(() => refetch(), 1000)
+        setTimeout(() => {refetch(); refetchUser()}, 1000)
     }
 
     const sections: Section[] = [
@@ -224,7 +220,7 @@ export default function TabSocials() {
                         <br />
                         <Input placeholder='Enter code...' name='code'/>
                         <br />
-                        <Link href='https://t.me/hoolitest_bot' target="_blank">
+                        <Link href='https://t.me/ursasplanet_bot' target="_blank">
                             <Button fullWidth color='white' type='button'>Go to bot</Button>
                         </Link>
                         <br />

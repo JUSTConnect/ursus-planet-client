@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-import PanelPlayerTabs, {IPanelPlayerTab} from '@/components/PanelPlayerTabs'
+import protectedPage from '@/hocs/protectedPage'
+import PanelPlayerTabs, { IPanelPlayerTab } from '@/components/PanelPlayerTabs'
 
 import css from './index.module.scss'
 import IconProfile from './img/Profile'
@@ -19,29 +19,29 @@ import TabNotifications from './TabNotifications'
 
 const tabs: IPanelPlayerTab[] = [
     {
-        icon: <IconProfile/>,
+        icon: <IconProfile />,
         name: 'Profile',
         value: 'profile'
     },
     {
-        icon: <IconSocials/>,
+        icon: <IconSocials />,
         name: 'Socials',
         value: 'socials'
     },
     {
-        icon: <IconWallets/>,
+        icon: <IconWallets />,
         name: 'Wallets',
         value: 'wallets'
     },
     {
-        icon: <IconNotifications/>,
+        icon: <IconNotifications />,
         name: 'Notifications',
         value: 'notifications'
     }
 ]
 
 
-export default function PageSettings({params}: {params: {tab: string}}) {
+function SettingsPage({ params }: { params: { tab: string } }) {
     const router = useRouter()
 
     return <>
@@ -53,20 +53,23 @@ export default function PageSettings({params}: {params: {tab: string}}) {
         <div className={css.tabsContent}>
             {
                 params.tab === 'profile' &&
-                <TabProfile/>
+                <TabProfile />
             }
             {
                 params.tab === 'socials' &&
-                <TabSocials/>
+                <TabSocials />
             }
             {
                 params.tab === 'wallets' &&
-                <TabWallets/>
+                <TabWallets />
             }
             {
                 params.tab === 'notifications' &&
-                <TabNotifications/>
+                <TabNotifications />
             }
         </div>
     </>
 }
+
+
+export default protectedPage(SettingsPage)

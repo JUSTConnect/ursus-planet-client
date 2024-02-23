@@ -1,17 +1,13 @@
 'use client'
 
-import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import css from './index.module.scss'
 
 import figureMetamask from './img/figure-metamask.png'
-import figureTrustWallet from './img/figure-trust-wallet.png'
-import figurePhantom from './img/figure-phantom.png'
 import figureWalletConnect from './img/figure-wallet-connect.png'
 
 import { RootState } from '@/store'
-import { connect } from '@/features/tmp/tmpSlice'
 import { setModalWalletConnect } from '@/features/modal/modalSlice'
 import Box from '@/components/core/Box'
 import Card, {CardBody} from '@/components/core/Card'
@@ -28,14 +24,6 @@ const items: IItem[] = [
         figure: figureMetamask,
         name: 'Metamask',
         detected: true
-    },
-    {
-        figure: figureTrustWallet,
-        name: 'Trust wallet'
-    },
-    {
-        figure: figurePhantom,
-        name: 'Phantom'
     },
     {
         figure: figureWalletConnect,
