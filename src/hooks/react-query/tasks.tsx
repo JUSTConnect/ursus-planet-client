@@ -23,6 +23,7 @@ export interface ITasksPlatformSettings
 {
     cancel_fee: number,
     referral_quote: number
+    referral_interest: number    
 }
 
 

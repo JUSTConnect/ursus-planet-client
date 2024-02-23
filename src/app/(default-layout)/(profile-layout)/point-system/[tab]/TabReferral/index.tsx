@@ -10,6 +10,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { FaCopy } from "react-icons/fa6";
 
+import { useTasksPlatform, useTasksPlatformSettings } from '@/hooks/react-query/tasks';
 import { useTasksReferrerClaim } from '@/hooks/react-query/tasks';
 import { useUsersSelf, useUserSelfReferrals } from '@/hooks/react-query/users';
 import { CardBody } from "@/components/core/Card"
@@ -37,6 +38,8 @@ type TabName = 'code' | 'info'
 export default function TabProfile() {
 
     const {data, refetch} = useUsersSelf()
+    const {data: dataSettings} = useTasksPlatformSettings()
+    const {data: dataTasksPlatform} = useTasksPlatform()
     const {data: dataReferrals} = useUserSelfReferrals()
     const [isModalReferralCodeActive, setIsModalReferralCodeActive] = useState(false)
     const {mutateAsync} = useTasksReferrerClaim()
@@ -103,10 +106,16 @@ export default function TabProfile() {
                         <Box className={css.codeContent}>
                             <Box className={css.codeMessage}>
                                 <Box mb={1}>
-                                    Enter referral code  - <span className={css.points}>900 points</span>
+                                    Enter referral code  -
+                                    &nbsp;
+                                    <span className={css.points}>
+                                        {dataTasksPlatform?.filter(task => task.name === 'task_referrer')[0].reward}
+                                        &nbsp;
+                                        points
+                                    </span>
                                 </Box>
                                 <Box>
-                                Earn from referral player - <span className={css.points}>2%</span>
+                                    Earn from referral player - <span className={css.points}>{dataSettings?.referral_interest}%</span>
                                 </Box>
                                 <Image
                                     className={css.codeMessageBottom}
@@ -217,12 +226,12 @@ export default function TabProfile() {
                                         hovered
                                         onClick={handleClaim}
                                     >
-                                        Claim - {data?.points_referral}
+                                        Claim - {Number(data?.points_referral)}
                                     </Button>
                                 : ''
                             }
                         </Stack>
-
+                        <br/>
                         <Table.Root className={css.infoTable}>
                             <Table.Body>
                                 {

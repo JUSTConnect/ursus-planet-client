@@ -45,7 +45,7 @@ export default function Top()
                                     src={ asterisk }
                                     alt='asterisk'
                                 />
-                                {data?.points}
+                                {Number(data?.points)}
                             </div>
                         </>
                     }
