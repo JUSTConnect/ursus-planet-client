@@ -53,7 +53,7 @@ export default function Button(props: IButton) {
         style={props.style}
         onClick={ props.onClick }
         disabled={ props.disabled }
-        type={ props.type }
+        type={ props.type||'button' }
     >
         { props.iconStart &&
             props.iconStart

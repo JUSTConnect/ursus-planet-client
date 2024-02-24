@@ -179,7 +179,7 @@
 .infoTable
 {
     text-wrap: nowrap;
-    margin-bottom: 2rem;
+    margin-right: 1rem;
 
     & td, & th
     {
@@ -191,6 +191,13 @@
     & td:last-child
     {
         text-align: end;
+    }
+
+    &Wrapper
+    {
+        background: var(--color-gray);
+        border-radius: 1rem;
+        padding: 1rem;
     }
 }
 

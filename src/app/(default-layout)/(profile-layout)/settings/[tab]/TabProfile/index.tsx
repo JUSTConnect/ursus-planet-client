@@ -121,8 +121,20 @@ export default function TabProfile() {
                                             </div>
                                             <br />
                                             <Stack className={css.buttonsUpload} gap={.5}>
-                                                <Button onClick={() => avatarInput?.current?.click()} size='sm' color='gray'>upload from gallery</Button>
-                                                <input name="avatar" ref={avatarInput} onChange={handleChangeAvatar} type="file" hidden />
+                                                <Button
+                                                    onClick={() => avatarInput?.current?.click()}
+                                                    size='sm'
+                                                    color='gray'
+                                                >
+                                                    upload from gallery
+                                                </Button>
+                                                <input
+                                                    onChange={handleChangeAvatar}
+                                                    type="file"
+                                                    hidden
+                                                    name="avatar"
+                                                    ref={avatarInput}
+                                                />
                                                 <Button size='sm' color='gray'>NFT from wallet</Button>
                                             </Stack>
                                         </div>
@@ -131,6 +143,8 @@ export default function TabProfile() {
                                 </form>
                                 : <CardLoader/>
                         }
+                        <br />
+                        <Typography color='error' variant='p'>{(error as AxiosError<{avatar: string}>)?.response?.data.avatar}</Typography>
                     </CardBody>
                 </div>
                 <CardFooter className={css.cardFooter}>
