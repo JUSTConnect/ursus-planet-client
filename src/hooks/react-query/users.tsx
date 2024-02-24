@@ -16,6 +16,7 @@ interface IUser {
     avatar: string
     referrer: string,
     referral_quote: number
+    referral_count: number
     cabinet_notifications_email: boolean
     cabinet_notifications_account: boolean
     cabinet_notifications_frequency: 'string'
