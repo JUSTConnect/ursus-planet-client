@@ -212,7 +212,7 @@ export default function TabProfile() {
                                 <Box mb={1}>
                                     Total referrals
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span className={css.infoValue}>{dataReferrals?.count}</span>
+                                    <span className={css.infoValue}>{data?.referral_count}</span>
                                 </Box>
                                 <Box mb={1}>
                                     Quote of referrals
