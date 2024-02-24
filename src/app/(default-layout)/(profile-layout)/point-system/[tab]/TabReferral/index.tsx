@@ -233,21 +233,23 @@ export default function TabProfile() {
                             }
                         </Stack>
                         <br/>
-                        <Scroller style={{maxHeight: 220}}>
-                            <Table.Root className={css.infoTable}>
-                                <Table.Body>
-                                    {
-                                        dataReferrals?.results && dataReferrals.results.map((referral, index)=>
-                                            <Table.Row key={index}>
-                                                <Table.RowHeaderCell>{index+1}. {referral.username}</Table.RowHeaderCell>
-                                                <Table.Cell>{referral.wallets[0]}</Table.Cell>
-                                                <Table.Cell>{referral.referral_count}</Table.Cell>
-                                            </Table.Row>
-                                        )
-                                    }
-                                </Table.Body>
-                            </Table.Root>
-                        </Scroller>
+                        <Box className={css.infoTableWrapper}>
+                            <Scroller style={{maxHeight: 220}}>
+                                <Table.Root className={css.infoTable}>
+                                    <Table.Body>
+                                        {
+                                            dataReferrals?.results && dataReferrals.results.map((referral, index)=>
+                                                <Table.Row key={index}>
+                                                    <Table.RowHeaderCell>{index+1}. {referral.username}</Table.RowHeaderCell>
+                                                    <Table.Cell>{referral.wallets[0].slice(0, 7)}...{referral.wallets[0].slice(-4)}</Table.Cell>
+                                                    <Table.Cell>{referral.referral_count}</Table.Cell>
+                                                </Table.Row>
+                                            )
+                                        }
+                                    </Table.Body>
+                                </Table.Root>
+                            </Scroller>
+                        </Box>
                     </Box>
                     <Box className={css.infoNote}>
                         <Box mb={1} className={css.infoNoteTitle}>
