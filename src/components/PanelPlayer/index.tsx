@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { AnimatedCounter } from 'react-animated-counter'
 
 import { IoMdSettings } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
@@ -45,7 +46,7 @@ export default function Top()
                                     src={ asterisk }
                                     alt='asterisk'
                                 />
-                                {Number(data?.points)}
+                                <AnimatedCounter fontSize='1' color='white' value={Number(data?.points)}/>
                             </div>
                         </>
                     }

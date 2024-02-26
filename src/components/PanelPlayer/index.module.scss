@@ -103,6 +103,7 @@
 
     @include mobile {
         position: absolute;
+        width: fit-content;
         right: 16px;
         top: 16px;
     }
