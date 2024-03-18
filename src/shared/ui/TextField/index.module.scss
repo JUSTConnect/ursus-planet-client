@@ -1,0 +1,51 @@
+:global(.rt-TextFieldRoot):has(.input)
+{
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+:global(.rt-TextFieldRoot):has(.input.fullWidth)
+{
+    width: 100%;
+}
+
+:global(.rt-TextFieldRoot):has(.input.full)
+{
+    border-radius: 999px;
+}
+
+:global(.rt-TextFieldRoot):has(.input:read-only)
+{
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+
+.input
+{
+    font-size: 1rem;
+}
+
+.sm
+{
+    height: 2rem;
+    gap: .8rem;
+}
+
+.md
+{
+    height: 2.8rem;
+    gap: 1rem;
+}
+
+.lg
+{
+    height: 3.3rem;
+    gap: 1rem;
+}
+
+.full + :global(.rt-TextFieldChrome)
+{
+    border-radius: 999px;
+    background: none;
+}

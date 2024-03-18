@@ -1,0 +1,51 @@
+$xl: 1640px;
+$lg: 1280px;
+$md: 1024px;
+$sm: 768px;
+$xs: 521px; 
+
+
+
+$all: xl, lg, md, sm, xs;
+
+
+@function get-breakpoint-value($name)
+{
+    @if $name == xl
+    {
+        @return $xl;
+    }
+    @if $name == lg
+    {
+        @return $lg;
+    }
+    @if $name == md
+    {
+        @return $md;
+    }
+    @if $name == sm
+    {
+        @return $sm;
+    }
+    @if $name == xs
+    {
+        @return $xs;
+    }
+}
+
+@each $breakpoint in $all
+{
+    .l#{$breakpoint}
+    {
+        @media (min-width: calc(get-breakpoint-value($breakpoint) + 1px)) {
+            display: none !important;
+        }
+    }
+
+    .g#{$breakpoint}
+    {
+        @media (max-width: get-breakpoint-value($breakpoint)) {
+            display: none !important;
+        }
+    }
+}

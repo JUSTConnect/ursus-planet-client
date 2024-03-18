@@ -1,0 +1,19 @@
+@import '@mixins';
+
+
+.radix-themes
+{
+    --default-font-family: var(--font-play) !important;
+    --default-font-size: 18px;
+
+    @include lsm
+    {
+        --default-font-size: 18px;
+    }
+
+    h1, h2, h3, h4, h5, h6, h6
+    {
+        font-family: var(--font-fkalakokz);
+        font-weight: normal;
+    }
+}

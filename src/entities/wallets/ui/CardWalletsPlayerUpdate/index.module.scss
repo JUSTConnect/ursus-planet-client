@@ -1,0 +1,22 @@
+
+.buttonAptos
+{
+    &:hover
+    {
+        & svg path
+        {
+            fill: var(--color-black);
+        }
+    }
+}
+
+.wrapper
+{
+    height: 100%;
+}
+
+.cards
+{
+    flex: 1;
+    overflow: auto;
+}

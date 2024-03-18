@@ -1,0 +1,69 @@
+@import '@mixins';
+
+.content {
+    max-width: 300px;
+    width: 100%;
+
+    @include lsm
+    {
+        max-width: initial;
+    }
+}
+
+.figure {
+    position: relative;
+    display: block;
+    max-width: 200px;
+    width: 100%;
+    
+    &Wrapper
+    {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 40%;
+            width: 40%;
+
+            background: linear-gradient(270deg, #2548A9 13.06%, #41B4D8 41.17%, #BA89C2 71.1%);
+            filter: blur(60px);
+            opacity: .15;
+        }
+
+        @include lsm
+        {
+            display: none;
+        }
+    }
+
+}
+
+.message {
+    position: relative;
+    background: var(--color-dark);
+    border-radius: 1rem;
+
+    &Bottom {
+        position: absolute;
+        bottom: 0;
+        left: 1rem;
+        transform: translateY(100%);
+    }
+
+    @include lsm {
+        background: transparent;
+
+        &Bottom {
+            display: none;
+        }
+    }
+}
+
+.points
+{
+    color: #FF8300;
+    font-weight: bold;
+}
