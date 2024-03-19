@@ -25,7 +25,6 @@
     --color-neutral-transparrent: rgba(37, 72, 169, 0.30);
     
     font-size: 18px;
-    color: var(--color-white);
  
     @include lsm {
         font-size: 14px;
