@@ -15,6 +15,7 @@ import { FaCircleInfo, FaCircleUser } from "react-icons/fa6"
 import { RiAlertFill } from "react-icons/ri"
 
 import { useUserSelf, useUserSelfUpdate } from "@/entities/user/api"
+import ModalSetNFTAsAvatar from "@/entities/web3/ui/ModalSetNFTAsAvatar"
 import { useToast } from "@/shared/ui/Toast"
 import Card from "@/shared/ui/Card"
 import Button from "@/shared/ui/Button"
@@ -25,6 +26,7 @@ import css from './index.module.scss'
 
 export default function CardUserUpdateAvatar() {
 
+    const [modalNft, setModalNft] = useState(false)
     const {fire} = useToast()
 
     const [avatar, setAvatar] = useState('')
@@ -111,6 +113,7 @@ export default function CardUserUpdateAvatar() {
                             </Skeleton>
                             <Skeleton loading={isLoading}>
                                 <Button
+                                    onClick={ () => setModalNft(true) }
                                     size='sm'
                                     color='gray'
                                 >
@@ -150,5 +153,6 @@ export default function CardUserUpdateAvatar() {
                 </Button>
             }
         </Card.Bottom>
+        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft}/>
     </Card.Root>
 }
