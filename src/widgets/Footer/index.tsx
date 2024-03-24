@@ -45,7 +45,7 @@ export default function Footer() {
                                     <Text color='gray' mb='3'>
                                         Planet
                                     </Text>
-                                    <Link href='#'>Discover</Link>
+                                    <Link href='/'>Discover</Link>
                                     <Link className={c(css.linkDisabled)} href='#'>Universe</Link>
                                     <Link className={c(css.linkDisabled)} href='#'>Leaderboard</Link>
                                 </Flex>

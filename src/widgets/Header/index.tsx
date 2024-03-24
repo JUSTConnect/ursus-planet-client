@@ -36,6 +36,7 @@ export interface IMenuItem
 const menu: IMenuItem[] = [
     {
         name: "Discover",
+        link: '/'
     },
     {
         name: "Universe",

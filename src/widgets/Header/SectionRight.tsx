@@ -1,35 +1,37 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Flex, Skeleton } from '@radix-ui/themes';
-import { useDispatch } from 'react-redux';
-import c from 'classnames';
-import { CgLogOut } from "react-icons/cg";
-import { IoMdSettings } from "react-icons/io";
-import { FaWallet } from "react-icons/fa";
-import { RiArrowRightDoubleFill } from "react-icons/ri";
-import { IoAddCircleSharp } from "react-icons/io5";
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { Flex, Skeleton } from '@radix-ui/themes'
+import { useDispatch } from 'react-redux'
+import c from 'classnames'
+import { CgLogOut } from "react-icons/cg"
+import { IoMdSettings } from "react-icons/io"
+import { FaWallet } from "react-icons/fa"
+import { RiArrowRightDoubleFill } from "react-icons/ri"
+import { IoAddCircleSharp } from "react-icons/io5"
 
-import { useMetaMask } from '@/entities/web3/hooks/useMetamask';
-import { useLogout } from '@/entities/auth/api';
-import { setModalWalletConnect } from '@/features/modal/modalSlice';
-import Button from '@/shared/ui/Button';
-import Dropdown from '@/shared/ui/Dropdown';
+import { useMetaMask } from '@/entities/web3/hooks/useMetamask'
+import { useLogout } from '@/entities/auth/api'
+import { setModalWalletConnect } from '@/features/modal/modalSlice'
+import Button from '@/shared/ui/Button'
+import Dropdown from '@/shared/ui/Dropdown'
 
-import css from './index.module.scss';
+import css from './index.module.scss'
 
 import DropdownNetwork from './DropdownNetwork'
-import DropdownNotifications from './DropdownNotifications';
+import DropdownNotifications from './DropdownNotifications'
 
 
 export default function SectionRight() {
 
+    const router = useRouter()
     const dispatch = useDispatch()
     const [mounted, setMounted] = useState(false)    
     const [chain, setChain] = useState('')
     const { isConnected, disconnectMetaMask } = useMetaMask()
-    const { mutate } = useLogout()
+    const { mutateAsync } = useLogout()
 
     useEffect(()=>setMounted(true), [])    
 
@@ -39,7 +41,7 @@ export default function SectionRight() {
                 "method": "eth_chainId",
                 "params": []
             }).then((res: string) => setChain(res))
-        });
+        })
     }, [])
 
     useEffect(() => {
@@ -49,6 +51,12 @@ export default function SectionRight() {
         }).then((res: string) => setChain(res))
     }, [chain])
 
+    const handleLogout = () => {
+        mutateAsync({}).then(() => {
+            disconnectMetaMask()
+        })
+        router.push('/')
+    }
 
     return <Flex
         gap={{
@@ -101,9 +109,7 @@ export default function SectionRight() {
             </Dropdown.Trigger>
             <Dropdown.Menu className={css.dropdownMenu}>
                 <Dropdown.Item>Wallet address<FaWallet/></Dropdown.Item>
-                <Dropdown.Item
-                    onClick={() => { console.log(1); disconnectMetaMask(); mutate(null) }}
-                >
+                <Dropdown.Item onClick={handleLogout}>
                     Logout<CgLogOut/>
                 </Dropdown.Item>
                 <Link href='/settings/profile'>

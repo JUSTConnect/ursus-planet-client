@@ -11,7 +11,7 @@ export function useAuth() {
 }
 
 export function useLogout() {
-    return useBaseMutation<null, {}>({
+    return useBaseMutation({
         url: 'web3auth/logout/'
     })
 }
