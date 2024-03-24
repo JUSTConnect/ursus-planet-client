@@ -87,7 +87,7 @@
 .buttonSeason
 {
     position: relative;
-    background: none;
+    background: none !important;
 
 
     @include lxl
@@ -159,7 +159,7 @@
 
     &Active
     {
-        background: #080713;
+        background: #080713 !important;
     }
 }
 
