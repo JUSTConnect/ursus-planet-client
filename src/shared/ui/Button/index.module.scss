@@ -20,9 +20,11 @@
         pointer-events: none;
     }
 
-    &:hover
-    {
-        opacity: .8;
+    @media (hover: hover) {
+        &:hover
+        {
+            opacity: .8;
+        }
     }
 }
 
