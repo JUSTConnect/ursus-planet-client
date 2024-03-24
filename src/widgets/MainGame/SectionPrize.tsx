@@ -35,7 +35,7 @@ export default function SectionPrize() {
         <Grid
             gap={{
                 initial: '3',
-                md: '5'
+                md: '6'
             }}
             columns={{
                 initial: '1',
@@ -44,7 +44,7 @@ export default function SectionPrize() {
             }}
         >
             <Flex
-                className="gmd"
+                className={c("gmd", css.sectionBlock)}
                 direction='column'
                 gap='4'
             >
@@ -73,7 +73,7 @@ export default function SectionPrize() {
                 }
             </Flex>
             <Flex direction='column' gap='4' mb='5'>
-                <Flex className={c("lmd", "gxs")} gap='3' align='center'>
+                <Flex className={c("lmd", "gxs", css.sectionBlock)} gap='3' align='center'>
                     <Text size='6'>NFT</Text>
                     <Text>Raffle</Text>
                 </Flex>
@@ -94,7 +94,7 @@ export default function SectionPrize() {
                 </Flex>
                 <Text className='gxs'>#4323</Text>
             </Flex>
-            <Flex direction='column' gap='4'>
+            <Flex className={css.sectionBlock} direction='column' gap='4'>
                 <SectionValue
                     className={c("lmd", "gxs")}
                     name='Win list'

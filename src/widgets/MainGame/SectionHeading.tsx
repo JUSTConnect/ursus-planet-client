@@ -27,7 +27,6 @@ export default function SectionHeading(props: ISectionHeading) {
         />
         <Heading
             className={css.sectionHeading}
-            size='8'
         >{props.children}</Heading>
     </Flex>
 }

@@ -36,6 +36,7 @@ export default function MainGame() {
         >
             <Box>
                 <Heading
+                    className={css.sectionHeading}
                     style={{position: 'relative', zIndex: '1'}}
                     size='8'
                     mb='5'>

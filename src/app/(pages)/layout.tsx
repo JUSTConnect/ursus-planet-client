@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </head>
       <body className={[play.variable, fkalakokz.variable].join(' ')}>
         <Providers>

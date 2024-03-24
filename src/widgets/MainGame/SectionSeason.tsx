@@ -23,7 +23,7 @@ export default function SectionSeason() {
         <SectionHeading icon={iconSeason}>
             Season {seasonActive}
         </SectionHeading>
-        <Flex direction='column' gap='4'>
+        <Flex className={css.sectionBlock} direction='column' gap='4'>
             <Flex gap='3' className={'lxs'} align='center'>
                 <Text size='6'>NFT</Text>
                 <Text>Raffle</Text>

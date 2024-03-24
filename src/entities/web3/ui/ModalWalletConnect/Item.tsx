@@ -8,6 +8,7 @@ import {
 
 import { useMetaMask } from '@/entities/web3/hooks/useMetamask';
 import { useAuth } from '@/entities/auth/api';
+import { useToast } from '@/shared/ui/Toast';
 
 import css from './index.module.scss'
 import iconPolygon from './img/icon-polygon.svg'
@@ -24,6 +25,7 @@ export interface IItem {
 
 
 export default function Item(props: IItem) {
+    const { fire } = useToast()
     const { hasProvider, isConnecting, connectMetaMask } = useMetaMask()
     const { mutateAsync } = useAuth()
 
@@ -43,6 +45,7 @@ export default function Item(props: IItem) {
                 )
             )
         })
+        fire({type: 'error', text: "ООps..!! It looks like you don't have an approved project yet, but you were connected as a player."})
     }
 
 
