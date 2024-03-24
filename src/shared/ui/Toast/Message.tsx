@@ -23,11 +23,14 @@ function Message({
         }, 10000)
     }, [])
 
-    return <Card.Root className={c(
-        css.card,
-        css[type],
-        !active && css.cardHide
-    )}>
+    return <Card.Root
+        className={c(
+            css.card,
+            css[type],
+            !active && css.cardHide
+        )}
+        onClick={ () => setActive(false) }
+    >
         <Card.Body>
             <Flex align='center' gap='3'>
                 {

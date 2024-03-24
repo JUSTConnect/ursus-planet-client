@@ -106,12 +106,12 @@ export default function CardUserReferralCode() {
                                         </Text> {data?.username}
                                     </Text>
                                     <Flex gap='2'>
-                                        <Copy.Root text="link" success_message="Referral link copied to clipboard!">
+                                        <Copy.Root text={`${window.location.origin}/?referrer=${data.username}`} success_message="Referral link copied to clipboard!">
                                             <Copy.Trigger>
                                                 <Button color='white' size="sm"><Copy.Icon/>Copy as link</Button>
                                             </Copy.Trigger>
                                         </Copy.Root>
-                                        <Copy.Root text="link" success_message="Referral code copied to clipboard!">
+                                        <Copy.Root text={data.username} success_message="Referral code copied to clipboard!">
                                             <Copy.Trigger>
                                                 <Button color='white' size="sm"><Copy.Icon/>Copy as code</Button>
                                             </Copy.Trigger>

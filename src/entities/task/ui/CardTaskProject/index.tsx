@@ -38,19 +38,6 @@ export default function CardTaskPlatform(props: ICardTaskPlatform) {
         buttons={
             !props.object?.log ?
                 <>
-                    <Link href={props.object?.link||'#'} className={css.button}>
-                        <Tooltip content={`this task expires at ${props.object?.expiration}`}>
-                            <Box>
-                                <Button
-                                    radius="normal"
-                                    color="white"
-                                    fullWidth
-                                >
-                                    <FaClock/>Do it
-                                </Button>
-                            </Box>
-                        </Tooltip>
-                    </Link>
                     <Button
                         onClick={() => setActive(!active)}
                         radius="normal"
@@ -64,6 +51,19 @@ export default function CardTaskPlatform(props: ICardTaskPlatform) {
                                 <GoChevronDown/>
                         }
                     </Button>
+                    <Link href={props.object?.link||'#'} className={css.button}>
+                        <Tooltip content={`this task expires at ${props.object?.expiration}`}>
+                            <Box>
+                                <Button
+                                    radius="normal"
+                                    color="white"
+                                    fullWidth
+                                >
+                                    <FaClock/>Do it
+                                </Button>
+                            </Box>
+                        </Tooltip>
+                    </Link>
                 </>
                 :
                 <>

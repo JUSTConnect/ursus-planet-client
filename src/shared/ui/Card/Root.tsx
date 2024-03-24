@@ -12,19 +12,26 @@ interface IRoot extends React.HTMLAttributes<HTMLDivElement>{
 }
 
 
-export default function Root(props: IRoot) {
+export default function Root({
+    children,
+    tabulated,
+    value,
+    className,
+    ...props
+}: IRoot) {
     const tabs = useTabs()
 
-    const className = [
+    const cn = [
         css.root,
-        props.className,
-        props.tabulated && tabs.active && tabs.breakpointClassName,
-        props.tabulated && tabs.active && tabs.currentValue !== props.value && css.hidden,
+        className,
+        tabulated && tabs.active && tabs.breakpointClassName,
+        tabulated && tabs.active && tabs.currentValue !== value && css.hidden,
     ].join(' ')
 
     return <Box
-        className={className}
+        {...props}
+        className={cn}
     >
-        {props.children}
+        {children}
     </Box>
 }

@@ -32,14 +32,11 @@ export default function TableLeaderboard() {
                             <Table.RowHeaderCell>{user.username}</Table.RowHeaderCell>
                             <Table.Cell>
                                 <Copy.Root text="Address" success_message="Address copied to clipboard!">
-                                    <Copy.Trigger>
-                                        <Flex gap='2' align='center'>
-                                            <Text className={css.address}>
-                                                {user.wallets[0].slice(0, 7)}...{user.wallets[0].slice(-4)}
-                                            </Text>
-                                            <Copy.Icon />
-                                        </Flex>
-                                    </Copy.Trigger>
+                                    <Flex gap='2' align='center'>
+                                        <Text className={css.address}>
+                                            {user.wallets[0].slice(0, 7)}...{user.wallets[0].slice(-4)}
+                                        </Text>
+                                    </Flex>
                                 </Copy.Root>
                             </Table.Cell>
                             <Table.Cell className={css.lighted} align="right" pr='5'>{user.referral_count}</Table.Cell>

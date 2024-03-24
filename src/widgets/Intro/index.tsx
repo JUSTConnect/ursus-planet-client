@@ -7,9 +7,10 @@ import {
 import { SiOpenlayers } from "react-icons/si";
 import { FaPlay } from "react-icons/fa6";
 
+import { useMetaMask } from "@/entities/web3/hooks/useMetamask";
+import Header from "@/widgets/Header"
 import Button from "@/shared/ui/Button"
 
-import Header from "@/widgets/Header"
 import css from './index.module.scss'
 import figure from './img/figure.svg'
 import bg from './img/bg.jpg'
@@ -17,6 +18,8 @@ import bgRelief from './img/bg-relief.svg'
 
 
 export default function Intro() {
+
+    const { isConnected } = useMetaMask()
 
     return <>
         <Flex direction='column' justify='between' className={css.container}>
@@ -52,7 +55,7 @@ export default function Intro() {
                         <Flex justify='center' gap='4' className={css.buttons}>
                             <Button
                                 className={css.button}
-                                color="primary"
+                                color={ isConnected() ? 'primary' : undefined}
                                 size='lg'
                                 fullWidth
                             >
@@ -64,7 +67,7 @@ export default function Intro() {
                                 color="gray"
                                 size='lg'
                                 fullWidth
-                                disabled
+                                disabled={ isConnected() }
                             >
                                 <SiOpenlayers/>
                                 Project
