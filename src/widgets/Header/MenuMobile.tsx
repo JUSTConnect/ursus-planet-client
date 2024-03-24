@@ -38,8 +38,8 @@ export default function MenuMobile(props: IMenuMobile) {
                                     {
                                         item.children.map((children, index) =>
                                             <Dropdown.Item key={index}>
-                                                {children.name}
                                                 {children.icon}
+                                                {children.name}
                                             </Dropdown.Item>
                                         )
                                     }

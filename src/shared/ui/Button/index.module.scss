@@ -5,6 +5,7 @@
     display: flex;
     cursor: pointer;
     white-space: nowrap;
+    transition: .1s;
 
 
     & svg, img
@@ -17,6 +18,11 @@
     {
         opacity: 0.5;
         pointer-events: none;
+    }
+
+    &:hover
+    {
+        opacity: .8;
     }
 }
 
@@ -72,23 +78,28 @@
     border-radius: 1rem;
 }
 
-.white
+.ghost
+{
+    background: none;
+}
+
+.solid.white
 {
     background: var(--color-white);
     color: var(--color-black);
 }
 
-.primary
+.solid.primary
 {
     background: var(--color-primary);
 }
 
-.gray
+.solid.gray
 {
     background: var(--color-gray);
 }
 
-.dark
+.solid.dark
 {
     background: var(--color-dark);
 }

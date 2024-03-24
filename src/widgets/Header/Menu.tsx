@@ -36,8 +36,8 @@ export default function Menu(props: IMenu) {
                                 item.children.map((children, index) =>
                                     <Link key={index} href={children.link || '#'}>
                                         <Dropdown.Item>
-                                            {children.name}
                                             {children.icon}
+                                            {children.name}
                                         </Dropdown.Item>
                                     </Link>
                                 )

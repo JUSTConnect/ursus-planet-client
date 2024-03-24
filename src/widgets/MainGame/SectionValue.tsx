@@ -24,7 +24,7 @@ export default function SectionValue(props: ISectionValue) {
         gap='3'
     >
     <Box>
-        <props.icon className={css.valueIcon} color="blue" />
+        <props.icon className={css.valueIcon} />
     </Box>
     <Box>
         <Text as='p'>{props.name}</Text>

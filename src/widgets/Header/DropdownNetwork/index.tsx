@@ -93,9 +93,9 @@ export default function DropdownNetwork(props: IDropdownNetwork) {
         ref={self}
     >
         <Button icon
+            variant='ghost'
             className={c(css.button, active && css.buttonActive)}
             onClick={() => setActive(!active)}
-            color='gray'
         >
             {
                 !['0x89', '0x38', '0xa4b1'].includes(props.chain) ?
@@ -114,8 +114,7 @@ export default function DropdownNetwork(props: IDropdownNetwork) {
                         key={item.value}
                         onClick={() => handleChoose(item.chain_id)}
                         className={css.button}
-                        hoverToWhite
-                        color='gray'
+                        variant='ghost'
                     >
                         <Image
                             src={item.icon}

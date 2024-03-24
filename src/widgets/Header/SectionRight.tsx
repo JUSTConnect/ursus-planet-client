@@ -87,7 +87,7 @@ export default function SectionRight() {
             <Dropdown.Trigger>
                 <Skeleton loading={!mounted}>
                     <Button
-                        className={c('gmd')}
+                        className={c('gmd', isConnected() && css.buttonConnectActive)}
                         onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
                         color='gray'
                     >
@@ -108,18 +108,24 @@ export default function SectionRight() {
                 </Skeleton>
             </Dropdown.Trigger>
             <Dropdown.Menu className={css.dropdownMenu}>
-                <Dropdown.Item>Wallet address<FaWallet/></Dropdown.Item>
+                <Dropdown.Item>
+                    <FaWallet/>
+                    Wallet address
+                </Dropdown.Item>
                 <Dropdown.Item onClick={handleLogout}>
-                    Logout<CgLogOut/>
+                    <CgLogOut/>
+                    Logout
                 </Dropdown.Item>
                 <Link href='/settings/profile'>
                     <Dropdown.Item>
-                        Settings<IoMdSettings/>
+                        <IoMdSettings/>
+                        Settings
                     </Dropdown.Item>
                 </Link>
                 <Link href='/point-system/tasks'>
                     <Dropdown.Item>
-                        Point system<RiArrowRightDoubleFill/>
+                        <RiArrowRightDoubleFill/>
+                        Point system
                     </Dropdown.Item>
                 </Link>
             </Dropdown.Menu>

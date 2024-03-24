@@ -19,8 +19,8 @@ export default function DropdownNotifications() {
         </Dropdown.Trigger>
         <Dropdown.Menu className={css.menu}>
             <Box className={css.menuInner}>
-                <Text as='p'>You have 50 unread notifications</Text>
-                {
+                <Text as='p'>You have 0 unread notifications</Text>
+                {/* {
                     Array.from(Array(5)).map((_, index) =>
                         <Link key={index} href='/settings/notifications'>
                             <Box className={css.menuItem}>
@@ -28,7 +28,7 @@ export default function DropdownNotifications() {
                             </Box>
                         </Link>
                     )
-                }
+                } */}
                 <Box mt='2'>
                     <Link href='/settings/notifications'>
                         <Button
