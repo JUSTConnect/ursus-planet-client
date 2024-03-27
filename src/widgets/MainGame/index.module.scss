@@ -172,6 +172,11 @@
     &Active
     {
         background: #080713 !important;
+
+        & svg
+        {
+            color: var(--color-primary);
+        }
     }
 }
 

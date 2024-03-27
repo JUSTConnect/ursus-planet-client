@@ -2,7 +2,9 @@
 import { useState } from "react";
 import Link from "next/link"
 import { Box, Tooltip } from "@radix-ui/themes";
+import { useTimer } from 'react-timer-hook';
 import c from "classnames"
+
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { FaClock } from "react-icons/fa";
 
@@ -21,6 +23,14 @@ interface ICardTaskProject {
 
 export default function CardTaskProject(props: ICardTaskProject) {
 
+    var currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 1);
+
+    const {
+        seconds,
+        minutes,
+        hours
+    } = useTimer({expiryTimestamp: currentDate})
     const [active, setActive] = useState(false)
 
     const handleGet = () => {
@@ -45,7 +55,7 @@ export default function CardTaskProject(props: ICardTaskProject) {
                         }
                     </Button>
                     <Link href={props.object?.link||'#'} className={css.button}>
-                        <Tooltip content={`this task expires at ${props.object?.expiration}`}>
+                        <Tooltip content={`this task expires in ${hours}:${minutes}:${seconds}`}>
                             <Box>
                                 <Button
                                     radius="normal"

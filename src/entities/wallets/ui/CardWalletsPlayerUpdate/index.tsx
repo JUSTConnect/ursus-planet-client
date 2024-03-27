@@ -44,6 +44,7 @@ export default function CardWalletsPlayerUpdate() {
                             color='gray'
                             fullWidth
                             hoverToWhite
+                            disabled
                         >
                             <Image src={iconSol} alt='icon' />
                             Solana
@@ -52,6 +53,7 @@ export default function CardWalletsPlayerUpdate() {
                             className={css.buttonAptos}
                             fullWidth
                             hoverToWhite
+                            disabled
                         >
                             <IconAptos />
                             Aptos
@@ -60,6 +62,7 @@ export default function CardWalletsPlayerUpdate() {
                             color='gray'
                             fullWidth
                             hoverToWhite
+                            disabled
                         >
                             <Image src={iconSui} alt='icon' />
                             Sui

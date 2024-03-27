@@ -14,11 +14,11 @@ import Container from "@/shared/ui/Container"
 
 export default function Footer() {
     return <footer className={css.footer}>
-        <Box my='9' pt='9'>
+        <Box my='9'>
             <Container>
                 <Grid
                     gap='5'
-                    mb='9'
+                    mb='6'
                     columns={{
                         md: '2'
                     }}
