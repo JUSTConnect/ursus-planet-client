@@ -4,11 +4,11 @@ import { Grid } from '@radix-ui/themes'
 import { FaDiscord, FaTelegram, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
-import useOauthRedirectHandler from '@/entities/social/hooks/useOauthRedirectHandler'
-import { useMySocials, useSocialConfig, useMySocialDisconnect } from '@/entities/social/api'
-import { getDiscordUrl, getXUrl, getGithubUrl } from '@/entities/social/helpers/oauth'
-import CardSocialConnect from '@/entities/social/ui/CardSocialConnect'
-import ModalTelegramConnect from '@/entities/social/ui/ModalTelegram'
+import useOauthRedirectHandler from '@/entities/socials/hooks/useOauthRedirectHandler';
+import { useMySocials, useSocialConfig, useMySocialDisconnect } from '@/entities/socials/api';
+import { getDiscordUrl, getXUrl, getGithubUrl } from '@/entities/socials/helpers/oauth';
+import CardSocialConnect from '@/entities/socials/ui/CardSocialConnect'
+import ModalTelegramConnect from '@/entities/socials/ui/ModalTelegram'
 import Container from "@/shared/ui/Container"
 
 import figureDiscord from './img/figure-discord.svg'

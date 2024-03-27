@@ -1,7 +1,7 @@
 'use client'
 import { useDispatch } from "react-redux";
 
-import { useUserSelf } from "@/entities/user/api";
+import { useMe } from "@/entities/users/api";
 import { redirect } from "next/navigation";
 import { setModalWalletConnect } from "@/features/modal/modalSlice";
 
@@ -10,7 +10,7 @@ export default function protectedPage<Props extends object>(WrappedComponent: Re
 
     const Component = (props: Props) => {
         const dispatch = useDispatch()
-        const {error} = useUserSelf()
+        const {error} = useMe()
 
         if (error?.response?.status === 401) {
             dispatch(setModalWalletConnect(true))

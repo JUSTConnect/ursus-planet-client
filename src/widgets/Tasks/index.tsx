@@ -3,8 +3,8 @@ import { Grid } from "@radix-ui/themes"
 import { IoIosAlarm } from "react-icons/io";
 import { PiFlagBannerFill } from "react-icons/pi";
 
-import CardPlatformTaskList from "@/entities/task/ui/CardPlatformTaskList";
-import CardProjectTaskList from "@/entities/task/ui/CardProjectTaskList";
+import CardPlatformTaskList from "@/entities/tasks/ui/CardPlatformTaskList";
+import CardProjectTaskList from "@/entities/tasks/ui/CardProjectTaskList";
 import Card from "@/shared/ui/Card"
 import Container from "@/shared/ui/Container"
 

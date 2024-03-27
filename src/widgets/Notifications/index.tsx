@@ -1,8 +1,8 @@
 import { Grid } from "@radix-ui/themes"
 import { FaList, FaBell } from "react-icons/fa";
 
-import CardNotificationList from "@/entities/notifications/ui/CardNotificationList";
-import CardUserUpdateSubscriptions from "@/entities/user/ui/CardUserUpdateSubscriptions";
+import CardMeNotificationList from "@/entities/notifications/ui/CardMeNotificationList";
+import CardMeUpdateSubscriptions from "@/entities/notifications/ui/CardMeUpdateSubscriptions";
 import Card from "@/shared/ui/Card"
 import Container from "@/shared/ui/Container"
 
@@ -23,8 +23,8 @@ export default function Notifications() {
                 }}
                 gap='5'
             >
-                <CardNotificationList />
-                <CardUserUpdateSubscriptions />
+                <CardMeNotificationList />
+                <CardMeUpdateSubscriptions />
             </Grid>
         </Card.TabsProvider>
     </Container> 

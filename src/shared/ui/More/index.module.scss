@@ -1,0 +1,38 @@
+@import '@mixins';
+
+
+.container
+{
+    & > div
+    {
+
+        display: flex;
+        align-items: center;
+        min-height: 600px;
+    }
+}
+
+.figure
+{
+    max-width: 440px;
+    display: block;
+    margin: 0 auto;
+
+    @include lsm
+    {
+        max-width: 250px;
+    }
+}
+
+.content
+{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.grid
+{
+    max-width: 1500px;
+    margin: 0 auto;
+}

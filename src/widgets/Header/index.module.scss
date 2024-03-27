@@ -79,9 +79,11 @@
     }
 
     & > &Menu {
+        right: 0;
+        left: initial;
         @include lmd {
             bottom: initial;
-            left: 0;
+            right: 0;
             transform: none;
             padding: 1rem;
         }

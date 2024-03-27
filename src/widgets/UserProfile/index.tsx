@@ -2,8 +2,8 @@ import { Grid } from "@radix-ui/themes"
 import { FaCircleUser } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 
-import CardUserUpdate from "@/entities/user/ui/CardUserUpdate"
-import CardUserUpdateAvatar from "@/entities/user/ui/CardUserUpdateAvatar"
+import CardMeUpdate from "@/entities/users/ui/CardMeUpdate";
+import CardMeUpdateAvatar from "@/entities/users/ui/CardMeUpdateAvatar";
 import Card from "@/shared/ui/Card"
 import Container from "@/shared/ui/Container"
 
@@ -24,8 +24,8 @@ export default function UserProfile() {
                 }}
                 gap='5'
             >
-                <CardUserUpdateAvatar />
-                <CardUserUpdate />
+                <CardMeUpdateAvatar />
+                <CardMeUpdate />
             </Grid>
         </Card.TabsProvider>
     </Container> 

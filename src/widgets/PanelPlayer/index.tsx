@@ -13,14 +13,14 @@ import css from './index.module.scss'
 import crown from './img/crown.png'
 import asterisk from './img/asterisk.png'
 
-import { useUserSelf } from '@/entities/user/api'
+import { useMe } from '@/entities/users/api'
 import Container from "@/shared/ui/Container"
 import Avatar from '@/shared/ui/Avatar'
 import Button from '@/shared/ui/Button'
 
 
 export default function PanelPlayer() {
-    const { data, isLoading } = useUserSelf()
+    const { data, isLoading } = useMe()
     const pathname = usePathname()
 
     return <Container className={css.wrapper}>

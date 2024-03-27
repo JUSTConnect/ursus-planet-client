@@ -19,7 +19,7 @@ export default function Button(props: IButton) {
     const pathname = usePathname()
 
     return <Link href={props.href}>
-        <BaseButton className={c(css.button, pathname.includes(props.href) && css.buttonActive)}>
+        <BaseButton className={c(css.button, pathname === props.href && css.buttonActive)}>
             {props.children}
         </BaseButton> 
     </Link> 

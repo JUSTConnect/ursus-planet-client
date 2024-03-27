@@ -51,23 +51,28 @@ const menu: IMenuItem[] = [
         children: [
             {
                 name: 'Docs',
-                icon: <IoDocumentText />
+                icon: <IoDocumentText />,
+                link: '/more/docs/gitbook'
             },
             {
                 name: 'Careers',
-                icon: <FaStar />
+                icon: <FaStar />,
+                link: '/more/careers'
             },
             {
                 name: 'Brand kit',
-                icon: <IoExtensionPuzzle />
+                icon: <IoExtensionPuzzle />,
+                link: '/more/brand-kit/mission'
             },
             {
                 name: 'Media',
-                icon: <FiShare2 />
+                icon: <FiShare2 />,
+                link: '/more/media'
             },
             {
                 name: 'Support',
-                icon: <MdSupport />
+                icon: <MdSupport />,
+                link: '/more/support'
             },
         ]
     }

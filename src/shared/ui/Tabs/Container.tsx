@@ -11,6 +11,7 @@ import css from './index.module.scss'
 interface IContainer {
     children: React.ReactNode
     bgDrop?: boolean
+    bgDropHeight?: number
 }
 
 
@@ -18,7 +19,10 @@ export default function Container(props: IContainer) {
     return <Box mb='5'>
         {
             props.bgDrop &&
-                <div className={css.bgDrop}></div>
+                <Box
+                    className={css.bgDrop}
+                    style={{height: props.bgDropHeight+'px'}}
+                />
         }
         <ScrollArea>
             <BaseContainer>

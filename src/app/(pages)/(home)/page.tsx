@@ -6,12 +6,12 @@ import { useSearchParams } from 'next/navigation'
 import Intro from '@/widgets/Intro'
 import MainGame from '@/widgets/MainGame'
 import GamesBest from '@/widgets/GamesBest'
-import { useUserSelfSetReferrerCookie } from '@/entities/user/api'
+import { useMeSetReferrerCookie } from '@/entities/referral_program/api'
 import Footer from '@/widgets/Footer'
 
 
 export default function Home() {
-  const {mutateAsync} = useUserSelfSetReferrerCookie()
+  const {mutateAsync} = useMeSetReferrerCookie()
   const searchParams = useSearchParams()
   const router = useRouter()
 

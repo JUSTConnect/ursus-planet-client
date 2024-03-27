@@ -53,10 +53,10 @@ export default function Footer() {
                                     <Text color='gray' mb='3'>
                                         About
                                     </Text>
-                                    <Link className={c(css.linkDisabled)} href='#'>About Urs</Link>
-                                    <Link className={c(css.linkDisabled)} href='#'>Documents</Link>
-                                    <Link className={c(css.linkDisabled)} href='#'>Gitbook</Link>
-                                    <Link className={c(css.linkDisabled)} href='#'>Careers</Link>
+                                    <Link href='/more/brand-kit/mission'>About Urs</Link>
+                                    <Link href='/more/docs'>Documents</Link>
+                                    <Link href='/more/docs/gitbook'>Gitbook</Link>
+                                    <Link href='/more/careers'>Careers</Link>
                                 </Flex>
                                 <Flex direction='column'>
                                     <Text color='gray' mb='3'>
@@ -71,8 +71,8 @@ export default function Footer() {
                                     <Text color='gray' mb='3'>
                                         Support
                                     </Text>
-                                    <Link className={c(css.linkDisabled)} href='#'>Help</Link>
-                                    <Link className={c(css.linkDisabled)} href='#'>Support</Link>
+                                    <Link href='/more/support'>Help</Link>
+                                    <Link href='/more/support'>Support</Link>
                                 </Flex>
                             </Grid>
                         </nav>

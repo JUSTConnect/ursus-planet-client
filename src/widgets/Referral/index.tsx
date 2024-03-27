@@ -3,8 +3,8 @@ import { Grid } from "@radix-ui/themes"
 import { FaLink } from "react-icons/fa"
 import { FaInfoCircle } from "react-icons/fa"
 
-import CardUserReferralCode from "@/entities/user/ui/CardUserReferralCode"
-import CardUserReferralInfo from "@/entities/user/ui/CardUserReferralInfo"
+import CardUserReferralCode from "@/entities/referral_program/ui/CardReferralCode"
+import CardUserReferralInfo from "@/entities/referral_program/ui/CardReferralInfo"
 import Card from "@/shared/ui/Card"
 import Container from "@/shared/ui/Container"
 
