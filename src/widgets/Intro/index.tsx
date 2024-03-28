@@ -1,13 +1,17 @@
 import Image from "next/image"
+import { useIsMounted } from 'usehooks-ts'
+import { useDispatch } from "react-redux";
 import {
     Box,
     Heading,
-    Flex
+    Flex,
+    Skeleton
 } from "@radix-ui/themes"
 import { SiOpenlayers } from "react-icons/si";
 import { FaPlay } from "react-icons/fa6";
 
 import { useMetaMask } from "@/entities/web3/hooks/useMetamask";
+import { setModalWalletConnect } from "@/features/modal/modalSlice";
 import Header from "@/widgets/Header"
 import Button from "@/shared/ui/Button"
 
@@ -19,7 +23,9 @@ import bgRelief from './img/bg-relief.svg'
 
 export default function Intro() {
 
+    const dispatch = useDispatch()
     const { isConnected } = useMetaMask()
+    const isMounted = useIsMounted()
 
     return <>
         <Flex direction='column' justify='between' className={css.container}>
@@ -53,25 +59,31 @@ export default function Intro() {
                             alt='figure'
                         />
                         <Flex justify='center' gap='4' className={css.buttons}>
-                            <Button
-                                className={css.button}
-                                color={ isConnected() ? 'primary' : undefined}
-                                size='lg'
-                                fullWidth
-                            >
-                                <FaPlay/>
-                                Player
-                            </Button>
-                            <Button
-                                className={css.button}
-                                color="gray"
-                                size='lg'
-                                fullWidth
-                                disabled={ isConnected() }
-                            >
-                                <SiOpenlayers/>
-                                Project
-                            </Button>
+                            <Skeleton loading={!isMounted()}>
+                                <Button
+                                    onClick={ ()=> !isConnected() && dispatch(setModalWalletConnect(true)) }
+                                    className={css.button}
+                                    color={ isConnected() ? 'primary' : undefined}
+                                    size='lg'
+                                    fullWidth
+                                >
+                                    <FaPlay/>
+                                    Player
+                                </Button>
+                            </Skeleton>
+                            <Skeleton loading={!isMounted()}>
+                                <Button
+                                    onClick={ ()=> !isConnected() && dispatch(setModalWalletConnect(true)) }
+                                    className={css.button}
+                                    color="gray"
+                                    size='lg'
+                                    fullWidth
+                                    disabled={ isConnected() }
+                                >
+                                    <SiOpenlayers/>
+                                    Project
+                                </Button>
+                            </Skeleton>
                         </Flex>
                     </Flex>
                 </Box>
