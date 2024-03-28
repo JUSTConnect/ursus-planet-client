@@ -3,10 +3,11 @@ import Card from "@/shared/ui/Card"
 
 import { PiFlagBannerFill } from "react-icons/pi"
 
+import { ITasksPlatform } from "@/entities/tasks/model"
 import { useTasksPlatform } from "@/entities/tasks/api"
 import CardTaskPlatform from "@/entities/tasks/ui/CardTaskPlatform"
 
-import sortTasks from './utils'
+import sortTasks from '@/entities/tasks/utils/sortTasks'
 
 
 export default function CardPlatformTaskList() {
@@ -17,7 +18,7 @@ export default function CardPlatformTaskList() {
         <Card.Head><PiFlagBannerFill/>Mission platform</Card.Head>
         <Card.Body>
             {
-                data ? sortTasks(data).map((task, index) =>
+                data ? sortTasks<ITasksPlatform>(data).map((task, index) =>
                     <CardTaskPlatform key={index} object={task}/>
                 )
                 :

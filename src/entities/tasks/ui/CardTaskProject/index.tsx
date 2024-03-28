@@ -1,14 +1,17 @@
 'use client'
 import { useState } from "react";
 import Link from "next/link"
-import { Box, Tooltip } from "@radix-ui/themes";
+import { Box, Tooltip, Text } from "@radix-ui/themes";
 import { useTimer } from 'react-timer-hook';
 import c from "classnames"
 
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { FaClock } from "react-icons/fa";
 
+import { useTasksCustomGetReward, useTasksCustomCheck } from "@/entities/tasks/api/mutation";
 import { ITasksProject } from "@/entities/tasks/model";
+import { useToast } from "@/shared/ui/Toast";
+import AnimatedDots from "@/shared/ui/AnimatedDots";
 import Button from "@/shared/ui/Button"
 
 import CardTaskBase from '../CardTaskBase'
@@ -22,18 +25,33 @@ interface ICardTaskProject {
 
 
 export default function CardTaskProject(props: ICardTaskProject) {
-
-    var currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + 1);
+    
+    const {fire} = useToast()
+    const {mutateAsync} = useTasksCustomGetReward()
+    const check = useTasksCustomCheck()
 
     const {
         seconds,
         minutes,
         hours
-    } = useTimer({expiryTimestamp: currentDate})
+    } = useTimer({expiryTimestamp: props.object ? new Date(props.object?.expiration) : new Date()})
     const [active, setActive] = useState(false)
+    const [checking, setChecking] = useState(false)
+
+    const handleCheck = () => {
+        setChecking(true)
+        setTimeout(() => {
+            props.object && check.mutateAsync({task_id: props.object?.id}).then(() => {
+                fire({text: 'Task checked!'})
+                setChecking(false)
+            })
+        }, (Math.random() * (60 - 5) + 5)*1000)
+    }
 
     const handleGet = () => {
+        props.object && mutateAsync({task_id: props.object?.id}).then(() =>
+            fire({text: 'Task reward successfully collected!', type: 'success'})
+        )
     }
 
     return <CardTaskBase
@@ -54,17 +72,25 @@ export default function CardTaskProject(props: ICardTaskProject) {
                                 <GoChevronDown/>
                         }
                     </Button>
+                    <Button
+                        onClick={handleCheck}
+                        hoverToWhite
+                        radius="normal"
+                        disabled={checking}
+                    >
+                        <Text>
+                            { checking ? <>Checking<AnimatedDots/></> : 'Check' }
+                        </Text>
+                    </Button>
                     <Link href={props.object?.link||'#'} className={css.button}>
                         <Tooltip content={`this task expires in ${hours}:${minutes}:${seconds}`}>
-                            <Box>
-                                <Button
-                                    radius="normal"
-                                    color="white"
-                                    fullWidth
-                                >
-                                    <FaClock/>Do it
-                                </Button>
-                            </Box>
+                            <Button
+                                radius="normal"
+                                color="white"
+                                fullWidth
+                            >
+                                <FaClock/>Do it
+                            </Button>
                         </Tooltip>
                     </Link>
                 </>
@@ -96,7 +122,7 @@ export default function CardTaskProject(props: ICardTaskProject) {
         {
             active &&
                 <Box mt='4'>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci omnis repellendus quia odit nobis officia qui fugiat repellat consequuntur! Eos quasi fugiat repudiandae perspiciatis necessitatibus fuga dolorem sit corporis veniam.
+                    {props.object?.description}
                 </Box>
         }
     </CardTaskBase>

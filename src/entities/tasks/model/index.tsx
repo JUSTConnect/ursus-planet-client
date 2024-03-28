@@ -23,9 +23,10 @@ export interface ITasksPlatform extends ITasksBase
 export interface ITasksProjectLog extends ITasksLogBase{}
 export interface ITasksProject extends ITasksBase
 {
+    id: string
     log: ITasksProjectLog|null
     expiration: string
-    expired: boolean
+    description: string
 }
 
 

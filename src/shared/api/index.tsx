@@ -16,11 +16,11 @@ interface BaseQueryParameters {
     keys: (string|number|null)[]
 }
 
+
 interface BaseMutationParameters extends Omit<BaseQueryParameters, 'keys'> {
     keys?: (string|number|null)[]
     method?: 'post' | 'put' | 'patch' | 'delete',
 }
-
 
 
 export type ListResponse<T> = {

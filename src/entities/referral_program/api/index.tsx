@@ -1,11 +1,11 @@
-import { USER_ME } from "@/entities/users/api/keys";
+import { USER, USER_ME } from "@/entities/users/api/keys";
 import { useBaseMutation, useBaseQuery, ListResponse } from "@/shared/api";
 
 
 export function useMeClaim() {
     return useBaseMutation({
         url: 'referral-program/claim/'
-    }, USER_ME)
+    }, [USER, USER_ME])
 }
 
 
@@ -13,7 +13,7 @@ export function useMeSetReferrer() {
     return useBaseMutation<{ username: string }, { success: 'ok' }>({
         url: 'referral-program/me/set-referrer/',
         method: 'post'
-    }, USER_ME)
+    }, [USER, USER_ME])
 }
 
 
