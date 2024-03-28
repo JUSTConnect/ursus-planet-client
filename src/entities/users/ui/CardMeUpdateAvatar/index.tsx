@@ -107,6 +107,7 @@ export default function CardMeUpdateAvatar() {
                                     onClick={() => input.current?.click()}
                                     size='sm'
                                     color='gray'
+                                    hoverToWhite
                                 >
                                     upload from gallery
                                 </Button>
@@ -116,6 +117,7 @@ export default function CardMeUpdateAvatar() {
                                     onClick={ () => setModalNft(true) }
                                     size='sm'
                                     color='gray'
+                                    hoverToWhite
                                 >
                                     NFT from wallet
                                 </Button>
@@ -148,6 +150,7 @@ export default function CardMeUpdateAvatar() {
                     color='gray'
                     wideWidth
                     hoverToWhite
+                    disabled={isPending}
                 >
                     {isPending ? 'Saving...' : 'Save'}
                 </Button>

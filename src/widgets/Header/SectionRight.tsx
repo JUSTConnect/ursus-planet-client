@@ -90,6 +90,7 @@ export default function SectionRight() {
                         className={c('gmd', isConnected() && css.buttonConnectActive)}
                         onClick={() => !isConnected() && dispatch(setModalWalletConnect(true))}
                         color='gray'
+                        hoverToWhite={!isConnected()}
                     >
                         { !isConnected() && <FaWallet color='gray'/> }
                         { isConnected() ? 'Connected' : 'Connect wallet'}

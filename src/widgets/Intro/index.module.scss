@@ -59,6 +59,12 @@
 {
     max-width: 200px;
 
+    &:hover
+    {
+        background: var(--color-primary) !important;
+        opacity: 1 !important;
+    }
+
     @include lsm
     {
         max-width: 120px;

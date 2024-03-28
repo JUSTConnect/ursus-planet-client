@@ -119,6 +119,7 @@ export default function CardMeUpdate() {
                                         <Button
                                             size='sm'
                                             color='white'
+                                            hoverToWhite
                                         >
                                             <CheckCircledIcon color='green' />
                                             Stiven38324
@@ -128,6 +129,7 @@ export default function CardMeUpdate() {
                                         <Button
                                             size='sm'
                                             color='gray'
+                                            hoverToWhite
                                         >
                                             Stiven38
                                         </Button>
@@ -136,6 +138,7 @@ export default function CardMeUpdate() {
                                         <Button
                                             size='sm'
                                             color='gray'
+                                            hoverToWhite
                                         >
                                             Stiven334
                                         </Button>
@@ -183,6 +186,7 @@ export default function CardMeUpdate() {
                             color='gray'
                             wideWidth
                             hoverToWhite
+                            disabled={isPending}
                         >
                             {
                                 isPending ? 'Saving...' : 'Save'

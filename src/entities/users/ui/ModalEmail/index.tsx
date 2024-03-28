@@ -153,6 +153,7 @@ export default function ModalEmail(props: Props) {
                             type='submit'
                             disabled={isPending}
                             fullWidth
+                            hoverToWhite
                         >
                             {codeSent ? 'Confirm code' : 'Get code'}
                         </Button>
