@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useRouter } from "next/navigation";
 import { useIsMounted } from 'usehooks-ts'
 import { useDispatch } from "react-redux";
 import {
@@ -23,9 +24,15 @@ import bgRelief from './img/bg-relief.svg'
 
 export default function Intro() {
 
+    const router = useRouter()
     const dispatch = useDispatch()
     const { isConnected } = useMetaMask()
     const isMounted = useIsMounted()
+
+    const handleConnect = (as: 'player'|'project') => {
+        router.replace(`.?as=${as}`)
+        !isConnected() && dispatch(setModalWalletConnect(true))
+    }
 
     return <>
         <Flex direction='column' justify='between' className={css.container}>
@@ -61,7 +68,7 @@ export default function Intro() {
                         <Flex justify='center' gap='4' className={css.buttons}>
                             <Skeleton loading={!isMounted()}>
                                 <Button
-                                    onClick={ ()=> !isConnected() && dispatch(setModalWalletConnect(true)) }
+                                    onClick={ () => handleConnect('player') }
                                     className={css.button}
                                     color={ isConnected() ? 'primary' : undefined}
                                     size='lg'
@@ -73,7 +80,7 @@ export default function Intro() {
                             </Skeleton>
                             <Skeleton loading={!isMounted()}>
                                 <Button
-                                    onClick={ ()=> !isConnected() && dispatch(setModalWalletConnect(true)) }
+                                    onClick={ ()=> handleConnect('project') }
                                     className={css.button}
                                     color="gray"
                                     size='lg'

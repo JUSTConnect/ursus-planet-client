@@ -1,5 +1,6 @@
 'use client'
 import Image, { StaticImageData } from 'next/image'
+import { useSearchParams } from 'next/navigation';
 import {
     Box,
     Flex,
@@ -25,6 +26,7 @@ export interface IItem {
 
 
 export default function Item(props: IItem) {
+    const searchParams = useSearchParams()
     const { fire } = useToast()
     const { hasProvider, isConnecting, connectMetaMask } = useMetaMask()
     const { mutateAsync } = useAuth()
@@ -45,7 +47,9 @@ export default function Item(props: IItem) {
                 )
             )
         })
-        fire({type: 'error', text: "ООps..!! It looks like you don't have an approved project yet, but you were connected as a player."})
+        if (searchParams.get('as')==='project') {
+            fire({type: 'error', text: "ООps..!! It looks like you don't have an approved project yet, but you were connected as a player."})
+        }
     }
 
 
