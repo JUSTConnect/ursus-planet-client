@@ -1,10 +1,12 @@
+'use client'
+import { useState } from "react"
 import { FormEvent } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { AxiosError } from "axios"
 import Link from "next/link"
 import { Text, Flex, Heading } from "@radix-ui/themes"
 
-import { useMySocialConnect, useMySocials } from "@/entities/socials/api"
+import { useMySocialConnect } from "@/entities/socials/api"
 import TextField from "@/shared/ui/TextField"
 import Modal from "@/shared/ui/Modal"
 import Card from "@/shared/ui/Card"
@@ -25,25 +27,25 @@ export default function ModalTelegramConnect(props: IModalTelegramConnect) {
     const router = useRouter()
     const pathname = usePathname()
 
+    const [error, setError] = useState<string|undefined>()
     const {mutateAsync} = useMySocialConnect()
-    const {refetch} = useMySocials()
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        console.log('submitted')
         e.preventDefault()
         const data = new FormData(e.currentTarget)
         data.append('social', 'telegram')
         mutateAsync(data)
-            .catch((error) => {
-                alert((error as AxiosError<{detail: string}>).response?.data?.detail)
-            })
-            .finally(() => {
-                refetch()
+            .then(() => {
                 router.replace(pathname)
                 props.setActive(false)
             })
+            .catch((error) => {
+                setError((error as AxiosError<{detail: string}>).response?.data?.detail)
+            })
     }
 
-    return <Modal active={props.active} setActive={props.setActive}>
+    return <Modal active={props.active} setActive={props.setActive} className={css.modal}>
         <Card.Root className={css.card}>
             <Card.Body>
                 <form onSubmit={handleSubmit}>
@@ -55,6 +57,10 @@ export default function ModalTelegramConnect(props: IModalTelegramConnect) {
                             Please enter <Text color="blue">code</Text> received by our telegram bot here.
                         </Text>
                         <TextField.Input placeholder='Enter code...' name='code'/>
+                        {
+                            error &&
+                            <Text color="red">{error}</Text>
+                        }
                         <Link href='https://t.me/ursasplanet_bot' target="_blank">
                             <Button fullWidth color='white' type='button'>Go to bot</Button>
                         </Link>

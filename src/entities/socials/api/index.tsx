@@ -1,6 +1,8 @@
 import { AxiosResponse } from "axios";
-import { useBaseQuery, useBaseMutation } from "@/shared/api";
+import { useMutation } from "@tanstack/react-query";
 
+import { useBaseQuery, useBaseMutation } from "@/shared/api";
+import { apiInstance, queryClient } from "@/shared/api";
 import { ISocialsConfig, ISocials } from "@/entities/socials/model";
 
 import {SOCIALS_CONFIG, SOCIALS_MY} from './keys'
@@ -30,13 +32,13 @@ export function useMySocialDisconnect() {
 
 
 export function useMySocialConnect() {
-    return useBaseMutation({
-        url: 'socials/authorize/',
-        extraConfig: {
-            validateStatus: (status: number) => {
-                return status !== 403
-            }
+    return useMutation({
+        mutationFn: async (mutationData: FormData) => {
+            const {data} = await apiInstance.post('socials/authorize/', mutationData)
+            return data
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: SOCIALS_MY})
         }
-    }, SOCIALS_MY)
+    })
 }
-

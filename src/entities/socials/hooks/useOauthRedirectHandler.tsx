@@ -9,6 +9,7 @@ import {
 } from "next/navigation"
 
 import { useMySocialConnect } from "@/entities/socials/api"
+import { useToast } from "@/shared/ui/Toast"
 
 
 export default function useOauthRedirectHandler() {
@@ -16,6 +17,7 @@ export default function useOauthRedirectHandler() {
     const pathname = usePathname()
     const router = useRouter() 
 
+    const {fire} = useToast()
     const {mutateAsync} = useMySocialConnect()
 
     return useEffect(() => {
@@ -25,11 +27,11 @@ export default function useOauthRedirectHandler() {
             data.append('social', searchParams.get('auth')||'')
             mutateAsync(data)
                 .catch((error) => {
-                    alert((error as AxiosError<{detail: string}>).response?.data?.detail)
+                    fire({text: (error as AxiosError<{detail: string}>).response?.data?.detail||'Some error occurred'})
                 })
                 .finally(() => {
                     router.replace(pathname)
                 })
         }
-    }, [mutateAsync, pathname, router, searchParams])
+    }, [mutateAsync, pathname, router, searchParams, fire])
 }
