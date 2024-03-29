@@ -37,6 +37,7 @@ export default function CardTaskProject(props: ICardTaskProject) {
     } = useTimer({expiryTimestamp: props.object ? new Date(props.object?.expiration) : new Date()})
     const [active, setActive] = useState(false)
     const [checking, setChecking] = useState(false)
+    const [checkAvailable, setCheckAvailable] = useState(false)
 
     const handleCheck = () => {
         setChecking(true)
@@ -72,19 +73,22 @@ export default function CardTaskProject(props: ICardTaskProject) {
                                 <GoChevronDown/>
                         }
                     </Button>
-                    <Button
-                        onClick={handleCheck}
-                        hoverToWhite
-                        radius="normal"
-                        disabled={checking}
-                    >
-                        <Text>
-                            { checking ? <>Verifying<AnimatedDots/></> : 'Verify' }
-                        </Text>
-                    </Button>
+                    { checkAvailable &&
+                        <Button
+                            onClick={handleCheck}
+                            hoverToWhite
+                            radius="normal"
+                            disabled={checking}
+                        >
+                            <Text>
+                                { checking ? <>Verifying<AnimatedDots/></> : 'Verify' }
+                            </Text>
+                        </Button>
+                    }
                     <Link target="_blank" href={props.object?.link||'#'} className={css.button}>
                         <Tooltip content={`this task expires in ${hours}:${minutes}:${seconds}`}>
                             <Button
+                                onClick={() => setTimeout( () => setCheckAvailable(true), 1000)}
                                 radius="normal"
                                 color="white"
                                 fullWidth
