@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Link from "next/link"
 import { Box, Tooltip, Text } from "@radix-ui/themes";
-import { useTimer } from 'react-timer-hook';
 import c from "classnames"
 
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
@@ -15,6 +14,7 @@ import AnimatedDots from "@/shared/ui/AnimatedDots";
 import Button from "@/shared/ui/Button"
 
 import CardTaskBase from '../CardTaskBase'
+import Timer from './Timer'
 
 import css from './index.module.scss'
 
@@ -30,11 +30,6 @@ export default function CardTaskProject(props: ICardTaskProject) {
     const {mutateAsync} = useTasksCustomGetReward()
     const check = useTasksCustomCheck()
 
-    const {
-        seconds,
-        minutes,
-        hours
-    } = useTimer({expiryTimestamp: props.object ? new Date(props.object?.expiration) : new Date()})
     const [active, setActive] = useState(false)
     const [checking, setChecking] = useState(false)
     const [checkAvailable, setCheckAvailable] = useState(false)
@@ -86,14 +81,25 @@ export default function CardTaskProject(props: ICardTaskProject) {
                         </Button>
                     }
                     <Link target="_blank" href={props.object?.link||'#'} className={css.button}>
-                        <Tooltip content={`this task expires in ${hours}:${minutes}:${seconds}`}>
+                        <Tooltip
+                            content={
+                                <>
+                                    this task expires in {props.object?.expiration && <Timer date={props.object.expiration}/>}
+                                </>
+                            }
+                            hidden={!props.object?.expiration}
+                        >
                             <Button
                                 onClick={() => setTimeout( () => setCheckAvailable(true), 1000)}
                                 radius="normal"
                                 color="white"
                                 fullWidth
                             >
-                                <FaClock/>Do it
+                                {
+                                    props.object?.expiration &&
+                                        <FaClock/>
+                                }
+                                Do it
                             </Button>
                         </Tooltip>
                     </Link>

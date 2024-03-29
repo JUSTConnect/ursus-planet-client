@@ -30,8 +30,7 @@
     "react-redux": "^9.0.4",
     "react-timer-hook": "^3.0.7",
     "reset-css": "^5.0.2",
-    "sass": "^1.69.5",
-    "usehooks-ts": "^3.0.2"
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "@types/lodash": "^4",

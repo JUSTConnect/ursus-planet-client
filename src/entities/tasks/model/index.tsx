@@ -25,7 +25,7 @@ export interface ITasksProject extends ITasksBase
 {
     id: string
     log: ITasksProjectLog|null
-    expiration: string
+    expiration?: string
     description: string
 }
 
