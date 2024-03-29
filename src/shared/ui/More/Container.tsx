@@ -14,6 +14,8 @@ export default function Container({children, className, ...props}: React.Compone
     return <ContainerBase
         {...props}
         className={cn}
+        mb='9'
+        pb='9'
     >
         {children}
     </ContainerBase>

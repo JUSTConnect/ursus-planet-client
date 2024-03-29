@@ -7,8 +7,8 @@ import {
 export default function Container({
     children,
     className,
-    style
-}: React.HTMLAttributes<HTMLDivElement>) {
+    ...props
+}: React.ComponentProps<typeof RadixContainer>) {
 
     const getClassName = () => {
         return [
@@ -18,10 +18,10 @@ export default function Container({
     }
 
     return <RadixContainer
-        className={ getClassName() }
-        style={ style }
-        size='4'
         px='3'
+        size='4'
+        className={ getClassName() }
+        {...props}
     >
         { children }
     </RadixContainer>
