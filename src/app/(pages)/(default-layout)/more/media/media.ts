@@ -14,37 +14,34 @@ const media: React.ComponentProps<typeof CardMedia>[] = [
         title: 'Discord',
         count_subscribers: 12304,
         figure: figureDiscord,
-        link: '#'
+        link: 'https://discord.gg/ursas'
     },
     {
         title: 'X account',
         count_subscribers: 12304,
         figure: figureX,
-        link: '#'
+        link: 'https://twitter.com/UrsasPlanet'
     },
     {
         title: 'Telegram',
         count_subscribers: 12304,
         figure: figureTelegram,
-        link: '#'
+        link: 'https://t.me/ursasplanet'
     },
     {
         title: 'Github',
         count_subscribers: 12304,
         figure: figureGithub,
-        link: '#'
     },
     {
         title: 'Instagram',
         count_subscribers: 12304,
         figure: figureInstagram,
-        link: '#'
     },
     {
         title: 'Reddit',
         count_subscribers: 12304,
         figure: figureReddit,
-        link: '#'
     },
 ]
 

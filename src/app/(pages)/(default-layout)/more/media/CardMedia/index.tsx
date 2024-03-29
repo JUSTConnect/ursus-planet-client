@@ -13,7 +13,7 @@ interface ICardMedia
     title: string
     count_subscribers: number
     figure: StaticImageData
-    link: string
+    link?: string
 }
 
 
@@ -47,16 +47,17 @@ export default function CardMedia(props: ICardMedia)
             </Flex>
         </Card.Body>
         <Card.Bottom className={css.bottom}>
-                <Link href={props.link}>
-                    <Button
-                        className={css.button}
-                        color="primary"
-                        size='lg'
-                        fullWidth
-                    >
-                        SUBSCRIBE
-                    </Button>
-                </Link>
+            <Link href={props.link||'#'}>
+                <Button
+                    className={css.button}
+                    color={!!props.link ? 'primary' : 'gray'}
+                    size='lg'
+                    fullWidth
+                    disabled={!props.link}
+                >
+                    SUBSCRIBE
+                </Button>
+            </Link>
         </Card.Bottom>
     </Card.Root>
 }

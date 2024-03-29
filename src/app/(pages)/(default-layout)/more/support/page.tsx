@@ -25,24 +25,28 @@ export default function GitbookPage() {
                 gapX='4'
                 gapY='2'
             >
-                <Button
-                    fullWidth
-                    color="primary"
-                    size="lg"
-                >
-                    Collaboration
-                    <FiArrowUpRight/>
-                </Button>
-                <Button
-                    fullWidth
-                    color="primary"
-                    size="lg"
-                >
-                    Problem
-                    <FiArrowUpRight/>
-                </Button>
+                <Link href="https://forms.gle/sJgzS7hLEVDAoztf9">
+                    <Button
+                        fullWidth
+                        color="primary"
+                        size="lg"
+                    >
+                        Collaboration
+                        <FiArrowUpRight/>
+                    </Button>
+                </Link>
+                <Link href="https://forms.gle/KmP7p52rG2Nd1adu8">
+                    <Button
+                        fullWidth
+                        color="primary"
+                        size="lg"
+                    >
+                        Problem
+                        <FiArrowUpRight/>
+                    </Button>
+                </Link>
             </Grid>
-            <Link size='4'>
+            <Link size='4' href="email:support@ursasplanet.com">
                 <Flex justify='center' align='center' mt='3' gap='3'>
                     <IoMail/>Write by email
                 </Flex>

@@ -1,4 +1,4 @@
-import { Text, Flex } from "@radix-ui/themes";
+import { Text, Flex, Link } from "@radix-ui/themes";
 import { FiArrowUpRight } from "react-icons/fi";
 
 import More from "@/shared/ui/More";
@@ -19,10 +19,12 @@ export default function CareersPage() {
                 in this section all open vacancies of the Ursas Planet platform are posted, as well as open vacancies of other projects. To post a vacancy, fill out the form.
             </Text>
             <Flex justify='center'>
-                <Button wideWidth size="lg" color="primary" className={css.button}>
-                    JoB Posting
-                    <FiArrowUpRight/>
-                </Button>
+                <Link href="https://forms.gle/XUk43377cy1Ck5sXA">
+                    <Button wideWidth size="lg" color="primary" className={css.button}>
+                        JoB Posting
+                        <FiArrowUpRight/>
+                    </Button>
+                </Link>
             </Flex>
         </More.Content>
     </More.Grid>

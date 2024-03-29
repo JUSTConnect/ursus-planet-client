@@ -1,4 +1,4 @@
-import { Text, Grid } from "@radix-ui/themes";
+import { Text, Grid, Link } from "@radix-ui/themes";
 import { FiArrowUpRight } from "react-icons/fi";
 
 import More from "@/shared/ui/More";
@@ -24,22 +24,26 @@ export default function GitbookPage() {
                 gapX='4'
                 gapY='2'
             >
-                <Button
-                    fullWidth
-                    color="primary"
-                    size="lg"
-                >
-                    Platform DOCS
-                    <FiArrowUpRight/>
-                </Button>
-                <Button
-                    fullWidth
-                    color="primary"
-                    size="lg"
-                >
-                    Project DOCS
-                    <FiArrowUpRight/>
-                </Button>
+                <Link href="https://docs-project.ursasplanet.com/">
+                    <Button
+                        fullWidth
+                        color="primary"
+                        size="lg"
+                    >
+                        Platform DOCS
+                        <FiArrowUpRight/>
+                    </Button>
+                </Link>
+                <Link href="https://docs-platform.ursasplanet.com/">
+                    <Button
+                        fullWidth
+                        color="primary"
+                        size="lg"
+                    >
+                        Project DOCS
+                        <FiArrowUpRight/>
+                    </Button>
+                </Link>
             </Grid>
         </More.Content>
     </More.Grid>
