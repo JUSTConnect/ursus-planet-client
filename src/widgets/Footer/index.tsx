@@ -62,10 +62,10 @@ export default function Footer() {
                                     <Text color='gray' mb='3'>
                                         Community
                                     </Text>
-                                    <Link href='https://medium.com/@TEDDY_Arrr'>Medium</Link>
-                                    <Link href='https://twitter.com/UrsasPlanet'>Twitter</Link>
-                                    <Link href='https://t.me/ursasplanet'>Telegram</Link>
-                                    <Link href='https://discord.gg/ursas'>Discord</Link>
+                                    <Link target='_blank' href='https://medium.com/@TEDDY_Arrr'>Medium</Link>
+                                    <Link target='_blank' href='https://twitter.com/UrsasPlanet'>Twitter</Link>
+                                    <Link target='_blank' href='https://t.me/ursasplanet'>Telegram</Link>
+                                    <Link target='_blank' href='https://discord.gg/ursas'>Discord</Link>
                                 </Flex>
                                 <Flex direction='column'>
                                     <Text color='gray' mb='3'>

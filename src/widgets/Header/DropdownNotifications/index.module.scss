@@ -49,3 +49,11 @@
         }
     }
 }
+
+.button
+{
+    &:hover svg path
+    {
+        fill: var(--color-neutral);
+    }
+}

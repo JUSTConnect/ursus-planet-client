@@ -82,7 +82,7 @@ export default function CardTaskProject(props: ICardTaskProject) {
                             { checking ? <>Verifying<AnimatedDots/></> : 'Verify' }
                         </Text>
                     </Button>
-                    <Link href={props.object?.link||'#'} className={css.button}>
+                    <Link target="_blank" href={props.object?.link||'#'} className={css.button}>
                         <Tooltip content={`this task expires in ${hours}:${minutes}:${seconds}`}>
                             <Button
                                 radius="normal"

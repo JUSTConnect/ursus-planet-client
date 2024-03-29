@@ -25,7 +25,7 @@ export default function GitbookPage() {
                 gapX='4'
                 gapY='2'
             >
-                <Link href="https://forms.gle/sJgzS7hLEVDAoztf9">
+                <Link target="_blank" href="https://forms.gle/sJgzS7hLEVDAoztf9">
                     <Button
                         fullWidth
                         color="primary"
@@ -35,7 +35,7 @@ export default function GitbookPage() {
                         <FiArrowUpRight/>
                     </Button>
                 </Link>
-                <Link href="https://forms.gle/KmP7p52rG2Nd1adu8">
+                <Link target="_blank" href="https://forms.gle/KmP7p52rG2Nd1adu8">
                     <Button
                         fullWidth
                         color="primary"

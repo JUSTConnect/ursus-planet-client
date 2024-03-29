@@ -1,6 +1,6 @@
 import Image from "next/image"
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useIsMounted } from 'usehooks-ts'
 import { useDispatch } from "react-redux";
 import {
     Box,
@@ -27,7 +27,11 @@ export default function Intro() {
     const router = useRouter()
     const dispatch = useDispatch()
     const { isConnected } = useMetaMask()
-    const isMounted = useIsMounted()
+    const [isMounted, setIsMounted]= useState(false)
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     const handleConnect = (as: 'player'|'project') => {
         router.replace(`.?as=${as}`)
@@ -66,7 +70,7 @@ export default function Intro() {
                             alt='figure'
                         />
                         <Flex justify='center' gap='4' className={css.buttons}>
-                            <Skeleton loading={!isMounted()}>
+                            <Skeleton loading={!isMounted}>
                                 <Button
                                     onClick={ () => handleConnect('player') }
                                     className={css.button}
@@ -78,7 +82,7 @@ export default function Intro() {
                                     Player
                                 </Button>
                             </Skeleton>
-                            <Skeleton loading={!isMounted()}>
+                            <Skeleton loading={!isMounted}>
                                 <Button
                                     onClick={ ()=> handleConnect('project') }
                                     className={css.button}

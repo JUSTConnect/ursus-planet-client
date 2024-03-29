@@ -24,7 +24,7 @@ export default function GitbookPage() {
                 gapX='4'
                 gapY='2'
             >
-                <Link href="https://docs-project.ursasplanet.com/">
+                <Link target="_blank" href="https://docs-project.ursasplanet.com/">
                     <Button
                         fullWidth
                         color="primary"
@@ -34,7 +34,7 @@ export default function GitbookPage() {
                         <FiArrowUpRight/>
                     </Button>
                 </Link>
-                <Link href="https://docs-platform.ursasplanet.com/">
+                <Link target="_blank" href="https://docs-platform.ursasplanet.com/">
                     <Button
                         fullWidth
                         color="primary"

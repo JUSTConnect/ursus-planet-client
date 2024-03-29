@@ -48,7 +48,7 @@ export default function CardMedia(props: ICardMedia)
             </Flex>
         </Card.Body>
         <Card.Bottom className={css.bottom}>
-            <Link href={props.link||'#'}>
+            <Link target="_blank" href={props.link||'#'}>
                 <Button
                     className={css.button}
                     color={!!props.link ? 'primary' : 'gray'}

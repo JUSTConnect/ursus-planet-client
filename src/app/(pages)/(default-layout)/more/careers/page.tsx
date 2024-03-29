@@ -21,7 +21,7 @@ export default function CareersPage() {
             <Flex justify='center'>
                 <Link href="https://forms.gle/XUk43377cy1Ck5sXA">
                     <Button wideWidth size="lg" color="primary" className={css.button}>
-                        JoB Posting
+                        Job Posting
                         <FiArrowUpRight/>
                     </Button>
                 </Link>

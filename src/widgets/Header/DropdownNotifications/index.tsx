@@ -13,7 +13,11 @@ export default function DropdownNotifications() {
 
     return <Dropdown.Root className={css.root}>
         <Dropdown.Trigger>
-            <Button icon>
+            <Button
+                className={css.button}
+                icon
+                hoverToWhite
+            >
                 <IconNotifications />
             </Button>
         </Dropdown.Trigger>
