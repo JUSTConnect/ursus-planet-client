@@ -79,7 +79,7 @@ export default function CardTaskProject(props: ICardTaskProject) {
                         disabled={checking}
                     >
                         <Text>
-                            { checking ? <>Checking<AnimatedDots/></> : 'Check' }
+                            { checking ? <>Verifying<AnimatedDots/></> : 'Verify' }
                         </Text>
                     </Button>
                     <Link href={props.object?.link||'#'} className={css.button}>

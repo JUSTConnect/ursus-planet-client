@@ -28,10 +28,11 @@ export default function CardMedia(props: ICardMedia)
                     align={{
                         md: 'center'
                     }}
+                    mb='5'
                 >
                     {props.title}
                 </Text>
-                <Text
+                {/* <Text
                     as="p"
                     align={{
                         md: 'center'
@@ -39,7 +40,7 @@ export default function CardMedia(props: ICardMedia)
                     mb='5'
                 >
                     {props.count_subscribers} subscribers
-                </Text>
+                </Text> */}
                 <Figure
                     className={css.figure}
                     src={props.figure}

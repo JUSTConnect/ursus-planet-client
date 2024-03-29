@@ -9,9 +9,9 @@ import Tabs from "@/shared/ui/Tabs";
 export default function BrandKitLayout({children}: {children: React.ReactNode}) {
     return <More.Wrapper>
         <More.Tabs.Container>
-            <Tabs.Button href="/more/brand-kit/mission"><VscTarget/>Mission</Tabs.Button>
-            <Tabs.Button href="/more/brand-kit/problems"><RiAlertFill/>Problems</Tabs.Button>
-            <Tabs.Button href="/more/brand-kit/solutions"><FaLightbulb/>Solutions</Tabs.Button>
+            <Tabs.Button href="/more/about-urs/mission"><VscTarget/>Mission</Tabs.Button>
+            <Tabs.Button href="/more/about-urs/problems"><RiAlertFill/>Problems</Tabs.Button>
+            <Tabs.Button href="/more/about-urs/solutions"><FaLightbulb/>Solutions</Tabs.Button>
         </More.Tabs.Container>
         <More.Container>
             {children}

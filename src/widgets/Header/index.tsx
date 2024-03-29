@@ -50,6 +50,11 @@ const menu: IMenuItem[] = [
         name: "More",
         children: [
             {
+                name: 'About urs',
+                icon: <IoExtensionPuzzle />,
+                link: '/more/about-urs/mission'
+            },
+            {
                 name: 'Docs',
                 icon: <IoDocumentText />,
                 link: '/more/docs/gitbook'
@@ -58,11 +63,6 @@ const menu: IMenuItem[] = [
                 name: 'Careers',
                 icon: <FaStar />,
                 link: '/more/careers'
-            },
-            {
-                name: 'Brand kit',
-                icon: <IoExtensionPuzzle />,
-                link: '/more/brand-kit/mission'
             },
             {
                 name: 'Media',

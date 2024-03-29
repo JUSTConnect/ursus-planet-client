@@ -22,22 +22,22 @@ export default function SolutionsPage() {
             <Text>
                 <ul className={css.list}>
                     <li>
-                        Gaming raffles with a unique mechanics of selling spots in an ongoing giveaway, 
+                        Gaming raffles with a unique mechanics of selling spots in an ongoing giveaway
                     </li>
                     <li>
-                        Earning project tokens by participating in raffles,
+                        Earning project tokens by participating in raffles
                     </li>
                     <li>
-                        Task, quest, and quiz creation system, 
+                        Task, quest, and quiz creation system
                     </li>
                     <li>
-                        Launchpad platform,
+                        Launchpad platform
                     </li>
                     <li>
-                        White list distribution system, 
+                        White list distribution system 
                     </li>
                     <li>
-                        Promotion auctions.
+                        Promotion auctions
                     </li>
                     <li>
                         Raids system

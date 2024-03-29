@@ -53,7 +53,7 @@ export default function Footer() {
                                     <Text color='gray' mb='3'>
                                         About
                                     </Text>
-                                    <Link href='/more/brand-kit/mission'>About Urs</Link>
+                                    <Link href='/more/about-urs/mission'>About Urs</Link>
                                     <Link href='/more/docs'>Documents</Link>
                                     <Link href='/more/docs/gitbook'>Gitbook</Link>
                                     <Link href='/more/careers'>Careers</Link>
@@ -72,7 +72,6 @@ export default function Footer() {
                                         Support
                                     </Text>
                                     <Link href='/more/support'>Help</Link>
-                                    <Link href='/more/support'>Support</Link>
                                 </Flex>
                             </Grid>
                         </nav>
