@@ -1,0 +1,11 @@
+.item
+{
+    justify-content: space-between;
+    &Active
+    {
+        &:not(:hover)
+        {
+            color: var(--color-primary);
+        }
+    }
+}
