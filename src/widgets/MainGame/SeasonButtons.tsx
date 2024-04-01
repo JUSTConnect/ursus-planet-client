@@ -44,6 +44,7 @@ export default function SeasonButtons() {
                 onClick={() => dispatch(setSeasonActive(seasonCurrent))}
                 className={c(css.buttonSeason, seasonCurrent === seasonActive && css.buttonSeasonActive)}
                 size='lg'
+                disabled
             >
                 <FaPlay/>
                 Current season
@@ -54,6 +55,7 @@ export default function SeasonButtons() {
                 onClick={() => dispatch(setSeasonActive(seasonCurrent - 1))}
                 className={c(css.buttonSeason, seasonCurrent - 1 === seasonActive && css.buttonSeasonActive)}
                 size='lg'
+                disabled
             >
                 <GiPreviousButton/>
                 Last season
