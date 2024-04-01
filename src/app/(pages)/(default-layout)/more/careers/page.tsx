@@ -19,7 +19,7 @@ export default function CareersPage() {
                 in this section all open vacancies of the Ursas Planet platform are posted, as well as open vacancies of other projects. To post a vacancy, fill out the form.
             </Text>
             <Flex justify='center'>
-                <Link href="https://forms.gle/XUk43377cy1Ck5sXA">
+                <Link href="https://forms.gle/XUk43377cy1Ck5sXA" target="_blank">
                     <Button wideWidth size="lg" color="primary" className={css.button}>
                         Job Posting
                         <FiArrowUpRight/>

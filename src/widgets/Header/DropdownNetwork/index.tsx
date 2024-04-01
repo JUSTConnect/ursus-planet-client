@@ -10,8 +10,8 @@ import Button from '@/shared/ui/Button'
 import css from './index.module.scss'
 import iconPolygon from './img/icon-polygon.svg'
 import iconInvalid from './img/invalid.svg'
-import iconArb from './img/icon-arb.svg'
-import iconBnb from './img/icon-bnb.svg'
+// import iconArb from './img/icon-arb.svg'
+// import iconBnb from './img/icon-bnb.svg'
 
 import chains from './chains'
 
@@ -34,16 +34,16 @@ const items: Item[] = [
         icon: iconPolygon,
         chain_id: '0x89'
     },
-    {
-        value: 'bnb',
-        icon: iconBnb,
-        chain_id: '0x38'
-    },
-    {
-        value: 'arb',
-        icon: iconArb,
-        chain_id: '0xa4b1'
-    }
+    // {
+    //     value: 'bnb',
+    //     icon: iconBnb,
+    //     chain_id: '0x38'
+    // },
+    // {
+    //     value: 'arb',
+    //     icon: iconArb,
+    //     chain_id: '0xa4b1'
+    // }
 ]
 
 
