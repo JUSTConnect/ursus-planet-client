@@ -5,7 +5,12 @@ import { useMeUpdate } from "@/entities/users/api"
 import { IUser } from '@/entities/users/model'
 import { useToast } from "@/shared/ui/Toast"
 import Select from "@/shared/ui/Select"
+import SelectNew from "@/shared/ui/SelectNew"
 import Card from "@/shared/ui/Card"
+
+import {getValueName} from './utils'
+
+import css from './index.module.scss'
 
 
 interface ISwitch {
@@ -20,7 +25,7 @@ export default function Switch(props: ISwitch) {
 
     const { mutateAsync } = useMeUpdate()
 
-    const handleChange = (value: string) => {
+    const handleChange = (value?: string) => {
         mutateAsync({
             [props.name]: value
         }).then(() =>
@@ -38,23 +43,28 @@ export default function Switch(props: ISwitch) {
         </Skeleton> 
     }
 
-    return <Select.Root defaultValue={props.object?.[props.name] as string} onValueChange={ handleChange }>
-        <Select.Trigger>
+    return <SelectNew.Root
+        defaultValue={{value: props.object?.[props.name] as string, name: getValueName(props.object?.[props.name] as string)}}
+        placeholder="Select frequency"
+        onValueChange={ handleChange }
+        className={css.selectRoot}
+    >
+        <SelectNew.Trigger>
             <Box>
                 <Card.Root>
                     <Flex p='3' align='center' justify='between' gap='3'>
-                        <Select.Value placeholder="Select a frequency..." />
+                        <SelectNew.Value/>
                         <Select.Icon />
                     </Flex>
                 </Card.Root>
             </Box>
-        </Select.Trigger>
-        <Select.Content>
-            <Select.Item value="fast">As fast as possible</Select.Item>
-            <Select.Item value="hour">Every hour</Select.Item>
-            <Select.Item value="day">Every day</Select.Item>
-            <Select.Item value="week">Every week</Select.Item>
-            <Select.Item value="month">Every month</Select.Item>
-        </Select.Content>
-    </Select.Root>
+        </SelectNew.Trigger>
+        <SelectNew.Content>
+            <SelectNew.Item value="fast" name="As fast as possible"/>
+            <SelectNew.Item value="hour" name="Every hour"/>
+            <SelectNew.Item value="day" name="Every day"/>
+            <SelectNew.Item value="week" name="Every week"/>
+            <SelectNew.Item value="month" name="Every month"/>
+        </SelectNew.Content>
+    </SelectNew.Root>
 }
