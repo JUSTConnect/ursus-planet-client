@@ -16,6 +16,12 @@
     max-width: 370px;
     height: auto;
     position: relative;
+    mask-image: linear-gradient(rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+
+    @media (max-width: 1335px)
+    {
+        mask-image: linear-gradient(rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%) !important;
+    }
 
 
     @include lsm
