@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 
 import Intro from '@/widgets/Intro'
 import MainGame from '@/widgets/MainGame'
-import GamesBest from '@/widgets/GamesBest'
+// import GamesBest from '@/widgets/GamesBest'
 import { useMeSetReferrerCookie } from '@/entities/referral_program/api'
 import Footer from '@/widgets/Footer'
 
@@ -23,7 +23,7 @@ export default function Home() {
   return <>
     <Intro/>
     <MainGame/>
-    <GamesBest/>
+    {/* <GamesBest/> */}
     <Footer/>
   </>
 }
