@@ -1,0 +1,137 @@
+.button
+{
+    display: block;
+    line-height: 0;
+    display: flex;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: .1s;
+
+
+    & svg, img
+    {
+        width: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    &:disabled
+    {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    @media (hover: hover) {
+        &:not(.hoverToWhite):hover
+        {
+            opacity: .8;
+        }
+    }
+}
+
+.sm
+{
+    font-size: 0.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 1.5rem;
+    gap: .8rem;
+
+    & svg, img
+    {
+        height: 1rem;
+    }
+}
+
+.md
+{
+    font-size: 1rem;
+    height: 2.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: .5rem;
+
+    & svg, img
+    {
+        height: 1.2rem;
+    }
+}
+
+.lg
+{
+    font-size: 1rem;
+    height: 3.3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: .7rem;
+
+    & svg, img
+    {
+        height: 1.5rem;
+    }
+}
+
+.full
+{
+    border-radius: 999px;
+}
+
+.normal
+{
+    border-radius: 1rem;
+}
+
+.ghost
+{
+    background: none;
+}
+
+.solid.white
+{
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+.solid.primary
+{
+    background: var(--color-primary);
+}
+
+.solid.gray
+{
+    background: var(--color-gray);
+}
+
+.solid.dark
+{
+    background: var(--color-dark);
+}
+
+
+// modificators
+
+.icon
+{
+    width: auto;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+}
+
+.hoverToWhite
+{
+    &:hover
+    {
+        background: var(--color-white);
+        color: var(--color-black);
+    }
+}
+
+.fullWidth
+{
+    width: 100%;
+}
+
+
+.wideWidth
+{
+    width: 200px;
+}

@@ -1,0 +1,83 @@
+@import '@mixins';
+
+.buffer
+{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 350px;
+    
+    @include lsm
+    {
+        max-width: initial;
+        max-width: initial;
+    }
+}
+
+
+.card
+{
+    background: #1C1931D0;
+    backdrop-filter: blur(5px);
+    padding-top: .2rem;
+    animation: toast .2s ease;
+    cursor: pointer;
+
+    &::after
+    {
+        content: "";
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: .2rem;
+        animation: progress 10s ease;
+    }
+
+    &.primary::after
+    {
+        background: var(--color-primary);
+    }
+
+    &.error::after
+    {
+        background: var(--color-error);
+    }
+
+    &.success::after
+    {
+        background: var(--color-success);
+    }
+
+    &Hide
+    {
+        display: none;
+    }
+}
+
+
+@keyframes progress
+{
+    from
+    {
+        width: 100%;
+    }
+
+    to
+    {
+        width: 0;
+    }
+}
+
+@keyframes toast {
+    from
+    {
+        transform: translateX(100%);
+    }
+
+    to
+    {
+        transform: translateX(0);
+    }
+}

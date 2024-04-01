@@ -1,0 +1,63 @@
+@import '@mixins';
+
+
+@import 'reset-css';
+
+* {
+    box-sizing: border-box;
+    // outline: 1px dashed rgba(255, 255, 255, .1);
+}
+
+
+:root {
+    --color-dark-100: #1C1931;
+    --color-dark-200: #080713;
+
+    --color-gray: #584F884C;
+    --color-primary: #007bff;
+    --color-success: #30ad4b;
+    --color-warning: #ffc107;
+    --color-error: #dc3545;
+
+    --color-white: #FFFFFF;
+    --color-black: #080713;
+    --color-neutral: #584F88;
+    --color-neutral-transparrent: rgba(37, 72, 169, 0.30);
+    
+    font-size: 18px;
+ 
+    @include lsm {
+        font-size: 14px;
+    }
+}
+
+
+body {
+    position: relative;
+    background: var(--color-dark-200) !important;
+    color: var(--color-white);
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* width */
+::-webkit-scrollbar {
+    border-radius: 100px;
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 100px;
+    background: var(--color-dark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: var(--color-gray);
+}

@@ -1,0 +1,9 @@
+@import '@mixins';
+
+.avatar
+{
+    @include lsm
+    {
+        height: 5rem;
+    }
+}

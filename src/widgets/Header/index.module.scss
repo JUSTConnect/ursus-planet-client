@@ -1,0 +1,97 @@
+@import '@mixins';
+
+.header
+{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: .1s;
+    
+    &Active
+    {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+    }
+}
+
+
+.headerInner
+{
+    height: 90px;
+    
+    @include lsm {
+        height: 70px;
+    }
+}
+
+.logo {
+    width: 221px;
+
+    @include lmd {
+        width: 176px;
+    }
+
+    @include lsm {
+        width: 150px;
+    }
+}
+
+.menu {
+
+    $breakpoint: 1100px;
+
+    @media (max-width: $breakpoint) {
+        display: none;
+    }
+
+    
+    &Mobile
+    {
+        margin-bottom: 1rem;
+
+        @media (min-width: calc($breakpoint + 1px))
+        {
+            display: none;
+        }
+
+    }
+
+    &Item {
+        cursor: pointer;
+
+        &:hover {
+            color: #2F57E5;
+        }
+
+        &Disabled {
+            color: var(--color-neutral);
+            pointer-events: none;
+        }
+
+    }
+
+}
+
+
+.dropdown {
+    @include lmd {
+        position: static !important;
+    }
+
+    & > &Menu {
+        right: 0;
+        left: initial;
+        @include lmd {
+            bottom: initial;
+            right: 0;
+            transform: none;
+            padding: 1rem;
+        }
+    }
+}
+
+
+.buttonConnectActive
+{
+    color: var(--color-success);
+}

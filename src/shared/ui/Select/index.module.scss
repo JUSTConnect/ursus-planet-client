@@ -1,0 +1,71 @@
+.SelectIcon {
+    color: Var(--violet-11);
+}
+
+.SelectContent {
+    overflow: hidden;
+    background-color: var(--color-dark);
+    border-radius: 8px;
+    font-family: var(--font-play);
+    border: 1px solid var(--color-gray);
+}
+
+.SelectViewport {
+    padding: .5rem;
+}
+
+.SelectItem {
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--color-white);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 35px 0 25px;
+    position: relative;
+    user-select: none;
+}
+
+.SelectItem[data-disabled] {
+    color: var(--color-gray);
+    pointer-events: none;
+}
+
+.SelectItem[data-highlighted] {
+    outline: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.SelectLabel {
+    padding: 0 25px;
+    line-height: 25px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 10px;
+}
+
+.SelectSeparator {
+    height: 1px;
+    background-color: var(--color-gray);
+    margin: 5px;
+}
+
+.SelectItemIndicator {
+    position: absolute;
+    left: 0;
+    width: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SelectScrollButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    background-color: var(--color-dark);
+    color: var(--violet-11);
+    cursor: default;
+}

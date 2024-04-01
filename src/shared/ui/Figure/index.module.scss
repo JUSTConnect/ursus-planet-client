@@ -1,0 +1,25 @@
+.wrapper
+{
+    position: relative;
+
+    &::before
+    {
+        content: '';
+        position: absolute;
+        height: 40%;
+        width: 50%;
+        background: linear-gradient(270deg, #2548A9 13.06%, #41B4D8 41.17%, #BA89C2 71.1%);
+        filter: blur(60px);
+        opacity: .3;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.figure
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}

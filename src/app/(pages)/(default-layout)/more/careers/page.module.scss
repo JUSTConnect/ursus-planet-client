@@ -1,0 +1,9 @@
+@import '@mixins';
+
+.button
+{
+    @include lxs
+    {
+        width: 100%;
+    }
+}

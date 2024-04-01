@@ -1,0 +1,59 @@
+@import '@mixins';
+
+
+.root
+{
+    position: relative;
+
+    @include lmd
+    {
+        position: static !important;
+    }
+
+    & .menu
+    {
+        right: 0;
+        left: initial;
+    
+        &Inner
+        {
+            padding: .5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem
+        }
+
+        &Item
+        {
+            background: var(--color-gray);
+            padding: .5rem;
+            border-radius: .5rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover
+            {
+                color: var(--color-primary);
+            }
+    
+        }
+    
+        @include lmd
+        {
+            bottom: initial;
+            left: 0;
+            transform: none;
+            padding: 1rem;
+        }
+    }
+}
+
+.button
+{
+    &:hover svg path
+    {
+        fill: var(--color-neutral);
+    }
+}

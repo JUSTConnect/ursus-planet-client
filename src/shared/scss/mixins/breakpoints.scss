@@ -1,0 +1,66 @@
+@import '../breakpoints.scss';
+
+
+@mixin gxl {
+    @media (min-width: calc($xl + 1px)) {
+        @content;
+    }
+}
+
+@mixin lxl {
+    @media (max-width: $xl) {
+        @content;
+    }
+}
+
+
+@mixin glg {
+    @media (min-width: calc($lg + 1px)) {
+        @content;
+    }
+}
+
+@mixin llg {
+    @media (max-width: $lg) {
+        @content;
+    }
+}
+
+
+@mixin gmd {
+    @media (min-width: $md) {
+        @content;
+    }
+}
+
+@mixin lmd {
+    @media (max-width: calc($md + 1px)) {
+        @content;
+    }
+}
+
+
+@mixin gsm {
+    @media (min-width: calc($sm + 1px)) {
+        @content;
+    }
+}
+
+@mixin lsm {
+    @media (max-width: $sm) {
+        @content;
+    }
+}
+
+
+@mixin gxs {
+    @media (min-width: calc($xs + 1px)) {
+        @content;
+    }
+}
+
+@mixin lxs {
+    @media (max-width: $xs) {
+        @content;
+    }
+}

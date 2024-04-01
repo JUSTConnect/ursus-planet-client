@@ -12,7 +12,7 @@ export const play = localFont({src: [
         weight: '700',
         style: 'normal'
     }
-]})
+], variable: '--font-play'})
 
 export const fkalakokz = localFont({ src: './fkalakokz/fkalakokz.woff', variable: '--font-fkalakokz'})
 

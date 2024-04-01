@@ -1,0 +1,163 @@
+@import '@mixins';
+
+.wrapper
+{
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+.top
+{
+    border-top: 5px solid var(--color-gray);
+    position: relative;
+    margin-top: 20px;
+    background: linear-gradient(180deg, #211E3D 0%, rgba(8, 7, 19, 0.00) 100%);
+    border-radius: 1.5rem 1.5rem 0 0;
+    gap: 2rem;
+    padding: 2rem !important;
+    
+    @include lsm
+    {
+        padding: 1.5rem !important;
+        gap: 1rem;
+        border-radius: 16px 16px 0 0;
+        margin-top: 0;
+    }
+}
+
+.info
+{
+    flex-grow: 1;
+}
+
+.content
+{
+    width: 100%;
+}
+
+.avatar
+{
+    @include lsm
+    {
+        height: 94px !important;
+        width: 94px !important;
+    }
+
+    // &:hover
+    // {
+    //     opacity: .8;
+    // }
+}
+
+.points
+{
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.point
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+
+    &:hover
+    {
+        opacity: .8;
+    }
+
+    &Icon
+    {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+
+.username
+{
+    font-size: 30px;
+    margin-bottom: 39px;
+
+    @include lsm
+    {
+        font-size: 18px;
+        margin-bottom: 24px;
+    }
+
+    &Disabled
+    {
+        opacity: .3;
+    }
+}
+
+.buttons
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    // @include lmd
+    // {
+    //     gap: .5rem;
+    // }
+
+    @include lmd {
+        position: absolute;
+        width: fit-content;
+        right: 16px;
+        top: 16px;
+    }
+}
+
+.wallets
+{
+    display: flex;
+    gap: 4px;
+}
+
+.wallet
+{
+    height: 24px;
+    width: 24px;
+}
+
+.button
+{
+    padding-left: 74px;
+    padding-right: 74px;
+    width: 150px;
+
+    // @include lmd
+    // {
+    //     padding-left: 24px;
+    //     padding-right: 24px;    
+    // }
+
+    @include lmd
+    {
+        display: none !important;
+    }
+}
+
+.iconSettings
+{
+    display: none;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+
+    @include lmd
+    {
+        display: block;
+
+        & img
+        {
+            height: 16px;
+            width: 16px;
+        }
+    }
+}

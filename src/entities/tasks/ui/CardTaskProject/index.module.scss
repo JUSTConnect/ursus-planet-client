@@ -1,0 +1,22 @@
+@import '@mixins';
+
+.button
+{
+    width: 150px;
+
+    &Get
+    {
+        box-shadow: #FF8300 0px 0px 20px 0px;
+    }
+
+    @include lsm
+    {
+        width: 100%;
+    }
+}
+
+
+.tooltipHidden
+{
+    display: none;
+}

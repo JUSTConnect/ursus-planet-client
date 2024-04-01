@@ -10,7 +10,7 @@ export interface TmpState {
 const initialState: TmpState = {
   connected: false,
   seasonCurrent: 2,
-  seasonActive: 2,
+  seasonActive: 3,
   seasonAvailable: 2
 }
 

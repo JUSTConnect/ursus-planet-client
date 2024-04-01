@@ -1,0 +1,36 @@
+@import '@mixins';
+
+
+.body
+{
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
+}
+
+.figure
+{
+    max-width: 200px;
+    width: 100%;
+    margin: 0 auto;
+
+    @include lmd
+    {
+        display: none;
+    }
+}
+
+.bottom
+{
+    padding-top: 0 !important;
+}
+
+.button
+{
+    max-width: 250px;
+    margin: 0 auto;
+
+    @include lmd
+    {
+        margin: 0;
+    }
+}

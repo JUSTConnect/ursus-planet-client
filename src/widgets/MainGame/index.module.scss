@@ -1,0 +1,209 @@
+@import '@mixins';
+
+.container
+{
+    background: #100D23;
+}
+
+.section
+{
+    position: relative;
+
+    @include lmd
+    {
+        width: 100%;
+    }
+
+    @include gxl
+    {
+        &Block
+        {
+            min-width: 250px;
+            width: 100%;
+        }
+    }
+}
+
+
+.sectionHeading
+{
+    font-size: 2.5rem;
+
+    @include lxs
+    {
+        font-size: 2rem !important;
+    }
+}
+
+.sectionHeadingIcon
+{
+    height: 2.5rem;
+    width: auto;
+
+    @include lsm
+    {
+        height: 2rem;
+    }
+}
+
+
+.valueIcon
+{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.buttonsSeason
+{
+    margin: 0 auto;
+
+    @include lmd
+    {
+        flex-direction: row-reverse;
+    }
+
+    &Drop
+    {
+        display: none;
+        position: absolute;
+        background: linear-gradient(#211E3D 0%, rgba(8, 7, 19, 0.00) 100%);
+        width: 100%;
+        height: 150px;
+
+        @include lmd
+        {
+            display: block;
+        }
+    }
+
+    &DropTop
+    {
+        display: none;
+        position: absolute;
+        background: linear-gradient(rgba(8, 7, 19, 0.00) 0%, #080713 100%);
+        left: 0;
+        width: 100%;
+        height: 75px;
+        transform: translateY(-100%);
+        z-index: 0;
+
+        @include lmd
+        {
+            display: block;
+        }
+    }
+}
+
+.buttonSeason
+{
+    position: relative;
+    background: none !important;
+    transition: none !important;
+
+
+    @include lxl
+    {
+        left: -1rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    @include lmd
+    {
+        flex-grow: 1;
+        width: 230px;
+        border-radius: 1.5rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        left: 0;
+
+        &::before, &::after
+        {
+            content: "";
+            position: absolute;
+            top: 0;
+
+            height: 1rem;
+            width: 2rem;
+        }
+
+        &Active::before {
+            left: 0;
+            transform: translateX(-100%);
+            box-shadow: 1rem 0 0 #080713;
+            border-top-right-radius: 1rem;
+        }
+
+        &Active::after
+        {
+            right: 0;
+            transform: translateX(100%);
+            box-shadow: -1rem 0 0 #080713;
+            border-top-left-radius: 1rem;
+        }
+
+        & svg
+        {
+            height: 1rem;
+        }
+    }
+
+    @include lsm
+    {
+        flex-direction: column;
+        height: auto;
+        line-height: 1rem;
+        width: 130px;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        gap: .5rem;
+        border-radius: .8rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    @include lxs
+    {
+        font-size: .8rem;
+        width: 110px;
+    }
+
+    &Active
+    {
+        background: #080713 !important;
+
+        & svg
+        {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.prize
+{
+    display: block;
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+
+    @include lxs
+    {
+        max-width: 100px;
+    }
+}
+
+.bar
+{
+    background: #1C1931;
+    border-radius: 100px;
+    overflow: hidden;
+    
+    & div
+    {
+        height: .4rem;
+        background: linear-gradient(90deg, rgba(186,137,194,1) 0%, rgba(37,72,169,1) 90%);
+        width: 50%;
+    }
+}

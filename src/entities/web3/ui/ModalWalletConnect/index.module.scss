@@ -1,0 +1,33 @@
+
+.item
+{
+    background: var(--color-dark);
+    padding: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .1s;
+
+    &:hover
+    {
+        background: var(--color-gray);
+    }
+
+    &Figure
+    {
+        height: 3rem;
+        width: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    &Content
+    {
+        width: 100%;
+    }
+
+    &Icon
+    {
+        height: 1.5rem;
+        width: auto;
+        aspect-ratio: 1 / 1;
+    }
+}

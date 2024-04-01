@@ -1,0 +1,32 @@
+@import '@mixins';
+
+
+.root
+{
+    
+    &Inactive
+    {
+        color: var(--color-neutral);
+
+        & .icons
+        {
+            opacity: .5;
+        }
+    }
+}
+
+
+.icon
+{
+    margin-right: .2rem;
+    & img
+    {
+        display: block;
+    }
+
+    @include lmd
+    {
+        margin-right: 0;
+        width: .5rem;
+    }
+}

@@ -1,5 +1,4 @@
 'use client'
-
 import { configureStore } from '@reduxjs/toolkit'
 import tmpReducer from './features/tmp/tmpSlice'
 import modalReducer from './features/modal/modalSlice'

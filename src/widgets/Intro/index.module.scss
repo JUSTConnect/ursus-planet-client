@@ -1,0 +1,78 @@
+@import '@mixins';
+
+.container
+{
+    position: relative;
+    min-height: 50vh;
+}
+
+.figureWrapper
+{
+    position: relative;
+}
+
+.figure
+{
+    max-width: 370px;
+    height: auto;
+    position: relative;
+    mask-image: linear-gradient(rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+
+    @media (max-width: 1335px)
+    {
+        mask-image: linear-gradient(rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%) !important;
+    }
+
+
+    @include lsm
+    {
+        max-width: 200px;
+    }
+}
+
+.buttons
+{
+    width: 100%;
+    position: absolute;
+    bottom: 20%;
+
+    @include lsm
+    {
+        bottom: 10%;
+    }
+}
+
+.bg
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.bgRelief
+{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.button
+{
+    max-width: 200px;
+
+    &:hover
+    {
+        background: var(--color-primary) !important;
+        opacity: 1 !important;
+    }
+
+    @include lsm
+    {
+        max-width: 120px;
+    }
+}

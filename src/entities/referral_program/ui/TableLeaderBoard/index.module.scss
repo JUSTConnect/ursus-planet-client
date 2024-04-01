@@ -1,0 +1,30 @@
+.table {
+    flex: 1;
+    overflow: auto;
+    background: var(--color-dark);
+    border-radius: 1rem;
+    border: 1px solid var(--color-gray);
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    background: #141226;
+}
+
+.position {
+    width: 3rem;
+}
+
+.address {
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.lighted {
+    color: #FF8300;
+    font-weight: bold;
+}
