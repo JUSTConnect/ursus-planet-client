@@ -28,16 +28,6 @@ export default function GitbookPage() {
                 <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
                 <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
                 <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
-                <Link target="_blank" href="https://google.com/" color="sky">Name of document</Link>
             </Grid>
         </More.Content>
     </More.Grid>
