@@ -24,6 +24,7 @@ interface IChainItem
     network: string,
     address: string,
     deleteWallet: CallableFunction,
+    walletsCount: number,
     active?: boolean
 }
 
@@ -64,7 +65,8 @@ export default function CardWallet(props: IChainItem) {
                                 <Badge color='red'>Inactive</Badge>
                         }
                     </Box>
-                    <Switch defaultChecked={!!props.active} onCheckedChange={ e => setActive(e) }/>
+                    <Switch defaultChecked={!!props.active} disabled={props.walletsCount <= 1}
+                        onCheckedChange={ e => props.walletsCount > 1 ? true : setActive(e) }/>
                 </Flex>
             </Flex>
             <Flex justify='between' align='end'>

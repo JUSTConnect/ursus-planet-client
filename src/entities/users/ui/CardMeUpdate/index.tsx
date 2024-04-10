@@ -23,6 +23,7 @@ import Card from "@/shared/ui/Card"
 import Button from "@/shared/ui/Button"
 import TextField from "@/shared/ui/TextField"
 import ModalEmail from "@/entities/users/ui/ModalEmail"
+import { parseUnstoppableDomains } from "@/entities/users/helpers/domains";
 
 
 export default function CardMeUpdate() {
@@ -50,24 +51,9 @@ export default function CardMeUpdate() {
             .then(() => fire({text: 'Your profile was successfully updated!'}))
     }
 
-    const getUnstoppable = async (address: String = '0x35d117ac4c0f84888a6949bfcbd3201267b572c3') => {
-        const query = new URLSearchParams('perPage: 100').toString();
-        const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${process.env.UNSTOPPABLE_DOMAINS_TOKEN}`
-                },
-                body: JSON.stringify({addresses: [address]})
-            }
-        );
-
-        const data = await resp.json();
-        setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
+    const getUnstoppable = async (address: string = '0x35d117ac4c0f84888a6949bfcbd3201267b572c3') => {
+        setDomains(await parseUnstoppableDomains(address))
     }
-
 
     return <Card.Root tabulated value="profile">
         <Card.Head>

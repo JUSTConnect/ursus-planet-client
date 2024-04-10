@@ -104,6 +104,7 @@ export default function CardWalletsPlayerUpdate() {
                                             address={wallet.address}
                                             active={wallets.length === 1 ? true : wallet.active}
                                             deleteWallet={deleteWallet}
+                                            walletsCount={wallets.length}
                                         />
                                     </Box>
                                 )
