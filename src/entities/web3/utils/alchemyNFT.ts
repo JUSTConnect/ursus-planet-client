@@ -41,18 +41,19 @@ export const getWalletNFTs = async (address: string) => {
 }
 
 export const addNftToWebhook = async (nft: NFT, address: string) => {
-    const alchemy = new Alchemy({authToken: 'PQGPycEiHp2S0Ra27cuHdeOOkqATtX-j', network: nft.network});
+    const alchemy = new Alchemy({authToken: 'PQGPycEiHp2S0Ra27cuHdeOOkqATtX-j', network: nft.network as Network});
     let webhookId = null;
 
     const webhooks = await alchemy.notify.getAllWebhooks()
-    for (const webhook of webhooks) {
-        if (webhook.webhook_type !== WebhookType.NFT_ACTIVITY) continue
+    for (const webhook of webhooks.webhooks) {
+        if (webhook.type !== WebhookType.NFT_ACTIVITY) continue
         webhookId = webhook.id
     }
 
     if (!webhookId) {
         return await alchemy.notify.createWebhook(
             "https://ursasplanet.com/api/nft-activity-hook",
+            // @ts-ignore
             WebhookType.NFT_ACTIVITY,
             {
                 addresses: [address],

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { Box, Text, Flex, Badge, Switch } from '@radix-ui/themes'
 import { MdCopyAll, MdDelete } from "react-icons/md";
 import c from 'classnames';
@@ -27,7 +27,7 @@ interface IChainItem
     active?: boolean
 }
 
-const supportedChainsIcons = {
+const supportedChainsIcons: { [key: string]: StaticImageData[] } = {
     'EVM Chain': [ethIcon, arbIcon, polyIcon],
     'Solana': [solIcon],
     'Aptos': [aptosIcon],
