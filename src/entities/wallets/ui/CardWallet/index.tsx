@@ -66,7 +66,13 @@ export default function CardWallet(props: IChainItem) {
                         }
                     </Box>
                     <Switch defaultChecked={!!props.active} disabled={props.walletsCount <= 1}
-                        onCheckedChange={ e => props.walletsCount > 1 ? true : setActive(e) }/>
+                        onCheckedChange={ e => {
+                            if (props.walletsCount == 1) {
+                                setActive(true)
+                                return true
+                            }
+                            setActive(e)
+                        }}/>
                 </Flex>
             </Flex>
             <Flex justify='between' align='end'>
