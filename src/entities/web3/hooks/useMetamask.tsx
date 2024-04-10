@@ -102,7 +102,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
             clearError()
             updateWallet(accounts)
             setIsConnecting(false)
-            signMessage(accounts[0])
+            if (accounts) signMessage(accounts[0])
             return true
         } catch (err: any) {
             setErrorMessage(err.message)
