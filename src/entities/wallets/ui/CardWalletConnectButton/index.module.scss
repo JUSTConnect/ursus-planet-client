@@ -1,0 +1,10 @@
+.buttonAptos
+{
+    &:hover
+    {
+        & svg path
+        {
+            fill: var(--color-black);
+        }
+    }
+}

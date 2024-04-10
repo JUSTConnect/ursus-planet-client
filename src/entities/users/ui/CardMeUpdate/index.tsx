@@ -32,21 +32,40 @@ export default function CardMeUpdate() {
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
     const [username, setUsername] = useState<string>('')
+    const [domains, setDomains] = useState<string[] | null>()
     const [modalEmail, setModalEmail] = useState<boolean>(false)
 
     const { data, isLoading } = useMe()
     const { mutateAsync, isPending, error } = useMeUpdate()
 
-    useEffect(
-        () => data && setUsername(usernameHelper(data?.username)),
-        [data]
-    )
-
+    useEffect(() => {
+        getUnstoppable()
+    }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        mutateAsync(new FormData(e.currentTarget))
+        const form = new FormData(e.currentTarget)
+        form.set('username', username)
+        mutateAsync(form)
             .then(() => fire({text: 'Your profile was successfully updated!'}))
+    }
+
+    const getUnstoppable = async (address: String = '0x35d117ac4c0f84888a6949bfcbd3201267b572c3') => {
+        const query = new URLSearchParams('perPage: 100').toString();
+        const resp = await fetch(
+            `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${process.env.UNSTOPPABLE_DOMAINS_TOKEN}`
+                },
+                body: JSON.stringify({addresses: [address]})
+            }
+        );
+
+        const data = await resp.json();
+        setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
     }
 
 
@@ -103,7 +122,9 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" disabled />
+                                <RadioGroup.Item value="2" disabled={!Boolean(domains)} onClick={e => {
+                                    if (domains && domains.length > 0) setUsername(domains[0])}
+                                } />
                             </Skeleton>
                             <Box>
                                 <Text
@@ -115,34 +136,21 @@ export default function CardMeUpdate() {
                                     </Skeleton>
                                 </Text>
                                 <Flex gap='2' wrap='wrap'>
-                                    <Skeleton loading={isLoading}>
-                                        <Button
-                                            size='sm'
-                                            color='white'
-                                            hoverToWhite
-                                        >
-                                            <CheckCircledIcon color='green' />
-                                            Stiven38324
-                                        </Button>
-                                    </Skeleton>
-                                    <Skeleton loading={isLoading}>
-                                        <Button
-                                            size='sm'
-                                            color='gray'
-                                            hoverToWhite
-                                        >
-                                            Stiven38
-                                        </Button>
-                                    </Skeleton>
-                                    <Skeleton loading={isLoading}>
-                                        <Button
-                                            size='sm'
-                                            color='gray'
-                                            hoverToWhite
-                                        >
-                                            Stiven334
-                                        </Button>
-                                    </Skeleton>
+                                    {
+                                        domains?.map((domain, index) =>
+                                            <Skeleton key={index} loading={isLoading}>
+                                                <Button
+                                                    size='sm'
+                                                    color='white'
+                                                    hoverToWhite
+                                                    onClick={() => {setUsername(domain)}}
+                                                >
+                                                    <CheckCircledIcon color='green' />
+                                                    {domain}
+                                                </Button>
+                                            </Skeleton>
+                                        )
+                                    }
                                 </Flex>
                             </Box>
                         </Flex>
