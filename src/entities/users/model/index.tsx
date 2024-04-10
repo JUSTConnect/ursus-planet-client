@@ -28,3 +28,10 @@ export interface IUser {
     color4: string
     color5: string
 }
+
+export type NFT = {
+    image: string,
+    contract: string,
+    tokenId: string,
+    network: string
+}
