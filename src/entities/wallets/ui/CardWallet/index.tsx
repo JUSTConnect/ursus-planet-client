@@ -5,22 +5,48 @@ import Image from 'next/image'
 import { Box, Text, Flex, Badge, Switch } from '@radix-ui/themes'
 import { MdCopyAll, MdDelete } from "react-icons/md";
 import c from 'classnames';
+import { useToast } from "@/shared/ui/Toast"
 
 import Card from '@/shared/ui/Card'
 import Button from '@/shared/ui/Button'
 
 import css from './index.module.scss'
-import iconChain from './img/icon-chain.png'
+import ethIcon from './img/icon-eth.png'
+import solIcon from './img/icon-sol.png'
+import arbIcon from './img/icon-arb.png'
+import polyIcon from './img/icon-poly.png'
+import aptosIcon from './img/icon-aptos.png'
+import suiIcon from './img/icon-sui.png'
 
 
 interface IChainItem
 {
+    network: string,
+    address: string,
+    deleteWallet: CallableFunction,
     active?: boolean
+}
+
+const supportedChainsIcons = {
+    'EVM Chain': [ethIcon, arbIcon, polyIcon],
+    'Solana': [solIcon],
+    'Aptos': [aptosIcon],
+    'Sui': [suiIcon]
 }
 
 
 export default function CardWallet(props: IChainItem) {
     const [active, setActive] = useState(!!props.active)
+    const { fire } = useToast()
+
+    const copyAddress = () => {
+        navigator.clipboard.writeText(props.address)
+        fire({'text': 'Copied to clipboard'})
+    }
+
+    const deleteWallet = () => {
+        props.deleteWallet(props.network, props.address)
+    }
 
     return <Card.Root className={c(css.root, !active && css.rootInactive)}>
         <Card.Body>
@@ -29,7 +55,7 @@ export default function CardWallet(props: IChainItem) {
                     User name
                 </Text>
                 <Flex align='center' gap='3'>
-                    <Text>EVM chain</Text>
+                    <Text>{props.network}</Text>
                     <Box className={css.badge}>
                         {
                             active ?
@@ -44,14 +70,16 @@ export default function CardWallet(props: IChainItem) {
             <Flex justify='between' align='end'>
                 <Flex>
                     {
-                        [...Array(4)].map((_, index) =>
+                        supportedChainsIcons[props.network].map((icon, index) =>
                             <Box
                                 key={index}
                                 className={css.icon}
                             >
                                 <Image
-                                    src={iconChain}
+                                    src={icon}
                                     alt='icon'
+                                    width={20}
+                                    height={20}
                                 />
                             </Box>
                         )
@@ -59,13 +87,13 @@ export default function CardWallet(props: IChainItem) {
                 </Flex>
                 <Flex align='center' gap='2'>
                     <Box className={css.hash}>
-                        <Text className={css.hashStart}>56uy56u5</Text>gf4g
+                        <Text className={css.hashStart}>{props.address}</Text>
                     </Box>
                     <Button icon size='sm'>
-                        <MdCopyAll/>
+                        <MdCopyAll onClick={copyAddress} />
                     </Button>
                     <Button icon size='sm'>
-                        <MdDelete/>
+                        <MdDelete onClick={deleteWallet} />
                     </Button>
                 </Flex>
             </Flex>        

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import React, {useState, useEffect} from 'react';
 import {
     Grid,
     Box,
@@ -13,18 +13,35 @@ import Card from "@/shared/ui/Card";
 import Button from "@/shared/ui/Button";
 
 import css from './index.module.scss'
-import nft1 from './img/nft-1.png'
-import nft2 from './img/nft-2.png'
+import { NFT } from '@/entities/users/model'
+import { addNftToWebhook, getWalletNFTs } from '@/entities/web3/utils/alchemyNFT'
 
+type NFTsProp = {
+    address: string,
+    selectNFT: CallableFunction
+}
 
-export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typeof Modal>, 'children'>) {
+export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typeof Modal>, 'children'> & NFTsProp) {
     const {fire} = useToast()
+    const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
 
-    const handleSubmit = () => {
+    useEffect(() => {
+        console.log(process.env.NEXT_PUBLIC_SERVER_URL)
+        getWalletNFTs(props.address).then(nfts => {
+            setNFTs(nfts)
+        })
+    }, [])
+
+    const handleSubmit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const selectedNFT = NFTs[Number(e.currentTarget.id)]
+        if (!selectedNFT) return
+
         fire({type:'success', text: 'NFT selected!'})
         props.setActive(false)
-    }
+        props.selectNFT(selectedNFT)
 
+        addNftToWebhook(selectedNFT, props.address)
+    }
 
     return <Modal {...props} className={css.modal}>
         <Card.Root>
@@ -36,16 +53,19 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                         <Card.Body>
                             <Grid columns='4' gap='3'>
                                 {
-                                    [nft1, nft2].map((item, index) =>
+                                    NFTs && NFTs.map((item, index) =>
                                         <Box
                                             onClick={handleSubmit}
                                             className={css.nftWrapper}
+                                            id={String(index)}
                                             key={index}
                                         >
-                                            <Image
+                                            <img
                                                 className={css.nft}
-                                                src={item}
-                                                alt='nft'
+                                                src={item?.image}
+                                                alt='NFT'
+                                                width={60}
+                                                height={60}
                                             />         
                                         </Box>
                                     )

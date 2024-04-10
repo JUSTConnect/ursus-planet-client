@@ -102,6 +102,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
             clearError()
             updateWallet(accounts)
             setIsConnecting(false)
+            signMessage(accounts[0])
             return true
         } catch (err: any) {
             setErrorMessage(err.message)
@@ -123,6 +124,13 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
         } catch (err: any) {
             setErrorMessage(err.message)
         }
+    }
+
+    const signMessage = async (address: string) => {
+        await window.ethereum?.request({
+            method: 'personal_sign',
+            params: ['Welcome to Ursas Planet. Accept terms and conditions', address]
+        })
     }
 
     const isConnected = () => {

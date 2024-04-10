@@ -2,7 +2,8 @@
 import {
     FormEvent,
     useRef,
-    useState
+    useState,
+    useEffect
 } from "react"
 import {
     Box,
@@ -22,14 +23,15 @@ import Button from "@/shared/ui/Button"
 import Avatar from "@/shared/ui/Avatar"
 
 import css from './index.module.scss'
+import { NFT } from '@/entities/users/model'
 
 
 export default function CardMeUpdateAvatar() {
-
     const [modalNft, setModalNft] = useState(false)
     const {fire} = useToast()
 
     const [avatar, setAvatar] = useState('')
+    const [selectedNFT, setSelectedNFT] = useState<NFT | null>()
 
     const { data, isLoading } = useMe()
     const { mutateAsync, isPending, error } = useMeUpdate()
@@ -37,14 +39,23 @@ export default function CardMeUpdateAvatar() {
     const input = useRef<HTMLInputElement>(null)
     const submit = useRef<HTMLInputElement>(null)
 
+    useEffect(() => {
+        if (selectedNFT) setAvatar(selectedNFT.image)
+    }, [selectedNFT])
+
     const handleChange = () => {
         const avatar = input.current?.files?.[0]
         avatar && setAvatar(URL.createObjectURL(avatar))
+        setSelectedNFT(null)
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
+        if (selectedNFT && selectedNFT.contract) {
+            formData.append('contract', selectedNFT.contract)
+            formData.append('tokenId', selectedNFT.tokenId)
+        }
         mutateAsync(formData).then(() => {
             setAvatar('')
             fire({text: 'Your avatar was successfully updated!'})
@@ -144,7 +155,7 @@ export default function CardMeUpdateAvatar() {
         </Card.Body>
         <Card.Bottom>
             {
-                !!input.current?.files?.length &&
+                avatar &&
                 <Button
                     onClick={() => submit.current?.click()}
                     color='gray'
@@ -156,6 +167,6 @@ export default function CardMeUpdateAvatar() {
                 </Button>
             }
         </Card.Bottom>
-        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft}/>
+        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft} selectNFT={setSelectedNFT} address={"0x4Eae0A7DDAA1509310CFb1A38F6755089827370C"} />
     </Card.Root>
 }
