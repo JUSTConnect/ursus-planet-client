@@ -21,7 +21,14 @@ import {
     AptosWalletAdapter,
     HippoExtensionWalletAdapter,
     MartianWalletAdapter,
-    FewchaWalletAdapter
+    FewchaWalletAdapter,
+    PontemWalletAdapter,
+    AptosSnapAdapter,
+    FletchWalletAdapter,
+    BitkeepWalletAdapter,
+    SpacecyWalletAdapter,
+    ONTOWalletAdapter,
+    RiseWalletAdapter
 } from '@manahippo/aptos-wallet-adapter';
 
 import { WalletProvider as SuiWalletProvider } from '@suiet/wallet-kit';
@@ -41,9 +48,16 @@ const aptosWallets = [
     new MartianWalletAdapter(),
     new AptosWalletAdapter(),
     new FewchaWalletAdapter(),
-    new HippoExtensionWalletAdapter()
+    new HippoExtensionWalletAdapter(),
+    new PontemWalletAdapter(),
+    new AptosSnapAdapter(),
+    new FletchWalletAdapter(),
+    new BitkeepWalletAdapter(),
+    new SpacecyWalletAdapter(),
+    new ONTOWalletAdapter(),
+    new BitkeepWalletAdapter(),
+    new RiseWalletAdapter()
 ];
-
 
 export default function Providers(props: React.HTMLAttributes<HTMLDivElement>) {
     const network = WalletAdapterNetwork.Mainnet;
