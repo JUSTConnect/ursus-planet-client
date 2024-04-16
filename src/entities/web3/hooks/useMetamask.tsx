@@ -107,7 +107,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
             setIsConnecting(false)
             if (accounts) {
                 signMessage(accounts[0])
-                dispatch(addAccount({address: accounts[0], chainId: 1}))
+                dispatch(addAccount({address: accounts[0], chainId: "1"}))
             }
             return true
         } catch (err: any) {
