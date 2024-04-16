@@ -42,6 +42,7 @@ export default function CardMeUpdate() {
     const { mutateAsync, isPending, error } = useMeUpdate()
 
     useEffect(() => {
+        console.log('ACCOUNTS', accounts)
         if (accounts.length < 1) return
         const account = accounts[0].address
         getUnstoppable(account)
