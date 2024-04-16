@@ -14,6 +14,7 @@ import {
 import { AxiosError } from "axios"
 import { FaCircleInfo, FaCircleUser } from "react-icons/fa6"
 import { RiAlertFill } from "react-icons/ri"
+import { useSelector } from "react-redux";
 
 import { useMe, useMeUpdate } from "@/entities/users/api"
 import ModalSetNFTAsAvatar from "@/entities/web3/ui/ModalSetNFTAsAvatar"
@@ -21,12 +22,14 @@ import { useToast } from "@/shared/ui/Toast"
 import Card from "@/shared/ui/Card"
 import Button from "@/shared/ui/Button"
 import Avatar from "@/shared/ui/Avatar"
+import { RootState } from '@/store'
 
 import css from './index.module.scss'
 import { NFT } from '@/entities/users/model'
 
 
 export default function CardMeUpdateAvatar() {
+    const { accounts } = useSelector((state: RootState) => state.web3)
     const [modalNft, setModalNft] = useState(false)
     const {fire} = useToast()
 
@@ -167,6 +170,6 @@ export default function CardMeUpdateAvatar() {
                 </Button>
             }
         </Card.Bottom>
-        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft} selectNFT={setSelectedNFT} address={"0x4Eae0A7DDAA1509310CFb1A38F6755089827370C"} />
+        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft} selectNFT={setSelectedNFT} address={accounts[0].address} />
     </Card.Root>
 }
