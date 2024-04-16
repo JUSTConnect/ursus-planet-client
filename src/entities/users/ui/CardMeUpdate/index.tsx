@@ -42,7 +42,8 @@ export default function CardMeUpdate() {
     const { mutateAsync, isPending, error } = useMeUpdate()
 
     useEffect(() => {
-        if (accounts.length < 1) return
+        console.log('ACCOUNTS', accounts)
+        if (!accounts || !accounts[0]) return
         const account = accounts[0].address
         getUnstoppable(account)
     }, [])
@@ -57,6 +58,7 @@ export default function CardMeUpdate() {
 
     const getUnstoppable = async (address: string) => {
         const query = new URLSearchParams('perPage: 100').toString();
+        console.log('Address', address)
         const resp = await fetch(
             `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
             {
