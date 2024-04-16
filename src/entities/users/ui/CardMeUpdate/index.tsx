@@ -15,6 +15,8 @@ import {
 import { AxiosError } from "axios"
 import { FaEdit } from "react-icons/fa"
 import { CheckCircledIcon } from "@radix-ui/react-icons"
+import { useSelector } from "react-redux";
+import { RootState } from '@/store'
 
 import { useMe, useMeUpdate } from "@/entities/users/api"
 import usernameHelper from "@/entities/users/helpers/username"
@@ -23,12 +25,12 @@ import Card from "@/shared/ui/Card"
 import Button from "@/shared/ui/Button"
 import TextField from "@/shared/ui/TextField"
 import ModalEmail from "@/entities/users/ui/ModalEmail"
-import { parseUnstoppableDomains } from "@/entities/users/helpers/domains";
 
 
 export default function CardMeUpdate() {
 
     const {fire} = useToast()
+    const { accounts } = useSelector((state: RootState) => state.web3)
 
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
@@ -40,7 +42,9 @@ export default function CardMeUpdate() {
     const { mutateAsync, isPending, error } = useMeUpdate()
 
     useEffect(() => {
-        getUnstoppable()
+        if (accounts.length < 1) return
+        const account = accounts[0].address
+        getUnstoppable(account)
     }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -51,9 +55,24 @@ export default function CardMeUpdate() {
             .then(() => fire({text: 'Your profile was successfully updated!'}))
     }
 
-    const getUnstoppable = async (address: string = '0x35d117ac4c0f84888a6949bfcbd3201267b572c3') => {
-        setDomains(await parseUnstoppableDomains(address))
+    const getUnstoppable = async (address: String) => {
+        const query = new URLSearchParams('perPage: 100').toString();
+        const resp = await fetch(
+            `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer 8umj2rbsownpxuyz2hbw73dfcu3krdw6eenju1ofahg2tbwn`
+                },
+                body: JSON.stringify({addresses: [address]})
+            }
+        );
+
+        const data = await resp.json();
+        setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
     }
+
 
     return <Card.Root tabulated value="profile">
         <Card.Head>
