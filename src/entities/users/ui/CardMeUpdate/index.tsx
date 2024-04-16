@@ -57,6 +57,7 @@ export default function CardMeUpdate() {
 
     const getUnstoppable = async (address: string) => {
         const query = new URLSearchParams('perPage: 100').toString();
+        console.log('Address', address)
         const resp = await fetch(
             `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
             {
