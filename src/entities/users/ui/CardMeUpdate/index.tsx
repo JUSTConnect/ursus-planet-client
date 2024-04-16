@@ -55,7 +55,7 @@ export default function CardMeUpdate() {
             .then(() => fire({text: 'Your profile was successfully updated!'}))
     }
 
-    const getUnstoppable = async (address: String) => {
+    const getUnstoppable = async (address: string) => {
         const query = new URLSearchParams('perPage: 100').toString();
         const resp = await fetch(
             `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
