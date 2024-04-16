@@ -24,9 +24,10 @@ export const web3Slice = createSlice({
       state.accounts = action.payload
     },
     clearAccounts: (state) => {
-        state.accounts = []
+      state.accounts = []
     },
     addAccount: (state, action: PayloadAction<IAccount>) => {
+      if (state.accounts.find((i: IAccount) => i.address == action.payload.address)) return
       state.accounts = [...state.accounts, action.payload]
     }
   }

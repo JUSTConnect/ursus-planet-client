@@ -2,7 +2,9 @@
 import { useState, useEffect, createContext, PropsWithChildren, useContext, useCallback } from 'react'
 import detectEthereumProvider from '@metamask/detect-provider'
 
+import { useDispatch } from 'react-redux'
 import { formatBalance } from '@/entities/web3/utils/metamask'
+import { addAccount } from '@/features/web3/web3Slice'
 
 interface WalletState {
     accounts: any[]
@@ -28,11 +30,12 @@ const MetaMaskContext = createContext<MetaMaskContextData>({} as MetaMaskContext
 
 declare global {
     export interface Window {
-        ethereum: any
+        ethereum?: any
     }
 }
 
 export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
+    const dispatch = useDispatch()
     const [hasProvider, setHasProvider] = useState<boolean | null>(null)
 
     const [isConnecting, setIsConnecting] = useState(false)
@@ -102,7 +105,10 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
             clearError()
             updateWallet(accounts)
             setIsConnecting(false)
-            signMessage(accounts[0])
+            if (accounts) {
+                signMessage(accounts[0])
+                dispatch(addAccount({address: accounts[0], chainId: "1"}))
+            }
             return true
         } catch (err: any) {
             setErrorMessage(err.message)

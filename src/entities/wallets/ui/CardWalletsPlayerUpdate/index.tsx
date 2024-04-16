@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Text, Grid, Flex, Box, ScrollArea } from "@radix-ui/themes";
 import { IoIosAlarm } from "react-icons/io";
 
@@ -24,21 +24,36 @@ type Wallet = {
 
 export default function CardWalletsPlayerUpdate() {
     const [wallets, setWallets] = useState<Wallet[]>([])
-    const [disableAllConnectBtns, setDisableAllConnectBtns] = useState(false)
     const [isSolanaDeleted, setIsSolanaDeleted] = useState(false)
     const [isAptosDeleted, setIsAptosDeleted] = useState(false)
     const [isSuiDeleted, setIsSuiDeleted] = useState(false)
+    const [isSolanaDisabled, setIsSolanaDisabled] = useState(false)
+    const [isAptosDisabled, setIsAptosDisabled] = useState(false)
+    const [isSuiDisabled, setIsSuiDisabled] = useState(false)
 
     const addWallet = (wallet: Wallet) => {
-        console.log(wallet)
         if (wallets.find(w => w.address == wallet.address)) return
         const newWallets = [...wallets, wallet]
         setWallets(newWallets)
         // saveDbWallet(wallet.address)
         setDeletedWalletStatus(wallet.network, false)
-        console.log(wallets)
-        if (wallets.length === 4) setDisableAllConnectBtns(true)
     }
+
+    useEffect(() => {
+        for (const wallet of wallets) {
+            if (wallet.network == 'Solana') {
+                setIsSolanaDisabled(true)
+            } else if (wallet.network == 'Aptos') {
+                setIsAptosDisabled(true)
+            } else if (wallet.network == 'Sui') {
+                setIsSuiDisabled(true)
+            }
+        }
+
+        if (!wallets.find(w => w.network == 'Solana')) setIsSolanaDisabled(false)
+        if (!wallets.find(w => w.network == 'Aptos')) setIsAptosDisabled(false)
+        if (!wallets.find(w => w.network == 'Sui')) setIsSuiDisabled(false)
+    }, [wallets])
 
     const deleteWallet = (network: string, address: string) => {
         if (wallets.length <= 1) return
@@ -46,15 +61,16 @@ export default function CardWalletsPlayerUpdate() {
         setWallets(newWallets)
         // deleteDbWallet(address)
         setDeletedWalletStatus(network, true)
-        setDisableAllConnectBtns(false)
     }
 
     const setDeletedWalletStatus = (network: string, value: boolean) => {
         switch (network) {
             case 'Solana':
                 setIsSolanaDeleted(value)
+                return
             case 'Aptos':
                 setIsAptosDeleted(value)
+                return
             case 'Sui':
                 setIsSuiDeleted(value)
         }
@@ -78,13 +94,13 @@ export default function CardWalletsPlayerUpdate() {
                         mb='5'
                     >
                         <ConnectEVMButton addWallet={addWallet} isDeleted={false}
-                            disabled={disableAllConnectBtns} />
+                            disabled={true} />
                         <ConnectSolButton addWallet={addWallet} isDeleted={isSolanaDeleted}
-                            disabled={disableAllConnectBtns} />
+                            disabled={isSolanaDisabled} />
                         <ConnectAptosButton addWallet={addWallet} isDeleted={isAptosDeleted}
-                            disabled={disableAllConnectBtns} />
+                            disabled={isAptosDisabled} />
                         <ConnectSuiButton addWallet={addWallet} isDeleted={isSuiDeleted}
-                            disabled={disableAllConnectBtns} />
+                            disabled={isSuiDisabled} />
                     </Grid>
                 </Box>
                 <Box>
@@ -104,6 +120,7 @@ export default function CardWalletsPlayerUpdate() {
                                             address={wallet.address}
                                             active={wallets.length === 1 ? true : wallet.active}
                                             deleteWallet={deleteWallet}
+                                            walletsCount={wallets.length}
                                         />
                                     </Box>
                                 )

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { Box, Text, Flex, Badge, Switch } from '@radix-ui/themes'
 import { MdCopyAll, MdDelete } from "react-icons/md";
 import c from 'classnames';
@@ -24,10 +24,11 @@ interface IChainItem
     network: string,
     address: string,
     deleteWallet: CallableFunction,
+    walletsCount: number,
     active?: boolean
 }
 
-const supportedChainsIcons = {
+const supportedChainsIcons: { [key: string]: StaticImageData[] } = {
     'EVM Chain': [ethIcon, arbIcon, polyIcon],
     'Solana': [solIcon],
     'Aptos': [aptosIcon],
@@ -64,7 +65,14 @@ export default function CardWallet(props: IChainItem) {
                                 <Badge color='red'>Inactive</Badge>
                         }
                     </Box>
-                    <Switch defaultChecked={!!props.active} onCheckedChange={ e => setActive(e) }/>
+                    <Switch defaultChecked={!!props.active} disabled={props.walletsCount <= 1}
+                        onCheckedChange={ e => {
+                            if (props.walletsCount == 1) {
+                                setActive(true)
+                                return true
+                            }
+                            setActive(e)
+                        }}/>
                 </Flex>
             </Flex>
             <Flex justify='between' align='end'>
