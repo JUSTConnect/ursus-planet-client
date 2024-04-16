@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-refux';
 import type { Metadata } from 'next'
 
 import '../scss/globals.scss'
@@ -7,6 +9,8 @@ import '@radix-ui/themes/styles.css';
 import { play, fkalakokz } from '../../fonts'
 import Providers from '@/providers'
 import ModalWalletConnect from '@/entities/web3/ui/ModalWalletConnect';
+import { RootState } from '@/store'
+import { addAccount } from '@/features/web3/web3Slice'
 
 export const metadata: Metadata = {
   title: 'Ursas Planet',
@@ -18,6 +22,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { accounts } = useSelector((state: RootState) => state.web3)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const f = async () => {
+        if (!accounts) {
+          const accs = await window.ethereum?.request({ method: 'eth_accounts' })
+          if (accs && accs[0]) dispatch(addAccount({address: accs[0].address, chainId: "1"}))
+        }
+    }
+    f()
+  }, [])
+
   return (
     <html lang="en" className='dark'>
       <head>
