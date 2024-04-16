@@ -170,6 +170,6 @@ export default function CardMeUpdateAvatar() {
                 </Button>
             }
         </Card.Bottom>
-        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft} selectNFT={setSelectedNFT} address={accounts[0].address} />
+        <ModalSetNFTAsAvatar active={modalNft} setActive={setModalNft} selectNFT={setSelectedNFT} address={accounts && accounts[0] ? accounts[0].address : ''} />
     </Card.Root>
 }

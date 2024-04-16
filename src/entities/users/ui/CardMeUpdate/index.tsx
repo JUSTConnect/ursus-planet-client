@@ -43,7 +43,7 @@ export default function CardMeUpdate() {
 
     useEffect(() => {
         console.log('ACCOUNTS', accounts)
-        if (accounts.length < 1) return
+        if (!accounts || !accounts[0]) return
         const account = accounts[0].address
         getUnstoppable(account)
     }, [])
