@@ -42,8 +42,7 @@ import { Theme } from "@radix-ui/themes"
 import { queryClient } from "@/shared/api"
 import { ToastProvider } from "@/shared/ui/Toast"
 
-import { store } from './store'
-import { RootState } from '@/store'
+import { store, RootState } from '@/store'
 import { addAccount } from '@/features/web3/web3Slice'
 
 const aptosWallets = [
