@@ -133,7 +133,7 @@ export default function CardMeUpdateAvatar() {
                                     color='gray'
                                     hoverToWhite
                                 >
-                                    NFT from your wallet
+                                    NFT from wallet
                                 </Button>
                             </Skeleton>
                         </Flex>
