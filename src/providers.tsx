@@ -14,7 +14,7 @@ import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useMemo, useEffect } from "react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-refux';
 
 import {
     WalletProvider as AptosProvider,
