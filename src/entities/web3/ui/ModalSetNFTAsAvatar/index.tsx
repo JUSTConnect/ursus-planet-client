@@ -31,7 +31,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                 setNFTs(nfts)
             })
         }
-    }, [])
+    }, [props.active])
 
     const handleSubmit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const selectedNFT = NFTs[Number(e.currentTarget.id)]
