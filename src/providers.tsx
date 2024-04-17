@@ -69,7 +69,6 @@ export default function Providers(props: React.HTMLAttributes<HTMLDivElement>) {
       ],
       [network]
     );
-
     return <Theme appearance="dark">
         <Provider store={store}>
             <ConnectionProvider endpoint={endpoint}>
