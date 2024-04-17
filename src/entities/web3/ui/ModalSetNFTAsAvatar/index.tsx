@@ -27,7 +27,9 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
 
     const addNFT = (nft: NFT) => {
         console.log('Add NFT. Current: ', NFTs, 'Adding: ', nft)
-        setNFTs([...NFTs, nft])
+        let nfts = NFTs
+        nfts.push(nft)
+        setNFTs(nfts)
     }
 
     useEffect(() => {
