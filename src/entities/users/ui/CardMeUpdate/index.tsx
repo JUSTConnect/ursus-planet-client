@@ -46,12 +46,13 @@ export default function CardMeUpdate() {
     useEffect(() => {
         const f = async () => {
             const accs = await window.ethereum?.request({ method: 'eth_accounts' })
+            console.log('request accs', accs)
             if (accs && accs[0]) dispatch(addAccount({address: accs[0], chainId: "1"}))
-            
-            await new Promise(resolve => setTimeout(resolve, 1000))
-
+            console.log('dispatched', accs && accs[0])
+            console.log(accounts, accounts[0])
             if (!accounts || !accounts[0]) return
             const account = accounts[0].address
+            console.log('get unstoppable', account)
             getUnstoppable(account)
         }
         f()
