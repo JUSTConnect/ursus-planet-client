@@ -14,7 +14,7 @@ import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useMemo, useEffect } from "react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
     WalletProvider as AptosProvider,
@@ -42,7 +42,7 @@ import { Theme } from "@radix-ui/themes"
 import { queryClient } from "@/shared/api"
 import { ToastProvider } from "@/shared/ui/Toast"
 
-import { store } from './store'
+import { store, RootState } from './store'
 import { addAccount } from '@/features/web3/web3Slice'
 
 const aptosWallets = [
@@ -72,15 +72,15 @@ export default function Providers(props: React.HTMLAttributes<HTMLDivElement>) {
       [network]
     );
 
-    //const { accounts } = useSelector((state: RootState) => state.web3)
+    const { accounts } = useSelector((state: RootState) => state.web3)
     const dispatch = useDispatch()
 
     useEffect(() => {
         const f = async () => {
-            //if (!accounts) {
-            const accs = await window.ethereum?.request({ method: 'eth_accounts' })
-            if (accs && accs[0]) dispatch(addAccount({address: accs[0].address, chainId: "1"}))
-            //}
+            if (!accounts) {
+                const accs = await window.ethereum?.request({ method: 'eth_accounts' })
+                if (accs && accs[0]) dispatch(addAccount({address: accs[0].address, chainId: "1"}))
+            }
         }
         f()
     }, [])
