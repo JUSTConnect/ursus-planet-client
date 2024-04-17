@@ -12,9 +12,8 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import { useSelector, useDispatch } from 'react-refux';
 
 import {
     WalletProvider as AptosProvider,
@@ -42,8 +41,7 @@ import { Theme } from "@radix-ui/themes"
 import { queryClient } from "@/shared/api"
 import { ToastProvider } from "@/shared/ui/Toast"
 
-import { store, RootState } from '@/store'
-import { addAccount } from '@/features/web3/web3Slice'
+import { store } from './store'
 
 const aptosWallets = [
     new HippoWalletAdapter(),
@@ -71,19 +69,6 @@ export default function Providers(props: React.HTMLAttributes<HTMLDivElement>) {
       ],
       [network]
     );
-
-    const { accounts } = useSelector((state: RootState) => state.web3)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        const f = async () => {
-            if (!accounts) {
-                const accs = await window.ethereum?.request({ method: 'eth_accounts' })
-                if (accs && accs[0]) dispatch(addAccount({address: accs[0].address, chainId: "1"}))
-            }
-        }
-        f()
-    }, [])
 
     return <Theme appearance="dark">
         <Provider store={store}>
