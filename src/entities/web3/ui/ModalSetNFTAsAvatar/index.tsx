@@ -50,7 +50,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                     <Text align='center'>choose NFT as your profile picture</Text>
                     <Card.Root>
                         <Card.Body>
-                            <Grid columns='4' gap='3'>
+                            <Grid columns='4' gap='3' className="nftgrid">
                                 {
                                     NFTs && NFTs.map((item, index) =>
                                         <Box

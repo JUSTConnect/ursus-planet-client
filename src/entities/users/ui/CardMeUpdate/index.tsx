@@ -15,7 +15,7 @@ import {
 import { AxiosError } from "axios"
 import { FaEdit } from "react-icons/fa"
 import { CheckCircledIcon } from "@radix-ui/react-icons"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from '@/store'
 
 import { useMe, useMeUpdate } from "@/entities/users/api"
@@ -25,12 +25,14 @@ import Card from "@/shared/ui/Card"
 import Button from "@/shared/ui/Button"
 import TextField from "@/shared/ui/TextField"
 import ModalEmail from "@/entities/users/ui/ModalEmail"
+import { addAccount } from '@/features/web3/web3Slice'
 
 
 export default function CardMeUpdate() {
 
     const {fire} = useToast()
     const { accounts } = useSelector((state: RootState) => state.web3)
+    const dispatch = useDispatch()
 
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
@@ -42,10 +44,15 @@ export default function CardMeUpdate() {
     const { mutateAsync, isPending, error } = useMeUpdate()
 
     useEffect(() => {
-        console.log('ACCOUNTS', accounts)
-        if (!accounts || !accounts[0]) return
-        const account = accounts[0].address
-        getUnstoppable(account)
+        const f = async () => {
+            const accs = await window.ethereum?.request({ method: 'eth_accounts' })
+            if (accs && accs[0]) dispatch(addAccount({address: accs[0].address, chainId: "1"}))
+            
+            if (!accounts || !accounts[0]) return
+            const account = accounts[0].address
+            getUnstoppable(account)
+        }
+        f()
     }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
