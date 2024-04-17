@@ -29,6 +29,7 @@ export const getWalletNFTs = async (address: string) => {
     for (const config of alchemyConfigs) {
         const alchemy = new Alchemy(config);
         const response = await alchemy.nft.getNftsForOwner(address);
+        console.log('NFT RESPONSE', address, response)
 
         for (const nft of response.ownedNfts) {
             if (nft.contract.isSpam) continue
