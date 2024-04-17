@@ -26,9 +26,11 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
     const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
 
     useEffect(() => {
-        getWalletNFTs(props.address).then(nfts => {
-            setNFTs(nfts)
-        })
+        if (props.active && !NFTs) {
+            getWalletNFTs(props.address).then(nfts => {
+                setNFTs(nfts)
+            })
+        }
     }, [])
 
     const handleSubmit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
