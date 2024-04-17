@@ -26,7 +26,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
     const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
 
     useEffect(() => {
-        console.log('trigger modal nft', props.active, NFTs)
+        console.log('trigger modal nft', props.active, props.address, NFTs)
         if (props.active && !NFTs) {
             getWalletNFTs(props.address).then(nfts => {
                 setNFTs(nfts)

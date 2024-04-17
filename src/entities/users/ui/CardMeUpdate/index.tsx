@@ -47,13 +47,12 @@ export default function CardMeUpdate() {
         const f = async () => {
             const accs = await window.ethereum?.request({ method: 'eth_accounts' })
             console.log('request accs', accs)
-            if (accs && accs[0]) dispatch(addAccount({address: accs[0], chainId: "1"}))
-            console.log('dispatched', accs && accs[0])
-            console.log(accounts, accounts[0])
-            if (!accounts || !accounts[0]) return
-            const account = accounts[0].address
-            console.log('get unstoppable', account)
-            getUnstoppable(account)
+            if (accs && accs[0]) {
+                dispatch(addAccount({address: accs[0], chainId: "1"}))
+            } else {
+                return
+            }
+            getUnstoppable(accs[0])
         }
         f()
     }, [])
