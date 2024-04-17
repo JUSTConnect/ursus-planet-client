@@ -25,15 +25,16 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
     const {fire} = useToast()
     const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
 
+    const addNFT = (nft: NFT) => {
+        setNFTs([...NFTs, nft])
+    }
+
     useEffect(() => {
         console.log('trigger modal nft', props.active, props.address, NFTs)
-        if (props.active && NFTs.length === 0) {
-            console.log('goo')
-            getWalletNFTs(props.address).then(nfts => {
-                setNFTs(nfts)
-            })
+        if (props.address && NFTs.length === 0) {
+            getWalletNFTs(props.address, addNFT)
         }
-    }, [props.active])
+    }, [props.address])
 
     const handleSubmit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const selectedNFT = NFTs[Number(e.currentTarget.id)]
