@@ -27,8 +27,10 @@ const alchemyConfigs = [
 export const getWalletNFTs = async (address: string) => {
     address = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
     const nfts = []
+    console.log(alchemyConfigs)
     for (const config of alchemyConfigs) {
         const alchemy = new Alchemy(config);
+        console.log('getting nft...')
         const response = await alchemy.nft.getNftsForOwner(address);
         console.log('NFT RESPONSE', address, response)
 
