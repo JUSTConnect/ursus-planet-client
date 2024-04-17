@@ -26,17 +26,13 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
     const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
 
     const addNFT = (nft: NFT) => {
-        console.log('Add NFT. Current: ', NFTs, 'Adding: ', nft)
         let nfts = NFTs
         nfts.push(nft)
         setNFTs(nfts)
     }
 
     useEffect(() => {
-        console.log('trigger modal nft', props.active, props.address, NFTs)
-        if (props.address) {
-            getWalletNFTs(props.address, addNFT)
-        }
+        if (props.address) getWalletNFTs(props.address, addNFT)
     }, [props.address])
 
     const handleSubmit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -58,7 +54,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                     <Text align='center'>choose NFT as your profile picture</Text>
                     <Card.Root>
                         <Card.Body>
-                            <Grid columns='4' gap='3' className="nftgrid">
+                            <Grid height="95%" overflow="scroll" columns='4' gap='3' className="nftgrid">
                                 {
                                     NFTs && NFTs.map((item, index) =>
                                         <Box
