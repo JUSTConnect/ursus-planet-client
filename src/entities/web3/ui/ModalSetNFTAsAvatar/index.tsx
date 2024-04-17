@@ -27,7 +27,8 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
 
     useEffect(() => {
         console.log('trigger modal nft', props.active, props.address, NFTs)
-        if (props.active && !NFTs) {
+        if (props.active && NFTs.length === 0) {
+            console.log('goo')
             getWalletNFTs(props.address).then(nfts => {
                 setNFTs(nfts)
             })
