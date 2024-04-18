@@ -54,28 +54,26 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                     <Text align='center'>choose NFT as your profile picture</Text>
                     <Card.Root>
                         <Card.Body>
-                            <div style="display: flex; height: 80%; flex-wrap: wrap">
-                                {/* <Grid columns='4' gap='3'> */}
-                                    {
-                                        NFTs && NFTs.map((item, index) =>
-                                            <Box
-                                                onClick={handleSubmit}
-                                                className={css.nftWrapper}
-                                                id={String(index)}
-                                                key={index}
-                                            >
-                                                <img
-                                                    className={css.nft}
-                                                    src={item?.image}
-                                                    alt='NFT'
-                                                    width={60}
-                                                    height={60}
-                                                />         
-                                            </Box>
-                                        )
-                                    }
-                                {/* </Grid> */}
-                            </div>
+                            <Grid className="h-50" columns='4' gap='3'>
+                                {
+                                    NFTs && NFTs.map((item, index) =>
+                                        <Box
+                                            onClick={handleSubmit}
+                                            className={css.nftWrapper}
+                                            id={String(index)}
+                                            key={index}
+                                        >
+                                            <img
+                                                className={css.nft}
+                                                src={item?.image}
+                                                alt='NFT'
+                                                width={60}
+                                                height={60}
+                                            />         
+                                        </Box>
+                                    )
+                                }
+                            </Grid>
                         </Card.Body>
                     </Card.Root>
                     <Button onClick={() => props.setActive(false)}>Cancel</Button>
