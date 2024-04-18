@@ -3,29 +3,24 @@ import { NFT } from '@/entities/users/model'
 
 const alchemyConfigs = [
     {
-        apiKey: process.env.ALCHEMY_ETH_TOKEN,
+        apiKey: "auuQaNapHcCOIzdbaGl6Fd6fHiszc1X5",
         network: Network.ETH_MAINNET
     },
     {
-        apiKey: process.env.ALCHEMY_ETH_TOKEN,
+        apiKey: "pU27j7sDqREnqj9P3O3dZx4W",
         network: Network.ARB_MAINNET
     },
     {
-        apiKey: process.env.ALCHEMY_MATIC_TOKEN,
+        apiKey: "BPJEh9zVksG8AYJBOG0ntNnLVM6zkpMB",
         network: Network.MATIC_MAINNET
     },
     {
-        apiKey: process.env.ALCHEMY_OPT_TOKEN,
+        apiKey: "K3iUBUf1WwhwLS1qUUlHg8aKAra3KZnG",
         network: Network.OPT_MAINNET
-    },
-    {
-        apiKey: process.env.ALCHEMY_BASE_TOKEN,
-        network: Network.BASE_MAINNET
     }
 ];
 
-export const getWalletNFTs = async (address: string) => {
-    const nfts = []
+export const getWalletNFTs = async (address: string, pushToNfts: CallableFunction) => {
     for (const config of alchemyConfigs) {
         const alchemy = new Alchemy(config);
         const response = await alchemy.nft.getNftsForOwner(address);
@@ -34,10 +29,9 @@ export const getWalletNFTs = async (address: string) => {
             if (nft.contract.isSpam) continue
             const image = nft.image ? nft.image.pngUrl : nft.contract.openSeaMetadata.imageUrl
             if (!image) continue
-            nfts.push({ image, contract: nft.contract.address, tokenId: nft.tokenId, network: config.network })
+            pushToNfts({ image, contract: nft.contract.address, tokenId: nft.tokenId, network: config.network })
         }
     }
-    return nfts
 }
 
 export const addNftToWebhook = async (nft: NFT, address: string) => {

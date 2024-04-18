@@ -24,6 +24,11 @@
     border-radius: 1rem;
 }
 
-.nftgrid {
-    overflow-y: scroll !important;
+.nft_grid
+{
+    max-height: 80vh !important;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    row-gap: 10px;
+    column-gap: 10px;
 }

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {
-    Grid,
     Box,
     Flex,
     Heading,
@@ -23,16 +22,17 @@ type NFTsProp = {
 
 export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typeof Modal>, 'children'> & NFTsProp) {
     const {fire} = useToast()
-    const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
+    const [NFTs, setNFTs] = useState<NFT[]>([])
+
+    const addNFT = (nft: NFT) => {
+        let nfts = NFTs
+        nfts.push(nft)
+        setNFTs(nfts)
+    }
 
     useEffect(() => {
-        console.log('trigger modal nft', props.active, props.address, NFTs)
-        if (props.active && !NFTs) {
-            getWalletNFTs(props.address).then(nfts => {
-                setNFTs(nfts)
-            })
-        }
-    }, [props.active])
+        if (props.address) getWalletNFTs(props.address, addNFT)
+    }, [props.address])
 
     const handleSubmit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const selectedNFT = NFTs[Number(e.currentTarget.id)]
@@ -53,7 +53,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                     <Text align='center'>choose NFT as your profile picture</Text>
                     <Card.Root>
                         <Card.Body>
-                            <Grid columns='4' gap='3' className="nftgrid">
+                            <div className={css.nft_grid}>
                                 {
                                     NFTs && NFTs.map((item, index) =>
                                         <Box
@@ -72,7 +72,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                                         </Box>
                                     )
                                 }
-                            </Grid>
+                            </div>                                                                                                                                                      
                         </Card.Body>
                     </Card.Root>
                     <Button onClick={() => props.setActive(false)}>Cancel</Button>
