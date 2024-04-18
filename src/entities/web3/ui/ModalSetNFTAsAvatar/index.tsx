@@ -24,7 +24,7 @@ type NFTsProp = {
 
 export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typeof Modal>, 'children'> & NFTsProp) {
     const {fire} = useToast()
-    const [NFTs, setNFTs] = useState<Array<NFT | null>>([])
+    const [NFTs, setNFTs] = useState<NFT[]>([])
 
     const addNFT = (nft: NFT) => {
         let nfts = NFTs
