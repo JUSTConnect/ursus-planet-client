@@ -71,10 +71,11 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                                                 width={60}
                                                 height={60}
                                             />          */}
-                                            <Image src={item?.image} alt='NFT' className={css.nft}></Image>
+                                            {item?.image}
+                                            <Image src={item?.image} alt='NFT' width="60" height="60" className={css.nft}></Image>
                                         </Box>
                                     )
-                                };
+                                }
                             </Grid>                                                                                                                                                      
                         </Card.Body>
                     </Card.Root>
