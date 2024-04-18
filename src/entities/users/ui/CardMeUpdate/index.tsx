@@ -52,7 +52,6 @@ export default function CardMeUpdate() {
             } else {
                 return
             }
-            accs[0] = '0x35d117AC4C0f84888a6949BfcBd3201267b572C3'
             getUnstoppable(accs[0])
         }
         f()
