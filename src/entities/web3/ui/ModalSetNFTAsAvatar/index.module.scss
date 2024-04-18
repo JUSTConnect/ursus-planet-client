@@ -6,6 +6,7 @@
 
 .nftWrapper
 {
+    grid-column: 4 / span -1;
     @media (hover: hover)
     {
         &:hover
@@ -24,6 +25,10 @@
     border-radius: 1rem;
 }
 
-.rt-Grid {
+.nft_grid
+{
     max-height: 60% !important;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 3rem;
 }

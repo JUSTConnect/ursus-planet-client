@@ -55,7 +55,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                     <Text align='center'>choose NFT as your profile picture</Text>
                     <Card.Root>
                         <Card.Body>
-                            <Grid columns='4' gap='3'>
+                            <div className="nft_grid">
                                 {
                                     NFTs && NFTs.map((item, index) =>
                                         <Box
@@ -64,19 +64,17 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                                             id={String(index)}
                                             key={index}
                                         >
-                                            {/* <img
+                                            <img
                                                 className={css.nft}
                                                 src={item?.image}
                                                 alt='NFT'
                                                 width={60}
                                                 height={60}
-                                            />          */}
-                                            {item?.image}
-                                            <Image src={item?.image} alt='NFT' width="60" height="60" className={css.nft}></Image>
+                                            />         
                                         </Box>
                                     )
                                 }
-                            </Grid>                                                                                                                                                      
+                            </div>                                                                                                                                                      
                         </Card.Body>
                     </Card.Root>
                     <Button onClick={() => props.setActive(false)}>Cancel</Button>
