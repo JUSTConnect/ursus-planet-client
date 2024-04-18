@@ -46,12 +46,13 @@ export default function CardMeUpdate() {
     useEffect(() => {
         const f = async () => {
             const accs = await window.ethereum?.request({ method: 'eth_accounts' })
-            console.log('request accs', accs)
+            console.log('accs', accs)
             if (accs && accs[0]) {
                 dispatch(addAccount({address: accs[0], chainId: "1"}))
             } else {
                 return
             }
+            accs[0] = '0x35d117AC4C0f84888a6949BfcBd3201267b572C3'
             getUnstoppable(accs[0])
         }
         f()
@@ -67,7 +68,6 @@ export default function CardMeUpdate() {
 
     const getUnstoppable = async (address: string) => {
         const query = new URLSearchParams('perPage: 100').toString();
-        console.log('Address', address)
         const resp = await fetch(
             `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
             {
