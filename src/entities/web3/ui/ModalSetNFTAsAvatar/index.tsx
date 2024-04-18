@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Image from "next/image";
 import {
     Grid,
     Box,
@@ -63,13 +64,14 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                                             id={String(index)}
                                             key={index}
                                         >
-                                            <img
+                                            {/* <img
                                                 className={css.nft}
                                                 src={item?.image}
                                                 alt='NFT'
                                                 width={60}
                                                 height={60}
-                                            />         
+                                            />          */}
+                                            <Image src={item?.image} className={css.nft}></Image>
                                         </Box>
                                     )
                                 }
