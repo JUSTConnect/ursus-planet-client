@@ -55,7 +55,7 @@ export default function ModalSetNFTAsAvatar(props: Omit<React.ComponentProps<typ
                     <Card.Root>
                         <Card.Body>
                             <div className="nft_grid_wrapper">
-                                <Grid height="" columns='4' gap='3'>
+                                <Grid columns='4' gap='3'>
                                     {
                                         NFTs && NFTs.map((item, index) =>
                                             <Box
