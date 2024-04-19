@@ -35,12 +35,11 @@ export default function CardMeUpdate() {
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
     const usernameInput = useRef<HTMLInputElement>(null)
-    const radioInput = useRef<HTMLButtonElement>(null)
-    const radioDomain = useRef<HTMLButtonElement>(null)
 
     const [username, setUsername] = useState<string>('')
     const [selectedDomain, setSelectedDomain] = useState<string>('')
     const [domains, setDomains] = useState<string[] | null>()
+    const [activeRadio, setActiveRadio] = useState<string>('text')  // text or domain
     const [modalEmail, setModalEmail] = useState<boolean>(false)
 
     const { data, isLoading } = useMe()
@@ -63,9 +62,9 @@ export default function CardMeUpdate() {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(usernameInput.current?.value)
-        if (radioInput.current?.dataset.state == 'checked') {
+        if (activeRadio == 'text') {
             setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
-        } else if (radioDomain.current?.dataset.state == 'checked') {
+        } else if (activeRadio == 'domain') {
             if (domains && domains.length > 0 && !selectedDomain) {
                 setUsername(domains[0])
             } else {
@@ -122,7 +121,7 @@ export default function CardMeUpdate() {
                     <RadioGroup.Root defaultValue="1" size='3'>
                         <Flex align='center' gap='4' mb='4'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="1" ref={radioInput} />
+                                <RadioGroup.Item value="1" onClick={() => {setActiveRadio('text')}} />
                             </Skeleton>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton loading={isLoading}>
@@ -134,7 +133,7 @@ export default function CardMeUpdate() {
                                                 </TextField.Slot>
                                         }
                                         <TextField.Input
-                                            disabled={radioDomain.current?.dataset.state == 'checked'}
+                                            disabled={activeRadio == 'domain'}
                                             ref={usernameInput}
                                             readOnly={!!data?.username}
                                             defaultValue={data?.username || ''}
@@ -154,7 +153,7 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" ref={radioDomain} disabled={!Boolean(domains)} />
+                                <RadioGroup.Item value="2" onClick={() => {setActiveRadio('domain')}} disabled={!Boolean(domains)} />
                             </Skeleton>
                             <Box>
                                 <Text
