@@ -53,27 +53,34 @@ export default function CardMeUpdate() {
             } else {
                 return
             }
-            await getUnstoppable(accs[0])
-            await getSpaceId(accs[0])
+
+            let allDomains: string[] = []
+            const unstoppable = await getUnstoppable(accs[0])
+            const bnb = await getSpaceId(accs[0])
+            if (unstoppable) allDomains = [...allDomains, ...unstoppable]
+            if (bnb) allDomains.push(bnb)
+            setDomains(allDomains)
         }
         f()
     }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        let name = ''
 
         if (activeRadio == 'text') {
-            setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
+            name = usernameInput.current?.value ? usernameInput.current?.value : ''
         } else if (activeRadio == 'domain') {
             if (domains && domains.length > 0 && !selectedDomain) {
-                setUsername(domains[0])
+                name = domains[0]
             } else {
-                setUsername(selectedDomain)
+                name = selectedDomain
             }
         }
-        console.log(username)
+        setUsername(name)
+        console.log(name)
         const form = new FormData(e.currentTarget)
-        form.set('username', username)
+        form.set('username', name)
         mutateAsync(form)
             .then(() => fire({text: 'Your profile was successfully updated!'}))
     }
@@ -92,23 +99,18 @@ export default function CardMeUpdate() {
         );
 
         const data = await resp.json();
-        console.log(data)
-        const parsed = data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data)
-        let domainsList: string[] = []
-        if (domains) domainsList = domains
-        domainsList.push(parsed)
-        setDomains(domainsList)
+        return data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data)
     }
 
     const getSpaceId = async (address: string) => {
         const resp = await fetch(`https://api.prd.space.id/v1/getName?tld=bnb&address=${address}`)
         const data = await resp.json()
         if (data.code !== 0 || !data.name) return
+        return data.name
+    }
 
-        let domainsList: string[] = []
-        if (domains) domainsList = domains
-        domainsList.push(data.name)
-        setDomains(domainsList) 
+    const isActiveDomain = (domain: string) => {
+        return activeRadio == 'domain' && selectedDomain == domain
     }
 
     return <Card.Root tabulated value="profile">
@@ -182,11 +184,11 @@ export default function CardMeUpdate() {
                                             <Skeleton key={index} loading={isLoading}>
                                                 <Button
                                                     size='sm'
-                                                    color='white'
+                                                    color='gray'
                                                     hoverToWhite
                                                     onClick={() => {setSelectedDomain(domain)}}
                                                 >
-                                                    <CheckCircledIcon color='green' />
+                                                    {isActiveDomain(domain) && <CheckCircledIcon color='green' />}
                                                     {domain}
                                                 </Button>
                                             </Skeleton>
