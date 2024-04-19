@@ -66,6 +66,7 @@ export default function CardMeUpdate() {
     }
 
     const getUnstoppable = async (address: string) => {
+        address = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
         const query = new URLSearchParams('perPage: 100').toString();
         const resp = await fetch(
             `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
@@ -140,7 +141,7 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" disabled={domains.length === 0} onClick={e => {
+                                <RadioGroup.Item value="2" disabled={!Boolean(domains)} onClick={e => {
                                     if (domains && domains.length > 0) setUsername(domains[0])}
                                 } />
                             </Skeleton>
