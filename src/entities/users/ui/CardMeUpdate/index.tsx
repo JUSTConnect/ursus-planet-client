@@ -140,7 +140,7 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" disabled={!Boolean(domains)} onClick={e => {
+                                <RadioGroup.Item value="2" disabled={domains.length === 0} onClick={e => {
                                     if (domains && domains.length > 0) setUsername(domains[0])}
                                 } />
                             </Skeleton>
