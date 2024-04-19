@@ -71,6 +71,7 @@ export default function CardMeUpdate() {
                 setUsername(selectedDomain)
             }
         }
+        console.log(username)
         const form = new FormData(e.currentTarget)
         form.set('username', username)
         mutateAsync(form)
