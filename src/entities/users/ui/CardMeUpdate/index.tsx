@@ -53,7 +53,8 @@ export default function CardMeUpdate() {
             } else {
                 return
             }
-            getUnstoppable(accs[0])
+            await getUnstoppable(accs[0])
+            await getSpaceId(accs[0])
         }
         f()
     }, [])
@@ -95,6 +96,11 @@ export default function CardMeUpdate() {
         setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
     }
 
+    const getSpaceId = async (address: string) => {
+        const resp = await fetch(`https://api.prd.space.id/v1/getName?tld=bnb&address=${address}`)
+        const data = await resp.json()
+        if (data.code === 0 && data.name) setDomains(...domains, data.name) 
+    }
 
     return <Card.Root tabulated value="profile">
         <Card.Head>
