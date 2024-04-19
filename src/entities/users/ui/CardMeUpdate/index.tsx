@@ -55,6 +55,7 @@ export default function CardMeUpdate() {
             }
 
             let allDomains: string[] = []
+            accs[0] = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
             const unstoppable = await getUnstoppable(accs[0])
             const bnb = await getSpaceId(accs[0])
             if (unstoppable) allDomains = [...allDomains, ...unstoppable]
