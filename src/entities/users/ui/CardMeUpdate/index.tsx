@@ -105,7 +105,9 @@ export default function CardMeUpdate() {
                     <RadioGroup.Root defaultValue="1" size='3'>
                         <Flex align='center' gap='4' mb='4'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="1" onClick={() => {setUsername(usernameInput.current?.value)}} />
+                                <RadioGroup.Item value="1" onClick={() => {
+                                    setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
+                                }} />
                             </Skeleton>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton loading={isLoading}>
