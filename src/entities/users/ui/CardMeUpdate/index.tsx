@@ -185,6 +185,7 @@ export default function CardMeUpdate() {
                                                 <Button
                                                     size='sm'
                                                     color='gray'
+                                                    disabled={activeRadio == 'text'}
                                                     hoverToWhite
                                                     onClick={() => {setSelectedDomain(domain)}}
                                                 >
@@ -230,7 +231,7 @@ export default function CardMeUpdate() {
             </form>
         </Card.Body>
         {
-            !isLoading && ((username !== usernameHelper(data?.username)) || selectedDomain) &&
+            !isLoading && ((usernameInput.current?.value !== usernameHelper(data?.username)) || selectedDomain != username) &&
                 <Card.Bottom>
                         <Button
                             onClick={() => submit.current?.click()}
