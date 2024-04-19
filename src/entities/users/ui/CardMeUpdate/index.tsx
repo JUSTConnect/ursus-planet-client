@@ -58,6 +58,7 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        console.log(domains, username)
         const form = new FormData(e.currentTarget)
         form.set('username', username)
         mutateAsync(form)
