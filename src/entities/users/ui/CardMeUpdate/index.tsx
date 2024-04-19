@@ -35,7 +35,11 @@ export default function CardMeUpdate() {
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
     const usernameInput = useRef<HTMLInputElement>(null)
+    const radioInput = useRef<HTMLInputElement>(null)
+    const radioDomain = useRef<HTMLInputElement>(null)
+
     const [username, setUsername] = useState<string>('')
+    const [selectedDomain, setSelectedDomain] = useState<string>('')
     const [domains, setDomains] = useState<string[] | null>()
     const [modalEmail, setModalEmail] = useState<boolean>(false)
 
@@ -58,7 +62,15 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(domains, username)
+        if (radioInput.current.checked) {
+            setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
+        } else if (radioDomain.current.checked) {
+            if (domains && domains.length > 0 && !selectedDomain) {
+                setUsername(domains[0])
+            } else {
+                setUsername(selectedDomain)
+            }
+        }
         const form = new FormData(e.currentTarget)
         form.set('username', username)
         mutateAsync(form)
@@ -80,6 +92,7 @@ export default function CardMeUpdate() {
         );
 
         const data = await resp.json();
+        console.log(data)
         setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
     }
 
@@ -106,9 +119,7 @@ export default function CardMeUpdate() {
                     <RadioGroup.Root defaultValue="1" size='3'>
                         <Flex align='center' gap='4' mb='4'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="1" onClick={() => {
-                                    setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
-                                }} />
+                                <RadioGroup.Item value="1" ref={radioInput} />
                             </Skeleton>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton loading={isLoading}>
@@ -124,7 +135,6 @@ export default function CardMeUpdate() {
                                             readOnly={!!data?.username}
                                             defaultValue={data?.username || ''}
                                             name='username'
-                                            onInput={e => {setUsername(e.currentTarget.value)}}
                                             placeholder='Set your username'
                                             fullWidth
                                         />
@@ -140,9 +150,7 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" disabled={!Boolean(domains)} onClick={e => {
-                                    if (domains && domains.length > 0) setUsername(domains[0])}
-                                } />
+                                <RadioGroup.Item value="2" ref={radioDomain} disabled={!Boolean(domains)} />
                             </Skeleton>
                             <Box>
                                 <Text
@@ -161,7 +169,7 @@ export default function CardMeUpdate() {
                                                     size='sm'
                                                     color='white'
                                                     hoverToWhite
-                                                    onClick={() => {setUsername(domain)}}
+                                                    onClick={() => {setSelectedDomain(domain)}}
                                                 >
                                                     <CheckCircledIcon color='green' />
                                                     {domain}
