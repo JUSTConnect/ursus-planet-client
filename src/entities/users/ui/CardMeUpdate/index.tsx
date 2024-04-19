@@ -79,10 +79,9 @@ export default function CardMeUpdate() {
     }
 
     const getUnstoppable = async (address: string) => {
-        const query = new URLSearchParams('perPage=100&tlds=polygon,x,888').toString();
         address = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
         const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
+            `https://api.unstoppabledomains.com/resolve/reverse/query?tlds=polygon%2Cx%2C888`,
             {
                 method: 'POST',
                 headers: {
