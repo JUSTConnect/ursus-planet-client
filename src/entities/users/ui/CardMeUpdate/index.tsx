@@ -101,7 +101,8 @@ export default function CardMeUpdate() {
         const data = await resp.json()
         if (data.code !== 0 || !data.name) return
 
-        let domainsList = domains
+        let domainsList = []
+        if (domains) domainsList = domains
         domainsList.push(data.name)
         setDomains(domainsList) 
     }
