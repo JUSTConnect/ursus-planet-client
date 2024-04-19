@@ -132,7 +132,7 @@ export default function CardMeUpdate() {
                                                 </TextField.Slot>
                                         }
                                         <TextField.Input
-                                            disabled={radioDomain.current.dataset.state == 'checked'}
+                                            disabled={radioDomain.current?.dataset.state == 'checked'}
                                             ref={usernameInput}
                                             readOnly={!!data?.username}
                                             defaultValue={data?.username || ''}
