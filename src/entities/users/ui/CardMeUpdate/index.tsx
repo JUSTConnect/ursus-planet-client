@@ -35,8 +35,8 @@ export default function CardMeUpdate() {
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
     const usernameInput = useRef<HTMLInputElement>(null)
-    const radioInput = useRef<HTMLInputElement>(null)
-    const radioDomain = useRef<HTMLInputElement>(null)
+    const radioInput = useRef<HTMLButtonElement>(null)
+    const radioDomain = useRef<HTMLButtonElement>(null)
 
     const [username, setUsername] = useState<string>('')
     const [selectedDomain, setSelectedDomain] = useState<string>('')
