@@ -67,19 +67,21 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        let name = ''
 
         if (activeRadio == 'text') {
-            setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
+            name = usernameInput.current?.value ? usernameInput.current?.value : ''
         } else if (activeRadio == 'domain') {
             if (domains && domains.length > 0 && !selectedDomain) {
-                setUsername(domains[0])
+                name = domains[0]
             } else {
-                setUsername(selectedDomain)
+                name = selectedDomain
             }
         }
-        console.log(username)
+        setUsername(name)
+        console.log(name)
         const form = new FormData(e.currentTarget)
-        form.set('username', username)
+        form.set('username', name)
         mutateAsync(form)
             .then(() => fire({text: 'Your profile was successfully updated!'}))
     }
