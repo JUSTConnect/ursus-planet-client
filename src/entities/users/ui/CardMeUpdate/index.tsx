@@ -15,8 +15,7 @@ import {
 import { AxiosError } from "axios"
 import { FaEdit } from "react-icons/fa"
 import { CheckCircledIcon } from "@radix-ui/react-icons"
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from '@/store'
+import { useDispatch } from "react-redux";
 
 import { useMe, useMeUpdate } from "@/entities/users/api"
 import usernameHelper from "@/entities/users/helpers/username"
