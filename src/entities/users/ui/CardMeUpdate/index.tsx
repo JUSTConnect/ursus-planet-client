@@ -62,7 +62,7 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(radioInput.current?.dataset, radioDomain.current?.dataset.state)
+        console.log(usernameInput.current?.value, selectedDomain)
         if (radioInput.current?.dataset.state == 'checked') {
             setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
         } else if (radioDomain.current?.dataset.state == 'checked') {
@@ -83,14 +83,13 @@ export default function CardMeUpdate() {
         const query = new URLSearchParams('perPage: 100').toString();
         address = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
         const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
+            `https://api.unstoppabledomains.com/resolve/reverse/${address}`,
             {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer 8umj2rbsownpxuyz2hbw73dfcu3krdw6eenju1ofahg2tbwn`
-                },
-                body: JSON.stringify({addresses: [address]})
+                }
             }
         );
 
