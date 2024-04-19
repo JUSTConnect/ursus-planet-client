@@ -48,7 +48,6 @@ export default function CardMeUpdate() {
     useEffect(() => {
         const f = async () => {
             const accs = await window.ethereum?.request({ method: 'eth_accounts' })
-            console.log('accs', accs)
             if (accs && accs[0]) {
                 dispatch(addAccount({address: accs[0], chainId: "1"}))
             } else {
@@ -61,7 +60,7 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(usernameInput.current?.value)
+
         if (activeRadio == 'text') {
             setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
         } else if (activeRadio == 'domain') {
@@ -79,9 +78,8 @@ export default function CardMeUpdate() {
     }
 
     const getUnstoppable = async (address: string) => {
-        address = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
         const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query?tlds=polygon%2Cx%2C888&owners=${address}&resolution=1%2C137`,
+            `https://api.unstoppabledomains.com/resolve/reverse/query`,
             {
                 method: 'POST',
                 headers: {
