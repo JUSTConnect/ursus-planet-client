@@ -93,7 +93,11 @@ export default function CardMeUpdate() {
 
         const data = await resp.json();
         console.log(data)
-        setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
+        const parsed = data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data)
+        let domainsList: string[] = []
+        if (domains) domainsList = domains
+        domainsList.push(parsed)
+        setDomains(domainsList)
     }
 
     const getSpaceId = async (address: string) => {
