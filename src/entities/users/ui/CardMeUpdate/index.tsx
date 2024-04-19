@@ -81,7 +81,7 @@ export default function CardMeUpdate() {
     const getUnstoppable = async (address: string) => {
         address = '0x6735646dBA76763695Be5395bf2F4245046Db44C'
         const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query?tlds=polygon%2Cx%2C888`,
+            `https://api.unstoppabledomains.com/resolve/reverse/query?tlds=polygon%2Cx%2C888&owners=${address}`,
             {
                 method: 'POST',
                 headers: {
