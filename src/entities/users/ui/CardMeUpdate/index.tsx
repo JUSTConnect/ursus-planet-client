@@ -228,7 +228,7 @@ export default function CardMeUpdate() {
             </form>
         </Card.Body>
         {
-            !isLoading && (username !== usernameHelper(data?.username)) &&
+            !isLoading && ((username !== usernameHelper(data?.username)) || selectedDomain) &&
                 <Card.Bottom>
                         <Button
                             onClick={() => submit.current?.click()}
