@@ -35,8 +35,11 @@ export default function CardMeUpdate() {
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
     const usernameInput = useRef<HTMLInputElement>(null)
+
     const [username, setUsername] = useState<string>('')
+    const [selectedDomain, setSelectedDomain] = useState<string>('')
     const [domains, setDomains] = useState<string[] | null>()
+    const [activeRadio, setActiveRadio] = useState<string>('text')  // text or domain
     const [modalEmail, setModalEmail] = useState<boolean>(false)
 
     const { data, isLoading } = useMe()
@@ -45,20 +48,30 @@ export default function CardMeUpdate() {
     useEffect(() => {
         const f = async () => {
             const accs = await window.ethereum?.request({ method: 'eth_accounts' })
-            console.log('accs', accs)
             if (accs && accs[0]) {
                 dispatch(addAccount({address: accs[0], chainId: "1"}))
             } else {
                 return
             }
-            getUnstoppable(accs[0])
+            await getUnstoppable(accs[0])
+            await getSpaceId(accs[0])
         }
         f()
     }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(domains, username)
+
+        if (activeRadio == 'text') {
+            setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
+        } else if (activeRadio == 'domain') {
+            if (domains && domains.length > 0 && !selectedDomain) {
+                setUsername(domains[0])
+            } else {
+                setUsername(selectedDomain)
+            }
+        }
+        console.log(username)
         const form = new FormData(e.currentTarget)
         form.set('username', username)
         mutateAsync(form)
@@ -66,9 +79,8 @@ export default function CardMeUpdate() {
     }
 
     const getUnstoppable = async (address: string) => {
-        const query = new URLSearchParams('perPage: 100').toString();
         const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query?${query}`,
+            `https://api.unstoppabledomains.com/resolve/reverse/query`,
             {
                 method: 'POST',
                 headers: {
@@ -80,9 +92,20 @@ export default function CardMeUpdate() {
         );
 
         const data = await resp.json();
+        console.log(data)
         setDomains(data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data))
     }
 
+    const getSpaceId = async (address: string) => {
+        const resp = await fetch(`https://api.prd.space.id/v1/getName?tld=bnb&address=${address}`)
+        const data = await resp.json()
+        if (data.code !== 0 || !data.name) return
+
+        let domainsList: string[] = []
+        if (domains) domainsList = domains
+        domainsList.push(data.name)
+        setDomains(domainsList) 
+    }
 
     return <Card.Root tabulated value="profile">
         <Card.Head>
@@ -106,9 +129,7 @@ export default function CardMeUpdate() {
                     <RadioGroup.Root defaultValue="1" size='3'>
                         <Flex align='center' gap='4' mb='4'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="1" onClick={() => {
-                                    setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
-                                }} />
+                                <RadioGroup.Item value="1" onClick={() => {setActiveRadio('text')}} />
                             </Skeleton>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton loading={isLoading}>
@@ -120,11 +141,11 @@ export default function CardMeUpdate() {
                                                 </TextField.Slot>
                                         }
                                         <TextField.Input
+                                            disabled={activeRadio == 'domain'}
                                             ref={usernameInput}
                                             readOnly={!!data?.username}
                                             defaultValue={data?.username || ''}
                                             name='username'
-                                            onInput={e => {setUsername(e.currentTarget.value)}}
                                             placeholder='Set your username'
                                             fullWidth
                                         />
@@ -140,9 +161,7 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" disabled={!Boolean(domains)} onClick={e => {
-                                    if (domains && domains.length > 0) setUsername(domains[0])}
-                                } />
+                                <RadioGroup.Item value="2" onClick={() => {setActiveRadio('domain')}} disabled={!Boolean(domains)} />
                             </Skeleton>
                             <Box>
                                 <Text
@@ -161,7 +180,7 @@ export default function CardMeUpdate() {
                                                     size='sm'
                                                     color='white'
                                                     hoverToWhite
-                                                    onClick={() => {setUsername(domain)}}
+                                                    onClick={() => {setSelectedDomain(domain)}}
                                                 >
                                                     <CheckCircledIcon color='green' />
                                                     {domain}
