@@ -31,11 +31,11 @@ import { addAccount } from '@/features/web3/web3Slice'
 export default function CardMeUpdate() {
 
     const {fire} = useToast()
-    const { accounts } = useSelector((state: RootState) => state.web3)
     const dispatch = useDispatch()
 
     const form = useRef<HTMLFormElement>(null)
     const submit = useRef<HTMLInputElement>(null)
+    const usernameInput = useRef<HTMLInputElement>(null)
     const [username, setUsername] = useState<string>('')
     const [domains, setDomains] = useState<string[] | null>()
     const [modalEmail, setModalEmail] = useState<boolean>(false)
@@ -106,7 +106,7 @@ export default function CardMeUpdate() {
                     <RadioGroup.Root defaultValue="1" size='3'>
                         <Flex align='center' gap='4' mb='4'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="1" />
+                                <RadioGroup.Item value="1" onClick={() => {setUsername(usernameInput.current.value)}} />
                             </Skeleton>
                             <Box style={{ width: '100%' }}>
                                 <Skeleton loading={isLoading}>
@@ -118,6 +118,7 @@ export default function CardMeUpdate() {
                                                 </TextField.Slot>
                                         }
                                         <TextField.Input
+                                            ref={usernameInput}
                                             readOnly={!!data?.username}
                                             defaultValue={data?.username || ''}
                                             name='username'
