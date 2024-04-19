@@ -184,7 +184,7 @@ export default function CardMeUpdate() {
                                             <Skeleton key={index} loading={isLoading}>
                                                 <Button
                                                     size='sm'
-                                                    color={isActiveDomain(domain) ? 'white' : 'gray'}
+                                                    color='gray'
                                                     hoverToWhite
                                                     onClick={() => {setSelectedDomain(domain)}}
                                                 >
