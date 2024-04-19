@@ -62,9 +62,9 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (radioInput.current?.checked) {
+        if (radioInput.current?.dataset.state == 'checked') {
             setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
-        } else if (radioDomain.current?.checked) {
+        } else if (radioDomain.current?.dataset.state == 'checked') {
             if (domains && domains.length > 0 && !selectedDomain) {
                 setUsername(domains[0])
             } else {
@@ -132,7 +132,7 @@ export default function CardMeUpdate() {
                                                 </TextField.Slot>
                                         }
                                         <TextField.Input
-                                            disabled={radioDomain.current.checked}
+                                            disabled={radioDomain.current.dataset.state == 'checked'}
                                             ref={usernameInput}
                                             readOnly={!!data?.username}
                                             defaultValue={data?.username || ''}
