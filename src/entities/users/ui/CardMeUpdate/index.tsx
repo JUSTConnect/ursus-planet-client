@@ -62,6 +62,7 @@ export default function CardMeUpdate() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        console.log(radioInput.current?.dataset, radioDomain.current?.dataset.state)
         if (radioInput.current?.dataset.state == 'checked') {
             setUsername(usernameInput.current?.value ? usernameInput.current?.value : '')
         } else if (radioDomain.current?.dataset.state == 'checked') {
