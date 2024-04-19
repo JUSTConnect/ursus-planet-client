@@ -99,7 +99,11 @@ export default function CardMeUpdate() {
     const getSpaceId = async (address: string) => {
         const resp = await fetch(`https://api.prd.space.id/v1/getName?tld=bnb&address=${address}`)
         const data = await resp.json()
-        if (data.code === 0 && data.name) setDomains(...domains, [data.name]) 
+        if (data.code !== 0 || !data.name) return
+
+        let domainsList = domains
+        domainsList.push(data.name)
+        setDomains(domainsList) 
     }
 
     return <Card.Root tabulated value="profile">
