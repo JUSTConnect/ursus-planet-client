@@ -167,7 +167,7 @@ export default function CardMeUpdate() {
                         </Flex>
                         <Flex align='center' gap='4' mb='5'>
                             <Skeleton loading={isLoading}>
-                                <RadioGroup.Item value="2" onClick={() => {setActiveRadio('domain')}} disabled={!Boolean(domains)} />
+                                <RadioGroup.Item value="2" onClick={() => {setActiveRadio('domain')}} disabled={domains == null || domains == undefined || domains.length == 0} />
                             </Skeleton>
                             <Box>
                                 <Text
