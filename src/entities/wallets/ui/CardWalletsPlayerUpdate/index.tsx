@@ -24,9 +24,11 @@ type Wallet = {
 
 export default function CardWalletsPlayerUpdate() {
     const [wallets, setWallets] = useState<Wallet[]>([])
+    const [isEvmDeleted, setIsEvmDeleted] = useState(false)
     const [isSolanaDeleted, setIsSolanaDeleted] = useState(false)
     const [isAptosDeleted, setIsAptosDeleted] = useState(false)
     const [isSuiDeleted, setIsSuiDeleted] = useState(false)
+    const [isEvmDisabled, setIsEvmDisabled] = useState(false)
     const [isSolanaDisabled, setIsSolanaDisabled] = useState(false)
     const [isAptosDisabled, setIsAptosDisabled] = useState(false)
     const [isSuiDisabled, setIsSuiDisabled] = useState(false)
@@ -43,6 +45,8 @@ export default function CardWalletsPlayerUpdate() {
         for (const wallet of wallets) {
             if (wallet.network == 'Solana') {
                 setIsSolanaDisabled(true)
+            } else if (wallet.network == 'EVM Chain') {
+                setIsEvmDisabled(true)
             } else if (wallet.network == 'Aptos') {
                 setIsAptosDisabled(true)
             } else if (wallet.network == 'Sui') {
@@ -50,6 +54,7 @@ export default function CardWalletsPlayerUpdate() {
             }
         }
 
+        if (!wallets.find(w => w.network == 'EVM Chain')) setIsEvmDisabled(false)
         if (!wallets.find(w => w.network == 'Solana')) setIsSolanaDisabled(false)
         if (!wallets.find(w => w.network == 'Aptos')) setIsAptosDisabled(false)
         if (!wallets.find(w => w.network == 'Sui')) setIsSuiDisabled(false)
@@ -65,6 +70,9 @@ export default function CardWalletsPlayerUpdate() {
 
     const setDeletedWalletStatus = (network: string, value: boolean) => {
         switch (network) {
+            case 'EVM Chain':
+                setIsEvmDeleted(true)
+                return
             case 'Solana':
                 setIsSolanaDeleted(value)
                 return
@@ -93,8 +101,8 @@ export default function CardWalletsPlayerUpdate() {
                         gap='3'
                         mb='5'
                     >
-                        <ConnectEVMButton addWallet={addWallet} isDeleted={false}
-                            disabled={true} />
+                        <ConnectEVMButton addWallet={addWallet} isDeleted={isEvmDeleted}
+                            disabled={isEvmDisabled} />
                         <ConnectSolButton addWallet={addWallet} isDeleted={isSolanaDeleted}
                             disabled={isSolanaDisabled} />
                         <ConnectAptosButton addWallet={addWallet} isDeleted={isAptosDeleted}
