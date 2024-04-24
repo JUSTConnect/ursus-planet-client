@@ -86,20 +86,23 @@ export default function CardMeUpdate() {
     }
 
     const getUnstoppable = async (address: string) => {
-        const resp = await fetch(
-            `https://api.unstoppabledomains.com/resolve/reverse/query`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer 8umj2rbsownpxuyz2hbw73dfcu3krdw6eenju1ofahg2tbwn`
-                },
-                body: JSON.stringify({addresses: [address]})
-            }
-        );
-
-        const data = await resp.json();
-        return data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data)
+        try {
+            const resp = await fetch(
+                `https://api.unstoppabledomains.com/resolve/reverse/query`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer 8umj2rbsownpxuyz2hbw73dfcu3krdw6eenju1ofahg2tbwn`
+                    },
+                    body: JSON.stringify({addresses: [address]})
+                }
+            );
+            const data = await resp.json();
+            return data.data.map((i: {meta: {domain: string}}) => i.meta.domain, data)
+        } catch (e) {
+            return []
+        }
     }
 
     const getSpaceId = async (address: string) => {
